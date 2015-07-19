@@ -1,0 +1,22 @@
+{
+  "name": "materialNote",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Cerealkillerway/materialSummernote",
+  "description": "A fork of Summernote.js ported to Materialize",
+  "keywords": [
+    "wysiwyg",
+    "summernote",
+    "materialize"
+  ],
+  "authors": [
+    "CK"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

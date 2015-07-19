@@ -18,6 +18,8 @@ $selectionColor: color("grey", "darken-1") !default;
 
 $helpBackgroundColor: color("grey", "lighten-2") !default;
 
+$gridUnit: 26px;
+
 
 .editorDialogs .modal, .note-editor .modal {
     background-color: $toolbarColor;
@@ -119,8 +121,31 @@ $helpBackgroundColor: color("grey", "lighten-2") !default;
         }
     }
 
+    .note-dialog {
+        & > div {
+            display: none
+        }
+        .form-group {
+            margin-right: 0;
+            margin-left: 0
+        }
+        .note-modal-form {
+            margin: 0
+        }
+        .note-image-dialog .note-dropzone {
+            min-height: 100px;
+            margin-bottom: 10px;
+            font-size: 30px;
+            line-height: 4;
+            color: lightgray;
+            text-align: center;
+            border: 4px dashed lightgray
+        }
+    }
+
     .note-popover .popover {
         position: absolute;
+        max-width: none;
 
         .arrow {
             width: 0;
@@ -135,6 +160,19 @@ $helpBackgroundColor: color("grey", "lighten-2") !default;
 
             & > a {
                 margin-left: 12px;
+            }
+
+            a {
+                display: inline-block;
+                max-width: 200px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                vertical-align: middle
+            }
+
+            .arrow {
+                left: 20px
             }
 
             .btn-group {
@@ -173,7 +211,7 @@ $helpBackgroundColor: color("grey", "lighten-2") !default;
         color: $toolbarTextColor;
         background-color: $toolbarColor;
         margin: 0;
-        z-index: 1032;
+        //z-index: 1032;
 
         .btn.disabled, button.disabled {
             display: none;
@@ -196,18 +234,25 @@ $helpBackgroundColor: color("grey", "lighten-2") !default;
             text-transform: none;
         }
 
+        .largeDropdown {
+            width: 250px;
+        }
+
         .dropdown-menu {
-            z-index: 999;
+            z-index: 1033;
 
             &.note-check {
                 min-width: 80px;
+            }
+
+            label {
+                color: $toolbarTextColor !important;
             }
         }
 
         ul.dropdown-menu {
             position: absolute;
             top: 20px;
-            z-index: 15;
             background-color: lighten($toolbarColor, 10%);
             border: {
                 left: 3px solid $toolbarColor;
@@ -511,27 +556,14 @@ $helpBackgroundColor: color("grey", "lighten-2") !default;
 .note-air-editor {
     outline: 0
 }
-.note-popover .popover {
-    max-width: none
-}
-.note-popover .popover .popover-content a {
-    display: inline-block;
-    max-width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    vertical-align: middle
-}
-.note-popover .popover .arrow {
-    left: 20px
-}
+
 .note-popover .popover .popover-content,
 .note-toolbar {
     padding: 0;
     margin: 0
 }
-.note-popover .popover .popover-content>.btn-group,
-.note-toolbar>.btn-group {
+.note-popover .popover .popover-content > .btn-group,
+.note-toolbar > .btn-group {
     margin-top: 0;
     margin-right: 5px;
     margin-left: 0
@@ -549,26 +581,31 @@ $helpBackgroundColor: color("grey", "lighten-2") !default;
 .note-toolbar .btn-group .note-table .note-dimension-picker .note-dimension-picker-mousecatcher {
     position: absolute!important;
     z-index: 3;
-    width: 10em;
-    height: 10em;
+    width: $gridUnit * 10;
+    height:$gridUnit * 10;
     cursor: pointer
 }
 .note-popover .popover .popover-content .btn-group .note-table .note-dimension-picker .note-dimension-picker-unhighlighted,
 .note-toolbar .btn-group .note-table .note-dimension-picker .note-dimension-picker-unhighlighted {
-    position: relative!important;
+    position: relative !important;
     z-index: 1;
-    width: 5em;
-    height: 5em;
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIj4+Pjp6ekKlAqjAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKhmnaJzPAAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC') repeat
+    width: $gridUnit * 12;
+    height: $gridUnit * 5;
+    background-size: 26px 26px;    
+    background-image:repeating-linear-gradient(0deg, #3b3b3b, #3b3b3b 4px, transparent 4px, transparent 26px), 
+        repeating-linear-gradient(-90deg, transparent, transparent 4px, #fff 4px, #fff 26px);
 }
 .note-popover .popover .popover-content .btn-group .note-table .note-dimension-picker .note-dimension-picker-highlighted,
 .note-toolbar .btn-group .note-table .note-dimension-picker .note-dimension-picker-highlighted {
-    position: absolute!important;
+    position: absolute !important;
     z-index: 2;
-    width: 1em;
-    height: 1em;
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIjd6vvD2f9LKLW+AAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKwNDEVT0AAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC') repeat
+    width: $gridUnit;
+    height: $gridUnit;
+    background-size: 26px 26px;    
+    background-image:repeating-linear-gradient(0deg, #3b3b3b, #3b3b3b 4px, transparent 4px, transparent 26px), 
+        repeating-linear-gradient(-90deg, transparent, transparent 4px, $firstFocusColor 4px, $firstFocusColor 26px);
 }
+
 .note-popover .popover .popover-content .note-style h1,
 .note-toolbar .note-style h1,
 .note-popover .popover .popover-content .note-style h2,
@@ -658,23 +695,4 @@ $helpBackgroundColor: color("grey", "lighten-2") !default;
 .note-popover .popover .popover-content .note-fontsize-10,
 .note-toolbar .note-fontsize-10 {
     font-size: 10px
-}
-.note-dialog>div {
-    display: none
-}
-.note-dialog .form-group {
-    margin-right: 0;
-    margin-left: 0
-}
-.note-dialog .note-modal-form {
-    margin: 0
-}
-.note-dialog .note-image-dialog .note-dropzone {
-    min-height: 100px;
-    margin-bottom: 10px;
-    font-size: 30px;
-    line-height: 4;
-    color: lightgray;
-    text-align: center;
-    border: 4px dashed lightgray
 }

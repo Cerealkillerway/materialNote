@@ -2252,6 +2252,7 @@ var dom = (function() {
       defaultTextColor: '#212121',   // default text color (used by color tool)
       defaultBackColor: '#ddd',      // default text color (used by color tool)
       followingToolbar: true,        // make the toolbar follow on window scroll
+      //uniqueID,                    // unique id for this instance of materialNote
 
       width: null,                  // set editor width
       height: null,                 // set editor height, ex) 300
@@ -2347,7 +2348,8 @@ var dom = (function() {
         indentWithTabs: true,
         tabSize: 4,
         lineNumbers: true,
-        theme: 'monokai'
+        theme: 'monokai',
+        maxHighlightLength: 'Infinity'
       },
 
       // language
@@ -2441,7 +2443,7 @@ var dom = (function() {
 
       // insertTable max size
       insertTableMaxSize: {
-        col: 10,
+        col: 12,
         row: 10
       },
 
@@ -2584,7 +2586,11 @@ var dom = (function() {
           openInNewWindow: 'Open in new window'
         },
         table: {
-          table: 'Table'
+          table: 'Table',
+          striped: 'Striped',
+          hoverable: 'Hoverable',
+          responsive: 'Responsive',
+          bordered: 'Bordered'
         },
         hr: {
           insert: 'Insert Horizontal Rule'
@@ -3333,9 +3339,12 @@ var dom = (function() {
      * @param {Number} colCount
      * @return {Node}
      */
-    this.createTable = function(colCount, rowCount) {
+    this.createTable = function(tOptions) {
         var tds = [], tdHTML;
         var theaders = [];
+        var colCount = tOptions[0];
+        var rowCount = tOptions[1];
+        var classes = tOptions.slice(2, tOptions.length);
 
         for (var idxCol = 0; idxCol < colCount; idxCol++) {
             //tds.push('<td>' + dom.blank + '</td>');
@@ -3351,7 +3360,7 @@ var dom = (function() {
         }
         trHTML = trs.join('');
 
-        return $('<table class="table striped hoverable"><thead><tr>' + theaders + '</tr></thead><tbody>' + trHTML + '</tbody></table>')[0];
+        return $('<table class="' + classes.join(' ') + '"><thead><tr>' + theaders + '</tr></thead><tbody>' + trHTML + '</tbody></table>')[0];
     };
   };
 
@@ -3633,15 +3642,15 @@ var dom = (function() {
                     'backColor', 'foreColor', 'fontName'];
 
     for (var idx = 0, len = commands.length; idx < len; idx ++) {
-      this[commands[idx]] = (function(sCmd) {
-        return function($editable, value) {
-          beforeCommand($editable);
+        this[commands[idx]] = (function(sCmd) {
+            return function($editable, value) {
+                beforeCommand($editable);
 
-          document.execCommand(sCmd, false, value);
+                document.execCommand(sCmd, false, value);
 
-          afterCommand($editable, true);
-        };
-      })(commands[idx]);
+                afterCommand($editable, true);
+            };
+        })(commands[idx]);
     }
     /* jshint ignore:end */
 
@@ -4025,11 +4034,11 @@ var dom = (function() {
      * @param {String} sDim dimension of table (ex : "5x5")
      */
     this.insertTable = function($editable, sDim) {
-      var dimension = sDim.split('x');
+      var tOptions = sDim.split('x');
       beforeCommand($editable);
 
       var rng = range.create().deleteContents();
-      rng.insertNode(table.createTable(dimension[0], dimension[1]));
+      rng.insertNode(table.createTable(tOptions));
       afterCommand($editable);
     };
 
@@ -4783,6 +4792,7 @@ var dom = (function() {
       }
     };
 
+    var originalValue;
     /**
      * activate code view
      *
@@ -4799,63 +4809,67 @@ var dom = (function() {
       var options = $editor.data('options');
       var codeString = dom.html($editable, false);
 
-      // >>>>>>> CK indentation function
-      function beautifyHTML(code, level, insideLastBlock, dictionary) {
-        var openTag = code.indexOf('<');
-        var closeTag = code.indexOf('>');
-        var chunk;
+        // >>>>>>> CK indentation function
+        function beautifyHTML(code, level, insideLastBlock, dictionary) {
+            var openTag = code.indexOf('<');
+            var closeTag = code.indexOf('>');
+            var chunk;
 
-        if (openTag === 0) {
-          //first thing is a tag
-          chunk = code.substring(0, closeTag + 1);
-          code = code.substring(closeTag + 1);
+            if (openTag === 0) {
+                //first thing is a tag
+                chunk = code.substring(0, closeTag + 1);
+                code = code.substring(closeTag + 1);
 
-          if (chunk.indexOf("</") === 0) {
-            level--;
-            insideLastBlock = false;
-          } else {
-            if (insideLastBlock) {
-              level++;
-            }
+                if (chunk.indexOf("</") === 0) {
+                    level--;
+                    nsideLastBlock = false;
+                } else {
+                    if (insideLastBlock) {
+                        level++;
+                    }
 
-            //check if current tag is a self closing tag (no indent next line in this case)
-            var found = false;
-            for (var i = 0; i < dictionary.length; i++) {
-              if (chunk.indexOf(dictionary[i]) === 0) {
-                found = true;
-                break;
-              }
-            }
-            if (!found) {
-              insideLastBlock = true;
+                    //check if current tag is a self closing tag (no indent next line in this case)
+                    var found = false;
+
+                    for (var i = 0; i < dictionary.length; i++) {
+                        if (chunk.indexOf(dictionary[i]) === 0) {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        insideLastBlock = true;
+                    } else {
+                        insideLastBlock = false;
+                    }
+                }
             } else {
-              insideLastBlock = false;
+                //first thing is content
+                chunk = code.substring(0, openTag);
+                code = code.substring(openTag);
+
+                if (insideLastBlock) {
+                    level++;
+                }
+                insideLastBlock = false;
             }
-          }
-        } else {
-          //first thing is content
-          chunk = code.substring(0, openTag);
-          code = code.substring(openTag);
+            chunk = new Array(level + 1).join('    ') + chunk.trim();
 
-          if (insideLastBlock) {
-            level++;
-          }
-          insideLastBlock = false;
+            //console.log(level);
+            //console.log(chunk);
+            //console.log(code);
+
+            if (code.length === 0) {
+                return chunk;
+            }
+            return chunk + "\n" + beautifyHTML(code.trim(), level, insideLastBlock, dictionary);
         }
-        chunk = new Array(level + 1).join('    ') + chunk.trim();
 
-        //console.log(level);
-        //console.log(chunk);
-        //console.log(code);
+        originalValue = codeString;
 
-        if (code.length === 0) {
-          return chunk;
-        }
-        return chunk + "\n" + beautifyHTML(code.trim(), level, insideLastBlock, dictionary);
-      }
-
-      var selfCloseTags = ['<img', '<br', '<hr'];
-      codeString = beautifyHTML(codeString, 0, false, selfCloseTags);
+        var selfCloseTags = ['<img', '<br', '<hr'];
+        codeString = beautifyHTML(codeString, 0, false, selfCloseTags);
+        // CK end -----------------------
 
       $codable.val(codeString);
       $codable.height($editable.height());
@@ -4909,7 +4923,8 @@ var dom = (function() {
         cmEditor.toTextArea();
       }
 
-      var value = dom.value($codable, options.prettifyHtml) || dom.emptyPara;
+      //var value = dom.value($codable, options.prettifyHtml) || dom.emptyPara;
+      var value = originalValue;
       var isChange = $editable.html() !== value;
 
       $editable.html(value);
@@ -5615,46 +5630,61 @@ var dom = (function() {
       }
     };
 
-    var PX_PER_EM = 18;
+    var gridUnit = 26;
     var hDimensionPickerMove = function(event, options) {
-      var $picker = $(event.target.parentNode); // target is mousecatcher
-      var $dimensionDisplay = $picker.next();
-      var $catcher = $picker.find('.note-dimension-picker-mousecatcher');
-      var $highlighted = $picker.find('.note-dimension-picker-highlighted');
-      var $unhighlighted = $picker.find('.note-dimension-picker-unhighlighted');
+        var $picker = $(event.target.parentNode); // target is mousecatcher
+        var $dropdown = $picker.parent();
+        var $dimensionDisplay = $picker.next();
+        var $catcher = $picker.find('.note-dimension-picker-mousecatcher');
+        var $highlighted = $picker.find('.note-dimension-picker-highlighted');
+        var $unhighlighted = $picker.find('.note-dimension-picker-unhighlighted');
+        var $hoverableOption = $dropdown.find('#' + options.uniqueId + '-hoverable');
+        var $borderedOption = $dropdown.find('#' + options.uniqueId + '-bordered');
+        var $stripedOption = $dropdown.find('#' + options.uniqueId + '-striped');
+        var $responsiveOption = $dropdown.find('#' + options.uniqueId + '-responsive');
 
-      var posOffset;
-      // HTML5 with jQuery - e.offsetX is undefined in Firefox
-      if (event.offsetX === undefined) {
-        var posCatcher = $(event.target).offset();
-        posOffset = {
-          x: event.pageX - posCatcher.left,
-          y: event.pageY - posCatcher.top
+        var posOffset;
+        // HTML5 with jQuery - e.offsetX is undefined in Firefox
+        if (event.offsetX === undefined) {
+            var posCatcher = $(event.target).offset();
+
+            posOffset = {
+                x: event.pageX - posCatcher.left,
+                y: event.pageY - posCatcher.top
+            };
+        } else {
+            posOffset = {
+                x: event.offsetX,
+                y: event.offsetY
+            };
+        }
+
+        var dim = {
+            c: Math.ceil(posOffset.x / gridUnit) || 1,
+            r: Math.ceil(posOffset.y / gridUnit) || 1
         };
-      } else {
-        posOffset = {
-          x: event.offsetX,
-          y: event.offsetY
-        };
-      }
+        /*console.log(posOffset);
+        console.log(dim);
+        console.log('------------------');*/
 
-      var dim = {
-        c: Math.ceil(posOffset.x / PX_PER_EM) || 1,
-        r: Math.ceil(posOffset.y / PX_PER_EM) || 1
-      };
+        var tableOptions = [];
+            if ($hoverableOption.is(':checked')) tableOptions.push('hoverable');
+            if ($borderedOption.is(':checked')) tableOptions.push('bordered');
+            if ($stripedOption.is(':checked')) tableOptions.push('striped');
+            if ($responsiveOption.is(':checked')) tableOptions.push('responsive-table');
 
-      $highlighted.css({ width: dim.c + 'em', height: dim.r + 'em' });
-      $catcher.attr('data-value', dim.c + 'x' + dim.r);
+        $highlighted.css({ width: (dim.c * gridUnit) + 'px', height: (dim.r * gridUnit) + 'px' });
+        $catcher.attr('data-value', dim.c + 'x' + dim.r + 'x' + tableOptions.join('x'));
 
-      if (3 < dim.c && dim.c < options.insertTableMaxSize.col) {
-        $unhighlighted.css({ width: dim.c + 1 + 'em'});
-      }
+        //if (3 < dim.c && dim.c < options.insertTableMaxSize.col) {
+            $unhighlighted.css({ width: (options.insertTableMaxSize * gridUnit) + 'px'});
+        //}
 
-      if (3 < dim.r && dim.r < options.insertTableMaxSize.row) {
-        $unhighlighted.css({ height: dim.r + 1 + 'em'});
-      }
+        if (3 < dim.r && dim.r < options.insertTableMaxSize.row) {
+            $unhighlighted.css({ height: ((dim.r + 1) * gridUnit) + 'px'});
+        }
 
-      $dimensionDisplay.html(dim.c + ' x ' + dim.r);
+        $dimensionDisplay.html(dim.c + ' x ' + dim.r);
     };
 
     /**
@@ -5752,8 +5782,8 @@ var dom = (function() {
                                                 layoutInfo.toolbar();
       var $catcher = $catcherContainer.find('.note-dimension-picker-mousecatcher');
       $catcher.css({
-        width: options.insertTableMaxSize.col + 'em',
-        height: options.insertTableMaxSize.row + 'em'
+        width: options.insertTableMaxSize.col * gridUnit + 'px',
+        height: options.insertTableMaxSize.row * gridUnit + 'px'
       }).on('mousemove', function(event) {
         hDimensionPickerMove(event, options);
       });
@@ -6012,32 +6042,38 @@ var dom = (function() {
       },
       table: function(lang, options) {
         var dropdown = '<ul class="note-table dropdown-menu">' +
-                         '<div class="note-dimension-picker">' +
-                           '<div class="note-dimension-picker-mousecatcher" data-event="insertTable" data-value="1x1"></div>' +
-                           '<div class="note-dimension-picker-highlighted"></div>' +
-                           '<div class="note-dimension-picker-unhighlighted"></div>' +
-                         '</div>' +
-                         '<div class="note-dimension-display"> 1 x 1 </div>' +
+                            '<div class="row">' +
+                                '<div class="col s6 preventDropClose"><input type="checkbox" id="' + options.uniqueId + '-bordered" checked="checked" /><label for="' + options.uniqueId + '-bordered">' + lang.table.bordered + '</label></div>' +
+                                '<div class="col s6 preventDropClose"><input type="checkbox" id="' + options.uniqueId + '-striped" checked="checked" /><label for="' + options.uniqueId + '-striped">' + lang.table.striped + '</label></div>' +
+                            '</div>' +
+                            '<div class="row">' +
+                                '<div class="col s6 preventDropClose"><input type="checkbox" id="' + options.uniqueId + '-hoverable" checked="checked" /><label for="' + options.uniqueId + '-hoverable">' + lang.table.hoverable + '</label></div>' +
+                                '<div class="col s6 preventDropClose"><input type="checkbox" id="' + options.uniqueId + '-responsive" checked="checked" /><label for="' + options.uniqueId + '-responsive">' + lang.table.responsive + '</label></div>' +
+                            '</div>' +
+                            '<div class="note-dimension-picker">' +
+                                '<div class="note-dimension-picker-mousecatcher" data-event="insertTable" data-value="1x1"></div>' +
+                                '<div class="note-dimension-picker-highlighted"></div>' +
+                                '<div class="note-dimension-picker-unhighlighted"></div>' +
+                            '</div>' +
+                            '<div class="note-dimension-display"> 1 x 1 </div>' +
                        '</ul>';
         return tplIconButton(options.iconPrefix + options.icons.table.table, {
-          title: lang.table.table,
-          dropdown: dropdown
+            title: lang.table.table,
+            dropdown: dropdown
         });
       },
-      style: function(lang, options) {
-        var items = options.styleTags.reduce(function(memo, v) {
-          var label = lang.style[v === 'p' ? 'normal' : v];
-          return memo + '<li><a data-event="formatBlock" href="#" data-value="' + v + '">' +
-                   (
-                     (v === 'p' || v === 'pre') ? label :
-                     '<' + v + '>' + label + '</' + v + '>'
-                   ) +
-                 '</a></li>';
+        style: function(lang, options) {
+            var items = options.styleTags.reduce(function(memo, v) {
+            var label = lang.style[v === 'p' ? 'normal' : v];
+            
+            return memo + '<li><div data-event="formatBlock" data-value="' + v + '">' +
+                        ((v === 'p' || v === 'pre') ? label : '<' + v + '>' + label + '</' + v + '>') +
+                    '</div></li>';
         }, '');
 
         return tplIconButton(options.iconPrefix + options.icons.style.style, {
           title: lang.style.style,
-          dropdown: '<ul class="dropdown-menu">' + items + '</ul>'
+          dropdown: '<ul class="dropdown-menu largeDropdown">' + items + '</ul>'
         });
       },
       fontname: function(lang, options) {
@@ -6594,8 +6630,8 @@ var dom = (function() {
             (!options.disableLinkTarget ?
             '<div class="row">' +
                 '<div class="col s12">' +
-                    '<input type="checkbox" id="noteInsertLinkNewWindow" checked="checked" />' +
-                    '<label for="noteInsertLinkNewWindow">' + lang.link.openInNewWindow + '</label>' +
+                    '<input type="checkbox" id="' + options.uniqueId + '-noteInsertLinkNewWindow" checked="checked" />' +
+                    '<label for="' + options.uniqueId + '-noteInsertLinkNewWindow">' + lang.link.openInNewWindow + '</label>' +
                 '</div>' +
             '</div>'
             : ''
@@ -6823,6 +6859,50 @@ var dom = (function() {
       var keyMap = options.keyMap[agent.isMac ? 'mac' : 'pc'];
       createPalette($toolbar, options);
       createTooltip($toolbar, keyMap, 'bottom');
+
+
+        // >>>>>>> CK - following toolbar
+        // following toolbar
+        function followingBar() {
+            //$(window).unbind('scroll');
+            //console.log($._data( $(window)[0], "events" ));
+            $(window).scroll(function() {
+                var toolbar = $editor.children('.note-toolbar');
+                var toolbarHeight = toolbar.outerHeight();
+                var editable = $editor.children('.note-editable');
+                var editableHeight = editable.outerHeight();
+                var editorWidth = $editor.width;
+                var toolbarOffset, editorOffsetTop, editorOffsetBottom;
+                var activateOffset, deactivateOffsetTop, deactivateOffsetBottom;
+                var currentOffset;
+                var relativeOffset;
+                
+                currentOffset = $(document).scrollTop();
+                toolbarOffset = toolbar.offset().top;
+                editorOffsetTop = $editor.offset().top;
+                editorOffsetBottom = editorOffsetTop + editableHeight;
+                activateOffset = toolbarOffset;
+                deactivateOffsetBottom = editorOffsetBottom;
+                deactivateOffsetTop = editorOffsetTop;
+
+                if ((currentOffset > activateOffset) && (currentOffset < deactivateOffsetBottom)) {
+                    relativeOffset = currentOffset - $editor.offset().top;
+                    toolbar.css({'top': relativeOffset + 'px'});
+                } else {
+                    if (currentOffset < toolbarOffset) {
+                        toolbar.css({'top': 0});
+
+                        if (currentOffset > deactivateOffsetTop) {
+                            relativeOffset = currentOffset - $editor.offset().top;
+                            toolbar.css({'top': relativeOffset + 'px'});
+                        }
+                    }
+                }
+            });
+        }
+        if (options.followingToolbar) {            
+            followingBar();
+        }
 
       //05. create Popover
       var $popover = $(tplPopovers(langInfo, options)).prependTo($editor);
@@ -7125,6 +7205,7 @@ var dom = (function() {
      * @return {this}
      */
     summernote: function() {
+
       // check first argument's type
       //  - {String}: External API call {{module}}.{{method}}
       //  - {Object}: init options
@@ -7134,6 +7215,9 @@ var dom = (function() {
 
       // extend default options with custom user options
       var options = hasInitOptions ? list.head(arguments) : {};
+
+      // >>>>>>> CK set id for this editor if not provided
+      if (!options.uniqueId) options.uniqueId = $(this).attr('id');
 
       options = $.extend({}, $.summernote.options, options);
       options.icons = $.extend({}, $.summernote.options.icons, options.icons);
@@ -7187,6 +7271,8 @@ var dom = (function() {
         }
       }
 
+
+
       // >>>>>>> CK dropdowns - tabs activation
       var editor = this.next('.note-editor');
       var tabs = editor.find('li.tab a');
@@ -7199,6 +7285,10 @@ var dom = (function() {
         var go = true;
 
         list.slideUp(0);
+
+        $('.preventDropClose').click(function(event) {
+            event.stopPropagation();
+        });
 
         $(select).click(function(event) {
           var reopen = true;
@@ -7223,47 +7313,6 @@ var dom = (function() {
 
       // activate tabs
       tabContainer.tabs();
-
-      // >>>>>>> CK - following toolbar
-      // following toolbar
-      if (options.followingToolbar) {
-        $(window).load(function() {
-          var toolbar = editor.children('.note-toolbar');
-          var toolbarHeight = toolbar.outerHeight();
-          var editable = editor.children('.note-editable');
-          var editableHeight = editable.outerHeight();
-          var editorWidth = editor.width;
-          var toolbarOffset, editorOffsetTop, editorOffsetBottom;
-          var activateOffset, deactivateOffsetTop, deactivateOffsetBottom;
-          var currentOffset;
-          var relativeOffset;
-
-          $(window).scroll(function() {
-            currentOffset = $(document).scrollTop();
-            toolbarOffset = toolbar.offset().top;
-            editorOffsetTop = editor.offset().top;
-            editorOffsetBottom = editorOffsetTop + editableHeight;
-
-            activateOffset = toolbarOffset;
-            deactivateOffsetBottom = editorOffsetBottom;
-            deactivateOffsetTop = editorOffsetTop;
-
-            if ((currentOffset > activateOffset) && (currentOffset < deactivateOffsetBottom)) {
-              relativeOffset = currentOffset - editor.offset().top;
-              toolbar.css({'top': relativeOffset + 'px'});
-            } else {
-              if (currentOffset < toolbarOffset) {
-                toolbar.css({'top': 0});
-
-                if (currentOffset > deactivateOffsetTop) {
-                  relativeOffset = currentOffset - editor.offset().top;
-                  toolbar.css({'top': relativeOffset + 'px'});
-                }
-              }
-            }
-          });
-        });
-      }
 
       return this;
     },
