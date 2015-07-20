@@ -27,8 +27,8 @@
             backdrop.appendTo(newTooltip);
             backdrop.css({ top: 0, left:0 });
 
-         //Destroy previously binded events
-        $(this).off('mouseenter mouseleave');
+        //Destroy previously binded events
+        //$(this).off('mouseenter mouseleave');
 
         $.event.special.destroyed = {
             remove: function(o) {

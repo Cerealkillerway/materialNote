@@ -18,6 +18,7 @@ $selectionColor: color("grey", "darken-1") !default;
 
 $helpBackgroundColor: color("grey", "lighten-2") !default;
 
+// base unit for table dimension picker
 $gridUnit: 26px;
 
 
@@ -211,7 +212,7 @@ $gridUnit: 26px;
         color: $toolbarTextColor;
         background-color: $toolbarColor;
         margin: 0;
-        //z-index: 1032;
+        z-index: 1052;
 
         .btn.disabled, button.disabled {
             display: none;
@@ -235,7 +236,7 @@ $gridUnit: 26px;
         }
 
         .largeDropdown {
-            width: 250px;
+            width: 290px;
         }
 
         .dropdown-menu {
@@ -290,6 +291,8 @@ $gridUnit: 26px;
             }
 
             li {
+                list-style-type: none;
+
                 div {
                     padding: 3px 15px;
                     cursor: pointer;
@@ -473,7 +476,7 @@ $gridUnit: 26px;
 
 
 
-// original summernote css
+// the following is unchanged from original summernote css
 .note-editor .note-dropzone {
     position: absolute;
     z-index: 100;

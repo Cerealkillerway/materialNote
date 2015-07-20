@@ -1,13 +1,14 @@
 /**
- * Super simple wysiwyg editor on Materialize v0.6.9
- * a fork of summernote.js => http://summernote.org/
+ * Super simple wysiwyg editor on Materialize v 1.0.1
+ * a fork of materialnote.js => http://materialnote.org/
  *
  * original summernote credits:
  * summernote.js
  * Copyright 2013-2015 Alan Hong. and other contributors
  * summernote may be freely distributed under the MIT license./
  *
- * edited by CK
+ * edited by CK (http://www.web-forge.info)
+ * thanks to Tox for code review (http://emanuele.itoscano.com/)
  */
 (function(factory) {
   /* global define */
@@ -2260,7 +2261,7 @@ var dom = (function() {
       minHeight: null,              // set minimum height of editor
       maxHeight: null,              // set maximum height of editor
 
-      focus: false,                 // set focus to editable area after initializing summernote
+      focus: false,                 // set focus to editable area after initializing materialnote
 
       tabsize: 4,                   // size of tab ex) 2 or 4
       styleWithSpan: true,          // style with span (Chrome and FF only)
@@ -4734,6 +4735,7 @@ var dom = (function() {
         }).trigger('resize');
 
         $scrollbar.css('overflow', 'hidden');
+        $toolbar.css('top', 0);
       } else {
         $window.off('resize');
         resize({
@@ -4872,6 +4874,9 @@ var dom = (function() {
         // CK end -----------------------
 
       $codable.val(codeString);
+
+      var buttonHeight = $toolbar.find('.btn[data-event=codeview]').height();
+      var areaHeight = $(window).height() - buttonHeight;
       $codable.height($editable.height());
 
       handler.invoke('toolbar.updateCodeview', $toolbar, true);
@@ -4896,7 +4901,12 @@ var dom = (function() {
         }
 
         // CodeMirror hasn't Padding.
-        cmEditor.setSize(null, $editable.outerHeight());
+        if ($editor.hasClass('fullscreen')) {
+          cmEditor.setSize(null, areaHeight);
+        }
+        else {
+          cmEditor.setSize(null, $editable.outerHeight());
+        }
 
         $codable.data('cmEditor', cmEditor);
       }
@@ -5018,7 +5028,7 @@ var dom = (function() {
           handler.insertImages(layoutInfo, dataTransfer.files);
         } else {
           var insertNodefunc = function() {
-            layoutInfo.holder().summernote('insertNode', this);
+            layoutInfo.holder().materialnote('insertNode', this);
           };
 
           for (var i = 0, len = dataTransfer.types.length; i < len; i++) {
@@ -5026,7 +5036,7 @@ var dom = (function() {
             var content = dataTransfer.getData(type);
 
             if (type.toLowerCase().indexOf('text') > -1) {
-              layoutInfo.holder().summernote('pasteHTML', content);
+              layoutInfo.holder().materialnote('pasteHTML', content);
             } else {
               $(content).each(insertNodefunc);
             }
@@ -5463,7 +5473,7 @@ var dom = (function() {
         if (callback) {
           callback.apply($holder[0], arguments);
         }
-        return $holder.trigger('summernote.' + eventNamespace, arguments);
+        return $holder.trigger('materialnote.' + eventNamespace, arguments);
       };
     };
 
@@ -5607,8 +5617,8 @@ var dom = (function() {
           $btn.parents('.popover').hide();
         }
 
-        if ($.isFunction($.summernote.pluginEvents[eventName])) {
-          $.summernote.pluginEvents[eventName](event, modules.editor, layoutInfo, value);
+        if ($.isFunction($.materialnote.pluginEvents[eventName])) {
+          $.materialnote.pluginEvents[eventName](event, modules.editor, layoutInfo, value);
         } else if (modules.editor[eventName]) { // on command
           var $editable = layoutInfo.editable();
           $editable.focus();
@@ -5715,16 +5725,16 @@ var dom = (function() {
         var keyString = keys.join('+');
         var eventName = keyMap[keyString];
         if (eventName) {
-          // FIXME Summernote doesn't support event pipeline yet.
+          // FIXME materialnote doesn't support event pipeline yet.
           //  - Plugin -> Base Code
-          pluginEvent = $.summernote.pluginEvents[keyString];
+          pluginEvent = $.materialnote.pluginEvents[keyString];
           if ($.isFunction(pluginEvent)) {
             if (pluginEvent(event, modules.editor, layoutInfo)) {
               return false;
             }
           }
 
-          pluginEvent = $.summernote.pluginEvents[eventName];
+          pluginEvent = $.materialnote.pluginEvents[eventName];
 
           if ($.isFunction(pluginEvent)) {
             pluginEvent(event, modules.editor, layoutInfo);
@@ -5881,9 +5891,9 @@ var dom = (function() {
       bindCustomEvent($holder, callbacks, 'init')(layoutInfo);
 
       // fire plugin init event
-      for (var i = 0, len = $.summernote.plugins.length; i < len; i++) {
-        if ($.isFunction($.summernote.plugins[i].init)) {
-          $.summernote.plugins[i].init(layoutInfo);
+      for (var i = 0, len = $.materialnote.plugins.length; i < len; i++) {
+        if ($.isFunction($.materialnote.plugins[i].init)) {
+          $.materialnote.plugins[i].init(layoutInfo);
         }
       }
     };
@@ -6590,14 +6600,12 @@ var dom = (function() {
         var body = '<div class="row">' +
                 '<div class="col s12">' +
                     '<div class="file-field input-field">' +
-                        '<div class="col s12 m5 l3">' +
                             '<div class="btn">' +
                                 '<span>' + lang.image.image + '</span>' +
                                 '<input class="note-image-input" name="files" type="file" />' +
                             '</div>' +
-                        '</div>' +
-                        '<div class="col s12 m7 l9">' +
-                            '<input class="file-path" type="text"/>' +
+                        '<div class="file-path-wrapper">' +
+                            '<input class="file-path" type="text" />' +
                         '</div>' +
                     '</div>' +
                 '</div>' +
@@ -6704,7 +6712,7 @@ var dom = (function() {
               return text;
             });
           }
-          $btn.attr('data-position', 'top');
+          $btn.attr('data-position', 'bottom');
           $btn.attr('data-tooltip', text);
           $btn.removeAttr('title');
         }).ckTooltip({
@@ -6754,7 +6762,7 @@ var dom = (function() {
     };
 
     /**
-     * create summernote layout (air mode)
+     * create materialnote layout (air mode)
      *
      * @param {jQuery} $holder
      * @param {Object} options
@@ -6797,7 +6805,7 @@ var dom = (function() {
     };
 
     /**
-     * create summernote layout (normal mode)
+     * create materialnote layout (normal mode)
      *
      * @param {jQuery} $holder
      * @param {Object} options
@@ -6941,7 +6949,7 @@ var dom = (function() {
     };
 
     /**
-     * create summernote layout
+     * create materialnote layout
      *
      * @param {jQuery} $holder
      * @param {Object} options
@@ -7032,28 +7040,28 @@ var dom = (function() {
   };
 
 
-  // jQuery namespace for summernote
+  // jQuery namespace for materialnote
   /**
-   * @class $.summernote
+   * @class $.materialnote
    *
-   * summernote attribute
+   * materialnote attribute
    *
    * @mixin defaults
    * @singleton
    *
    */
-  $.summernote = $.summernote || {};
+  $.materialnote = $.materialnote || {};
 
   // extends default settings
-  //  - $.summernote.version
-  //  - $.summernote.options
-  //  - $.summernote.lang
-  $.extend($.summernote, defaults);
+  //  - $.materialnote.version
+  //  - $.materialnote.options
+  //  - $.materialnote.lang
+  $.extend($.materialnote, defaults);
 
   var renderer = new Renderer();
   var eventHandler = new EventHandler();
 
-  $.extend($.summernote, {
+  $.extend($.materialnote, {
     /** @property {Renderer} */
     renderer: renderer,
     /** @property {EventHandler} */
@@ -7076,7 +7084,7 @@ var dom = (function() {
      * event has name and callback function.
      *
      * ```
-     * $.summernote.addPlugin({
+     * $.materialnote.addPlugin({
      *     events : {
      *          'hello' : function(layoutInfo, value, $target) {
      *              console.log('event name is hello, value is ' + value );
@@ -7086,7 +7094,7 @@ var dom = (function() {
      * ```
      *
      * * event name is data-event property.
-     * * layoutInfo is a summernote layout information.
+     * * layoutInfo is a materialnote layout information.
      * * value is data-value property.
      */
     pluginEvents: {},
@@ -7097,17 +7105,17 @@ var dom = (function() {
   /**
    * @method addPlugin
    *
-   * add Plugin in Summernote
+   * add Plugin in materialnote
    *
-   * Summernote can make a own plugin.
+   * materialnote can make a own plugin.
    *
    * ### Define plugin
    * ```
    * // get template function
-   * var tmpl = $.summernote.renderer.getTemplate();
+   * var tmpl = $.materialnote.renderer.getTemplate();
    *
    * // add a button
-   * $.summernote.addPlugin({
+   * $.materialnote.addPlugin({
    *     buttons : {
    *        // "hello"  is button's namespace.
    *        "hello" : function(lang, options) {
@@ -7133,7 +7141,7 @@ var dom = (function() {
    * ### Use a plugin in toolbar
    *
    * ```
-   *    $("#editor").summernote({
+   *    $("#editor").materialnote({
    *    ...
    *    toolbar : [
    *        // display hello plugin in toolbar
@@ -7147,14 +7155,14 @@ var dom = (function() {
    * @param {Object} plugin
    * @param {Object} [plugin.buttons] define plugin button. for detail, see to Renderer.addButtonInfo
    * @param {Object} [plugin.dialogs] define plugin dialog. for detail, see to Renderer.addDialogInfo
-   * @param {Object} [plugin.events] add event in $.summernote.pluginEvents
-   * @param {Object} [plugin.langs] update $.summernote.lang
-   * @param {Object} [plugin.options] update $.summernote.options
+   * @param {Object} [plugin.events] add event in $.materialnote.pluginEvents
+   * @param {Object} [plugin.langs] update $.materialnote.lang
+   * @param {Object} [plugin.options] update $.materialnote.options
    */
-  $.summernote.addPlugin = function(plugin) {
+  $.materialnote.addPlugin = function(plugin) {
 
     // save plugin list
-    $.summernote.plugins.push(plugin);
+    $.materialnote.plugins.push(plugin);
 
     if (plugin.buttons) {
       $.each(plugin.buttons, function(name, button) {
@@ -7170,20 +7178,20 @@ var dom = (function() {
 
     if (plugin.events) {
       $.each(plugin.events, function(name, event) {
-        $.summernote.pluginEvents[name] = event;
+        $.materialnote.pluginEvents[name] = event;
       });
     }
 
     if (plugin.langs) {
       $.each(plugin.langs, function(locale, lang) {
-        if ($.summernote.lang[locale]) {
-          $.extend($.summernote.lang[locale], lang);
+        if ($.materialnote.lang[locale]) {
+          $.extend($.materialnote.lang[locale], lang);
         }
       });
     }
 
     if (plugin.options) {
-      $.extend($.summernote.options, plugin.options);
+      $.extend($.materialnote.options, plugin.options);
     }
   };
 
@@ -7193,18 +7201,18 @@ var dom = (function() {
   $.fn.extend({
     /**
      * @method
-     * Initialize summernote
+     * Initialize materialnote
      *  - create editor layout and attach Mouse and keyboard events.
      *
      * ```
-     * $("#summernote").summernote( { options ..} );
+     * $("#materialnote").materialnote( { options ..} );
      * ```
      *
      * @member $.fn
-     * @param {Object|String} options reference to $.summernote.options
+     * @param {Object|String} options reference to $.materialnote.options
      * @return {this}
      */
-    summernote: function() {
+    materialnote: function() {
 
       // check first argument's type
       //  - {String}: External API call {{module}}.{{method}}
@@ -7219,20 +7227,20 @@ var dom = (function() {
       // >>>>>>> CK set id for this editor if not provided
       if (!options.uniqueId) options.uniqueId = $(this).attr('id');
 
-      options = $.extend({}, $.summernote.options, options);
-      options.icons = $.extend({}, $.summernote.options.icons, options.icons);
+      options = $.extend({}, $.materialnote.options, options);
+      options.icons = $.extend({}, $.materialnote.options.icons, options.icons);
 
       // Include langInfo in options for later use, e.g. for image drag-n-drop
       // Setup language info with en-US as default
-      options.langInfo = $.extend(true, {}, $.summernote.lang['en-US'], $.summernote.lang[options.lang]);
+      options.langInfo = $.extend(true, {}, $.materialnote.lang['en-US'], $.materialnote.lang[options.lang]);
 
       // override plugin options
       if (!isExternalAPICalled && hasInitOptions) {
-        for (var i = 0, len = $.summernote.plugins.length; i < len; i++) {
-          var plugin = $.summernote.plugins[i];
+        for (var i = 0, len = $.materialnote.plugins.length; i < len; i++) {
+          var plugin = $.materialnote.plugins[i];
 
           if (options.plugin[plugin.name]) {
-            $.summernote.plugins[i] = $.extend(true, plugin, options.plugin[plugin.name]);
+            $.materialnote.plugins[i] = $.extend(true, plugin, options.plugin[plugin.name]);
           }
         }
       }
@@ -7324,12 +7332,12 @@ var dom = (function() {
      *
      * * get contents
      * ```
-     * var content = $("#summernote").code();
+     * var content = $("#materialnote").code();
      * ```
      * * set contents
      *
      * ```
-     * $("#summernote").code(html);
+     * $("#materialnote").code(html);
      * ```
      *
      * @member $.fn
