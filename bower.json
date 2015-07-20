@@ -15,6 +15,10 @@
     "materialize": ">=0.97.0",
     "jquery": ">=2.1.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Cerealkillerway/materialNote"
+  },
   "license": "MIT",
   "ignore": [
     "**/.*",
