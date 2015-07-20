@@ -6,18 +6,18 @@
   "keywords": [
     "wysiwyg",
     "editor",
-    "materialize"
+    "materialize",
   ],
   "authors": [
-    "CK"
+    "CK",
   ],
   "dependencies": {
     "materialize": ">=0.97.0",
-    "jquery": ">=2.1.1"
+    "jquery": ">=2.1.1",
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Cerealkillerway/materialNote"
+    "url": "https://github.com/Cerealkillerway/materialNote",
   },
   "license": "MIT",
   "ignore": [
@@ -36,6 +36,6 @@
     "lib",
     "sass/components",
     "sass/materialize.scss",
-    "index.html"
-  ]
+    "index.html",
+  ],
 }
