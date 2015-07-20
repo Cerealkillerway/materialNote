@@ -1,22 +1,37 @@
 {
   "name": "materialNote",
-  "version": "1.0.0",
-  "homepage": "https://github.com/Cerealkillerway/materialSummernote",
+  "version": "1.0.1",
+  "homepage": "https://github.com/Cerealkillerway/materialNote",
   "description": "A fork of Summernote.js ported to Materialize",
   "keywords": [
     "wysiwyg",
-    "summernote",
+    "editor",
     "materialize"
   ],
   "authors": [
     "CK"
   ],
+  "dependencies": {
+    "materialize": ">=0.97.0",
+    "jquery": ">=2.1.1"
+  },
   "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
-    "test",
-    "tests"
+    ".sass-cache",
+    "config.rb",
+    "Gemfile",
+    "Guardfile",
+    "Gruntfile",
+    ".gitignore",
+    "package.json",
+    "README.md"
+    "font",
+    "lib",
+    "sass/components",
+    "sass/materialize.scss",
+    "index.html"
   ]
 }

@@ -1,4 +1,4 @@
-## MaterialNote V 1.0.0
+## MaterialNote V 1.0.1
 
 A Summernote wysiwyg editor version converted for Materialize
  (Materialize [Official website](http://materializecss.com/))
@@ -34,4 +34,4 @@ If you don't need/want this, you can use the standard materialize tooltip functi
 
 ##### Grunt
 It is provided with livereload and sass version of stylesheet;
-use "grunt server" to execute it (prerequisites: ruby, sass ("gem install sass"), grunt-cli, grunt and needed plugins ("npm install"))
+use "grunt" to execute it and point your browser on "localhost:7000" (prerequisites: ruby, sass ("gem install sass"), grunt-cli, grunt and needed plugins ("npm install"), browser livereload extension)

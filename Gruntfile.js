@@ -3,16 +3,24 @@ module.exports = function(grunt) {
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        connect: {
+            server: {
+                options: {
+                    port: 7000
+                },
+            }
+        },
         sass: {
             dist: {
                 files: {
-                    'css/materialNote.css': 'sass/materialNote.scss'
+                    'css/materialNote.css': 'sass/materialNote.scss',
+                    'css/materialize.css': 'sass/materialize.scss'
                 }
             }
         },
         watch: {
             css: {
-                files: 'sass/*.scss',
+                files: ['sass/*.scss', 'lib/sass/.scss'],
                 tasks: ['sass'],
                 options: {
                     livereload: true
@@ -22,19 +30,18 @@ module.exports = function(grunt) {
                 options: {
                     livereload: true
                 },
-                files: ['index.html'],
+                files: [
+                    'index.html',
+                    'js/materialNote.js',
+                    'js/ckMaterializeOverrides.js'
+                ],
             }
         },
     });
 
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
-    grunt.registerTask('server', ['watch']);
-
-
-
-    grunt.registerTask('default', 'hello', function() {
-        console.log("MaterialNote\n - type 'grunt server' to start livereload and compass");
-    });
+    grunt.registerTask('default', ['connect', 'watch']);
 };
