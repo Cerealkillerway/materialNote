@@ -32,7 +32,7 @@
     "Gruntfile",
     ".gitignore",
     "package.json",
-    "README.md"
+    "README.md",
     "font",
     "lib",
     "sass/components",
