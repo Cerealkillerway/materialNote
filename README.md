@@ -35,8 +35,6 @@ MaterialSummernote is not just a conversion of Summernote from bootstrap to mate
 
 It is provided with scss version of the stylesheet, if you use sass, to change style quickly
 
-In this version, editor's functions that you see on this page are tested; other summernote functions such airmode, still need to be converted;
-
 ##### Materialize Overrides
 The provided versione includes an override of materialize tooltips (called ckTooltip) with autoclean function for tooltips' shadow dom when the tooltipped element is destroyed (better for single-page app); this functions is also edited to have faster tooltip animations;
 If you don't need/want this, you can use the standard materialize tooltip function, replacing "ckTooltip" with "tooltip" in materialNote (1 occurence) and removing "ckMaterializeOverrides.js" file and its reference in index.html;
