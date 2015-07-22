@@ -109,11 +109,6 @@ $gridUnit: 26px;
         background-color: $firstFocusColor !important;
     }
 
-    [type="checkbox"]:checked + label:before {
-        border-right-color: $secondButtonColor !important;
-        border-bottom-color: $secondButtonColor !important;
-    }
-
     .note-editable {
         ul li {
             list-style-type: square !important;
@@ -141,51 +136,6 @@ $gridUnit: 26px;
             color: lightgray;
             text-align: center;
             border: 4px dashed lightgray
-        }
-    }
-
-    .note-popover .popover {
-        position: absolute;
-        max-width: none;
-
-        .arrow {
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 0 10px 10px 10px;
-            border-color: transparent transparent $firstButtonColor transparent;
-        }
-
-        .popover-content {
-            background-color: $firstButtonColor;
-
-            & > a {
-                margin-left: 12px;
-            }
-
-            a {
-                display: inline-block;
-                max-width: 200px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                vertical-align: middle
-            }
-
-            .arrow {
-                left: 20px
-            }
-
-            .btn-group {
-                display: inline-block;
-
-                .btn {
-                    border-radius: 0 !important;
-                    box-shadow: none !important;
-                    padding: 0 9px !important;
-                    background-color: $firstButtonColor;
-                }
-            }
         }
     }
 
@@ -226,153 +176,6 @@ $gridUnit: 26px;
             min-width: 134px;
             display: inline-block;
             text-align: left;
-        }
-
-        button {
-            background-color: $firstButtonColor;
-            border: none;
-            height: 36px;
-            text-transform: none;
-        }
-
-        .largeDropdown {
-            width: 290px;
-        }
-
-        .dropdown-menu {
-            z-index: 1033;
-
-            &.note-check {
-                min-width: 80px;
-            }
-
-            label {
-                color: $toolbarTextColor !important;
-            }
-        }
-
-        ul.dropdown-menu {
-            position: absolute;
-            top: 20px;
-            background-color: lighten($toolbarColor, 10%);
-            border: {
-                left: 3px solid $toolbarColor;
-                bottom: 3px solid $toolbarColor;
-                right: 3px solid $toolbarColor;
-            }
-
-            &#colors {
-                width: 342px;
-
-                .indicator {
-                    width: 50%;
-                    left: 0;
-                }
-            }
-            
-            .colorTable {
-                padding: 3px 0;
-            }
-
-            .tabs {
-                background-color: $toolbarColor;
-                
-                &:hover {
-                    background-color: $toolbarColor;
-                }
-
-                .tab a, .tab a:hover {
-                    color: $secondFocusColor;
-                }
-
-                .indicator {
-                    background-color: $secondFocusColor;
-                }
-            }
-
-            li {
-                list-style-type: none;
-
-                div {
-                    padding: 3px 15px;
-                    cursor: pointer;
-                }
-
-                &:hover {
-                    background-color: $toolbarColor;
-                }
-            }
-        }
-
-        .note-palette-title, .note-color-reset {
-            padding: 0 !important;
-        }
-
-        .colorName {
-            display: inline-block;
-        }
-        
-        .note-color-palette {
-            line-height: 10px;
-            border: solid 3px $toolbarColor;
-            padding: 0 !important;
-
-            .note-color-row {
-                padding: 0 !important;
-            }
-
-            .note-color-btn {
-                width: 20px;
-                height: 20px;
-                padding: 0;
-                margin: 0;
-            }
-
-            .note-color-btn:hover {
-                &:after {
-                    position: absolute;
-                    width: 30px;
-                    height: 30px;
-                    content: "";
-                    background-color: inherit;
-                    margin-top: -15px;
-                    margin-left: -15px;
-                }
-            }
-        }
-
-        .btn-group {
-            display: inline-block;
-            margin-right: 10px;
-            position: relative;
-
-            .closeLeft {
-                padding-right: 0 !important;
-                margin-right: 0 !important;
-
-                i {
-                    margin-right: 0 !important;
-                }
-            }
-
-            i.left {
-                margin-right: 5px;
-            }
-        }
-
-        .btn {
-            border-radius: 0 !important;
-            box-shadow: none !important;
-            padding: 0 9px !important;
-            background-color: $firstButtonColor;
-        }
-
-        .btnSecond {
-            background-color: $secondButtonColor !important;
-        }
-
-        .btnThird {
-            background-color: $thirdButtonColor !important;
         }
     }
 
@@ -461,6 +264,201 @@ $gridUnit: 26px;
     }
 }
 
+.note-editor, .popover {
+    .btn-group {
+        display: inline-block;
+        margin-right: 10px;
+        position: relative;
+
+        .closeLeft {
+            padding-right: 0 !important;
+            margin-right: 0 !important;
+
+            i {
+                margin-right: 0 !important;
+            }
+        }
+
+        i.left {
+            margin-right: 5px;
+        }
+    }
+
+    .btn {
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        padding: 0 9px !important;
+        background-color: $firstButtonColor;
+    }
+
+    .btnSecond {
+        background-color: $secondButtonColor !important;
+    }
+
+    .btnThird {
+        background-color: $thirdButtonColor !important;
+    }
+
+    note-toolbar button, button {
+        background-color: $firstButtonColor;
+        border: none;
+        height: 36px;
+        text-transform: none;
+    }
+
+    [type="checkbox"]:checked + label:before, [type="checkbox"]:checked + label:before {
+        border-right-color: $secondButtonColor !important;
+        border-bottom-color: $secondButtonColor !important;
+    }
+
+    .note-palette-title {
+        padding: 0 !important;
+    }
+
+    .colorName {
+        display: inline-block;
+        color: $toolbarTextColor;
+    }
+
+    .note-color-palette {
+        line-height: 10px;
+        border: solid 3px $toolbarColor;
+        padding: 0 !important;
+
+        .note-color-row {
+            padding: 0 !important;
+        }
+
+        button.note-color-btn {
+            width: 20px;
+            height: 20px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .note-color-btn:hover {
+            &:after {
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                content: "";
+                background-color: inherit;
+                margin-top: -15px;
+                margin-left: -15px;
+            }
+        }
+    }
+
+    .largeDropdown {
+        width: 290px;
+    }
+
+    .dropdown-menu {
+        z-index: 1033;
+
+        &.note-check {
+            min-width: 80px;
+        }
+
+        label {
+            color: $toolbarTextColor !important;
+        }
+    }
+
+    ul.dropdown-menu {
+        position: absolute;
+        top: 20px;
+        background-color: lighten($toolbarColor, 10%);
+        border: {
+            left: 3px solid $toolbarColor;
+            bottom: 3px solid $toolbarColor;
+            right: 3px solid $toolbarColor;
+        }
+
+        &#colors {
+            width: 342px;
+
+            .indicator {
+                width: 50%;
+                left: 0;
+            }
+        }
+        
+        .colorTable {
+            padding: 3px 0;
+        }
+
+        .tabs {
+            background-color: $toolbarColor;
+            
+            &:hover {
+                background-color: $toolbarColor;
+            }
+
+            .tab a, .tab a:hover {
+                color: $secondFocusColor;
+            }
+
+            .indicator {
+                background-color: $secondFocusColor;
+            }
+        }
+
+        li {
+            list-style-type: none;
+
+            div {
+                padding: 3px 15px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.note-popover .popover {
+    position: absolute;
+    max-width: none;
+
+    .arrow {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 10px 10px 10px;
+        border-color: transparent transparent $firstButtonColor transparent;
+    }
+
+    .popover-content {
+        background-color: $firstButtonColor;
+
+        & > a {
+            margin-left: 12px;
+        }
+
+        a {
+            display: inline-block;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            vertical-align: middle
+        }
+
+        .arrow {
+            left: 20px
+        }
+
+        .btn-group {
+            display: inline-block;
+
+            .btn {
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                padding: 0 9px !important;
+                background-color: $firstButtonColor;
+            }
+        }
+    }
+}
 
 .note-popover .popover .popover-content .note-para .dropdown-menu, .note-toolbar .note-para .dropdown-menu {
     min-width: 172px;
@@ -506,7 +504,7 @@ $gridUnit: 26px;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1050;
+    z-index: 2021;
     width: 100%
 }
 .note-editor.fullscreen .note-editable {
@@ -629,10 +627,6 @@ $gridUnit: 26px;
 .note-toolbar .note-color .dropdown-toggle {
     width: 20px;
     padding-left: 5px
-}
-.note-popover .popover .popover-content .note-color .dropdown-menu,
-.note-toolbar .note-color .dropdown-menu {
-    //min-width: 340px
 }
 .note-popover .popover .popover-content .note-color .dropdown-menu .btn-group,
 .note-toolbar .note-color .dropdown-menu .btn-group {

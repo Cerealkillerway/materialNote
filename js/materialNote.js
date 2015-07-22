@@ -1,5 +1,5 @@
 /**
- * Super simple wysiwyg editor on Materialize v 1.0.1
+ * Super simple wysiwyg editor on Materialize v 1.0.3
  * a fork of materialnote.js => http://materialnote.org/
  *
  * original summernote credits:
@@ -5648,10 +5648,10 @@ var dom = (function() {
         var $catcher = $picker.find('.note-dimension-picker-mousecatcher');
         var $highlighted = $picker.find('.note-dimension-picker-highlighted');
         var $unhighlighted = $picker.find('.note-dimension-picker-unhighlighted');
-        var $hoverableOption = $dropdown.find('#' + options.uniqueId + '-hoverable');
-        var $borderedOption = $dropdown.find('#' + options.uniqueId + '-bordered');
-        var $stripedOption = $dropdown.find('#' + options.uniqueId + '-striped');
-        var $responsiveOption = $dropdown.find('#' + options.uniqueId + '-responsive');
+        var $hoverableOption = $dropdown.find("[id$='-hoverable']");
+        var $borderedOption = $dropdown.find("[id$='-bordered']");
+        var $stripedOption = $dropdown.find("[id$='-striped']");
+        var $responsiveOption = $dropdown.find("[id$='-responsive']");
 
         var posOffset;
         // HTML5 with jQuery - e.offsetX is undefined in Firefox
@@ -6053,12 +6053,12 @@ var dom = (function() {
       table: function(lang, options) {
         var dropdown = '<ul class="note-table dropdown-menu">' +
                             '<div class="row">' +
-                                '<div class="col s6 preventDropClose"><input type="checkbox" id="' + options.uniqueId + '-bordered" checked="checked" /><label for="' + options.uniqueId + '-bordered">' + lang.table.bordered + '</label></div>' +
-                                '<div class="col s6 preventDropClose"><input type="checkbox" id="' + options.uniqueId + '-striped" checked="checked" /><label for="' + options.uniqueId + '-striped">' + lang.table.striped + '</label></div>' +
+                                '<div class="col s6 preventDropClose"><input type="checkbox" id="' + materialUniqueId + '-bordered" checked="checked" /><label for="' + materialUniqueId + '-bordered">' + lang.table.bordered + '</label></div>' +
+                                '<div class="col s6 preventDropClose"><input type="checkbox" id="' + materialUniqueId + '-striped" checked="checked" /><label for="' + materialUniqueId + '-striped">' + lang.table.striped + '</label></div>' +
                             '</div>' +
                             '<div class="row">' +
-                                '<div class="col s6 preventDropClose"><input type="checkbox" id="' + options.uniqueId + '-hoverable" checked="checked" /><label for="' + options.uniqueId + '-hoverable">' + lang.table.hoverable + '</label></div>' +
-                                '<div class="col s6 preventDropClose"><input type="checkbox" id="' + options.uniqueId + '-responsive" checked="checked" /><label for="' + options.uniqueId + '-responsive">' + lang.table.responsive + '</label></div>' +
+                                '<div class="col s6 preventDropClose"><input type="checkbox" id="' + materialUniqueId + '-hoverable" checked="checked" /><label for="' + materialUniqueId + '-hoverable">' + lang.table.hoverable + '</label></div>' +
+                                '<div class="col s6 preventDropClose"><input type="checkbox" id="' + materialUniqueId + '-responsive" checked="checked" /><label for="' + materialUniqueId + '-responsive">' + lang.table.responsive + '</label></div>' +
                             '</div>' +
                             '<div class="note-dimension-picker">' +
                                 '<div class="note-dimension-picker-mousecatcher" data-event="insertTable" data-value="1x1"></div>' +
@@ -6136,19 +6136,19 @@ var dom = (function() {
                             '<li>' +
                                 '<div class="col s12">' +
                                     '<ul class="tabs">' +
-                                        '<li class="tab col s12"><a href="#foreColor" class="active">' + lang.color.foreground + '</a></li>' +
-                                        '<li class="tab col s12"><a href="#backColor">' + lang.color.background + '</a></li>' +
+                                        '<li class="tab col s12"><a href="#' + materialUniqueId + '-foreColor" class="active">' + lang.color.foreground + '</a></li>' +
+                                        '<li class="tab col s12"><a href="#' + materialUniqueId + '-backColor">' + lang.color.background + '</a></li>' +
                                     '</ul>' +
                                 '</div>' +
                                 '<div class="col s12 colorTable">' +
-                                    '<div id="foreColor">' +
+                                    '<div id="' + materialUniqueId + '-foreColor">' +
                                         '<div class="note-color-reset waves-effect waves-light btn" data-event="foreColor" data-value="' + options.defaultTextColor + '" title="' + lang.color.reset + '">' +
                                             lang.color.resetToDefault +
                                         '</div>' +
                                         '<div class="colorName"></div>' +
                                         '<div class="note-color-palette" data-target-event="foreColor"></div>' +
                                     '</div>' +
-                                    '<div id="backColor">' +
+                                    '<div id="' + materialUniqueId + '-backColor">' +
                                         '<div class="note-color-reset waves-effect waves-light btn" data-event="backColor"' + ' data-value="' + options.defaultBackColor + '" title="' + lang.color.transparent + '">' +
                                             lang.color.setTransparent +
                                         '</div>' +
@@ -6638,8 +6638,8 @@ var dom = (function() {
             (!options.disableLinkTarget ?
             '<div class="row">' +
                 '<div class="col s12">' +
-                    '<input type="checkbox" id="' + options.uniqueId + '-noteInsertLinkNewWindow" checked="checked" />' +
-                    '<label for="' + options.uniqueId + '-noteInsertLinkNewWindow">' + lang.link.openInNewWindow + '</label>' +
+                    '<input type="checkbox" id="' + materialUniqueId + '-noteInsertLinkNewWindow" checked="checked" />' +
+                    '<label for="' + materialUniqueId + '-noteInsertLinkNewWindow">' + lang.link.openInNewWindow + '</label>' +
                 '</div>' +
             '</div>'
             : ''
@@ -6895,14 +6895,14 @@ var dom = (function() {
 
                 if ((currentOffset > activateOffset) && (currentOffset < deactivateOffsetBottom)) {
                     relativeOffset = currentOffset - $editor.offset().top;
-                    toolbar.css({'top': relativeOffset + 'px'});
+                    toolbar.css({'top': relativeOffset + 'px', 'z-index': 2000});
                 } else {
                     if (currentOffset < toolbarOffset) {
-                        toolbar.css({'top': 0});
+                        toolbar.css({'top': 0, 'z-index': 1052});
 
                         if (currentOffset > deactivateOffsetTop) {
                             relativeOffset = currentOffset - $editor.offset().top;
-                            toolbar.css({'top': relativeOffset + 'px'});
+                            toolbar.css({'top': relativeOffset + 'px', 'z-index': 2000});
                         }
                     }
                 }
@@ -7224,9 +7224,6 @@ var dom = (function() {
       // extend default options with custom user options
       var options = hasInitOptions ? list.head(arguments) : {};
 
-      // >>>>>>> CK set id for this editor if not provided
-      if (!options.uniqueId) options.uniqueId = $(this).attr('id');
-
       options = $.extend({}, $.materialnote.options, options);
       options.icons = $.extend({}, $.materialnote.options.icons, options.icons);
 
@@ -7246,6 +7243,9 @@ var dom = (function() {
       }
 
       this.each(function(idx, holder) {
+        // >>>>>>> CK set id for this editor
+        materialUniqueId = $(holder).attr('id');
+
         var $holder = $(holder);
 
         // if layout isn't created yet, createLayout and attach events
@@ -7282,45 +7282,67 @@ var dom = (function() {
 
 
       // >>>>>>> CK dropdowns - tabs activation
-      var editor = this.next('.note-editor');
-      var tabs = editor.find('li.tab a');
-      var tabContainer = editor.find('ul.tabs');
+      $(this).each(function(index, editor) {
+        var tabs;
+        var tabContainer;
+        var toolbar;
 
-      // dropdowns
-      editor.find('.note-toolbar button.dropdown').each(function(index, select) {
-        var list = $(select).next('ul.dropdown-menu');
-        var container = $(select).parent('.btn-group');
+        if ($(editor).hasClass('note-air-editor')) {
+          var id = $(this).attr('id');
+          if (id) id = id.substring(id.lastIndexOf('-') + 1, id.length);
+
+          editor = $('#note-popover-' + id);
+          tabContainer = editor.find('ul.tabs');
+          tabs = editor.find('li.tab a');
+          toolbar = $(editor).find('.popover-content button.dropdown');
+        } else {
+          editor = $(editor).next('.note-editor');
+          tabContainer = editor.find('ul.tabs');
+          tabs = editor.find('li.tab a');
+          toolbar = $(editor).find('.note-toolbar button.dropdown');
+        }
         var go = true;
 
-        list.slideUp(0);
+        function handleDropdowns(select, bar) {
+          var list = $(select).next('ul.dropdown-menu');
+          var container = $(select).parent('.btn-group');    
 
-        $('.preventDropClose').click(function(event) {
+          list.slideUp(0);
+
+          $('.preventDropClose').click(function(event) {
+              event.stopPropagation();
+          });
+
+          $(select).click(function(event) {
+            console.log('click');
+            var reopen = true;
+
+            if (list.is(':visible')) reopen = false;
+
+            bar.find('ul.dropdown-menu').slideUp(200);
+            if (reopen) list.slideToggle(200);
             event.stopPropagation();
-        });
+          });
 
-        $(select).click(function(event) {
-          var reopen = true;
+          tabs.unbind().click(function(event) {
+            go = false;
+          });
+        }
 
-          if (list.is(':visible')) reopen = false;
-
-          editor.find('ul.dropdown-menu').slideUp(200);
-          if (reopen) list.slideToggle(200);
-          event.stopPropagation();
-        });
-
-        tabs.unbind().click(function(event) {
-          go = false;
-        });
-
-        editor.unbind().click(function(event) {
+        $(window).click(function(event) {
           if (go) editor.find('ul.dropdown-menu').slideUp(200);
           go = true;
           event.stopPropagation();
         });
-      });
 
-      // activate tabs
-      tabContainer.tabs();
+        // dropdowns
+        toolbar.each(function(index, select) {
+          handleDropdowns(select, editor);
+        });
+
+        // activate tabs
+        tabContainer.tabs();
+      }); 
 
       return this;
     },

@@ -25,7 +25,7 @@
 </head>
 
 <body>
-    <h2>MaterialNote V 1.0.1</h2>
+    <h2>MaterialNote V 1.0.3</h2>
     <div class="row">
         <div class="input-field col s12">
         A Summernote wysiwyg editor version converted for Materialize<br>
@@ -39,7 +39,8 @@
     </div>
     <div class="row">
         <div class="input-field col s12">
-            <div class="editor"><h2 id="title">The Art of War</h2>
+            <div class="editor" id="first">
+                <h2 id="title">The Art of War</h2>
                 <p>
                     <blockquote>
                         If you know the enemy and know yourself, you need not fear the result of a hundred battles.<br> If you know yourself but not the enemy, for every victory gained you will also suffer a defeat.<br>
@@ -70,6 +71,12 @@
             </div>
         </div>
     </div>
+    
+    <div class="editorAir" id="airFirst">
+        <h2 id="title">Air Mode</h2>
+        This is an example with airmode option...
+    </div>
+
     <p>
         MaterialSummernote is a fork of Summernote wysiwyg editor<br>
         (See the <a href="http://summernote.org/#/deep-dive" target="_blank">Original API</a>)<br>
@@ -102,7 +109,15 @@
     <div class="divider"></div>
     <h5>Constructor</h5>
     <p>
-        The only difference from Summernote is that you have to call <b>materialnote()</b> instad of <b>summernote()</b>.
+        The only difference from Summernote is that you have to call <b>materialnote()</b> instad of <b>summernote()</b>.<br><br>
+        <b>IMPORTANT:</b> in case of multiple editors on the same page, the id attribute must be provided (if you use airMode, the id is needed always):
+        <pre>
+            <code>
+                &lt;div class="myEditor" id="firstEditor">
+                &lt;div class="myEditor" id="secondEditor">
+                &lt;div class="myEditor" id="thirdEditor">
+            </code>
+        </pre>
     </p>
     <div class="divider"></div>
     <h5>Toolbar</h5>
@@ -164,6 +179,17 @@
             height: 550,
             minHeight: 100,
             defaultBackColor: '#fff'
+        });
+
+        $('.editorAir').materialnote({
+            airMode: true,
+            airPopover: [
+                ['color', ['color']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['para', ['ul', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture']]
+            ]
         });
     </script> 
 </body>

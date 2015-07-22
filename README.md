@@ -1,4 +1,6 @@
-## MaterialNote V 1.0.1
+## MaterialNote V 1.0.3
+
+LIVE DEMO: [MaterialNote demo](http://www.web-forge.info/projects/materialNote)
 
 A Summernote wysiwyg editor version converted for Materialize
  (Materialize [Official website](http://materializecss.com/))
@@ -12,6 +14,13 @@ A Summernote wysiwyg editor version converted for Materialize
 MaterialNote is a fork of Summernote wysiwyg editor
  (See the [Original API](http://summernote.org/#/deep-dive))
  Edited by CK
+
+##### Usage
+ Just call **materialnote() on any jquery element;
+
+ **NOTE:
+ in case of multiple editors on the same page, the id attribute must be provided (if you use airMode, the id is needed always);
+
 
 ##### There are some extra options
 

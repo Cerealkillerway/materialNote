@@ -8333,9 +8333,6 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
     border: solid 5px #212121; }
   .note-editor .btn.active, .note-editor .active.btn-large {
     background-color: #9c27b0 !important; }
-  .note-editor [type="checkbox"]:checked + label:before {
-    border-right-color: #B71C1C !important;
-    border-bottom-color: #B71C1C !important; }
   .note-editor .note-editable ul li {
     list-style-type: square !important;
     display: list-item;
@@ -8355,35 +8352,6 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
     color: lightgray;
     text-align: center;
     border: 4px dashed lightgray; }
-  .note-editor .note-popover .popover {
-    position: absolute;
-    max-width: none; }
-    .note-editor .note-popover .popover .arrow {
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 0 10px 10px 10px;
-      border-color: transparent transparent #212121 transparent; }
-    .note-editor .note-popover .popover .popover-content {
-      background-color: #212121; }
-      .note-editor .note-popover .popover .popover-content > a {
-        margin-left: 12px; }
-      .note-editor .note-popover .popover .popover-content a {
-        display: inline-block;
-        max-width: 200px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        vertical-align: middle; }
-      .note-editor .note-popover .popover .popover-content .arrow {
-        left: 20px; }
-      .note-editor .note-popover .popover .popover-content .btn-group {
-        display: inline-block; }
-        .note-editor .note-popover .popover .popover-content .btn-group .btn, .note-editor .note-popover .popover .popover-content .btn-group .btn-large {
-          border-radius: 0 !important;
-          box-shadow: none !important;
-          padding: 0 9px !important;
-          background-color: #212121; }
   .note-editor .transparent {
     opacity: 0; }
   .note-editor .note-resizebar {
@@ -8410,91 +8378,6 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
       min-width: 134px;
       display: inline-block;
       text-align: left; }
-    .note-editor .note-toolbar button {
-      background-color: #212121;
-      border: none;
-      height: 36px;
-      text-transform: none; }
-    .note-editor .note-toolbar .largeDropdown {
-      width: 290px; }
-    .note-editor .note-toolbar .dropdown-menu {
-      z-index: 1033; }
-      .note-editor .note-toolbar .dropdown-menu.note-check {
-        min-width: 80px; }
-      .note-editor .note-toolbar .dropdown-menu label {
-        color: #fafafa !important; }
-    .note-editor .note-toolbar ul.dropdown-menu {
-      position: absolute;
-      top: 20px;
-      background-color: #3b3b3b;
-      border-left: 3px solid #212121;
-      border-bottom: 3px solid #212121;
-      border-right: 3px solid #212121; }
-      .note-editor .note-toolbar ul.dropdown-menu#colors {
-        width: 342px; }
-        .note-editor .note-toolbar ul.dropdown-menu#colors .indicator {
-          width: 50%;
-          left: 0; }
-      .note-editor .note-toolbar ul.dropdown-menu .colorTable {
-        padding: 3px 0; }
-      .note-editor .note-toolbar ul.dropdown-menu .tabs {
-        background-color: #212121; }
-        .note-editor .note-toolbar ul.dropdown-menu .tabs:hover {
-          background-color: #212121; }
-        .note-editor .note-toolbar ul.dropdown-menu .tabs .tab a, .note-editor .note-toolbar ul.dropdown-menu .tabs .tab a:hover {
-          color: #FF1744; }
-        .note-editor .note-toolbar ul.dropdown-menu .tabs .indicator {
-          background-color: #FF1744; }
-      .note-editor .note-toolbar ul.dropdown-menu li {
-        list-style-type: none; }
-        .note-editor .note-toolbar ul.dropdown-menu li div {
-          padding: 3px 15px;
-          cursor: pointer; }
-        .note-editor .note-toolbar ul.dropdown-menu li:hover {
-          background-color: #212121; }
-    .note-editor .note-toolbar .note-palette-title, .note-editor .note-toolbar .note-color-reset {
-      padding: 0 !important; }
-    .note-editor .note-toolbar .colorName {
-      display: inline-block; }
-    .note-editor .note-toolbar .note-color-palette {
-      line-height: 10px;
-      border: solid 3px #212121;
-      padding: 0 !important; }
-      .note-editor .note-toolbar .note-color-palette .note-color-row {
-        padding: 0 !important; }
-      .note-editor .note-toolbar .note-color-palette .note-color-btn {
-        width: 20px;
-        height: 20px;
-        padding: 0;
-        margin: 0; }
-      .note-editor .note-toolbar .note-color-palette .note-color-btn:hover:after {
-        position: absolute;
-        width: 30px;
-        height: 30px;
-        content: "";
-        background-color: inherit;
-        margin-top: -15px;
-        margin-left: -15px; }
-    .note-editor .note-toolbar .btn-group {
-      display: inline-block;
-      margin-right: 10px;
-      position: relative; }
-      .note-editor .note-toolbar .btn-group .closeLeft {
-        padding-right: 0 !important;
-        margin-right: 0 !important; }
-        .note-editor .note-toolbar .btn-group .closeLeft i {
-          margin-right: 0 !important; }
-      .note-editor .note-toolbar .btn-group i.left {
-        margin-right: 5px; }
-    .note-editor .note-toolbar .btn, .note-editor .note-toolbar .btn-large {
-      border-radius: 0 !important;
-      box-shadow: none !important;
-      padding: 0 9px !important;
-      background-color: #212121; }
-    .note-editor .note-toolbar .btnSecond {
-      background-color: #B71C1C !important; }
-    .note-editor .note-toolbar .btnThird {
-      background-color: #4a148c !important; }
   .note-editor .note-handle .note-control-selection {
     position: absolute;
     display: none;
@@ -8557,6 +8440,124 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   .note-dialog .note-help-dialog tbody {
     background-color: #e0e0e0; }
 
+.note-editor .btn-group, .popover .btn-group {
+  display: inline-block;
+  margin-right: 10px;
+  position: relative; }
+  .note-editor .btn-group .closeLeft, .popover .btn-group .closeLeft {
+    padding-right: 0 !important;
+    margin-right: 0 !important; }
+    .note-editor .btn-group .closeLeft i, .popover .btn-group .closeLeft i {
+      margin-right: 0 !important; }
+  .note-editor .btn-group i.left, .popover .btn-group i.left {
+    margin-right: 5px; }
+.note-editor .btn, .note-editor .btn-large, .popover .btn, .popover .btn-large {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0 9px !important;
+  background-color: #212121; }
+.note-editor .btnSecond, .popover .btnSecond {
+  background-color: #B71C1C !important; }
+.note-editor .btnThird, .popover .btnThird {
+  background-color: #4a148c !important; }
+.note-editor note-toolbar button, .note-editor button, .popover note-toolbar button, .popover button {
+  background-color: #212121;
+  border: none;
+  height: 36px;
+  text-transform: none; }
+.note-editor [type="checkbox"]:checked + label:before, .note-editor [type="checkbox"]:checked + label:before, .popover [type="checkbox"]:checked + label:before, .popover [type="checkbox"]:checked + label:before {
+  border-right-color: #B71C1C !important;
+  border-bottom-color: #B71C1C !important; }
+.note-editor .note-palette-title, .popover .note-palette-title {
+  padding: 0 !important; }
+.note-editor .colorName, .popover .colorName {
+  display: inline-block;
+  color: #fafafa; }
+.note-editor .note-color-palette, .popover .note-color-palette {
+  line-height: 10px;
+  border: solid 3px #212121;
+  padding: 0 !important; }
+  .note-editor .note-color-palette .note-color-row, .popover .note-color-palette .note-color-row {
+    padding: 0 !important; }
+  .note-editor .note-color-palette button.note-color-btn, .popover .note-color-palette button.note-color-btn {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin: 0; }
+  .note-editor .note-color-palette .note-color-btn:hover:after, .popover .note-color-palette .note-color-btn:hover:after {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    content: "";
+    background-color: inherit;
+    margin-top: -15px;
+    margin-left: -15px; }
+.note-editor .largeDropdown, .popover .largeDropdown {
+  width: 290px; }
+.note-editor .dropdown-menu, .popover .dropdown-menu {
+  z-index: 1033; }
+  .note-editor .dropdown-menu.note-check, .popover .dropdown-menu.note-check {
+    min-width: 80px; }
+  .note-editor .dropdown-menu label, .popover .dropdown-menu label {
+    color: #fafafa !important; }
+.note-editor ul.dropdown-menu, .popover ul.dropdown-menu {
+  position: absolute;
+  top: 20px;
+  background-color: #3b3b3b;
+  border-left: 3px solid #212121;
+  border-bottom: 3px solid #212121;
+  border-right: 3px solid #212121; }
+  .note-editor ul.dropdown-menu#colors, .popover ul.dropdown-menu#colors {
+    width: 342px; }
+    .note-editor ul.dropdown-menu#colors .indicator, .popover ul.dropdown-menu#colors .indicator {
+      width: 50%;
+      left: 0; }
+  .note-editor ul.dropdown-menu .colorTable, .popover ul.dropdown-menu .colorTable {
+    padding: 3px 0; }
+  .note-editor ul.dropdown-menu .tabs, .popover ul.dropdown-menu .tabs {
+    background-color: #212121; }
+    .note-editor ul.dropdown-menu .tabs:hover, .popover ul.dropdown-menu .tabs:hover {
+      background-color: #212121; }
+    .note-editor ul.dropdown-menu .tabs .tab a, .note-editor ul.dropdown-menu .tabs .tab a:hover, .popover ul.dropdown-menu .tabs .tab a, .popover ul.dropdown-menu .tabs .tab a:hover {
+      color: #FF1744; }
+    .note-editor ul.dropdown-menu .tabs .indicator, .popover ul.dropdown-menu .tabs .indicator {
+      background-color: #FF1744; }
+  .note-editor ul.dropdown-menu li, .popover ul.dropdown-menu li {
+    list-style-type: none; }
+    .note-editor ul.dropdown-menu li div, .popover ul.dropdown-menu li div {
+      padding: 3px 15px;
+      cursor: pointer; }
+
+.note-popover .popover {
+  position: absolute;
+  max-width: none; }
+  .note-popover .popover .arrow {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 10px 10px 10px;
+    border-color: transparent transparent #212121 transparent; }
+  .note-popover .popover .popover-content {
+    background-color: #212121; }
+    .note-popover .popover .popover-content > a {
+      margin-left: 12px; }
+    .note-popover .popover .popover-content a {
+      display: inline-block;
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      vertical-align: middle; }
+    .note-popover .popover .popover-content .arrow {
+      left: 20px; }
+    .note-popover .popover .popover-content .btn-group {
+      display: inline-block; }
+      .note-popover .popover .popover-content .btn-group .btn, .note-popover .popover .popover-content .btn-group .btn-large {
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        padding: 0 9px !important;
+        background-color: #212121; }
+
 .note-popover .popover .popover-content .note-para .dropdown-menu, .note-toolbar .note-para .dropdown-menu {
   min-width: 172px;
   padding: 5px; }
@@ -8592,7 +8593,7 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1050;
+  z-index: 2021;
   width: 100%; }
 
 .note-editor.fullscreen .note-editable {
