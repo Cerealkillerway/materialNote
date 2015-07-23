@@ -1,4 +1,4 @@
-## MaterialNote V 1.0.3
+## MaterialNote V 1.0.4
 
 LIVE DEMO: [MaterialNote demo](http://www.web-forge.info/projects/materialNote)
 

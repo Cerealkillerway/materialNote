@@ -1,5 +1,5 @@
 /**
- * Super simple wysiwyg editor on Materialize v 1.0.3
+ * Super simple wysiwyg editor on Materialize
  * a fork of materialnote.js => http://materialnote.org/
  *
  * original summernote credits:
