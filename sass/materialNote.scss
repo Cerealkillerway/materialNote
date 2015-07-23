@@ -8,8 +8,11 @@ $toolbarTextColor: color("grey", "lighten-5") !default;
 $borderColor: color("grey", "base") !default;
 
 $firstButtonColor: color("grey", "darken-4") !default;
+$firstButtonHoverColor: color("indigo", "base") !default;
 $secondButtonColor: color("red", "darken-4") !default;
+$secondButtonHoverColor: color("indigo", "base") !default;
 $thirdButtonColor: color("purple", "darken-4") !default;
+$thirdButtonHoverColor: color("indigo", "base") !default;
 
 $firstFocusColor: color("purple", "base") !default;
 $secondFocusColor: color("red", "accent-3") !default;
@@ -45,6 +48,9 @@ $gridUnit: 26px;
     .btn {
         background-color: $secondButtonColor;
     }
+    .btn:hover {
+        background-color: lighten($secondButtonColor, 10%) !important;
+    }
 
     .btn.disabled {
         background-color: darken($secondButtonColor, 15%) !important;
@@ -56,6 +62,10 @@ $gridUnit: 26px;
         .btnClose {
             margin-right: 15px;
             background-color: $thirdButtonColor;
+        }
+
+        .btnClose:hover {
+            background-color: lighten($thirdButtonColor, 10%) !important;
         }
     }
 
@@ -105,8 +115,12 @@ $gridUnit: 26px;
         border: solid 5px $toolbarColor;
     }
 
+    .btn:hover {
+        background-color: lighten($firstButtonColor, 10%) !important;
+    }
+
     .btn.active {
-        background-color: $firstFocusColor !important;
+        background-color: $firstFocusColor;
     }
 
     .note-editable {
@@ -163,6 +177,10 @@ $gridUnit: 26px;
         background-color: $toolbarColor;
         margin: 0;
         z-index: 1052;
+
+        ul {
+            padding: 0;
+        }
 
         .btn.disabled, button.disabled {
             display: none;
@@ -269,6 +287,10 @@ $gridUnit: 26px;
         display: inline-block;
         margin-right: 10px;
         position: relative;
+
+        ul {
+            padding: 0;
+        }
 
         .closeLeft {
             padding-right: 0 !important;
@@ -406,6 +428,7 @@ $gridUnit: 26px;
 
         li {
             list-style-type: none;
+            padding: 0 !important;
 
             div {
                 padding: 3px 15px;
@@ -418,6 +441,7 @@ $gridUnit: 26px;
 .note-popover .popover {
     position: absolute;
     max-width: none;
+    color: $toolbarTextColor;
 
     .arrow {
         width: 0;
