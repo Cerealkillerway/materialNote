@@ -1,4 +1,4 @@
-## MaterialNote V 1.0.4
+## MaterialNote V 1.0.5
 
 LIVE DEMO: [MaterialNote demo](http://www.web-forge.info/projects/materialNote)
 
@@ -42,3 +42,9 @@ If you don't need/want this, you can use the standard materialize tooltip functi
 ##### Grunt
 It is provided with livereload and sass version of stylesheet;
 use "grunt" to execute it and point your browser on "localhost:7000" (prerequisites: ruby, sass ("gem install sass"), grunt-cli, grunt and needed plugins ("npm install"), browser livereload extension)
+
+##### History
+v1.0.5
+------
+- fixed codeMirror bug (codeMirror not updating editor's content)
+- fixed Roboto missing font

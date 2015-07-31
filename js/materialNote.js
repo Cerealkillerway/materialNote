@@ -85,6 +85,7 @@ var isSupportAmd = typeof define === 'function' && define.amd;
 * @return {Boolean}
 */
 var isFontInstalled = function(fontName) {
+    if (fontName === "Roboto") return true;
     var testFontName = fontName === 'Comic Sans MS' ? 'Courier New' : 'Comic Sans MS';
     var $tester = $('<div>').css({
       position: 'absolute',
@@ -4794,7 +4795,7 @@ var dom = (function() {
       }
     };
 
-    var originalValue;
+    //var originalValue;
     /**
      * activate code view
      *
@@ -4867,7 +4868,7 @@ var dom = (function() {
             return chunk + "\n" + beautifyHTML(code.trim(), level, insideLastBlock, dictionary);
         }
 
-        originalValue = codeString;
+        //originalValue = codeString;
 
         var selfCloseTags = ['<img', '<br', '<hr'];
         codeString = beautifyHTML(codeString, 0, false, selfCloseTags);
@@ -4933,8 +4934,8 @@ var dom = (function() {
         cmEditor.toTextArea();
       }
 
-      //var value = dom.value($codable, options.prettifyHtml) || dom.emptyPara;
-      var value = originalValue;
+      var value = dom.value($codable, options.prettifyHtml) || dom.emptyPara;
+      //var value = originalValue;
       var isChange = $editable.html() !== value;
 
       $editable.html(value);

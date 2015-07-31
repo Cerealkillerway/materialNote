@@ -8298,6 +8298,8 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
     color: #9c27b0 !important; }
   .editorDialogs .modal .btn, .editorDialogs .modal .btn-large, .note-editor .modal .btn, .note-editor .modal .btn-large {
     background-color: #B71C1C; }
+  .editorDialogs .modal .btn:hover, .editorDialogs .modal .btn-large:hover, .note-editor .modal .btn:hover, .note-editor .modal .btn-large:hover {
+    background-color: #de2828 !important; }
   .editorDialogs .modal .btn.disabled, .editorDialogs .modal .disabled.btn-large, .note-editor .modal .btn.disabled, .note-editor .modal .disabled.btn-large {
     background-color: #751212 !important; }
   .editorDialogs .modal .modal-footer, .note-editor .modal .modal-footer {
@@ -8305,6 +8307,8 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
     .editorDialogs .modal .modal-footer .btnClose, .note-editor .modal .modal-footer .btnClose {
       margin-right: 15px;
       background-color: #4a148c; }
+    .editorDialogs .modal .modal-footer .btnClose:hover, .note-editor .modal .modal-footer .btnClose:hover {
+      background-color: #621ab9 !important; }
   .editorDialogs .modal .canvasContainerEmpty, .note-editor .modal .canvasContainerEmpty {
     border: solid 5px #9c27b0; }
 
@@ -8331,8 +8335,10 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
     height: 200px; }
   .note-editor .img-bordered {
     border: solid 5px #212121; }
+  .note-editor .btn:hover, .note-editor .btn-large:hover {
+    background-color: #3b3b3b !important; }
   .note-editor .btn.active, .note-editor .active.btn-large {
-    background-color: #9c27b0 !important; }
+    background-color: #9c27b0; }
   .note-editor .note-editable ul li {
     list-style-type: square !important;
     display: list-item;
@@ -8370,6 +8376,8 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
     background-color: #212121;
     margin: 0;
     z-index: 1052; }
+    .note-editor .note-toolbar ul {
+      padding: 0; }
     .note-editor .note-toolbar .btn.disabled, .note-editor .note-toolbar .disabled.btn-large, .note-editor .note-toolbar button.disabled {
       display: none; }
     .note-editor .note-toolbar .dropdown {
@@ -8444,6 +8452,8 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   display: inline-block;
   margin-right: 10px;
   position: relative; }
+  .note-editor .btn-group ul, .popover .btn-group ul {
+    padding: 0; }
   .note-editor .btn-group .closeLeft, .popover .btn-group .closeLeft {
     padding-right: 0 !important;
     margin-right: 0 !important; }
@@ -8523,14 +8533,16 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
     .note-editor ul.dropdown-menu .tabs .indicator, .popover ul.dropdown-menu .tabs .indicator {
       background-color: #FF1744; }
   .note-editor ul.dropdown-menu li, .popover ul.dropdown-menu li {
-    list-style-type: none; }
+    list-style-type: none;
+    padding: 0 !important; }
     .note-editor ul.dropdown-menu li div, .popover ul.dropdown-menu li div {
       padding: 3px 15px;
       cursor: pointer; }
 
 .note-popover .popover {
   position: absolute;
-  max-width: none; }
+  max-width: none;
+  color: #fafafa; }
   .note-popover .popover .arrow {
     width: 0;
     height: 0;
