@@ -6,7 +6,7 @@ module.exports = function(grunt) {
         connect: {
             server: {
                 options: {
-                    port: 7000
+                    port: grunt.option('port') || 7000
                 },
             }
         },
@@ -14,17 +14,15 @@ module.exports = function(grunt) {
             dist: {
                 files: {
                     'css/materialNote.css': 'sass/materialNote.scss',
-                    'css/materialize.css': 'sass/materialize.scss'
+                    'css/materialize.css': 'sass/materialize.scss',
+                    'css/main.css': 'sass/main.scss'
                 }
             }
         },
         watch: {
             css: {
                 files: ['sass/*.scss', 'lib/sass/.scss'],
-                tasks: ['sass'],
-                options: {
-                    livereload: true
-                }
+                tasks: ['sass']
             },
             livereload: {
                 options: {
@@ -33,7 +31,11 @@ module.exports = function(grunt) {
                 files: [
                     'index.html',
                     'js/materialNote.js',
-                    'js/ckMaterializeOverrides.js'
+                    'js/ckMaterializeOverrides.js',
+                    'css/materialize.css',
+                    'css/materialNote.css',
+                    'css/codeMirror/codemirror.css',
+                    'css/codeMirror/monokai.css'
                 ],
             }
         },
