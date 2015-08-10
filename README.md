@@ -1,5 +1,7 @@
 ## MaterialNote V 1.0.6
 
+![MaterialNote](http://144.76.103.88/webforge_static/appLogos/materialNote.png)
+
 LIVE DEMO: [MaterialNote demo](http://www.web-forge.info/projects/materialNote)
 
 A Summernote wysiwyg editor version converted for Materialize
