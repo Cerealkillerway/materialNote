@@ -31,6 +31,7 @@ that you can pass to the constructor in materialSummernote:
 *   defaultTextColor (used by "color" button to set the default text color)
 *   defaultBackColor (used by "color" button to set button's color default background color)
 *   followingToolbar (default true)
+*   otherStaticBarClass is the class of webapp's static bar (if used); this is used to avoid materialNote's toolbar to override it while scrolling (default .staticTop)
 
 MaterialSummernote is not just a conversion of Summernote from bootstrap to materialize,
  it also contains some changes
@@ -49,6 +50,7 @@ use "grunt" to execute it and point your browser on "localhost:7000" (prerequisi
 1.1.0
 -----
 - improved mobile support
+- added support for webapp' static bar
 
 1.0.6
 -----
