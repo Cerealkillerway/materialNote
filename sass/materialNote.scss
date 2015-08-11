@@ -75,7 +75,7 @@ $gridUnit: 26px;
 }
 
 //scrollbars
-.note-editor .note-editable, .editorDialogs .modal-content {
+.note-editor .note-editable, .editorDialogs .modal-content, .note-editor .note-color-palette {
     &::-webkit-scrollbar {
         width: 17px;
     }
@@ -340,15 +340,22 @@ $gridUnit: 26px;
     .colorName {
         display: inline-block;
         color: $toolbarTextColor;
+
+        @media #{$small-and-down} {
+            display: none;
+        }
     }
 
     .note-color-palette {
         line-height: 10px;
         border: solid 3px $toolbarColor;
         padding: 0 !important;
+        overflow-x: scroll;
+        overflow-y: hidden;
 
         .note-color-row {
             padding: 0 !important;
+            min-width: 300px;
         }
 
         button.note-color-btn {

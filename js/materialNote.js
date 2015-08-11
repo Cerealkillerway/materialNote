@@ -1,4 +1,5 @@
 /**
+ * v1.1.0
  * Super simple wysiwyg editor on Materialize
  * a fork of materialnote.js => http://materialnote.org/
  *
@@ -2251,10 +2252,10 @@ var dom = (function() {
     */
     options: {
       // >>>>>>> CK extra options
-      defaultTextColor: '#212121',   // default text color (used by color tool)
-      defaultBackColor: '#ddd',      // default text color (used by color tool)
-      followingToolbar: true,        // make the toolbar follow on window scroll
-      //uniqueID,                    // unique id for this instance of materialNote
+      defaultTextColor: '#212121',       // default text color (used by color tool)
+      defaultBackColor: '#ddd',          // default text color (used by color tool)
+      followingToolbar: true,            // make the toolbar follow on window scroll
+      otherStaticBarClass: "staticTop",  // default class for other static bars eventually used on webapp
 
       width: null,                  // set editor width
       height: null,                 // set editor height, ex) 300
@@ -6137,8 +6138,8 @@ var dom = (function() {
                             '<li>' +
                                 '<div class="col s12">' +
                                     '<ul class="tabs">' +
-                                        '<li class="tab col s12"><a href="#' + materialUniqueId + '-foreColor" class="active">' + lang.color.foreground + '</a></li>' +
-                                        '<li class="tab col s12"><a href="#' + materialUniqueId + '-backColor">' + lang.color.background + '</a></li>' +
+                                        '<li class="tab"><a href="#' + materialUniqueId + '-foreColor" class="active">' + lang.color.foreground + '</a></li>' +
+                                        '<li class="tab"><a href="#' + materialUniqueId + '-backColor">' + lang.color.background + '</a></li>' +
                                     '</ul>' +
                                 '</div>' +
                                 '<div class="col s12 colorTable">' +
@@ -6873,8 +6874,8 @@ var dom = (function() {
         // >>>>>>> CK - following toolbar
         // following toolbar
         function followingBar() {
-            //$(window).unbind('scroll');
-            //console.log($._data( $(window)[0], "events" ));
+            // $(window).unbind('scroll');
+            // console.log($._data( $(window)[0], "events" ));
             $(window).scroll(function() {
                 var toolbar = $editor.children('.note-toolbar');
                 var toolbarHeight = toolbar.outerHeight();
@@ -6885,24 +6886,30 @@ var dom = (function() {
                 var activateOffset, deactivateOffsetTop, deactivateOffsetBottom;
                 var currentOffset;
                 var relativeOffset;
+                var otherBarHeight;
+
+                // check if the web app is currently using another static bar
+                otherBarHeight = $("." + options.otherStaticBarClass).outerHeight();
+                if (!otherBarHeight) otherBarHeight = 0;
+                //console.log(otherBarHeight);
                 
                 currentOffset = $(document).scrollTop();
                 toolbarOffset = toolbar.offset().top;
                 editorOffsetTop = $editor.offset().top;
                 editorOffsetBottom = editorOffsetTop + editableHeight;
-                activateOffset = toolbarOffset;
-                deactivateOffsetBottom = editorOffsetBottom;
-                deactivateOffsetTop = editorOffsetTop;
+                activateOffset = toolbarOffset - otherBarHeight;
+                deactivateOffsetBottom = editorOffsetBottom - otherBarHeight;
+                deactivateOffsetTop = editorOffsetTop - otherBarHeight;
 
                 if ((currentOffset > activateOffset) && (currentOffset < deactivateOffsetBottom)) {
-                    relativeOffset = currentOffset - $editor.offset().top;
+                    relativeOffset = currentOffset - $editor.offset().top + otherBarHeight;
                     toolbar.css({'top': relativeOffset + 'px', 'z-index': 2000});
                 } else {
-                    if (currentOffset < toolbarOffset) {
+                    if ((currentOffset < toolbarOffset) && (currentOffset < deactivateOffsetBottom)) {
                         toolbar.css({'top': 0, 'z-index': 1052});
 
                         if (currentOffset > deactivateOffsetTop) {
-                            relativeOffset = currentOffset - $editor.offset().top;
+                            relativeOffset = currentOffset - $editor.offset().top + otherBarHeight;
                             toolbar.css({'top': relativeOffset + 'px', 'z-index': 2000});
                         }
                     }
@@ -7315,13 +7322,18 @@ var dom = (function() {
           });
 
           $(select).click(function(event) {
-            console.log('click');
             var reopen = true;
 
             if (list.is(':visible')) reopen = false;
 
             bar.find('ul.dropdown-menu').slideUp(200);
-            if (reopen) list.slideToggle(200);
+
+            var editorWidth = $(editor).outerWidth();
+            
+            list.css({'max-width': editorWidth + 'px'});
+            if (reopen) {
+              list.slideToggle(200);
+            }
             event.stopPropagation();
           });
 

@@ -8312,13 +8312,13 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   .editorDialogs .modal .canvasContainerEmpty, .note-editor .modal .canvasContainerEmpty {
     border: solid 5px #9c27b0; }
 
-.note-editor .note-editable::-webkit-scrollbar, .editorDialogs .modal-content::-webkit-scrollbar {
+.note-editor .note-editable::-webkit-scrollbar, .editorDialogs .modal-content::-webkit-scrollbar, .note-editor .note-color-palette::-webkit-scrollbar {
   width: 17px; }
-.note-editor .note-editable::-webkit-scrollbar-track, .editorDialogs .modal-content::-webkit-scrollbar-track {
+.note-editor .note-editable::-webkit-scrollbar-track, .editorDialogs .modal-content::-webkit-scrollbar-track, .note-editor .note-color-palette::-webkit-scrollbar-track {
   background-color: #212121; }
-.note-editor .note-editable::-webkit-scrollbar-thumb, .editorDialogs .modal-content::-webkit-scrollbar-thumb {
+.note-editor .note-editable::-webkit-scrollbar-thumb, .editorDialogs .modal-content::-webkit-scrollbar-thumb, .note-editor .note-color-palette::-webkit-scrollbar-thumb {
   background-color: #545454; }
-.note-editor .note-editable::-webkit-scrollbar-thumb:hover, .editorDialogs .modal-content::-webkit-scrollbar-thumb:hover {
+.note-editor .note-editable::-webkit-scrollbar-thumb:hover, .editorDialogs .modal-content::-webkit-scrollbar-thumb:hover, .note-editor .note-color-palette::-webkit-scrollbar-thumb:hover {
   background-color: #6e6e6e; }
 
 .note-editor {
@@ -8483,12 +8483,18 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 .note-editor .colorName, .popover .colorName {
   display: inline-block;
   color: #fafafa; }
+  @media only screen and (max-width: 600px) {
+    .note-editor .colorName, .popover .colorName {
+      display: none; } }
 .note-editor .note-color-palette, .popover .note-color-palette {
   line-height: 10px;
   border: solid 3px #212121;
-  padding: 0 !important; }
+  padding: 0 !important;
+  overflow-x: scroll;
+  overflow-y: hidden; }
   .note-editor .note-color-palette .note-color-row, .popover .note-color-palette .note-color-row {
-    padding: 0 !important; }
+    padding: 0 !important;
+    min-width: 300px; }
   .note-editor .note-color-palette button.note-color-btn, .popover .note-color-palette button.note-color-btn {
     width: 20px;
     height: 20px;

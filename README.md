@@ -1,4 +1,4 @@
-## MaterialNote V 1.0.6
+## MaterialNote v1.1.0
 
 ![MaterialNote](http://144.76.103.88/webforge_static/appLogos/materialNote.png)
 
@@ -46,7 +46,15 @@ It is provided with livereload and sass version of stylesheet;
 use "grunt" to execute it and point your browser on "localhost:7000" (prerequisites: ruby, sass ("gem install sass"), grunt-cli, grunt and needed plugins ("npm install"), browser livereload extension)
 
 ##### History
-v1.0.5
-------
+1.1.0
+-----
+- improved mobile support
+
+1.0.6
+-----
+- bug fixes
+
+1.0.5
+-----
 - fixed codeMirror bug (codeMirror not updating editor's content)
 - fixed Roboto missing font
