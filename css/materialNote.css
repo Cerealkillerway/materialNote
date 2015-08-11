@@ -8508,6 +8508,8 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
     background-color: inherit;
     margin-top: -15px;
     margin-left: -15px; }
+.note-editor .note-dimension-picker, .popover .note-dimension-picker {
+  overflow: hidden; }
 .note-editor .largeDropdown, .popover .largeDropdown {
   width: 290px; }
 .note-editor .dropdown-menu, .popover .dropdown-menu {

@@ -1,4 +1,4 @@
-## MaterialNote v1.1.0
+## MaterialNote v1.0.7
 
 ![MaterialNote](http://144.76.103.88/webforge_static/appLogos/materialNote.png)
 
@@ -47,6 +47,10 @@ It is provided with livereload and sass version of stylesheet;
 use "grunt" to execute it and point your browser on "localhost:7000" (prerequisites: ruby, sass ("gem install sass"), grunt-cli, grunt and needed plugins ("npm install"), browser livereload extension)
 
 ##### History
+1.1.7
+-----
+- upgraded mobile support for dropdown
+
 1.1.0
 -----
 - improved mobile support

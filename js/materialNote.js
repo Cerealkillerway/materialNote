@@ -1,5 +1,4 @@
 /**
- * v1.1.0
  * Super simple wysiwyg editor on Materialize
  * a fork of materialnote.js => http://materialnote.org/
  *
@@ -7294,15 +7293,17 @@ var dom = (function() {
         var tabs;
         var tabContainer;
         var toolbar;
+        var isAir = false;
 
         if ($(editor).hasClass('note-air-editor')) {
           var id = $(this).attr('id');
           if (id) id = id.substring(id.lastIndexOf('-') + 1, id.length);
 
-          editor = $('#note-popover-' + id);
+          editor = $('#note-popover-' + id).find('.note-air-popover');
           tabContainer = editor.find('ul.tabs');
           tabs = editor.find('li.tab a');
           toolbar = $(editor).find('.popover-content button.dropdown');
+          isAir = true;
         } else {
           editor = $(editor).next('.note-editor');
           tabContainer = editor.find('ul.tabs');
@@ -7322,15 +7323,33 @@ var dom = (function() {
           });
 
           $(select).click(function(event) {
+            // calculate dropdown open position to avoid overflow from editor
+            var btnOffset = Math.round($(select).parent('.btn-group').offset().left - toolbar.offset().left);
+            var listBorderWidth = parseInt(list.css("border-left-width"));
+            var editorWidth = editor.outerWidth();
+            var listOffset = listBorderWidth;
+
+            list.css({'max-width': editorWidth + 'px'});
+
+            var listWidth = list.outerWidth();
+            var th = listWidth + btnOffset;
+
+            if (th >= editorWidth) {
+              listOffset = th - editorWidth;
+
+              if (!isAir) {
+                listOffset = listOffset + listBorderWidth;
+              }
+            }
+
+            list.css({'left': '-' + listOffset + 'px'});
+
             var reopen = true;
 
             if (list.is(':visible')) reopen = false;
 
             bar.find('ul.dropdown-menu').slideUp(200);
-
-            var editorWidth = $(editor).outerWidth();
             
-            list.css({'max-width': editorWidth + 'px'});
             if (reopen) {
               list.slideToggle(200);
             }
