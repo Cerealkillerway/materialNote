@@ -9,32 +9,31 @@ A Summernote wysiwyg editor version converted for Materialize
 
 ##### Added features:
 
-*   Following toolbar
-*   global restyling
+- Following toolbar
+- global restyling
 
 
-MaterialNote is a fork of Summernote wysiwyg editor
- (See the [Original API](http://summernote.org/#/deep-dive))
- Edited by CK
+**MaterialNote is a fork of Summernote wysiwyg editor**
+(See the [Original API](http://summernote.org/#/deep-dive))
+Edited by CK
 
 ##### Usage
- Just call **materialnote() on any jquery element;
+Just call **materialnote() on any jquery element;
 
- **NOTE:
- in case of multiple editors on the same page, the id attribute must be provided (if you use airMode, the id is needed always);
+**NOTE:**
+in case of multiple editors on the same page, the id attribute must be provided (if you use airMode, the id is needed always);
 
 
 ##### There are some extra options
 
 that you can pass to the constructor in materialSummernote:
 
-*   defaultTextColor (used by "color" button to set the default text color)
-*   defaultBackColor (used by "color" button to set button's color default background color)
-*   followingToolbar (default true)
-*   otherStaticBarClass is the class of webapp's static bar (if used); this is used to avoid materialNote's toolbar to override it while scrolling (default .staticTop)
+- defaultTextColor (used by "color" button to set the default text color)
+- defaultBackColor (used by "color" button to set button's color default background color)
+- followingToolbar (default true)
+- otherStaticBarClass is the class of webapp's static bar (if used); this is used to avoid materialNote's toolbar to override it while scrolling (default .staticTop)
 
-MaterialSummernote is not just a conversion of Summernote from bootstrap to materialize,
- it also contains some changes
+MaterialSummernote is not just a conversion of Summernote from bootstrap to materialize, it also contains some changes, but still have all the original Summernote's API.
 
 It is provided with scss version of the stylesheet, if you use sass, to change style quickly
 
@@ -45,6 +44,9 @@ If you don't need/want this, you can use the standard materialize tooltip functi
 ##### Grunt
 It is provided with livereload and sass version of stylesheet;
 use "grunt" to execute it and point your browser on "localhost:7000" (prerequisites: ruby, sass ("gem install sass"), grunt-cli, grunt and needed plugins ("npm install"), browser livereload extension)
+
+### License
+Available under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a> (also available in included **license.txt** file).
 
 ##### History
 1.1.7

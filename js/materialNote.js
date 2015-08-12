@@ -1,11 +1,12 @@
 /**
+ * MaterialNote v1.1.7
  * Super simple wysiwyg editor on Materialize
  * a fork of materialnote.js => http://materialnote.org/
  *
  * original summernote credits:
  * summernote.js
  * Copyright 2013-2015 Alan Hong. and other contributors
- * summernote may be freely distributed under the MIT license./
+ * summernote (and so materialNote) may be freely distributed under the MIT license./
  *
  * edited by CK (http://www.web-forge.info)
  * thanks to Tox for code review (http://emanuele.itoscano.com/)
