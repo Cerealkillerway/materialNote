@@ -1,5 +1,5 @@
 /**
- * MaterialNote v1.1.7
+ * MaterialNote v1.1.8
  * Super simple wysiwyg editor on Materialize
  * a fork of materialnote.js => http://materialnote.org/
  *
@@ -4728,6 +4728,7 @@ var dom = (function() {
       $editor.toggleClass('fullscreen');
       var isFullscreen = $editor.hasClass('fullscreen');
       if (isFullscreen) {
+
         $editable.data('orgheight', $editable.css('height'));
 
         $window.on('resize', function() {
@@ -6877,6 +6878,13 @@ var dom = (function() {
             // $(window).unbind('scroll');
             // console.log($._data( $(window)[0], "events" ));
             $(window).scroll(function() {
+                var isFullscreen = $editor.hasClass('fullscreen');
+
+                if (isFullscreen) {
+                  console.log("fullscreen");
+                  return false;
+                }
+
                 var toolbar = $editor.children('.note-toolbar');
                 var toolbarHeight = toolbar.outerHeight();
                 var editable = $editor.children('.note-editable');

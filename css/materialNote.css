@@ -8312,14 +8312,14 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   .editorDialogs .modal .canvasContainerEmpty, .note-editor .modal .canvasContainerEmpty {
     border: solid 5px #9c27b0; }
 
-.note-editor .note-editable::-webkit-scrollbar, .editorDialogs .modal-content::-webkit-scrollbar, .note-editor .note-color-palette::-webkit-scrollbar {
-  width: 17px; }
-.note-editor .note-editable::-webkit-scrollbar-track, .editorDialogs .modal-content::-webkit-scrollbar-track, .note-editor .note-color-palette::-webkit-scrollbar-track {
-  background-color: #212121; }
-.note-editor .note-editable::-webkit-scrollbar-thumb, .editorDialogs .modal-content::-webkit-scrollbar-thumb, .note-editor .note-color-palette::-webkit-scrollbar-thumb {
-  background-color: #545454; }
-.note-editor .note-editable::-webkit-scrollbar-thumb:hover, .editorDialogs .modal-content::-webkit-scrollbar-thumb:hover, .note-editor .note-color-palette::-webkit-scrollbar-thumb:hover {
-  background-color: #6e6e6e; }
+.note-editor .note-editable::-webkit-scrollbar, .editorDialogs .modal-content::-webkit-scrollbar, .note-editor .note-color-palette::-webkit-scrollbar, .note-editor .note-codable::-webkit-scrollbar, .modal.modal-fixed-footer .modal-content::-webkit-scrollbar {
+  width: 17px !important; }
+.note-editor .note-editable::-webkit-scrollbar-track, .editorDialogs .modal-content::-webkit-scrollbar-track, .note-editor .note-color-palette::-webkit-scrollbar-track, .note-editor .note-codable::-webkit-scrollbar-track, .modal.modal-fixed-footer .modal-content::-webkit-scrollbar-track {
+  background-color: #212121 !important; }
+.note-editor .note-editable::-webkit-scrollbar-thumb, .editorDialogs .modal-content::-webkit-scrollbar-thumb, .note-editor .note-color-palette::-webkit-scrollbar-thumb, .note-editor .note-codable::-webkit-scrollbar-thumb, .modal.modal-fixed-footer .modal-content::-webkit-scrollbar-thumb {
+  background-color: #545454 !important; }
+.note-editor .note-editable::-webkit-scrollbar-thumb:hover, .editorDialogs .modal-content::-webkit-scrollbar-thumb:hover, .note-editor .note-color-palette::-webkit-scrollbar-thumb:hover, .note-editor .note-codable::-webkit-scrollbar-thumb:hover, .modal.modal-fixed-footer .modal-content::-webkit-scrollbar-thumb:hover {
+  background-color: #6e6e6e !important; }
 
 .note-editor {
   position: relative;

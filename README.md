@@ -1,4 +1,4 @@
-## MaterialNote v1.1.7
+## MaterialNote v1.1.8
 
 ![MaterialNote](http://144.76.103.88/webforge_static/appLogos/materialNote.png)
 
@@ -49,6 +49,11 @@ use "grunt" to execute it and point your browser on "localhost:7000" (prerequisi
 Available under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a> (also available in included **license.txt** file).
 
 ##### History
+1.1.8
+-----
+- fidex bugs for following toolbar with otherStaticBar option
+- minor style corrections
+
 1.1.7
 -----
 - upgraded mobile support for dropdown

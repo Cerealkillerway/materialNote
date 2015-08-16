@@ -75,18 +75,18 @@ $gridUnit: 26px;
 }
 
 //scrollbars
-.note-editor .note-editable, .editorDialogs .modal-content, .note-editor .note-color-palette {
+.note-editor .note-editable, .editorDialogs .modal-content, .note-editor .note-color-palette, .note-editor .note-codable, .modal.modal-fixed-footer .modal-content {
     &::-webkit-scrollbar {
-        width: 17px;
+        width: 17px !important;
     }
     &::-webkit-scrollbar-track {
-        background-color: $toolbarColor;
+        background-color: $toolbarColor !important;
     }
     &::-webkit-scrollbar-thumb {
-        background-color: lighten($toolbarColor, 20%);
+        background-color: lighten($toolbarColor, 20%) !important;
     }
     &::-webkit-scrollbar-thumb:hover {
-        background-color: lighten($toolbarColor, 30%);
+        background-color: lighten($toolbarColor, 30%) !important;
     }
 }
 
