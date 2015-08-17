@@ -3,6 +3,7 @@
 ![MaterialNote](http://144.76.103.88/webforge_static/appLogos/materialNote.png)
 
 LIVE DEMO: [MaterialNote demo](http://www.web-forge.info/projects/materialNote)
+(live demo can be outdated for a while; if live demo version is not the same of current plugin version, please use the included demo instead)
 
 A Summernote wysiwyg editor version converted for Materialize
  (Materialize [Official website](http://materializecss.com/))
@@ -41,9 +42,12 @@ It is provided with scss version of the stylesheet, if you use sass, to change s
 The provided versione includes an override of materialize tooltips (called ckTooltip) with autoclean function for tooltips' shadow dom when the tooltipped element is destroyed (better for single-page app); this functions is also edited to have faster tooltip animations;
 If you don't need/want this, you can use the standard materialize tooltip function, replacing "ckTooltip" with "tooltip" in materialNote (1 occurence) and removing "ckMaterializeOverrides.js" file and its reference in index.html;
 
-##### Grunt
+### Grunt
 It is provided with livereload and sass version of stylesheet;
-use "grunt" to execute it and point your browser on "localhost:7000" (prerequisites: ruby, sass ("gem install sass"), grunt-cli, grunt and needed plugins ("npm install"), browser livereload extension)
+use "grunt" to execute it and point your browser on "localhost:7000" (prerequisites: ruby, sass ("gem install sass"), grunt-cli, grunt and needed plugins ("npm install"), browser livereload extension);
+
+Use --port option to serve it on another port; example:
+**grunt --port=9000**
 
 ### License
 Available under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a> (also available in included **license.txt** file).

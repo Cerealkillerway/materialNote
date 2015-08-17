@@ -33,6 +33,7 @@ main {
 header {
     padding: 25px 35px;
     background-color: $mainColor;
+    border-bottom: solid 3px darken($mainColor, 15%);
     color: $mainColorText;
 }
 
@@ -40,6 +41,7 @@ footer {
     padding: 25px 35px;
     background-color: $mainColor;
     color: $mainColorText;
+    border-top: solid 3px darken($mainColor, 15%);
     text-align: center;
     
     a:link , a:visited {
