@@ -7,6 +7,7 @@
  * summernote.js
  * Copyright 2013-2015 Alan Hong. and other contributors
  * summernote (and so materialNote) may be freely distributed under the MIT license./
+ * (https://raw.githubusercontent.com/Cerealkillerway/fileUploader/master/license.txt)
  *
  * edited by CK (http://www.web-forge.info)
  * thanks to Tox for code review (http://emanuele.itoscano.com/)
