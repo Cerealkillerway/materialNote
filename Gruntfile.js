@@ -39,11 +39,20 @@ module.exports = function(grunt) {
                 ],
             }
         },
+        uglify: {
+            fileUploader: {
+                files: {
+                    'js/materialNote.min.js': ['js/materialNote.js']
+                }
+            }
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
     grunt.registerTask('default', ['connect', 'watch']);
+    grunt.registerTask('minify', ['uglify']);  // alias for grunt uglify
 };

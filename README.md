@@ -1,4 +1,4 @@
-## MaterialNote v1.1.8
+## MaterialNote v1.2.0
 
 ![MaterialNote](http://144.76.103.88/webforge_static/appLogos/materialNote.png)
 
@@ -49,10 +49,16 @@ use "grunt" to execute it and point your browser on "localhost:7000" (prerequisi
 Use --port option to serve it on another port; example:
 **grunt --port=9000**
 
+Use **grunt uglify** or **grunt minify** to rebuild the minified version of fileUploader.js
+
 ### License
 Available under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a> (also available in included **license.txt** file).
 
 ##### History
+1.2.0
+-----
+- added minified version and minify task
+
 1.1.8
 -----
 - fidex bugs for following toolbar with otherStaticBar option

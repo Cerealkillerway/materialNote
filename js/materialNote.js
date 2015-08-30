@@ -1,5 +1,5 @@
 /**
- * MaterialNote v1.1.8
+ * MaterialNote v1.2.0
  * Super simple wysiwyg editor on Materialize
  * a fork of materialnote.js => http://materialnote.org/
  *
