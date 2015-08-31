@@ -1,5 +1,5 @@
 /**
- * MaterialNote v1.2.0
+ * MaterialNote v1.2.1
  * Super simple wysiwyg editor on Materialize
  * a fork of materialnote.js => http://materialnote.org/
  *
@@ -6699,9 +6699,11 @@ var dom = (function() {
      */
     // >>>>>>> CK
     var createTooltip = function($container, keyMap, sPlacement) {
-      $(window).load(function() {
+      $(document).ready(function() {
         var invertedKeyMap = func.invertObject(keyMap);
         var $buttons = $container.find('.btn');
+
+        console.log($container);
 
         $buttons.each(function(i, elBtn) {
           var $btn = $(elBtn);

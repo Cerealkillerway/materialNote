@@ -1,4 +1,4 @@
-## MaterialNote v1.2.0
+## MaterialNote v1.2.1
 
 ![MaterialNote](http://144.76.103.88/webforge_static/appLogos/materialNote.png)
 
