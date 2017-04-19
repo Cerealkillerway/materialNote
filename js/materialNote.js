@@ -5898,7 +5898,6 @@ var dom = (function() {
         }
       );
 
-
       // fire init event
       bindCustomEvent($holder, callbacks, 'init')(layoutInfo);
 
