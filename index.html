@@ -1,203 +1,36 @@
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/materialize.css" rel="stylesheet">
-    <link href="css/materialNote.css" rel="stylesheet">
-    <link href="css/codeMirror/codemirror.css" rel="stylesheet">
-    <link href="css/codeMirror/monokai.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-    
-    <script type="text/javascript" src="lib/jquery-2.1.4.js"></script>
-    <script type="text/javascript" src="lib/materialize.js"></script>
-    <script type="text/javascript" src="js/ckMaterializeOverrides.js"></script>
+  <!-- jQuery -->
+  <!--<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>-->
 
-    <script type="text/javascript" src="lib/codeMirror/codemirror.js"></script>
-    <script type="text/javascript" src="lib/codeMirror/xml.js"></script>
-    <script type="text/javascript" src="js/materialNote.js"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- MaterializeCSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+
+   <link rel="stylesheet" href="../dist/summernote.css">
+   <title>MaterialNote v2</title>
 </head>
-
 <body>
-    <header>
-        <h2>MaterialNote v1.2.1</h2>
-        <p>A Summernote wysiwyg editor version converted for Materialize</p>
-    </header>
-
-    <main>
-        <div class="row">
-            <div class="input-field col s12">
-            (Materialize <a href="http://materializecss.com/" target="_blank">Official website</a>)
-            <h5>Added features:</h5>
-            <ul>
-                <li>Following toolbar</li>
-                <li>global restyling</li>
-            </ul>
-            </div>
+  <div class="container">
+    <div class="row">
+        <div class="col s12">
+            <h4>MaterialNote v2</h4>
+            <span class="chip purple white-text">Materialize v0.100.1</span>
+            <span class="chip green white-text">with Material Design Icons</span>
         </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <div class="editor" id="first">
-                    <h2 id="title">The Art of War</h2>
-                    <p>
-                        <blockquote>
-                            If you know the enemy and know yourself, you need not fear the result of a hundred battles.<br> If you know yourself but not the enemy, for every victory gained you will also suffer a defeat.<br>
-                            If you know neither the enemy nor yourself, you will succumb in every battle.
-                        </blockquote>
-                    
-                        <ul>
-                            <li>If your enemy is secure at all points, be prepared for him. If he is in superior strength, evade him.</li>
-                            <li>If your opponent is temperamental, seek to irritate him.</li>
-                            <li>Pretend to be weak, that he may grow arrogant.</li>
-                            <li>If he is taking his ease, give him no rest.</li>
-                            <li>If his forces are united, separate them.</li>
-                            <li>If sovereign and subject are in accord, put division between them. Attack him where he is unprepared, appear where you are not expected.</li>
-                        </ul>
-                        
-                        <ol>
-                            <li>There are not more than five musical notes, yet the combinations of these five give rise to more melodies than can ever be heard.</li>
-                            <li>There are not more than five primary colours, yet in combination</li>
-                            <li>they produce more hues than can ever been seen.</li>
-                            <li>There are not more than five cardinal tastes, yet combinations of</li>
-                            <li>them yield more flavours than can ever be tasted.</li>
-                        </ol>
-                        
-                        <span style="font-weight: bold; background-color: rgb(156, 39, 176); color: rgb(250, 250, 250);">
-                            There are roads which must not be followed, armies which must not be attacked, towns which must not be sieged, positions which must not be contested, commands of the sovereign which must not be obeyed.
-                        </span>
-                    </p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="editorAir" id="airFirst">
-            <h2 id="title">Air Mode</h2>
-            This is an example with airmode option...
-        </div>
+    </div>
+    <div class="materialnote"><p>MaterialNote v2!</p></div>
+  </div>
+  <script data-main="src/js/app" data-editor-type="bs3" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.9/require.min.js"></script>
 
-        <p>
-            MaterialSummernote is a fork of Summernote wysiwyg editor<br>
-            (See the <a href="http://summernote.org/#/deep-dive" target="_blank">Original API</a>)<br>
-            Edited by CK<br><br>
-            
-            <div class="divider"></div>
+  <script type="text/javascript">
 
-            <h5>There are some extra options</h5>
-            that you can pass to the constructor in materialSummernote:
-
-            <ul>
-                <li>defaultTextColor (used by "color" button to set the default text color)</li>
-                <li>defaultBackColor (used by "color" button to set button's color default color)</li>
-                <li>followingToolbar [default true] (makes the toolbar follow on window scroll)</li>
-            </ul>
-
-            <div class="divider"></div><br>
-
-            MaterialSummernote is not just a conversion of Summernote from bootstrap to materialize,<br>
-            it also contains some changes<br><br>
-
-            <div class="divider"></div><br>
-
-            It is provided with scss version of the stylesheet, if you use sass, to change style quickly<br><br>
-
-            <div class="divider"></div><br>
-            
-            In this version, editor's functions that you see on this page are tested; other summernote functions such airmode, still need to be converted;
-        </p>
-        <div class="divider"></div>
-        <h5>Constructor</h5>
-        <p>
-            The only difference from Summernote is that you have to call <b>materialnote()</b> instad of <b>summernote()</b>.<br><br>
-            <b>IMPORTANT:</b> in case of multiple editors on the same page, the id attribute must be provided (if you use airMode, the id is needed always):
-            <pre>
-                <code>
-&lt;div class="myEditor" id="firstEditor">
-&lt;div class="myEditor" id="secondEditor">
-&lt;div class="myEditor" id="thirdEditor">
-                </code>
-            </pre>
-        </p>
-        <div class="divider"></div>
-        <h5>Toolbar</h5>
-        <p>
-            MaterialNote uses a javascript function to keep always visible the toolbar during scrolling.<br>
-            If you don't want this to be enabled, pass <b>followingToolbar: false</b> option to the constructor.
-        </p>
-        <div class="divider"></div>
-        <h5>Paragraph buttons</h5>
-        <p>
-            The paragraph buttons are available in dropdown format like Summernote (<b>['paragraph']</b> option in the toolbar array) or as separate buttons (<b>['leftButton', 'centerButton', 'rightButton', 'justifyButton', 'outdentButton', 'indentButton']</b>).
-        </p>
-        <div class="divider"></div>
-        <h5>Code sample</h5>    
-        <p>
-            This is the constructor used for the above example:
-        </p>
-        <pre>
-            <code>
-var toolbar = [
-    ['style', ['style', 'bold', 'italic', 'underline', 'strikethrough', 'clear']],
-    ['fonts', ['fontsize', 'fontname']],
-    ['color', ['color']],
-    ['undo', ['undo', 'redo', 'help']],
-    ['ckMedia', ['ckImageUploader', 'ckVideoEmbeeder']],
-    ['misc', ['link', 'picture', 'table', 'hr', 'codeview', 'fullscreen']],
-    ['para', ['ul', 'ol', 'paragraph', 'leftButton', 'centerButton', 'rightButton', 'justifyButton', 'outdentButton', 'indentButton']],
-    ['height', ['lineheight']],
-];
-
-$('.editor').materialnote({
-    toolbar: toolbar,
-    height: 550,
-    minHeight: 100,
-    defaultBackColor: '#e0e0e0'
-});
-            </code>
-        </pre>
-        <br>
-        <p>
-            All options and methods of the original Summernote's API are still valid, so you can read the <a href="http://summernote.org/#/deep-dive" target="_blank">Summernote guide page</a> or its <a href="http://summernote.org/jsduck/" target="_blank">API reference</a>.
-        </p>
-    </main>
-
-    <footer>
-        <p>
-            MaterialNote<br><br>
-            Available under <a href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a>
-        </p>
-    </footer>
-
-
-    <script type="text/javascript">
-        var toolbar = [
-            ['style', ['style', 'bold', 'italic', 'underline', 'strikethrough', 'clear']],
-            ['fonts', ['fontsize', 'fontname']],
-            ['color', ['color']],
-            ['undo', ['undo', 'redo', 'help']],
-            ['ckMedia', ['ckImageUploader', 'ckVideoEmbeeder']],
-            ['misc', ['link', 'picture', 'table', 'hr', 'codeview', 'fullscreen']],
-            ['para', ['ul', 'ol', 'paragraph', 'leftButton', 'centerButton', 'rightButton', 'justifyButton', 'outdentButton', 'indentButton']],
-            ['height', ['lineheight']],
-        ];
-
-        $('.editor').materialnote({
-            toolbar: toolbar,
-            height: 550,
-            minHeight: 100,
-            defaultBackColor: '#fff'
-        });
-
-        $('.editorAir').materialnote({
-            airMode: true,
-            airPopover: [
-                ['color', ['color']],
-                ['font', ['bold', 'underline', 'clear']],
-                ['para', ['ul', 'paragraph']],
-                ['table', ['table']],
-                ['insert', ['link', 'picture']]
-            ]
-        });
-    </script> 
+  </script>
 </body>
 </html>

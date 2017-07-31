@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- jQuery -->
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+
+        <!-- Material Icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!-- MaterializeCSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+
+        <!-- include skelenote css/js-->
+        <link href="../dist/summernote.css" rel="stylesheet" type="text/css">
+        <script src="../dist/summernote.js"></script>
+    </head>
+
+    <body>
+        <div id="skelenote">Power and Magic to conquer Ethernia!</div>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#skelenote').summernote();
+            });
+        </script>
+    </body>
+</html>
