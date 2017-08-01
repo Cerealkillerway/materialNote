@@ -22,11 +22,20 @@ function (key) {
                 imageLimitation = '<small>' + lang.image.maximumFileSize + ' : ' + readableSize + '</small>';
             }
 
-            var body = '<div class="form-group note-group-select-from-files">' +
-            '<label>' + lang.image.selectFromFiles + '</label>' +
-            '<input class="note-image-input form-control" type="file" name="files" accept="image/*" multiple="multiple" />' +
-            imageLimitation +
+            var body = '<div class="row"><div class="col s12">' +
+            //'<label>' + lang.image.selectFromFiles + '</label>' +
+            //'<input class="note-image-input form-control" type="file" name="files" accept="image/*" multiple="multiple" />' +
+            '<div class="file-field input-field">' +
+                '<div class="btn">' +
+                    '<span>Files</span>' +
+                    '<input type="file" multiple>' +
+                '</div>' +
+                '<div class="file-path-wrapper">' +
+                    '<input class="file-path" type="text" placeholder="' + lang.image.selectFromFiles + '">' +
+                '</div>' +
             '</div>' +
+            imageLimitation +
+            '</div></div>' +
             '<div class="form-group note-group-image-url" style="overflow:auto;">' +
             '<label>' + lang.image.url + '</label>' +
             '<input class="note-image-url form-control col-md-12" type="text" />' +
@@ -47,7 +56,7 @@ function (key) {
             // init materialize modal plugin
             this.$dialog.modal({
                 ready: function() {
-                    var $imageInput = self.$dialog.find('.note-image-input'),
+                    var $imageInput = self.$dialog.find('.file-path'),
                         $imageUrl = self.$dialog.find('.note-image-url'),
                         $imageBtn = self.$dialog.find('.note-image-btn');
 
@@ -73,7 +82,7 @@ function (key) {
                     self.bindEnterKey($imageUrl, $imageBtn);
                 },
                 complete: function() {
-                    var $imageInput = self.$dialog.find('.note-image-input'),
+                    var $imageInput = self.$dialog.find('.file-path'),
                         $imageUrl = self.$dialog.find('.note-image-url'),
                         $imageBtn = self.$dialog.find('.note-image-btn');
 
