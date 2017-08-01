@@ -73,25 +73,27 @@ define([
     });
   });
 
-  var dialog = renderer.create('<div class="modal" aria-hidden="false" tabindex="-1"/>', function ($node, options) {
+  var dialog = renderer.create('<div class="modal modal-fixed-footer" tabindex="-1"/>', function ($node, options) {
     if (options.fade) {
       $node.addClass('fade');
     }
+    if (options.id) {
+        $node.attr('id', options.id);
+    }
     $node.html([
-      '<div class="modal-dialog">',
       '  <div class="modal-content">',
       (options.title ?
-      '    <div class="modal-header">' +
-      '      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+      '   <div class="row"><div class="col s12">' +
       '      <h4 class="modal-title">' + options.title + '</h4>' +
-      '    </div>' : ''
+      '</div></div>' : ''
       ),
-      '    <div class="modal-body">' + options.body + '</div>',
-      (options.footer ?
-      '    <div class="modal-footer">' + options.footer + '</div>' : ''
-      ),
+      '    <div class="row"><div class="col s12">' + options.body + '</div></div>',
       '  </div>',
-      '</div>'
+      (options.footer ?
+      '<div class="modal-footer">' +
+        options.footer +
+      '</div>' : ''
+      )
     ].join(''));
   });
 
@@ -168,11 +170,11 @@ define([
     },
 
     showDialog: function ($dialog) {
-      $dialog.modal('show');
+      $dialog.modal('open');
     },
 
     hideDialog: function ($dialog) {
-      $dialog.modal('hide');
+      $dialog.modal('close');
     },
 
     createLayout: function ($note, options) {

@@ -35,5 +35,5 @@ build/
 #log files
 *.log
 
-# Ignoring dist folder content
-dist/*
+# Ignoring sass-cache
+.sass-cache
