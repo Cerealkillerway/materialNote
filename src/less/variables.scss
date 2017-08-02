@@ -1,6 +1,20 @@
-$border-color: #212121;
-$toolbar-color: #212121;
-$toolbar-overlay-color: #cecece;
-$btn-color: #212121;
-$modal-color: #212121;
-$modal-text-color: #eeeeee;
+// colors
+// toolbar
+$border-color: #212121 !default;
+$toolbar-color: #212121 !default;
+$toolbar-overlay-color: #eeeeee !default;
+$toolbar-btn-color: #212121 !default;
+
+// modals
+$modal-color: #212121 !default;
+$modal-text-color: #eeeeee !default;
+
+// default colors
+$error-color: #c62828 !default;
+$error-text-color: #eeeeee !default;
+$success-color: #2e7d32 !default;
+$success-text-color: #eeeeee !default;
+$action-color: #3d5afe !default;
+$action-text-color: #eeeeee !default;
+$disabled-color: #777777 !default;
+$disabled-text-color: #bbbbbb !default;

@@ -6,6 +6,26 @@
   ---------------------------------------------------*/
 /* Theme Variables
 ------------------------------------------*/
+.note-editor .modal .modal-footer .modal-close {
+  background-color: #c62828;
+  color: #eeeeee;
+}
+
+.note-editor .modal .modal-footer .note-image-btn {
+  background-color: #2e7d32;
+  color: #eeeeee;
+}
+
+.note-editor .modal .file-uploader-wrapper {
+  background-color: #3d5afe;
+  color: #eeeeee;
+}
+
+.note-editor .disabled {
+  background-color: #777777 !important;
+  color: #bbbbbb !important;
+}
+
 /* Layout
 ------------------------------------------*/
 .note-editor {
@@ -75,6 +95,9 @@
 }
 .note-editor .modal .modal-footer {
   background-color: #212121;
+}
+.note-editor .modal .modal-footer .modal-close {
+  margin-right: 7px;
 }
 
 /* Frame mode layout
@@ -155,7 +178,7 @@
 .note-editor.note-frame .note-statusbar .note-resizebar .note-icon-bar {
   width: 20px;
   margin: 2px auto;
-  border-top: 2px solid #cecece;
+  border-top: 2px solid #eeeeee;
 }
 .note-editor.note-frame .note-placeholder {
   padding: 10px;

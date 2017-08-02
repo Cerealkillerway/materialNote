@@ -3,12 +3,35 @@
 
 /* Theme Variables
 ------------------------------------------*/
+%error-color {
+    background-color: $error-color;
+    color: $error-text-color;
+}
+
+%success-color {
+    background-color: $success-color;
+    color: $success-text-color;
+}
+
+%action-color {
+    background-color: $action-color;
+    color: $action-text-color;
+}
+
+%disabled-color {
+    background-color: $disabled-color !important;
+    color: $disabled-text-color !important;
+}
 
 
 /* Layout
 ------------------------------------------*/
 .note-editor {
     position: relative;
+
+    .disabled {
+        @extend %disabled-color;
+    }
 
     /* dropzone */
     $dropzone-color: lightskyblue;
@@ -82,8 +105,21 @@
             }
         }
 
+        .file-uploader-wrapper {
+            @extend %action-color;
+        }
+
         .modal-footer {
             background-color: $modal-color;
+
+            .modal-close {
+                @extend %error-color;
+                margin-right: 7px;
+            }
+
+            .note-image-btn {
+                @extend %success-color;
+            }
         }
     }
 }
@@ -255,7 +291,7 @@
         border-radius: 0 !important;
         box-shadow: none !important;
         padding: 0 9px !important;
-        background-color: $btn-color;
+        background-color: $toolbar-btn-color;
     }
 
     .note-style {

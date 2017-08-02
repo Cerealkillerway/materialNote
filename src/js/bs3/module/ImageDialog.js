@@ -22,24 +22,29 @@ function (key) {
                 imageLimitation = '<small>' + lang.image.maximumFileSize + ' : ' + readableSize + '</small>';
             }
 
-            var body = '<div class="row"><div class="col s12">' +
-            //'<label>' + lang.image.selectFromFiles + '</label>' +
-            //'<input class="note-image-input form-control" type="file" name="files" accept="image/*" multiple="multiple" />' +
-            '<div class="file-field input-field">' +
-                '<div class="btn">' +
-                    '<span>Files</span>' +
-                    '<input type="file" multiple>' +
-                '</div>' +
-                '<div class="file-path-wrapper">' +
-                    '<input class="file-path" type="text" placeholder="' + lang.image.selectFromFiles + '">' +
+            var body =
+            '<div class="row">' +
+                '<div class="col s12">' +
+                    '<div class="file-field input-field">' +
+                        '<div class="btn file-uploader-wrapper">' +
+                            '<span>Files</span>' +
+                            '<input class="note-image-input" type="file" multiple>' +
+                        '</div>' +
+                        '<div class="file-path-wrapper">' +
+                            '<input class="file-path" type="text" placeholder="' + lang.image.selectFromFiles + '">' +
+                        '</div>' +
+                    '</div>' +
+                    imageLimitation +
                 '</div>' +
             '</div>' +
-            imageLimitation +
-            '</div></div>' +
-            '<div class="form-group note-group-image-url" style="overflow:auto;">' +
-            '<label>' + lang.image.url + '</label>' +
-            '<input class="note-image-url form-control col-md-12" type="text" />' +
+
+            '<div clas="row">' +
+                '<div class="input-field col s12">' +
+                    '<input class="note-image-url" id="image-url" type="text">' +
+                    '<label for="image-url">' + lang.image.url + '</label>' +
+                '</div>' +
             '</div>';
+
             var footer = [
                 '<a href="#!" class="modal-action modal-close waves-effect waves-light btn ">' + lang.shortcut.close + '</a>',
                 '<button href="#" class="btn note-image-btn disabled" disabled>' + lang.image.insert + '</button>'
@@ -56,7 +61,7 @@ function (key) {
             // init materialize modal plugin
             this.$dialog.modal({
                 ready: function() {
-                    var $imageInput = self.$dialog.find('.file-path'),
+                    var $imageInput = self.$dialog.find('.note-image-input'),
                         $imageUrl = self.$dialog.find('.note-image-url'),
                         $imageBtn = self.$dialog.find('.note-image-btn');
 
@@ -69,6 +74,8 @@ function (key) {
                     })
                     .val('')
                     );
+                    // clean file-path input
+                    self.$dialog.find('.file-path').val('');
 
                     $imageBtn.click(function (event) {
                         event.preventDefault();
@@ -82,7 +89,7 @@ function (key) {
                     self.bindEnterKey($imageUrl, $imageBtn);
                 },
                 complete: function() {
-                    var $imageInput = self.$dialog.find('.file-path'),
+                    var $imageInput = self.$dialog.find('.note-image-input'),
                         $imageUrl = self.$dialog.find('.note-image-url'),
                         $imageBtn = self.$dialog.find('.note-image-btn');
 
@@ -115,15 +122,15 @@ function (key) {
             ui.showDialog(self.$dialog);
             data = $.Deferred()
 
-            data.then(function (data) {
+            data.then(function (images) {
                 // [workaround] hide dialog before restore range for IE range focus
                 ui.hideDialog(self.$dialog);
                 context.invoke('editor.restoreRange');
 
-                if (typeof data === 'string') { // image url
-                    context.invoke('editor.insertImage', data);
+                if (typeof images === 'string') { // image url
+                    context.invoke('editor.insertImage', images);
                 } else { // array of files
-                    context.invoke('editor.insertImagesOrCallback', data);
+                    context.invoke('editor.insertImagesOrCallback', images);
                 }
             }).fail(function () {
                 context.invoke('editor.restoreRange');
