@@ -34,6 +34,9 @@
   /* Modals
   ------------------------------------------*/
 }
+.note-editor .dropdown-content {
+  background-color: #212121;
+}
 .note-editor .note-dropzone {
   position: absolute;
   display: none;
@@ -330,14 +333,14 @@
   line-height: 1;
 }
 .note-popover .popover-content .note-color-palette div .note-color-btn, .panel-heading.note-toolbar .note-color-palette div .note-color-btn {
-  width: 20px;
-  height: 20px;
+  width: 23px;
+  height: 23px;
   padding: 0;
   margin: 0;
-  border: 1px solid #fff;
+  border: 2px solid #212121;
 }
 .note-popover .popover-content .note-color-palette div .note-color-btn:hover, .panel-heading.note-toolbar .note-color-palette div .note-color-btn:hover {
-  border: 1px solid #000;
+  border: 1px solid #fff;
 }
 
 /* Placeholder
