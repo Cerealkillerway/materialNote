@@ -102,8 +102,8 @@ define([
       color: {
         recent: 'Recent Color',
         more: 'More Color',
-        background: 'Background Color',
-        foreground: 'Foreground Color',
+        background: 'Background',
+        foreground: 'Foreground',
         transparent: 'Transparent',
         setTransparent: 'Set transparent',
         reset: 'Reset',

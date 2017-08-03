@@ -55,7 +55,13 @@
             .indicator {
                 height: 5px;
                 background-color: $action-color;
+                width: 50%;
             }
+        }
+
+        .row.noMargins {
+            margin-left: auto;
+            margin-right: auto;
         }
     }
 

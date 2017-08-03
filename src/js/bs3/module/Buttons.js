@@ -217,6 +217,15 @@ define([
                             tooltip: lang.color.more,
                             data: {
                                 activates: 'note-colors'
+                            },
+                            click: function() {
+                                let $dropdown = $(this).next('.dropdown-content');
+                                let $tabs = $dropdown.find('ul.tabs');
+                                
+                                // in this tabs initialization the indicator width will not be set since the plugin does not work
+                                // with hidden elements (display: none);
+                                // as a workaround the indicator width is forced to 50% in the css
+                                $tabs.tabs();
                             }
                         }),
                         ui.dropdown({
@@ -242,7 +251,7 @@ define([
                                 '  <div class="note-holder" data-event="foreColor"/>',
                                 '</div>',
                                 '</li>'*/
-                                '<div class="row">',
+                                '<div class="row noMargins">',
                                     '<div class="col s12">',
                                         '<ul class="tabs">',
                                             '<li class="tab col s6"><a class="active" href="#note-background-color">' + lang.color.background + '</a></li>',
@@ -250,12 +259,12 @@ define([
                                         '</ul>',
                                     '</div>',
                                 '</div>',
-                                '<div class="row">',
+                                '<div class="row noMargins">',
                                     '<div id="note-background-color" class="col s12">',
-                                        '<div class="note-holder" data-event="backColor"/>',
+                                        '<div class="note-holder" data-event="backColor"></div>',
                                     '</div>',
                                     '<div id="note-foreground-color" class="col s12">',
-                                        '<div class="note-holder" data-event="foreColor"/>',
+                                        '<div class="note-holder" data-event="foreColor"/></div>',
                                     '</div>',
                                 '</div>'
                             ].join(''),
@@ -264,7 +273,7 @@ define([
                                     var $holder = $(this);
                                     $holder.append(ui.palette({
                                         colors: options.colors,
-                                        eventName: $holder.data('event')
+                                        eventName: $holder.data('event'),
                                     }).render());
                                 });
                             },

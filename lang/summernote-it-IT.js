@@ -80,8 +80,8 @@
       color: {
         recent: 'Ultimo colore utilizzato',
         more: 'Altri colori',
-        background: 'Colore di sfondo',
-        foreground: 'Colore',
+        background: 'Sfondo',
+        foreground: 'Primo piano',
         transparent: 'Trasparente',
         setTransparent: 'Trasparente',
         reset: 'Reimposta',
