@@ -35,6 +35,28 @@
 
     .dropdown-content {
         background-color: $dropdown-color;
+
+        .tabs {
+            background-color: $toolbar-color;
+
+            .tab.col {
+                float: none;
+
+                &:hover {
+                    background-color: $dropdown-color;
+                }
+
+                a {
+                    line-height: 48px;
+                    color: $toolbar-overlay-color;
+                }
+            }
+
+            .indicator {
+                height: 5px;
+                background-color: $action-color;
+            }
+        }
     }
 
     /* dropzone */

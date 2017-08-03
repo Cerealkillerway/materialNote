@@ -37,6 +37,23 @@
 .note-editor .dropdown-content {
   background-color: #212121;
 }
+.note-editor .dropdown-content .tabs {
+  background-color: #212121;
+}
+.note-editor .dropdown-content .tabs .tab.col {
+  float: none;
+}
+.note-editor .dropdown-content .tabs .tab.col:hover {
+  background-color: #212121;
+}
+.note-editor .dropdown-content .tabs .tab.col a {
+  line-height: 48px;
+  color: #eeeeee;
+}
+.note-editor .dropdown-content .tabs .indicator {
+  height: 5px;
+  background-color: #3d5afe;
+}
 .note-editor .note-dropzone {
   position: absolute;
   display: none;

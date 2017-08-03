@@ -249,6 +249,8 @@ define([
                                             '<li class="tab col s6"><a href="#note-foreground-color">' + lang.color.foreground + '</a></li>',
                                         '</ul>',
                                     '</div>',
+                                '</div>',
+                                '<div class="row">',
                                     '<div id="note-background-color" class="col s12">',
                                         '<div class="note-holder" data-event="backColor"/>',
                                     '</div>',
@@ -265,11 +267,6 @@ define([
                                         eventName: $holder.data('event')
                                     }).render());
                                 });
-
-                                setTimeout(function() {
-                                    $dropdown.find('ul.tabs').tabs();
-                                    console.log('tabs activated');
-                                }, 5000);
                             },
                             click: function (event) {
                                 var $button = $(event.target);

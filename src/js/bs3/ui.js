@@ -34,6 +34,7 @@ define([
     }).join('') : options.items;
 
     $node.html(markup);
+    $('ul.tabs').tabs();
   });
 
   var dropdownCheck = renderer.create('<div class="dropdown-content note-check">', function ($node, options) {
