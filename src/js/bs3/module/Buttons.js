@@ -292,8 +292,8 @@ define([
                                 var eventName = $button.data('event');
                                 var value = $button.data('value');
 
-                                // prevent closing dropdown when clicking other than note-color-btn
-                                if (!$button.hasClass('note-color-btn')) {
+                                // prevent closing dropdown when clicking other than note-color-btn or note-color-reset
+                                if (!$button.hasClass('note-color-btn') && !$button.hasClass('note-color-reset')) {
                                     return false;
                                 }
 

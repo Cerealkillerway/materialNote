@@ -286,36 +286,6 @@
 .note-popover .popover-content .note-style h1, .note-popover .popover-content .note-style h2, .note-popover .popover-content .note-style h3, .note-popover .popover-content .note-style h4, .note-popover .popover-content .note-style h5, .note-popover .popover-content .note-style h6, .note-popover .popover-content .note-style blockquote, .panel-heading.note-toolbar .note-style h1, .panel-heading.note-toolbar .note-style h2, .panel-heading.note-toolbar .note-style h3, .panel-heading.note-toolbar .note-style h4, .panel-heading.note-toolbar .note-style h5, .panel-heading.note-toolbar .note-style h6, .panel-heading.note-toolbar .note-style blockquote {
   margin: 0;
 }
-.note-popover .popover-content .note-color .dropdown-menu, .panel-heading.note-toolbar .note-color .dropdown-menu {
-  min-width: 340px;
-}
-.note-popover .popover-content .note-color .dropdown-menu .btn-group, .panel-heading.note-toolbar .note-color .dropdown-menu .btn-group {
-  margin: 0;
-}
-.note-popover .popover-content .note-color .dropdown-menu .btn-group:first-child, .panel-heading.note-toolbar .note-color .dropdown-menu .btn-group:first-child {
-  margin: 0 5px;
-}
-.note-popover .popover-content .note-color .dropdown-menu .btn-group .note-palette-title, .panel-heading.note-toolbar .note-color .dropdown-menu .btn-group .note-palette-title {
-  font-size: 12px;
-  margin: 2px 7px;
-  text-align: center;
-  border-bottom: 1px solid #eee;
-}
-.note-popover .popover-content .note-color .dropdown-menu .btn-group .note-color-reset, .panel-heading.note-toolbar .note-color .dropdown-menu .btn-group .note-color-reset {
-  font-size: 11px;
-  margin: 3px;
-  padding: 0 3px;
-  cursor: pointer;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
-.note-popover .popover-content .note-color .dropdown-menu .btn-group .note-color-row, .panel-heading.note-toolbar .note-color .dropdown-menu .btn-group .note-color-row {
-  height: 20px;
-}
-.note-popover .popover-content .note-color .dropdown-menu .btn-group .note-color-reset:hover, .panel-heading.note-toolbar .note-color .dropdown-menu .btn-group .note-color-reset:hover {
-  background: #eee;
-}
 .note-popover .popover-content .note-para .dropdown-menu, .panel-heading.note-toolbar .note-para .dropdown-menu {
   min-width: 216px;
   padding: 5px;
@@ -366,12 +336,13 @@
 }
 .note-popover .popover-content .note-color-palette div .note-color-btn:hover::after, .panel-heading.note-toolbar .note-color-palette div .note-color-btn:hover::after {
   position: absolute;
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   content: "";
   background-color: inherit;
-  margin-top: -15px;
-  margin-left: -15px;
+  margin-top: -17px;
+  margin-left: -17px;
+  border: solid 2px #212121;
 }
 
 /* Placeholder

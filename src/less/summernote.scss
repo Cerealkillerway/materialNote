@@ -332,44 +332,6 @@
         }
     }
 
-    .note-color {
-        .dropdown-toggle {
-            //padding-left: 5px;
-        }
-        .dropdown-menu {
-            min-width: 340px;
-            .btn-group {
-                margin: 0;
-                &:first-child {
-                    margin: 0 5px;
-                }
-
-                .note-palette-title {
-                    font-size: 12px;
-                    margin: 2px 7px;
-                    text-align: center;
-                    border-bottom: 1px solid #eee;
-                }
-
-                .note-color-reset {
-                    font-size: 11px;
-                    margin: 3px;
-                    padding: 0 3px;
-                    cursor: pointer;
-                    @include rounded(5px);
-                }
-
-                .note-color-row {
-                    height: 20px;
-                }
-
-                .note-color-reset:hover {
-                    background: #eee;
-                }
-            }
-        }
-    }
-
     .note-para {
         .dropdown-menu {
             min-width: 216px;
@@ -427,12 +389,13 @@
             }
             .note-color-btn:hover::after {
                 position: absolute;
-                width: 30px;
-                height: 30px;
+                width: 34px;
+                height: 34px;
                 content: "";
                 background-color: inherit;
-                margin-top: -15px;
-                margin-left: -15px;
+                margin-top: -17px;
+                margin-left: -17px;
+                border: solid 2px $toolbar-color;
             }
         }
     }
