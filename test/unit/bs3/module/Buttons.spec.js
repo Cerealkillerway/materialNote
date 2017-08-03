@@ -191,7 +191,7 @@ define([
         $toolbar.find('.note-current-color-button').click();
 
         var $span = $editable.find('span');
-        expect($span).to.be.equalsStyle('#FFFF00', 'background-color');
+        expect($span).to.be.equalsStyle('#673ab7', 'background-color');
       });
     });
 

@@ -413,16 +413,26 @@
     .note-color-palette {
         line-height: 1;
 
+        .note-color-row {
+            line-height: 0;
+        }
+
         div {
             .note-color-btn {
                 width: 23px;
                 height: 23px;
                 padding: 0;
                 margin: 0;
-                border: 2px solid $dropdown-color;
+                border: none;
             }
-            .note-color-btn:hover {
-                border: 1px solid #fff;
+            .note-color-btn:hover::after {
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                content: "";
+                background-color: inherit;
+                margin-top: -15px;
+                margin-left: -15px;
             }
         }
     }

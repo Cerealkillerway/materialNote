@@ -207,8 +207,8 @@ define([
                             },
                             callback: function ($button) {
                                 var $recentColor = $button.find('.note-recent-color');
-                                $recentColor.css('background-color', '#FFFF00');
-                                $button.attr('data-backColor', '#FFFF00');
+                                $recentColor.css('background-color', '#673ab7');
+                                $button.attr('data-backColor', '#673ab7');
                             }
                         }),
                         ui.button({
@@ -221,7 +221,7 @@ define([
                             click: function() {
                                 let $dropdown = $(this).next('.dropdown-content');
                                 let $tabs = $dropdown.find('ul.tabs');
-                                
+
                                 // in this tabs initialization the indicator width will not be set since the plugin does not work
                                 // with hidden elements (display: none);
                                 // as a workaround the indicator width is forced to 50% in the css
@@ -261,9 +261,19 @@ define([
                                 '</div>',
                                 '<div class="row noMargins">',
                                     '<div id="note-background-color" class="col s12">',
+                                        '<div class="row noMargins">',
+                                            '<div class="col s12">',
+                                                '<button type="button" class="note-color-reset btn" data-event="backColor" data-value="inherit">' + lang.color.transparent + '</button>',
+                                            '</div>',
+                                        '</div>',
                                         '<div class="note-holder" data-event="backColor"></div>',
                                     '</div>',
                                     '<div id="note-foreground-color" class="col s12">',
+                                        '<div class="row noMargins">',
+                                            '<div class="col s12">',
+                                                '<button type="button" class="note-color-reset btn" data-event="removeFormat" data-value="foreColor">' + lang.color.resetToDefault + '</button>',
+                                            '</div>',
+                                        '</div>',
                                         '<div class="note-holder" data-event="foreColor"/></div>',
                                     '</div>',
                                 '</div>'
