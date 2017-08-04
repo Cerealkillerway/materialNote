@@ -125,7 +125,7 @@ define([
         'Tahoma', 'Times New Roman', 'Verdana'
       ],
 
-      fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36'],
+      fontSizes: ['10', '11', '12', '13', '14', '15', '16', '18', '24', '36', '48'],
 
       // pallete colors(n x n)
       colors: [
