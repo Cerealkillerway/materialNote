@@ -58,7 +58,6 @@ define([
           'style="background-color:', color, '" ',
           'data-event="', eventName, '" ',
           'data-value="', color, '" ',
-          'title="', color, '" ',
           'data-toggle="button" tabindex="-1"></button>'
         ].join(''));
       }
@@ -66,10 +65,17 @@ define([
     }
     $node.html(contents.join(''));
 
-    $node.find('.note-color-btn').tooltip({
-      container: 'body',
-      trigger: 'hover',
-      placement: 'bottom'
+    let $btns = $node.find('.note-color-btn').toArray();
+
+    $btns.forEach(function(btn) {
+        let $btn = $(btn);
+        let hexColor = $btn.data('value');
+
+        $btn.tooltip({
+          tooltip: hexColor,
+          position: 'bottom',
+          delay: 200
+        });
     });
   });
 

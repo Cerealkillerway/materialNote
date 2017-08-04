@@ -63,6 +63,11 @@
             margin-left: auto;
             margin-right: auto;
         }
+
+        .note-color-reset.btn:hover {
+            background-color: $action-color;
+            color: $action-text-color;
+        }
     }
 
     /* dropzone */

@@ -59,6 +59,10 @@
   margin-left: auto;
   margin-right: auto;
 }
+.note-editor .dropdown-content .note-color-reset.btn:hover {
+  background-color: #3d5afe;
+  color: #eeeeee;
+}
 .note-editor .note-dropzone {
   position: absolute;
   display: none;
