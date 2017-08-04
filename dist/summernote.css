@@ -35,10 +35,14 @@
   ------------------------------------------*/
 }
 .note-editor .dropdown-content {
+  min-width: 90px;
   background-color: #212121;
   border-left: solid 1px #eeeeee;
   border-right: solid 1px #eeeeee;
   border-bottom: solid 1px #eeeeee;
+  /* dropdown-menu right position */
+  /* http://forrst.com/posts/Bootstrap_right_positioned_dropdown-2KB */
+  /* dropdown-menu for selectbox */
 }
 .note-editor .dropdown-content .tabs {
   background-color: #212121;
@@ -73,6 +77,35 @@
   color: #ffc107;
   line-height: 36px;
   opacity: 0;
+}
+.note-editor .dropdown-content.right {
+  right: 0;
+  left: auto;
+}
+.note-editor .dropdown-content.right::before {
+  right: 9px;
+  left: auto !important;
+}
+.note-editor .dropdown-content.right::after {
+  right: 10px;
+  left: auto !important;
+}
+.note-editor .dropdown-content.note-check li {
+  list-style: none;
+}
+.note-editor .dropdown-content.note-check li:hover {
+  background-color: #3d5afe;
+  color: #eeeeee;
+}
+.note-editor .dropdown-content.note-check li a {
+  color: #eeeeee;
+}
+.note-editor .dropdown-content.note-check li a i {
+  color: #eeeeee !important;
+  visibility: hidden;
+}
+.note-editor .dropdown-content.note-check li a.checked i {
+  visibility: visible;
 }
 .note-editor .note-dropzone {
   position: absolute;
@@ -285,7 +318,6 @@
 .note-popover .popover-content, .panel-heading.note-toolbar {
   margin: 0;
   padding: 0;
-  /* dropdown-menu for toolbar and popover */
   /* color palette for toolbar and popover */
 }
 .note-popover .popover-content > .btn-group, .panel-heading.note-toolbar > .btn-group {
@@ -339,31 +371,6 @@
 }
 .note-popover .popover-content .note-para .dropdown-menu > div:first-child, .panel-heading.note-toolbar .note-para .dropdown-menu > div:first-child {
   margin-right: 5px;
-}
-.note-popover .popover-content .dropdown-menu, .panel-heading.note-toolbar .dropdown-menu {
-  min-width: 90px;
-  /* dropdown-menu right position */
-  /* http://forrst.com/posts/Bootstrap_right_positioned_dropdown-2KB */
-  /* dropdown-menu for selectbox */
-}
-.note-popover .popover-content .dropdown-menu.right, .panel-heading.note-toolbar .dropdown-menu.right {
-  right: 0;
-  left: auto;
-}
-.note-popover .popover-content .dropdown-menu.right::before, .panel-heading.note-toolbar .dropdown-menu.right::before {
-  right: 9px;
-  left: auto !important;
-}
-.note-popover .popover-content .dropdown-menu.right::after, .panel-heading.note-toolbar .dropdown-menu.right::after {
-  right: 10px;
-  left: auto !important;
-}
-.note-popover .popover-content .dropdown-menu.note-check li a i, .panel-heading.note-toolbar .dropdown-menu.note-check li a i {
-  color: deepskyblue;
-  visibility: hidden;
-}
-.note-popover .popover-content .dropdown-menu.note-check li a.checked i, .panel-heading.note-toolbar .dropdown-menu.note-check li a.checked i {
-  visibility: visible;
 }
 .note-popover .popover-content .note-fontsize-10, .panel-heading.note-toolbar .note-fontsize-10 {
   font-size: 10px;

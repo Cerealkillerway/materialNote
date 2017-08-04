@@ -159,8 +159,8 @@ define([
                     }),
                     ui.dropdownCheck({
                         id: 'note-fonts',
-                        //className: 'dropdown-fontname',
-                        checkClassName: options.icons.menuCheck,
+                        className: 'dropdown-fontname',
+                        checkClassName: 'done',
                         items: options.fontNames.filter(self.isFontInstalled),
                         template: function (item) {
                             return '<span style="font-family:' + item + '">' + item + '</span>';
@@ -731,6 +731,7 @@ define([
                 $toolbar.find('.dropdown-fontname li a').each(function () {
                     // always compare string to avoid creating another func.
                     var isChecked = ($(this).data('value') + '') === (fontName + '');
+
                     this.className = isChecked ? 'checked' : '';
                 });
                 $toolbar.find('.note-current-fontname').text(fontName);

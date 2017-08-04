@@ -34,6 +34,7 @@
     }
 
     .dropdown-content {
+        min-width: 90px;
         background-color: $dropdown-color;
         border-left: solid 1px $toolbar-overlay-color;
         border-right: solid 1px $toolbar-overlay-color;
@@ -80,6 +81,40 @@
             color: $action-color2;
             line-height: 36px;
             opacity: 0;
+        }
+
+        /* dropdown-menu right position */
+        /* http://forrst.com/posts/Bootstrap_right_positioned_dropdown-2KB */
+        &.right {
+            right: 0;
+            left: auto;
+            &::before { right: 9px; left: auto !important;  }
+            &::after { right: 10px; left: auto !important;  }
+        }
+
+        /* dropdown-menu for selectbox */
+        &.note-check {
+            li {
+                list-style: none;
+                
+                &:hover {
+                    background-color: $action-color;
+                    color: $action-text-color;
+                }
+
+                a {
+                    color: $toolbar-overlay-color;
+
+                    i {
+                        color: $toolbar-overlay-color !important;
+                        visibility: hidden;
+                    }
+                }
+
+                a.checked i {
+                    visibility: visible;
+                }
+            }
         }
     }
 
@@ -393,31 +428,6 @@
                 margin-right: 5px;
             }
         }
-    }
-
-    /* dropdown-menu for toolbar and popover */
-    .dropdown-menu {
-        min-width: 90px;
-
-        /* dropdown-menu right position */
-        /* http://forrst.com/posts/Bootstrap_right_positioned_dropdown-2KB */
-        &.right {
-            right: 0;
-            left: auto;
-            &::before { right: 9px; left: auto !important;  }
-            &::after { right: 10px; left: auto !important;  }
-        }
-        /* dropdown-menu for selectbox */
-        &.note-check {
-            li a i {
-                color: deepskyblue;
-                visibility: hidden;
-            }
-            li a.checked i {
-                visibility: visible;
-            }
-        }
-
     }
 
     .note-fontsize-10 {
