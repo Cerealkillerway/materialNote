@@ -139,6 +139,38 @@
 .note-editor .modal .modal-footer .modal-close {
   margin-right: 7px;
 }
+.note-editor input:not([type]):focus:not([readonly]) + label,
+.note-editor input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+.note-editor input[type=password]:not(.browser-default):focus:not([readonly]) + label,
+.note-editor input[type=email]:not(.browser-default):focus:not([readonly]) + label,
+.note-editor input[type=url]:not(.browser-default):focus:not([readonly]) + label,
+.note-editor input[type=time]:not(.browser-default):focus:not([readonly]) + label,
+.note-editor input[type=date]:not(.browser-default):focus:not([readonly]) + label,
+.note-editor input[type=datetime]:not(.browser-default):focus:not([readonly]) + label,
+.note-editor input[type=datetime-local]:not(.browser-default):focus:not([readonly]) + label,
+.note-editor input[type=tel]:not(.browser-default):focus:not([readonly]) + label,
+.note-editor input[type=number]:not(.browser-default):focus:not([readonly]) + label,
+.note-editor input[type=search]:not(.browser-default):focus:not([readonly]) + label,
+.note-editor textarea.materialize-textarea:focus:not([readonly]) + label {
+  color: #ffc107;
+}
+.note-editor input:not([type]):focus:not([readonly]),
+.note-editor input[type=text]:not(.browser-default):focus:not([readonly]),
+.note-editor input[type=password]:not(.browser-default):focus:not([readonly]),
+.note-editor input[type=email]:not(.browser-default):focus:not([readonly]),
+.note-editor input[type=url]:not(.browser-default):focus:not([readonly]),
+.note-editor input[type=time]:not(.browser-default):focus:not([readonly]),
+.note-editor input[type=date]:not(.browser-default):focus:not([readonly]),
+.note-editor input[type=datetime]:not(.browser-default):focus:not([readonly]),
+.note-editor input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+.note-editor input[type=tel]:not(.browser-default):focus:not([readonly]),
+.note-editor input[type=number]:not(.browser-default):focus:not([readonly]),
+.note-editor input[type=search]:not(.browser-default):focus:not([readonly]),
+.note-editor textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #ffc107;
+  -webkit-box-shadow: 0 1px 0 0 #ffc107;
+  box-shadow: 0 1px 0 0 #ffc107;
+}
 
 /* Frame mode layout
 ------------------------------------------*/
