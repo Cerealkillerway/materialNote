@@ -36,6 +36,9 @@
 }
 .note-editor .dropdown-content {
   background-color: #212121;
+  border-left: solid 1px #eeeeee;
+  border-right: solid 1px #eeeeee;
+  border-bottom: solid 1px #eeeeee;
 }
 .note-editor .dropdown-content .tabs {
   background-color: #212121;
@@ -59,9 +62,17 @@
   margin-left: auto;
   margin-right: auto;
 }
+.note-editor .dropdown-content .note-color-reset.btn {
+  background-color: #323232;
+}
 .note-editor .dropdown-content .note-color-reset.btn:hover {
   background-color: #3d5afe;
   color: #eeeeee;
+}
+.note-editor .dropdown-content .color-name {
+  color: #ffc107;
+  line-height: 36px;
+  opacity: 0;
 }
 .note-editor .note-dropzone {
   position: absolute;

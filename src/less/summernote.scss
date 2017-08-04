@@ -35,6 +35,9 @@
 
     .dropdown-content {
         background-color: $dropdown-color;
+        border-left: solid 1px $toolbar-overlay-color;
+        border-right: solid 1px $toolbar-overlay-color;
+        border-bottom: solid 1px $toolbar-overlay-color;
 
         .tabs {
             background-color: $toolbar-color;
@@ -64,9 +67,19 @@
             margin-right: auto;
         }
 
-        .note-color-reset.btn:hover {
-            background-color: $action-color;
-            color: $action-text-color;
+        .note-color-reset.btn {
+            background-color: $toolbar-color-lighten;
+
+            &:hover {
+                background-color: $action-color;
+                color: $action-text-color;
+            }
+        }
+
+        .color-name {
+            color: $action-color2;
+            line-height: 36px;
+            opacity: 0;
         }
     }
 

@@ -231,26 +231,6 @@ define([
                         ui.dropdown({
                             id: 'note-colors',
                             items: [
-                                /*'<li>',
-                                '<div class="btn-group">',
-                                '  <div class="note-palette-title">' + lang.color.background + '</div>',
-                                '  <div>',
-                                '    <button type="button" class="note-color-reset btn" data-event="backColor" data-value="inherit">',
-                                lang.color.transparent,
-                                '    </button>',
-                                '  </div>',
-                                '  <div class="note-holder" data-event="backColor"/>',
-                                '</div>',
-                                '<div class="btn-group">',
-                                '  <div class="note-palette-title">' + lang.color.foreground + '</div>',
-                                '  <div>',
-                                '    <button type="button" class="note-color-reset btn" data-event="removeFormat" data-value="foreColor">',
-                                lang.color.resetToDefault,
-                                '    </button>',
-                                '  </div>',
-                                '  <div class="note-holder" data-event="foreColor"/>',
-                                '</div>',
-                                '</li>'*/
                                 '<div class="row noMargins">',
                                     '<div class="col s12">',
                                         '<ul class="tabs">',
@@ -265,6 +245,9 @@ define([
                                             '<div class="col s6">',
                                                 '<button type="button" class="note-color-reset btn" data-event="backColor" data-value="inherit">' + lang.color.transparent + '</button>',
                                             '</div>',
+                                            '<div class="col s6">',
+                                                '<span class="color-name"></span>',
+                                            '</div>',
                                         '</div>',
                                         '<div class="note-holder" data-event="backColor"></div>',
                                     '</div>',
@@ -272,6 +255,9 @@ define([
                                         '<div class="row noMargins">',
                                             '<div class="col s6">',
                                                 '<button type="button" class="note-color-reset btn" data-event="removeFormat" data-value="foreColor">' + lang.color.resetToDefault + '</button>',
+                                            '</div>',
+                                            '<div class="col s6">',
+                                                '<span class="color-name"></span>',
                                             '</div>',
                                         '</div>',
                                         '<div class="note-holder" data-event="foreColor"/></div>',
@@ -281,8 +267,10 @@ define([
                             callback: function ($dropdown) {
                                 $dropdown.find('.note-holder').each(function () {
                                     var $holder = $(this);
+
                                     $holder.append(ui.palette({
                                         colors: options.colors,
+                                        colorNames: options.colorNames,
                                         eventName: $holder.data('event'),
                                     }).render());
                                 });
