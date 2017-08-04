@@ -105,8 +105,8 @@ define([
 
             context.memo('button.underline', function () {
                 return ui.button({
-                    className: ui.icon('format_underlined'),
-                    contents: '<i class="material-icons">format_underlined</i>',
+                    className: 'note-btn-underline',
+                    contents: ui.icon('format_underlined'),
                     tooltip: lang.font.underline + representShortcut('underline'),
                     click: context.createInvokeHandlerAndUpdateState('editor.underline')
                 }).render();

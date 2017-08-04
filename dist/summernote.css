@@ -362,6 +362,13 @@
   padding: 0 9px !important;
   background-color: #212121;
 }
+.note-popover .popover-content .btn:hover, .panel-heading.note-toolbar .btn:hover {
+  background-color: #323232;
+}
+.note-popover .popover-content .btn.active, .panel-heading.note-toolbar .btn.active {
+  background-color: #3d5afe;
+  color: #eeeeee;
+}
 .note-popover .popover-content .note-style h1, .note-popover .popover-content .note-style h2, .note-popover .popover-content .note-style h3, .note-popover .popover-content .note-style h4, .note-popover .popover-content .note-style h5, .note-popover .popover-content .note-style h6, .note-popover .popover-content .note-style blockquote, .panel-heading.note-toolbar .note-style h1, .panel-heading.note-toolbar .note-style h2, .panel-heading.note-toolbar .note-style h3, .panel-heading.note-toolbar .note-style h4, .panel-heading.note-toolbar .note-style h5, .panel-heading.note-toolbar .note-style h6, .panel-heading.note-toolbar .note-style blockquote {
   margin: 0;
 }

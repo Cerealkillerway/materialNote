@@ -165,7 +165,7 @@ define([
         options: {},
 
         button: function ($node, options) {
-            return renderer.create('<button type="button" class="note-btn btn waves-effect waves-light" tabindex="-1">', function ($node, options) {
+            return renderer.create('<div type="button" class="note-btn btn waves-effect waves-light" tabindex="-1">', function ($node, options) {
                 if (options && options.tooltip && self.options.tooltip) {
                     $node.attr({
                     }).tooltip({

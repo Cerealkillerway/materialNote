@@ -96,7 +96,7 @@
         &.note-check {
             li {
                 list-style: none;
-                
+
                 &:hover {
                     background-color: $action-color;
                     color: $action-text-color;
@@ -412,6 +412,15 @@
         box-shadow: none !important;
         padding: 0 9px !important;
         background-color: $toolbar-btn-color;
+
+        &:hover {
+            background-color: $toolbar-color-lighten;
+        }
+
+        &.active {
+            background-color: $action-color;
+            color: $action-text-color;
+        }
     }
 
     .note-style {
