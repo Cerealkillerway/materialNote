@@ -394,31 +394,35 @@
         display: inline-block;
 
         .note-table {
-            min-width: 0;
+            width: 300px;
             padding: 5px;
+            overflow: visible;
 
             .note-dimension-picker {
                 font-size: 18px;
+
                 .note-dimension-picker-mousecatcher {
                     position: absolute !important;
                     z-index: 3;
-                    width: 10em;
-                    height: 10em;
+                    width: 260px;
+                    height: 260px;
                     cursor: pointer;
                 }
                 .note-dimension-picker-unhighlighted {
                     position: relative !important;
                     z-index: 1;
-                    width: 5em;
-                    height: 5em;
-                    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIj4+Pjp6ekKlAqjAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKhmnaJzPAAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC') repeat;
+                    width: 26px;
+                    height: 26px;
+                    background-size: 26px 26px;
+                    background-image: repeating-linear-gradient(0deg, #3b3b3b, #3b3b3b 4px, transparent 4px, transparent 26px), repeating-linear-gradient(-90deg, transparent, transparent 4px, #fff 4px, #fff 26px);
                 }
                 .note-dimension-picker-highlighted {
                     position: absolute !important;
                     z-index: 2;
-                    width: 1em;
-                    height: 1em;
-                    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIjd6vvD2f9LKLW+AAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKwNDEVT0AAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC') repeat;
+                    width: 26px;
+                    height: 26px;
+                    background-size: 26px 26px;
+                    background-image: repeating-linear-gradient(0deg, #3b3b3b, #3b3b3b 4px, transparent 4px, transparent 26px), repeating-linear-gradient(-90deg, transparent, transparent 4px, #9c27b0 4px, #9c27b0 26px);
                 }
             }
         }

@@ -433,6 +433,7 @@ define([
                     }),
                     ui.dropdown({
                         id: 'note-table',
+                        className: 'note-table',
                         items: [
                             '<div class="note-dimension-picker">',
                             '  <div class="note-dimension-picker-mousecatcher" data-event="insertTable" data-value="1x1"/>',
@@ -445,9 +446,10 @@ define([
                 ], {
                     callback: function ($node) {
                         var $catcher = $node.find('.note-dimension-picker-mousecatcher');
+
                         $catcher.css({
-                            width: options.insertTableMaxSize.col + 'em',
-                            height: options.insertTableMaxSize.row + 'em'
+                            width: options.insertTableMaxSize.col * 26 + 'px',
+                            height: options.insertTableMaxSize.row * 26 + 'px'
                         }).mousedown(context.createInvokeHandler('editor.insertTable'))
                         .on('mousemove', self.tableMoveHandler);
                     }
@@ -792,15 +794,15 @@ define([
                 r: Math.ceil(posOffset.y / PX_PER_EM) || 1
             };
 
-            $highlighted.css({ width: dim.c + 'em', height: dim.r + 'em' });
+            $highlighted.css({ width: dim.c * 26 + 'px', height: dim.r * 26 + 'px' });
             $catcher.data('value', dim.c + 'x' + dim.r);
 
             if (3 < dim.c && dim.c < options.insertTableMaxSize.col) {
-                $unhighlighted.css({ width: dim.c + 1 + 'em'});
+                $unhighlighted.css({ width: (dim.c + 1) * 26 + 'px'});
             }
 
             if (3 < dim.r && dim.r < options.insertTableMaxSize.row) {
-                $unhighlighted.css({ height: dim.r + 1 + 'em'});
+                $unhighlighted.css({ height: (dim.r + 1) * 26 + 'px'});
             }
 
             $dimensionDisplay.html(dim.c + ' x ' + dim.r);
