@@ -414,7 +414,8 @@ define([
                     ui.dropdownCheck({
                         id: 'note-height',
                         items: options.lineHeights,
-                        checkClassName: options.icons.menuCheck,
+                        checkClassName: 'done',
+                        className: 'dropdown-line-height',
                         click: context.createInvokeHandler('editor.lineHeight')
                     })
                 ]).render();
