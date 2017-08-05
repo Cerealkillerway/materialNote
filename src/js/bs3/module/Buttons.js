@@ -182,8 +182,8 @@ define([
                     }),
                     ui.dropdownCheck({
                         id: 'note-sizes',
-                        //className: 'dropdown-fontsize',
-                        checkClassName: options.icons.menuCheck,
+                        className: 'dropdown-fontsize',
+                        checkClassName: 'done',
                         items: options.fontSizes,
                         click: context.createInvokeHandler('editor.fontSize')
                     })

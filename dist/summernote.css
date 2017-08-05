@@ -35,7 +35,7 @@
   ------------------------------------------*/
 }
 .note-editor .dropdown-content {
-  min-width: 90px;
+  min-width: 10px;
   background-color: #212121;
   border-left: solid 1px #eeeeee;
   border-right: solid 1px #eeeeee;
@@ -43,6 +43,21 @@
   /* dropdown-menu right position */
   /* http://forrst.com/posts/Bootstrap_right_positioned_dropdown-2KB */
   /* dropdown-menu for selectbox */
+}
+.note-editor .dropdown-content::-webkit-scrollbar {
+  width: 17px;
+}
+.note-editor .dropdown-content::-webkit-scrollbar-button {
+  display: none !important;
+}
+.note-editor .dropdown-content::-webkit-scrollbar-track {
+  background-color: #212121;
+}
+.note-editor .dropdown-content::-webkit-scrollbar-thumb {
+  background-color: #454545;
+}
+.note-editor .dropdown-content::-webkit-scrollbar-thumb:hover {
+  background-color: #535353;
 }
 .note-editor .dropdown-content .tabs {
   background-color: #212121;
