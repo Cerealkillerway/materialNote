@@ -329,7 +329,7 @@ define([
             });
 
             var justifyRight = ui.button({
-                contents: ui.icon('format_align_left'),
+                contents: ui.icon('format_align_right'),
                 tooltip: lang.paragraph.right + representShortcut('justifyRight'),
                 click: context.createInvokeHandler('editor.justifyRight')
             });
