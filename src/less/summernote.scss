@@ -294,18 +294,19 @@
             }
         }
 
-        /* codeable */
+        /* codable */
         .note-codable {
             display: none;
             width: 100%;
             padding: 10px;
             border: none;
             box-shadow: none;
-            font-family: Menlo, Monaco, monospace, sans-serif;
+            font-family: roboto;
             font-size: 14px;
-            color: #ccc;
-            background-color: #222;
+            color: $codable-overlay-color;
+            background-color: $codable-color;
             resize: none;
+            outline: none;
 
             /* override BS2 default style */
             @include box-sizing(border-box);

@@ -9,6 +9,7 @@ define([
         var options = context.options;
         var lang = options.langInfo;
         var data;
+        var linkInfo;
 
         this.initialize = function () {
             var $container = options.dialogsInBody ? $(document.body) : $editor;
@@ -87,20 +88,31 @@ define([
 
                     $openInNewWindow.prop('checked', isChecked);
 
-                    $linkBtn.one('click', function (event) {
+                    $linkBtn.one('click', function(event) {
                         event.preventDefault();
 
-                        deferred.resolve({
+                        data.resolve({
                             range: linkInfo.range,
                             url: $linkUrl.val(),
                             text: $linkText.val(),
                             isNewWindow: $openInNewWindow.is(':checked')
                         });
-                        self.$dialog.modal('hide');
+                        self.$dialog.modal('close');
                     });
                 },
                 complete: function() {
+                    var $linkText = self.$dialog.find('.note-link-text'),
+                    $linkUrl = self.$dialog.find('.note-link-url'),
+                    $linkBtn = self.$dialog.find('.note-link-btn');
 
+                    // detach events
+                    $linkText.off('input paste keypress');
+                    $linkUrl.off('input paste keypress');
+                    $linkBtn.off('click');
+
+                    if (data.state() === 'pending') {
+                        data.reject();
+                    }
                 }
             });
         };
@@ -126,44 +138,19 @@ define([
         };
 
         /**
-        * Show link dialog and set event handlers on dialog controls.
-        *
-        * @param {Object} linkInfo
-        * @return {Promise}
-        */
-        this.showLinkDialog = function (linkInfo) {
-            return $.Deferred(function (deferred) {
-
-
-                ui.onDialogHidden(self.$dialog, function () {
-                    // detach events
-                    $linkText.off('input paste keypress');
-                    $linkUrl.off('input paste keypress');
-                    $linkBtn.off('click');
-
-                    if (deferred.state() === 'pending') {
-                        deferred.reject();
-                    }
-                });
-
-                ui.showDialog(self.$dialog);
-            }).promise();
-        };
-
-        /**
         * @param {Object} layoutInfo
         */
         this.show = function () {
-            var linkInfo = context.invoke('editor.getLinkInfo');
-            context.invoke('editor.saveRange');
+            linkInfo = context.invoke('editor.getLinkInfo');
 
+            context.invoke('editor.saveRange');
             ui.showDialog(self.$dialog);
             data = $.Deferred();
 
-            data.then(function (linkInfo) {
+            data.then(function(linkInfo) {
                 context.invoke('editor.restoreRange');
                 context.invoke('editor.createLink', linkInfo);
-            }).fail(function () {
+            }).fail(function() {
                 context.invoke('editor.restoreRange');
             });
         };

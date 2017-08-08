@@ -238,7 +238,7 @@
 .note-editor.note-frame .note-editing-area {
   overflow: hidden;
   /* editable */
-  /* codeable */
+  /* codable */
 }
 .note-editor.note-frame .note-editing-area .note-editable {
   background-color: #fff;
@@ -255,11 +255,12 @@
   padding: 10px;
   border: none;
   box-shadow: none;
-  font-family: Menlo, Monaco, monospace, sans-serif;
+  font-family: roboto;
   font-size: 14px;
-  color: #ccc;
-  background-color: #222;
+  color: #ffc107;
+  background-color: #212121;
   resize: none;
+  outline: none;
   /* override BS2 default style */
   -ms-box-sizing: border-box;
   -moz-box-sizing: border-box;
