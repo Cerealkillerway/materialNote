@@ -14,29 +14,39 @@ define([
         this.initialize = function () {
             var $container = options.dialogsInBody ? $(document.body) : $editor;
 
-            var body = '<div class="form-group">' +
-            '<label>' + lang.link.textToDisplay + '</label>' +
-            '<input class="note-link-text form-control" type="text" />' +
+            var body =
+            '<div class="row">' +
+                '<div clas="input-field col s12">' +
+                    '<input id="note-link-text" class="note-link-text" type="text">' +
+                    '<label for="note-link-text">' + lang.link.textToDisplay + '</label>' +
+                '</div>' +
             '</div>' +
-            '<div class="form-group">' +
-            '<label>' + lang.link.url + '</label>' +
-            '<input class="note-link-url form-control" type="text" value="http://" />' +
-            '</div>' +
-            (!options.disableLinkTarget ?
-                '<div class="checkbox">' +
-                '<label for="sn-checkbox-open-in-new-window">' +
-                '<input type="checkbox" id="sn-checkbox-open-in-new-window" checked />' + lang.link.openInNewWindow +
-                '</label>' +
-                '</div>' : ''
-            );
-            var footer = '<button href="#" class="btn btn-primary note-link-btn disabled" disabled>' + lang.link.insert + '</button>';
+
+            '<div class="row">' +
+                '<div class="input-field col s12">' +
+                    '<input id="note-link-url" class="note-link-url" type="text">' +
+                    '<label for="note-link-url">' + lang.link.url + '</label>' +
+                '</div>' +
+
+                (!options.disableLinkTarget ?
+                    '<div class="col s12">' +
+                        '<input type="checkbox" id="sn-checkbox-open-in-new-window" />' +
+                        '<label for="sn-checkbox-open-in-new-window">' + lang.link.openInNewWindow + '</label>' +
+                    '</div>' : ''
+                ) +
+
+            '</div>';
+
+            var footer = [
+                '<a href="#!" class="modal-action modal-close waves-effect waves-light btn ">' + lang.shortcut.close + '</a>',
+                '<button href="#" class="btn note-link-btn disabled" disabled>' + lang.link.insert + '</button>'
+            ].join('');
 
             this.$dialog = ui.dialog({
-                className: 'link-dialog',
                 title: lang.link.insert,
-                fade: options.dialogsFade,
                 body: body,
-                footer: footer
+                footer: footer,
+                id: 'note-image-modal'
             }).render().appendTo($container);
 
             this.$dialog.modal({

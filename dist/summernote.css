@@ -11,7 +11,7 @@
   color: #eeeeee;
 }
 
-.note-editor .modal .modal-footer .note-image-btn {
+.note-editor .modal .modal-footer .note-image-btn, .note-editor .modal .modal-footer .note-link-btn {
   background-color: #2e7d32;
   color: #eeeeee;
 }
@@ -218,6 +218,12 @@
   border-bottom: 1px solid #ffc107;
   -webkit-box-shadow: 0 1px 0 0 #ffc107;
   box-shadow: 0 1px 0 0 #ffc107;
+}
+.note-editor [type="checkbox"]:checked + label:before {
+  border-top: 2px solid transparent;
+  border-left: 2px solid transparent;
+  border-right: 2px solid #ffc107;
+  border-bottom: 2px solid #ffc107;
 }
 
 /* Frame mode layout

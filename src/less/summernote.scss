@@ -219,7 +219,7 @@
                 margin-right: 7px;
             }
 
-            .note-image-btn {
+            .note-image-btn, .note-link-btn {
                 @extend %success-color;
             }
         }
@@ -258,6 +258,13 @@
         border-bottom: 1px solid $action-color2;
         -webkit-box-shadow: 0 1px 0 0 $action-color2;
         box-shadow: 0 1px 0 0 $action-color2;
+    }
+
+    [type="checkbox"]:checked+label:before {
+        border-top: 2px solid transparent;
+        border-left: 2px solid transparent;
+        border-right: 2px solid $action-color2;
+        border-bottom: 2px solid $action-color2;
     }
 }
 

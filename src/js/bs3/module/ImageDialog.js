@@ -52,7 +52,6 @@ function (key) {
 
             this.$dialog = ui.dialog({
                 title: lang.image.insert,
-                fade: options.dialogsFade,
                 body: body,
                 footer: footer,
                 id: 'note-image-modal'
