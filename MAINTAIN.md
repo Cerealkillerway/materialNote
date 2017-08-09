@@ -3,7 +3,7 @@
 ### 1. `develop` to `master`
 
 Send pull request `develop` to `master` on github repository and merge it.
-https://github.com/summernote/summernote/compare/master...develop
+https://github.com/materialnote/materialnote/compare/master...develop
 
 ### 2. Build dist files
 
@@ -23,7 +23,7 @@ git push origin
 ### 3. Release new version
 Post release note with new tag version on github
 
-https://github.com/summernote/summernote/releases/new
+https://github.com/materialnote/materialnote/releases/new
 
 ### 4. Publish
 
@@ -37,8 +37,8 @@ Publish on meteor
 meteor/publish.sh
 ```
 
-### 05. Update summernote.github.io
-Update summernote version in _config.yml.
+### 05. Update materialnote.github.io
+Update materialnote version in _config.yml.
 
 ### 06. Update connector
- - [summernote-rails](https://github.com/summernote/summernote-rails/blob/master/MAINTAIN.md)
+ - [materialnote-rails](https://github.com/materialnote/materialnote-rails/blob/master/MAINTAIN.md)

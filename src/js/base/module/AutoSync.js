@@ -1,5 +1,5 @@
 define([
-  'summernote/base/core/dom'
+  'materialnote/base/core/dom'
 ], function (dom) {
   /**
    * textarea auto sync.
@@ -8,7 +8,7 @@ define([
     var $note = context.layoutInfo.note;
 
     this.events = {
-      'summernote.change': function () {
+      'materialnote.change': function () {
         $note.val(context.invoke('code'));
       }
     };

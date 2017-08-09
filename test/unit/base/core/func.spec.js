@@ -1,11 +1,11 @@
 /**
  * func.spec.js
  * (c) 2013~ Alan Hong
- * summernote may be freely distributed under the MIT license./
+ * materialnote may be freely distributed under the MIT license./
  */
 define([
   'chai',
-  'summernote/base/core/func'
+  'materialnote/base/core/func'
 ], function (chai, func) {
   'use strict';
 
@@ -93,7 +93,7 @@ define([
       });
 
       it('should return prefixed camelcase text', function () {
-        expect(func.namespaceToCamel('upload.image', 'summernote')).to.be.equal('summernoteUploadImage');
+        expect(func.namespaceToCamel('upload.image', 'materialnote')).to.be.equal('materialnoteUploadImage');
       });
     });
 

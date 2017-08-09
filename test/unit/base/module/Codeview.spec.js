@@ -1,12 +1,12 @@
 /**
  * Codeview.spec.js
- * (c) 2015~ Summernote Team
- * summernote may be freely distributed under the MIT license./
+ * (c) 2015~ materialnote Team
+ * materialnote may be freely distributed under the MIT license./
  */
 define([
   'chai',
-  'summernote/base/Context',
-  'summernote/base/module/Codeview'
+  'materialnote/base/Context',
+  'materialnote/base/module/Codeview'
 ], function (chai, Context, Codeview) {
   'use strict';
 
@@ -16,9 +16,9 @@ define([
     var codeview, context;
 
     beforeEach(function () {
-      var options = $.extend({}, $.summernote.options);
+      var options = $.extend({}, $.materialnote.options);
       options.langInfo = $.extend(true, {
-      }, $.summernote.lang['en-US'], $.summernote.lang[options.lang]);
+      }, $.materialnote.lang['en-US'], $.materialnote.lang[options.lang]);
       context = new Context($('<div><p>hello</p></div>'), options);
       codeview = new Codeview(context);
     });

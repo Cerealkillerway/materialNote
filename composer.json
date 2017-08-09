@@ -1,11 +1,11 @@
 {
-    "name": "summernote/summernote",
+    "name": "materialnote/materialnote",
     "description": "Super Simple WYSIWYG Editor on Bootstrap(3.0 and 2.x).",
     "type": "library",
     "keywords": [
         "wysiwyg"
     ],
-    "homepage": "http://summernote.org/",
+    "homepage": "http://materialnote.org/",
     "license": "MIT",
     "authors": [
         {
@@ -15,6 +15,6 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/summernote/summernote/issues"
+        "issues": "https://github.com/materialnote/materialnote/issues"
     }
 }

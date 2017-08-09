@@ -1,15 +1,15 @@
 # MaterialNote v2
 
-WYSIWYG editor for the web, based on summernote.js and materializeCss.
+WYSIWYG editor for the web, based on materialnote.js and materializeCss.
 
-MaterialNote v2 is a work-in-progress for better sync with orignal summernote repo;
+MaterialNote v2 is a work-in-progress for better sync with orignal materialnote repo;
 MaterialNote v1.2.1 is currently the latest release.
 
 
 ## Editor Api
 
-MaterialNote is based on Summernote.js, so the API is still the same.
-Please visit [summernote.js api guide](http://summernote.org/deep-dive/) to deep dive.
+MaterialNote is based on materialnote.js, so the API is still the same.
+Please visit [materialnote.js api guide](http://materialnote.org/deep-dive/) to deep dive.
 
 
 ## API additions

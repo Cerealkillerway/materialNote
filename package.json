@@ -1,6 +1,6 @@
 {
   "name": "materialnote",
-  "description": "WYSIWYG editor for the web based on summernote.js and materializeCss",
+  "description": "WYSIWYG editor for the web based on materialnote.js and materializeCss",
   "version": "2.0.0",
   "license": "MIT",
   "keywords": [
@@ -15,7 +15,7 @@
     "name": "CK",
     "email": "<cerealkillerway@gmail.com>"
   },
-  "main": "dist/summernote.js",
+  "main": "dist/materialnote.js",
   "scripts": {
     "test": "grunt test",
     "server": "grunt server",

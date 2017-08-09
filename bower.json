@@ -3,8 +3,8 @@
   "homepage": "",
   "license": "MIT",
   "main": [
-    "./dist/summernote.js",
-    "./dist/summernote.css"
+    "./dist/materialnote.js",
+    "./dist/materialnote.css"
   ],
   "ignore": [
     "**/.*",

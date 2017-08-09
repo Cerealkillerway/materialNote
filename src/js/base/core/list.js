@@ -1,4 +1,4 @@
-define(['summernote/base/core/func'], function (func) {
+define(['materialnote/base/core/func'], function (func) {
   /**
    * @class core.list
    *
@@ -94,7 +94,7 @@ define(['summernote/base/core/func'], function (func) {
         return memo + fn(v);
       }, 0);
     };
-  
+
     /**
      * returns a copy of the collection with array type.
      * @param {Collection} collection - collection eg) node.childNodes, ...
@@ -113,7 +113,7 @@ define(['summernote/base/core/func'], function (func) {
     var isEmpty = function (array) {
       return !array || !array.length;
     };
-  
+
     /**
      * cluster elements by predicate function.
      *
@@ -134,7 +134,7 @@ define(['summernote/base/core/func'], function (func) {
         return memo;
       }, [[head(array)]]);
     };
-  
+
     /**
      * returns a copy of the array with all false values removed
      *

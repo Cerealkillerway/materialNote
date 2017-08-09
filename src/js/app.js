@@ -7,20 +7,20 @@ require.config({
     paths: {
         jquery: jqueryLink,
         materialize: '../materialize/materialize',
-        lang: '../../lang/summernote-it-IT'
+        lang: '../../lang/materialnote-it-IT'
     },
     shim: {
         bootstrap: ['jquery'],
         lang: ['jquery']
     },
     packages: [{
-        name: 'summernote',
-        main: 'summernote',
+        name: 'materialnote',
+        main: 'materialnote',
         location: './'
     }]
 });
 
-require(['jquery', 'summernote'], function ($) {
+require(['jquery', 'materialnote'], function ($) {
     var requireByPromise = function (paths) {
         return $.Deferred(function (deferred) {
             require(paths, function () {
@@ -34,10 +34,10 @@ require(['jquery', 'summernote'], function ($) {
     // editor type setting
     switch ($('script[data-editor-type]').data('editor-type')) {
         case 'lite':
-        promise = requireByPromise(['summernote/lite/settings']);
+        promise = requireByPromise(['materialnote/lite/settings']);
         break;
         case 'materialize':
-        promise = requireByPromise(['materialize', 'summernote/bs3/settings']).then(function () {
+        promise = requireByPromise(['materialize', 'materialnote/bs3/settings']).then(function () {
             return requireByPromise(['lang']);
         });
         break;
@@ -45,7 +45,7 @@ require(['jquery', 'summernote'], function ($) {
 
     promise.then(function () {
         // initialize materialNote
-        $('.materialnote').summernote({
+        $('.materialnote').materialnote({
             height: 300,
             lang: 'it-IT',
             toolbar: [

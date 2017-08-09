@@ -1,17 +1,17 @@
 /**
  * Editor.spec.js
- * (c) 2015~ Summernote Team
- * summernote may be freely distributed under the MIT license./
+ * (c) 2015~ materialnote Team
+ * materialnote may be freely distributed under the MIT license./
  */
 define([
   'chai',
   'spies',
   'chaidom',
   'jquery',
-  'summernote/base/core/agent',
-  'summernote/base/core/dom',
-  'summernote/base/core/range',
-  'summernote/base/Context'
+  'materialnote/base/core/agent',
+  'materialnote/base/core/dom',
+  'materialnote/base/core/range',
+  'materialnote/base/Context'
 ], function (chai, spies, chaidom, $, agent, dom, range, Context) {
   'use strict';
   var expect = chai.expect;
@@ -41,8 +41,8 @@ define([
     var editor, context;
 
     beforeEach(function () {
-      var options = $.extend({}, $.summernote.options);
-      options.langInfo = $.extend(true, {}, $.summernote.lang['en-US'], $.summernote.lang[options.lang]);
+      var options = $.extend({}, $.materialnote.options);
+      options.langInfo = $.extend(true, {}, $.materialnote.lang['en-US'], $.materialnote.lang[options.lang]);
       context = new Context($('<div><p>hello</p></div>'), options);
       editor = context.modules.editor;
     });
@@ -53,12 +53,12 @@ define([
           'keydown', 'keyup', 'blur', 'mousedown', 'mouseup',
           'scroll', 'focusin', 'focusout'
         ].forEach(function (eventName) {
-          expectToHaveBeenCalled(context, 'summernote.' + eventName, function () {
+          expectToHaveBeenCalled(context, 'materialnote.' + eventName, function () {
             context.layoutInfo.editable.trigger(eventName);
           });
         });
 
-        expectToHaveBeenCalled(context, 'summernote.change', function () {
+        expectToHaveBeenCalled(context, 'materialnote.change', function () {
           editor.insertText('hello');
         });
       });
@@ -164,7 +164,7 @@ define([
         };
         var $note = context.layoutInfo.note;
         var spy = chai.spy();
-        $note.on('summernote.change', spy);
+        $note.on('materialnote.change', spy);
         var html = generateLargeHtml();
         editor.pasteHTML(html);
         expect(spy).to.have.been.called.once;
@@ -214,11 +214,11 @@ define([
 
         // check creation normal link
         editor.createLink({
-          url: 'http://summernote.org',
-          text: 'summernote'
+          url: 'http://materialnote.org',
+          text: 'materialnote'
         });
 
-        expectContents(context, '<p>hello<a href="http://summernote.org">summernote</a></p>');
+        expectContents(context, '<p>hello<a href="http://materialnote.org">materialnote</a></p>');
       });
 
       it('should create a link with range', function () {
@@ -232,12 +232,12 @@ define([
         var rng = range.create(textNode, startIndex, textNode, endIndex);
 
         editor.createLink({
-          url: 'http://summernote.org',
-          text: 'summernote',
+          url: 'http://materialnote.org',
+          text: 'materialnote',
           range: rng
         });
 
-        expectContents(context, '<p><a href="http://summernote.org">summernote</a></p>');
+        expectContents(context, '<p><a href="http://materialnote.org">materialnote</a></p>');
       });
 
       it('should create a link with isNewWindow', function () {
@@ -251,29 +251,29 @@ define([
         var rng = range.create(textNode, startIndex, textNode, endIndex);
 
         editor.createLink({
-          url: 'http://summernote.org',
-          text: 'summernote',
+          url: 'http://materialnote.org',
+          text: 'materialnote',
           range: rng,
           isNewWindow: true
         });
 
-        expectContents(context, '<p><a href="http://summernote.org" target="_blank">summernote</a></p>');
+        expectContents(context, '<p><a href="http://materialnote.org" target="_blank">materialnote</a></p>');
       });
 
       it('should modify a link', function () {
-        context.invoke('code', '<p><a href="http://summernote.org">hello world</a></p>');
+        context.invoke('code', '<p><a href="http://materialnote.org">hello world</a></p>');
 
         var editable = context.layoutInfo.editable;
         var anchorNode = editable.find('a')[0];
         var rng = range.createFromNode(anchorNode);
 
         editor.createLink({
-          url: 'http://wow.summernote.org',
-          text: 'summernote wow',
+          url: 'http://wow.materialnote.org',
+          text: 'materialnote wow',
           range: rng
         });
 
-        expectContents(context, '<p><a href="http://wow.summernote.org">summernote wow</a></p>');
+        expectContents(context, '<p><a href="http://wow.materialnote.org">materialnote wow</a></p>');
       });
     });
   });

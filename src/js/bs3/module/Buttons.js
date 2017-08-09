@@ -1,12 +1,12 @@
 define([
     'jquery',
-    'summernote/base/core/func',
-    'summernote/base/core/list',
-    'summernote/base/core/agent'
+    'materialnote/base/core/func',
+    'materialnote/base/core/list',
+    'materialnote/base/core/agent'
 ], function ($, func, list, agent) {
     var Buttons = function (context) {
         var self = this;
-        var ui = $.summernote.ui;
+        var ui = $.materialnote.ui;
 
         var $toolbar = context.layoutInfo.toolbar;
         var options = context.options;

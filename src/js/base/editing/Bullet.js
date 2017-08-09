@@ -1,8 +1,8 @@
 define([
-  'summernote/base/core/list',
-  'summernote/base/core/func',
-  'summernote/base/core/dom',
-  'summernote/base/core/range'
+  'materialnote/base/core/list',
+  'materialnote/base/core/func',
+  'materialnote/base/core/dom',
+  'materialnote/base/core/range'
 ], function (list, func, dom, range) {
 
   /**
@@ -213,4 +213,3 @@ define([
 
   return Bullet;
 });
-

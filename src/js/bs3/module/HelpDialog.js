@@ -1,10 +1,10 @@
 define([
   'jquery',
-  'summernote/base/core/agent'
+  'materialnote/base/core/agent'
 ], function ($, agent) {
   var HelpDialog = function (context) {
     var self = this;
-    var ui = $.summernote.ui;
+    var ui = $.materialnote.ui;
 
     var $editor = context.layoutInfo.editor;
     var options = context.options;
@@ -28,9 +28,9 @@ define([
 
       var body = [
         '<p class="text-center">',
-        '<a href="http://summernote.org/" target="_blank">Summernote @VERSION</a> · ',
-        '<a href="https://github.com/summernote/summernote" target="_blank">Project</a> · ',
-        '<a href="https://github.com/summernote/summernote/issues" target="_blank">Issues</a>',
+        '<a href="http://materialnote.org/" target="_blank">materialnote @VERSION</a> · ',
+        '<a href="https://github.com/materialnote/materialnote" target="_blank">Project</a> · ',
+        '<a href="https://github.com/materialnote/materialnote/issues" target="_blank">Issues</a>',
         '</p>'
       ].join('');
 

@@ -1,12 +1,12 @@
 /**
  * list.spec.js
  * (c) 2013~ Alan Hong
- * summernote may be freely distributed under the MIT license./
+ * materialnote may be freely distributed under the MIT license./
  */
 define([
   'chai',
   'jquery',
-  'summernote/base/core/list'
+  'materialnote/base/core/list'
 ], function (chai, $, list) {
   'use strict';
 

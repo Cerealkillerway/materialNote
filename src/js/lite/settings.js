@@ -1,10 +1,10 @@
 define([
-  'summernote/lite/ui',
-  'summernote/base/summernote-en-US',
-  'summernote/base/module/Editor',
-  'summernote/lite/module/Toolbar'
+  'materialnote/lite/ui',
+  'materialnote/base/materialnote-en-US',
+  'materialnote/base/module/Editor',
+  'materialnote/lite/module/Toolbar'
 ], function (ui, lang, Editor, Toolbar) {
-  $.summernote = $.extend($.summernote, {
+  $.materialnote = $.extend($.materialnote, {
     version: '@VERSION',
     ui: ui,
 

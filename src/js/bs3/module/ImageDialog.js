@@ -1,10 +1,10 @@
 define([
-    'summernote/base/core/key'
+    'materialnote/base/core/key'
 ],
 function (key) {
     var ImageDialog = function (context) {
         var self = this;
-        var ui = $.summernote.ui;
+        var ui = $.materialnote.ui;
 
         var $editor = context.layoutInfo.editor;
         var options = context.options;

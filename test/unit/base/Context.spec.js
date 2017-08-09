@@ -1,16 +1,16 @@
 /**
  * Context.spec.js
- * (c) 2015~ Summernote Team
- * summernote may be freely distributed under the MIT license./
+ * (c) 2015~ materialnote Team
+ * materialnote may be freely distributed under the MIT license./
  */
 define([
   'chai',
   'spies',
   'chaidom',
   'jquery',
-  'summernote/base/core/agent',
-  'summernote/base/core/dom',
-  'summernote/base/Context'
+  'materialnote/base/core/agent',
+  'materialnote/base/core/dom',
+  'materialnote/base/Context'
 ], function (chai, spies, chaidom, $, agent, dom, Context) {
   'use strict';
 
@@ -20,12 +20,12 @@ define([
 
   describe('Context lifecycle', function () {
     it('should be initialized without calling callback', function () {
-      var options = $.extend({}, $.summernote.options);
-      options.langInfo = $.extend(true, {}, $.summernote.lang['en-US'], $.summernote.lang[options.lang]);
+      var options = $.extend({}, $.materialnote.options);
+      options.langInfo = $.extend(true, {}, $.materialnote.lang['en-US'], $.materialnote.lang[options.lang]);
 
       var spy = chai.spy();
       var $note = $('<div><p>hello</p></div>');
-      $note.on('summernote.change', spy);
+      $note.on('materialnote.change', spy);
 
       var context = new Context($note, options);
       expect(spy).to.have.not.been.called();
@@ -39,8 +39,8 @@ define([
     });
 
     it('should preserve user events handler after destroy', function () {
-      var options = $.extend({}, $.summernote.options);
-      options.langInfo = $.extend(true, {}, $.summernote.lang['en-US'], $.summernote.lang[options.lang]);
+      var options = $.extend({}, $.materialnote.options);
+      options.langInfo = $.extend(true, {}, $.materialnote.lang['en-US'], $.materialnote.lang[options.lang]);
 
       var spy = chai.spy();
       var $note = $('<div><p>hello</p></div>');
@@ -57,8 +57,8 @@ define([
   describe('Context', function () {
     var context;
     beforeEach(function () {
-      var options = $.extend({}, $.summernote.options);
-      options.langInfo = $.extend(true, {}, $.summernote.lang['en-US'], $.summernote.lang[options.lang]);
+      var options = $.extend({}, $.materialnote.options);
+      options.langInfo = $.extend(true, {}, $.materialnote.lang['en-US'], $.materialnote.lang[options.lang]);
       context = new Context($('<div><p>hello</p></div>'), options);
     });
 

@@ -14,7 +14,7 @@
 
   // Extends plugins for adding hello.
   //  - plugin is external module for customizing.
-  $.extend($.summernote.plugins, {
+  $.extend($.materialnote.plugins, {
     /**
      * @param {Object} context - context object has status of editor.
      */
@@ -23,7 +23,7 @@
 
       // ui has renders to build ui elements.
       //  - you can create a button with `ui.button`
-      var ui = $.summernote.ui;
+      var ui = $.materialnote.ui;
 
       // add hello button
       context.memo('button.hello', function () {
@@ -47,16 +47,16 @@
       // This events will be attached when editor is initialized.
       this.events = {
         // This will be called after modules are initialized.
-        'summernote.init': function (we, e) {
-          console.log('summernote initialized', we, e);
+        'materialnote.init': function (we, e) {
+          console.log('materialnote initialized', we, e);
         },
         // This will be called when user releases a key on editable.
-        'summernote.keyup': function (we, e) {
-          console.log('summernote keyup', we, e);
+        'materialnote.keyup': function (we, e) {
+          console.log('materialnote keyup', we, e);
         }
       };
 
-      // This method will be called when editor is initialized by $('..').summernote();
+      // This method will be called when editor is initialized by $('..').materialnote();
       // You can create elements for plugin
       this.initialize = function () {
         this.$panel = $('<div class="hello-panel"/>').css({
@@ -71,7 +71,7 @@
         this.$panel.appendTo('body');
       };
 
-      // This methods will be called when editor is destroyed by $('..').summernote('destroy');
+      // This methods will be called when editor is destroyed by $('..').materialnote('destroy');
       // You should remove elements on `initialize`.
       this.destroy = function () {
         this.$panel.remove();

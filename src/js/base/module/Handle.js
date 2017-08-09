@@ -1,5 +1,5 @@
 define([
-  'summernote/base/core/dom'
+  'materialnote/base/core/dom'
 ], function (dom) {
   var Handle = function (context) {
     var self = this;
@@ -9,15 +9,15 @@ define([
     var options = context.options;
 
     this.events = {
-      'summernote.mousedown': function (we, e) {
+      'materialnote.mousedown': function (we, e) {
         if (self.update(e.target)) {
           e.preventDefault();
         }
       },
-      'summernote.keyup summernote.scroll summernote.change summernote.dialog.shown': function () {
+      'materialnote.keyup materialnote.scroll materialnote.change materialnote.dialog.shown': function () {
         self.update();
       },
-      'summernote.disable': function () {
+      'materialnote.disable': function () {
         self.hide();
       }
     };

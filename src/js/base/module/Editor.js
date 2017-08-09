@@ -1,16 +1,16 @@
 define([
-  'summernote/base/core/agent',
-  'summernote/base/core/key',
-  'summernote/base/core/func',
-  'summernote/base/core/list',
-  'summernote/base/core/dom',
-  'summernote/base/core/range',
-  'summernote/base/core/async',
-  'summernote/base/editing/History',
-  'summernote/base/editing/Style',
-  'summernote/base/editing/Typing',
-  'summernote/base/editing/Table',
-  'summernote/base/editing/Bullet'
+  'materialnote/base/core/agent',
+  'materialnote/base/core/key',
+  'materialnote/base/core/func',
+  'materialnote/base/core/list',
+  'materialnote/base/core/dom',
+  'materialnote/base/core/range',
+  'materialnote/base/core/async',
+  'materialnote/base/editing/History',
+  'materialnote/base/editing/Style',
+  'materialnote/base/editing/Typing',
+  'materialnote/base/editing/Table',
+  'materialnote/base/editing/Bullet'
 ], function (
   agent, key, func, list, dom, range, async,
   History, Style, Typing, Table, Bullet

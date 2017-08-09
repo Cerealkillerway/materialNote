@@ -12,9 +12,9 @@
   }
 }(function ($) {
 
-  // pull in some summernote core functions
-  var ui = $.summernote.ui;
-  var dom = $.summernote.dom;
+  // pull in some materialnote core functions
+  var ui = $.materialnote.ui;
+  var dom = $.materialnote.dom;
 
   // define the popover plugin
   var DataBasicPlugin = function (context) {
@@ -66,15 +66,15 @@
     });
 
     self.events = {
-      'summernote.init': function (we, e) {
+      'materialnote.init': function (we, e) {
         // update existing containers
         $('data.ext-databasic', e.editable).each(function () { self.setContent($(this)); });
         // TODO: make this an undo snapshot...
       },
-      'summernote.keyup summernote.mouseup summernote.change summernote.scroll': function () {
+      'materialnote.keyup materialnote.mouseup materialnote.change materialnote.scroll': function () {
         self.update();
       },
-      'summernote.dialog.shown': function () {
+      'materialnote.dialog.shown': function () {
         self.hidePopover();
       }
     };
@@ -272,8 +272,8 @@
     };
   };
 
-  // Extends summernote
-  $.extend(true, $.summernote, {
+  // Extends materialnote
+  $.extend(true, $.materialnote, {
     plugins: {
       databasic: DataBasicPlugin
     },

@@ -1,14 +1,14 @@
 /**
  * Buttons.spec.js
- * (c) 2015~ Summernote Team
- * summernote may be freely distributed under the MIT license./
+ * (c) 2015~ materialnote Team
+ * materialnote may be freely distributed under the MIT license./
  */
 define([
   'chai',
   'jquery',
-  'summernote/base/core/agent',
-  'summernote/base/core/range',
-  'summernote/base/Context'
+  'materialnote/base/core/agent',
+  'materialnote/base/core/range',
+  'materialnote/base/Context'
 ], function (chai, $, agent, range, Context) {
   'use strict';
 
@@ -29,8 +29,8 @@ define([
       $('body').empty(); //important !
       var $note = $('<div><p>hello</p></div>').appendTo('body');
 
-      var options = $.extend({}, $.summernote.options);
-      options.langInfo = $.extend(true, {}, $.summernote.lang['en-US'], $.summernote.lang[options.lang]);
+      var options = $.extend({}, $.materialnote.options);
+      options.langInfo = $.extend(true, {}, $.materialnote.lang['en-US'], $.materialnote.lang[options.lang]);
       options.toolbar = [
         ['font1', ['style', 'clear']],
         ['font2', ['bold', 'underline', 'italic', 'superscript', 'subscript', 'strikethrough']],
@@ -203,7 +203,7 @@ define([
         $button.click();
 
         // TODO <font> tag deprecated in HTML5
-        //  - https://github.com/summernote/summernote/issues/745
+        //  - https://github.com/materialnote/materialnote/issues/745
         var $font = $editable.find('font');
         expect($font).to.be.equalsStyle($button.data('value'), 'color');
       });

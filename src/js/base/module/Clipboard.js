@@ -1,8 +1,8 @@
 define([
-  'summernote/base/core/list',
-  'summernote/base/core/dom',
-  'summernote/base/core/key',
-  'summernote/base/core/agent'
+  'materialnote/base/core/list',
+  'materialnote/base/core/dom',
+  'materialnote/base/core/key',
+  'materialnote/base/core/agent'
 ], function (list, dom, key, agent) {
   var Clipboard = function (context) {
     var self = this;
@@ -10,7 +10,7 @@ define([
     var $editable = context.layoutInfo.editable;
 
     this.events = {
-      'summernote.keydown': function (we, e) {
+      'materialnote.keydown': function (we, e) {
         if (self.needKeydownHook()) {
           if ((e.ctrlKey || e.metaKey) && e.keyCode === key.code.V) {
             context.invoke('editor.saveRange');

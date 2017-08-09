@@ -1,6 +1,6 @@
 define([
-  'summernote/base/core/agent',
-  'summernote/base/core/dom'
+  'materialnote/base/core/agent',
+  'materialnote/base/core/dom'
 ], function (agent, dom) {
 
   var CodeMirror;

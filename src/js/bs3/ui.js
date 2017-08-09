@@ -1,5 +1,5 @@
 define([
-    'summernote/base/renderer'
+    'materialnote/base/renderer'
 ], function (renderer) {
     var editor = renderer.create('<div class="note-editor note-frame panel panel-default"/>');
     var toolbar = renderer.create('<div class="note-toolbar panel-heading"/>');

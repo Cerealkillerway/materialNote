@@ -1,6 +1,6 @@
 define(function () {
   var Toolbar = function (context) {
-    var ui = $.summernote.ui;
+    var ui = $.materialnote.ui;
 
     var $note = context.layoutInfo.note;
     var $toolbar = context.layoutInfo.toolbar;
@@ -23,7 +23,7 @@ define(function () {
         $toolbar.appendTo(options.toolbarContainer);
       }
 
-      $note.on('summernote.keyup summernote.mouseup summernote.change', function () {
+      $note.on('materialnote.keyup materialnote.mouseup materialnote.change', function () {
         context.invoke('buttons.updateCurrentStyle');
       });
 

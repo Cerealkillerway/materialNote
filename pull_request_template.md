@@ -6,7 +6,7 @@
 
 #### Where should the reviewer start?
 
-- start on the src/summernote.js
+- start on the src/materialnote.js
 
 #### How should this be manually tested?
 

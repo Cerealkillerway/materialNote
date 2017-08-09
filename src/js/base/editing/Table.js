@@ -1,7 +1,7 @@
 define([
-  'summernote/base/core/dom',
-  'summernote/base/core/range',
-  'summernote/base/core/list'
+  'materialnote/base/core/dom',
+  'materialnote/base/core/range',
+  'materialnote/base/core/list'
 ], function (dom, range, list) {
 
   /**
@@ -38,7 +38,7 @@ define([
 
     /**
      * Define virtual table position info object.
-     * 
+     *
      * @param {int} rowIndex Index position in line of virtual table.
      * @param {int} cellIndex Index position in column of virtual table.
      * @param {object} baseRow Row affected by this position.
@@ -61,7 +61,7 @@ define([
 
     /**
      * Create action cell object.
-     * 
+     *
      * @param {object} virtualTableCellObj Object of specific position on virtual table.
      * @param {enum} resultAction Action to be applied in that item.
      */
@@ -78,7 +78,7 @@ define([
 
     /**
      * Recover free index of row to append Cell.
-     * 
+     *
      * @param {int} rowIndex Index of row to find free space.
      * @param {int} cellIndex Index of cell to find free space in table.
      */
@@ -101,7 +101,7 @@ define([
 
     /**
      * Recover info about row and cell and add information to virtual table.
-     * 
+     *
      * @param {object} row Row to recover information.
      * @param {object} cell Cell to recover information.
      */
@@ -109,7 +109,7 @@ define([
       var cellIndex = recoverCellIndex(row.rowIndex, cell.cellIndex);
       var cellHasColspan = (cell.colSpan > 1);
       var cellHasRowspan = (cell.rowSpan > 1);
-      var isThisSelectedCell = (row.rowIndex === _startPoint.rowPos && cell.cellIndex === _startPoint.colPos); 
+      var isThisSelectedCell = (row.rowIndex === _startPoint.rowPos && cell.cellIndex === _startPoint.colPos);
       setVirtualTablePosition(row.rowIndex, cellIndex, row, cell, cellHasRowspan, cellHasColspan, false);
 
       // Add span rows to virtual Table.
@@ -135,11 +135,11 @@ define([
 
     /**
      * Process validation and adjust of start point if needed
-     * 
-     * @param {int} rowIndex 
-     * @param {int} cellIndex 
-     * @param {object} cell 
-     * @param {bool} isSelectedCell 
+     *
+     * @param {int} rowIndex
+     * @param {int} cellIndex
+     * @param {object} cell
+     * @param {bool} isSelectedCell
      */
     function adjustStartPoint(rowIndex, cellIndex, cell, isSelectedCell) {
       if (rowIndex === _startPoint.rowPos && _startPoint.colPos >= cell.cellIndex && cell.cellIndex <= cellIndex && !isSelectedCell) {
@@ -162,7 +162,7 @@ define([
 
     /**
      * Get action to be applied on the cell.
-     * 
+     *
      * @param {object} cell virtual table cell to apply action
      */
     function getDeleteResultActionToCell(cell) {
@@ -186,7 +186,7 @@ define([
 
     /**
      * Get action to be applied on the cell.
-     * 
+     *
      * @param {object} cell virtual table cell to apply action
      */
     function getAddResultActionToCell(cell) {
@@ -261,23 +261,23 @@ define([
     init();
   };
   /**
-  * 
+  *
   * Where action occours enum.
   */
   TableResultAction.where = { 'Row': 0, 'Column': 1 };
   /**
-  * 
+  *
   * Requested action to apply enum.
   */
   TableResultAction.requestAction = { 'Add': 0, 'Delete': 1 };
   /**
-  * 
+  *
   * Result action to be executed enum.
   */
   TableResultAction.resultAction = { 'Ignore': 0, 'SubtractSpanCount': 1, 'RemoveCell': 2, 'AddCell': 3, 'SumSpanCount': 4 };
 
   /**
-   * 
+   *
    * @class editing.Table
    *
    * Table

@@ -1,11 +1,11 @@
 /**
  * key.spec.js
  * (c) 2013~ Alan Hong
- * summernote may be freely distributed under the MIT license./
+ * materialnote may be freely distributed under the MIT license./
  */
 define([
   'chai',
-  'summernote/base/core/key'
+  'materialnote/base/core/key'
 ], function (chai, key) {
   'use strict';
 

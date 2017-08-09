@@ -1,7 +1,7 @@
 define([
-  'summernote/base/core/func',
-  'summernote/base/core/list',
-  'summernote/base/core/agent'
+  'materialnote/base/core/func',
+  'materialnote/base/core/list',
+  'materialnote/base/core/agent'
 ], function (func, list, agent) {
 
   var NBSP_CHAR = String.fromCharCode(160);
@@ -201,13 +201,13 @@ define([
       if (isText(node)) {
         return node.nodeValue.length;
       }
-      
+
       if (node) {
         return node.childNodes.length;
       }
-      
+
       return 0;
-      
+
     };
 
     /**

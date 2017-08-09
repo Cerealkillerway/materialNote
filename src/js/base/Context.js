@@ -1,8 +1,8 @@
 define([
     'jquery',
-    'summernote/base/core/func',
-    'summernote/base/core/list',
-    'summernote/base/core/dom'
+    'materialnote/base/core/func',
+    'materialnote/base/core/list',
+    'materialnote/base/core/dom'
 ], function ($, func, list, dom) {
     /**
     * @param {jQuery} $note
@@ -12,7 +12,7 @@ define([
     var Context = function ($note, options) {
         var self = this;
 
-        var ui = $.summernote.ui;
+        var ui = $.materialnote.ui;
         this.memos = {};
         this.modules = {};
         this.layoutInfo = {};
@@ -33,7 +33,7 @@ define([
         */
         this.destroy = function () {
             this._destroy();
-            $note.removeData('summernote');
+            $note.removeData('materialnote');
             ui.removeLayout($note, this.layoutInfo);
         };
 
@@ -58,7 +58,7 @@ define([
                 self.memo('button.' + key, buttons[key]);
             });
 
-            var modules = $.extend({}, this.options.modules, $.summernote.plugins || {});
+            var modules = $.extend({}, this.options.modules, $.materialnote.plugins || {});
 
             // add and initialize modules
             Object.keys(modules).forEach(function (key) {
@@ -129,7 +129,7 @@ define([
             if (callback) {
                 callback.apply($note[0], args);
             }
-            $note.trigger('summernote.' + namespace, args);
+            $note.trigger('materialnote.' + namespace, args);
         };
 
         this.initializeModule = function (key) {

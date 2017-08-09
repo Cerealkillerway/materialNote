@@ -1,14 +1,14 @@
 /**
  * VideoDialog.spec.js
- * (c) 2015~ Summernote Team
- * summernote may be freely distributed under the MIT license./
+ * (c) 2015~ materialnote Team
+ * materialnote may be freely distributed under the MIT license./
  */
 /* jshint unused: false */
 define([
   'chai',
   'jquery',
-  'summernote/base/Context',
-  'summernote/bs3/module/VideoDialog'
+  'materialnote/base/Context',
+  'materialnote/bs3/module/VideoDialog'
 ], function (chai, $, Context, VideoDialog) {
   'use strict';
 
@@ -27,8 +27,8 @@ define([
 
     beforeEach(function () {
       var $note = $('<div></div>').appendTo('body');
-      var options = $.extend({}, $.summernote.options);
-      options.langInfo = $.extend(true, {}, $.summernote.lang['en-US'], $.summernote.lang[options.lang]);
+      var options = $.extend({}, $.materialnote.options);
+      options.langInfo = $.extend(true, {}, $.materialnote.lang['en-US'], $.materialnote.lang[options.lang]);
       options.toolbar = [
         ['video', ['video']]
       ];

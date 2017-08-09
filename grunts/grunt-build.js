@@ -8,12 +8,12 @@ module.exports = function (grunt) {
   var rDefineEndWithReturn = /\s*return\s+[^\}]+(\}\);[^\w\}]*)$/;
   var rDefineEnd = /\}\);[^}\w]*$/;
 
-  grunt.registerMultiTask('build', 'concatenate source: summernote.js', function () {
+  grunt.registerMultiTask('build', 'concatenate source: materialnote.js', function () {
     var self = this;
 
     var done = this.async();
     requirejs.optimize({
-      name: 'summernote/summernote',
+      name: 'materialnote/materialnote',
       baseUrl: this.data.baseUrl,
       /**
        * Handle final output from the optimizer
@@ -54,13 +54,13 @@ module.exports = function (grunt) {
         return contents;
       },
       excludeShallow: ['jquery', 'codemirror', 'app'],
-      include: ['summernote/bs3/settings'],
+      include: ['materialnote/bs3/settings'],
       paths: {
         jquery: 'empty:',
         codemirror: 'empty:'
       },
       packages: [{
-        name: 'summernote',
+        name: 'materialnote',
         location: './'
       }]
     }, function () {

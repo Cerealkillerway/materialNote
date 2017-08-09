@@ -27,16 +27,16 @@ requirejs.config({
   },
 
   packages: [{
-    name: 'summernote',
+    name: 'materialnote',
     location: '.',
-    main: 'summernote'
+    main: 'materialnote'
   }],
 
   // ask Require.js to load these files (all our tests)
   deps: tests,
 
   callback: function () {
-    require(['jquery', 'bootstrap', 'summernote/bs3/settings'], function () {
+    require(['jquery', 'bootstrap', 'materialnote/bs3/settings'], function () {
       window.__karma__.start();
     });
   }

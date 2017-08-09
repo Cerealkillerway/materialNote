@@ -1,6 +1,6 @@
 define([
-  'summernote/base/core/list',
-  'summernote/base/core/func'
+  'materialnote/base/core/list',
+  'materialnote/base/core/func'
 ], function (list, func) {
   /**
    * @class core.key

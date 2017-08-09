@@ -1,5 +1,5 @@
 define([
-  'summernote/base/renderer'
+  'materialnote/base/renderer'
 ], function (renderer) {
   var ui = {
     editor: renderer.create('<div class="note-editor">'),

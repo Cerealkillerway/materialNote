@@ -1,12 +1,12 @@
 /**
  * Statusbar.spec.js
- * (c) 2015~ Summernote Team
- * summernote may be freely distributed under the MIT license./
+ * (c) 2015~ materialnote Team
+ * materialnote may be freely distributed under the MIT license./
  */
 /* jshint unused: false */
 define([
   'chai',
-  'summernote/base/module/Statusbar'
+  'materialnote/base/module/Statusbar'
 ], function (chai, Statusbar) {
   'use strict';
 

@@ -5,10 +5,10 @@ define(function () {
     var options = context.options;
 
     this.events = {
-      'summernote.init summernote.change': function () {
+      'materialnote.init materialnote.change': function () {
         self.update();
       },
-      'summernote.codeview.toggled': function () {
+      'materialnote.codeview.toggled': function () {
         self.update();
       }
     };

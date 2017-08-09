@@ -1,11 +1,11 @@
-Build + Meteor status: [![Build Status](https://travis-ci.org/MeteorPackaging/summernote.svg?branch=meteor-integration)](https://github.com/MeteorPackaging/summernote/tree/meteor-integration/meteor)
+Build + Meteor status: [![Build Status](https://travis-ci.org/MeteorPackaging/materialnote.svg?branch=meteor-integration)](https://github.com/MeteorPackaging/materialnote/tree/meteor-integration/meteor)
 
-Packaging [summernote](http://summernote.org/) for [Meteor.js](http://meteor.com).
+Packaging [materialnote](http://materialnote.org/) for [Meteor.js](http://meteor.com).
 
 # Versions
 
-* [summernote:summernote](https://atmospherejs.com/summernote/summernote) - includes jQuery and Bootstrap as dependencies
-* [summernote:standalone](https://atmospherejs.com/summernote/standalone) - doesn't include any dependencies
+* [materialnote:materialnote](https://atmospherejs.com/materialnote/materialnote) - includes jQuery and Bootstrap as dependencies
+* [materialnote:standalone](https://atmospherejs.com/materialnote/standalone) - doesn't include any dependencies
 
 
 # Meteor

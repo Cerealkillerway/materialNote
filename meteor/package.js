@@ -1,16 +1,16 @@
 // package metadata file for Meteor.js
 'use strict';
 
-var packageName = 'summernote:summernote';  // http://atmospherejs.com/summernote:summernote
+var packageName = 'materialnote:materialnote';  // http://atmospherejs.com/materialnote:materialnote
 var where = 'client';  // where to install: 'client' or 'server'. For both, pass nothing.
 
 var packageJson = JSON.parse(Npm.require("fs").readFileSync('package.json'));
 
 Package.describe({
   name: packageName,
-  summary: 'summernote (official): jQuery+Bootstrap WYSIWYG editor with embedded images support',
+  summary: 'materialnote (official): jQuery+Bootstrap WYSIWYG editor with embedded images support',
   version: packageJson.version,
-  git: 'https://github.com/summernote/summernote.git'
+  git: 'https://github.com/materialnote/materialnote.git'
 });
 
 Package.onUse(function (api) {
@@ -19,16 +19,16 @@ Package.onUse(function (api) {
     'jquery',
     'twbs:bootstrap@3.3.1'
   ], where);
-  // no exports - summernote adds itself to jQuery
+  // no exports - materialnote adds itself to jQuery
   api.addFiles([
-    'dist/summernote.js',
-    'dist/summernote.css'
+    'dist/materialnote.js',
+    'dist/materialnote.css'
   ], where);
 
   api.addAssets([
-    'dist/font/summernote.eot',
-    'dist/font/summernote.ttf',
-    'dist/font/summernote.woff'
+    'dist/font/materialnote.eot',
+    'dist/font/materialnote.ttf',
+    'dist/font/materialnote.woff'
   ], where);
 });
 

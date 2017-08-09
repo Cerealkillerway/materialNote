@@ -1,7 +1,7 @@
 define([
-  'summernote/base/core/func',
-  'summernote/base/core/list',
-  'summernote/base/core/dom'
+  'materialnote/base/core/func',
+  'materialnote/base/core/list',
+  'materialnote/base/core/dom'
 ], function (func, list, dom) {
 
   /**
@@ -11,12 +11,12 @@ define([
    */
   var ImagePopover = function (context) {
     var self = this;
-    var ui = $.summernote.ui;
+    var ui = $.materialnote.ui;
 
     var options = context.options;
 
     this.events = {
-      'summernote.disable': function () {
+      'materialnote.disable': function () {
         self.hide();
       }
     };

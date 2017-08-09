@@ -80,7 +80,7 @@ module.exports = function (grunt) {
         baseUrl: 'src/js',        // base url
         startFile: 'intro.js',    // intro part
         endFile: 'outro.js',      // outro part
-        outFile: 'dist/summernote.js' // out file
+        outFile: 'dist/materialnote.js' // out file
       }
     },
 
@@ -101,7 +101,7 @@ module.exports = function (grunt) {
         }
       },
       dist: {
-        src: 'dist/summernote.js',
+        src: 'dist/materialnote.js',
         options: readOptionalJSON('.jshintrc')
       }
     },
@@ -115,11 +115,11 @@ module.exports = function (grunt) {
     // uglify: minify javascript
     uglify: {
       options: {
-        banner: '/*! Summernote v<%=pkg.version%> | (c) 2013- Alan Hong and other contributors | MIT license */\n'
+        banner: '/*! materialnote v<%=pkg.version%> | (c) 2013- Alan Hong and other contributors | MIT license */\n'
       },
       all: {
         files: [
-          { 'dist/summernote.min.js': ['dist/summernote.js'] },
+          { 'dist/materialnote.min.js': ['dist/materialnote.js'] },
           {
             expand: true,
             cwd: 'dist/lang',
@@ -144,7 +144,7 @@ module.exports = function (grunt) {
         options: { compile: true, compress: true },
         files: [
           {
-            'dist/summernote.css': ['src/less/summernote.scss']
+            'dist/materialnote.css': ['src/less/materialnote.scss']
           },
           {
             expand: true,
@@ -157,12 +157,12 @@ module.exports = function (grunt) {
       }
     },
 
-    // compress: summernote-{{version}}-dist.zip
+    // compress: materialnote-{{version}}-dist.zip
     compress: {
       main: {
         options: {
           archive: function () {
-            return 'dist/summernote-{{version}}-dist.zip'.replace(
+            return 'dist/materialnote-{{version}}-dist.zip'.replace(
               '{{version}}',
               grunt.config('pkg.version')
             );
@@ -210,7 +210,7 @@ module.exports = function (grunt) {
             tasks: ['sass']
         },
         css: {
-            files: ['dist/summernote.css']
+            files: ['dist/materialnote.css']
         }
     },
 
@@ -246,7 +246,7 @@ module.exports = function (grunt) {
       saucelabs: {
         reporters: ['saucelabs'],
         sauceLabs: {
-          testName: '[Travis] unit tests for summernote',
+          testName: '[Travis] unit tests for materialnote',
           startConnect: false,
           tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
           build: process.env.TRAVIS_BUILD_NUMBER,
@@ -275,7 +275,7 @@ module.exports = function (grunt) {
         files: [
           { src: 'lang/*', dest: 'dist/' },
           { src: 'plugin/**/*', dest: 'dist/' }/*,
-          { src: 'src/icons/dist/summernote.css', dest: 'src/icons/dist/summernote.scss' }*/
+          { src: 'src/icons/dist/materialnote.css', dest: 'src/icons/dist/materialnote.scss' }*/
         ]
       }
     },
@@ -285,8 +285,8 @@ module.exports = function (grunt) {
         dest: 'src/icons/dist/font',
         destCss: 'src/icons/dist/',
         options: {
-          font: 'summernote',
-          template: 'src/icons/templates/summernote.css'
+          font: 'materialnote',
+          template: 'src/icons/templates/materialnote.css'
         }
       }
     },
@@ -297,7 +297,7 @@ module.exports = function (grunt) {
             style: 'expanded'
           },
           files: {                         // Dictionary of files
-            'dist/summernote.css': 'src/less/summernote.scss'       // 'destination': 'source'
+            'dist/materialnote.css': 'src/less/materialnote.scss'       // 'destination': 'source'
           }
         }
       }

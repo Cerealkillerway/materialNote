@@ -1,5 +1,5 @@
 define([
-  'summernote/base/core/agent'
+  'materialnote/base/core/agent'
 ], function (agent) {
   return function (chai) {
     chai.dom = chai.dom || {};

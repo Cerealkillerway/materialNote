@@ -1,25 +1,25 @@
 define([
-  'summernote/base/core/agent',
-  'summernote/base/core/func',
-  'summernote/base/core/list',
-  'summernote/base/core/dom'
+  'materialnote/base/core/agent',
+  'materialnote/base/core/func',
+  'materialnote/base/core/list',
+  'materialnote/base/core/dom'
 ], function (agent, func, list, dom) {
   var AirPopover = function (context) {
     var self = this;
-    var ui = $.summernote.ui;
+    var ui = $.materialnote.ui;
 
     var options = context.options;
 
     var AIR_MODE_POPOVER_X_OFFSET = 20;
 
     this.events = {
-      'summernote.keyup summernote.mouseup summernote.scroll': function () {
+      'materialnote.keyup materialnote.mouseup materialnote.scroll': function () {
         self.update();
       },
-      'summernote.disable summernote.change summernote.dialog.shown': function () {
+      'materialnote.disable materialnote.change materialnote.dialog.shown': function () {
         self.hide();
       },
-      'summernote.focusout': function (we, e) {
+      'materialnote.focusout': function (we, e) {
         // [workaround] Firefox doesn't support relatedTarget on focusout
         //  - Ignore hide action on focus out in FF.
         if (agent.isFF) {

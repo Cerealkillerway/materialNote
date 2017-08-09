@@ -1,6 +1,6 @@
 define(function () {
   var Toolbar = function (context) {
-    var ui = $.summernote.ui;
+    var ui = $.materialnote.ui;
     var $toolbar = context.layoutInfo.toolbar;
 
     this.initialize = function () {

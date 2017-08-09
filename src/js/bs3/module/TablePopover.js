@@ -1,23 +1,23 @@
 define([
-  'summernote/base/core/agent',
-  'summernote/base/core/func',
-  'summernote/base/core/list',
-  'summernote/base/core/dom'
+  'materialnote/base/core/agent',
+  'materialnote/base/core/func',
+  'materialnote/base/core/list',
+  'materialnote/base/core/dom'
 ], function (agent, func, list, dom) {
   var TablePopover = function (context) {
     var self = this;
-    var ui = $.summernote.ui;
+    var ui = $.materialnote.ui;
 
     var options = context.options;
 
     this.events = {
-      'summernote.mousedown': function (we, e) {
+      'materialnote.mousedown': function (we, e) {
         self.update(e.target);
       },
-      'summernote.keyup summernote.scroll summernote.change': function () {
+      'materialnote.keyup materialnote.scroll materialnote.change': function () {
         self.update();
       },
-      'summernote.disable': function () {
+      'materialnote.disable': function () {
         self.hide();
       }
     };

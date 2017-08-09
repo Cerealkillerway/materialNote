@@ -1,19 +1,19 @@
 define([
-  'summernote/base/core/func',
-  'summernote/base/core/list',
-  'summernote/base/core/dom'
+  'materialnote/base/core/func',
+  'materialnote/base/core/list',
+  'materialnote/base/core/dom'
 ], function (func, list, dom) {
   var LinkPopover = function (context) {
     var self = this;
-    var ui = $.summernote.ui;
+    var ui = $.materialnote.ui;
 
     var options = context.options;
 
     this.events = {
-      'summernote.keyup summernote.mouseup summernote.change summernote.scroll': function () {
+      'materialnote.keyup materialnote.mouseup materialnote.change materialnote.scroll': function () {
         self.update();
       },
-      'summernote.disable summernote.dialog.shown': function () {
+      'materialnote.disable materialnote.dialog.shown': function () {
         self.hide();
       }
     };

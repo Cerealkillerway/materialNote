@@ -1,12 +1,12 @@
 /**
  * Fullscreen.spec.js
- * (c) 2015~ Summernote Team
- * summernote may be freely distributed under the MIT license./
+ * (c) 2015~ materialnote Team
+ * materialnote may be freely distributed under the MIT license./
  */
 define([
   'chai',
-  'summernote/base/Context',
-  'summernote/base/module/Fullscreen'
+  'materialnote/base/Context',
+  'materialnote/base/module/Fullscreen'
 ], function (chai, Context, Fullscreen) {
   'use strict';
 
@@ -16,9 +16,9 @@ define([
     var fullscreen, context;
 
     beforeEach(function () {
-      var options = $.extend({}, $.summernote.options);
+      var options = $.extend({}, $.materialnote.options);
       options.langInfo = $.extend(true, {
-      }, $.summernote.lang['en-US'], $.summernote.lang[options.lang]);
+      }, $.materialnote.lang['en-US'], $.materialnote.lang[options.lang]);
       context = new Context($('<div><p>hello</p></div>'), options);
       fullscreen = new Fullscreen(context);
     });

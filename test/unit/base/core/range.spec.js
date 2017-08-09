@@ -1,14 +1,14 @@
 /**
  * range.spec.js
  * (c) 2013~ Alan Hong
- * summernote may be freely distributed under the MIT license./
+ * materialnote may be freely distributed under the MIT license./
  */
 define([
   'chai',
   'chaidom',
   'jquery',
-  'summernote/base/core/dom',
-  'summernote/base/core/range'
+  'materialnote/base/core/dom',
+  'materialnote/base/core/range'
 ], function (chai, chaidom, $, dom, range) {
   'use strict';
 
