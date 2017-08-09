@@ -15,9 +15,11 @@ define([
             var $container = options.dialogsInBody ? $(document.body) : $editor;
 
             var body =
-            '<div class="form-group row-fluid">' +
-                '<label>' + lang.video.url + ' <small class="text-muted">' + lang.video.providers + '</small></label>' +
-                '<input class="note-video-url form-control span12" type="text" />' +
+            '<div clas="row">' +
+                '<div class="input-field col s12">' +
+                    '<input class="note-video-url form-control" type="text" />' +
+                    '<label>' + lang.video.url + lang.video.providers + '</label>' +
+                '</div>' +
             '</div>';
 
             var footer = [
@@ -167,9 +169,12 @@ define([
                 return false;
             }
 
-            $video.addClass('note-video-clip');
+            $video[0].setAttribute('frameborder', 0);
+            $video[0].setAttribute('allowfullscreen', '');
 
-            return $video[0];
+            var $node = $('<div>').addClass('video-container').append($video)[0];
+
+            return $node;
         };
 
         this.show = function () {
