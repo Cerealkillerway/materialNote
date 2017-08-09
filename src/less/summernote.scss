@@ -39,6 +39,7 @@
         border-left: solid 1px $toolbar-overlay-color;
         border-right: solid 1px $toolbar-overlay-color;
         border-bottom: solid 1px $toolbar-overlay-color;
+        color: $dropdown-overlay-color;
 
         &::-webkit-scrollbar {
             width: 17px;
@@ -408,6 +409,7 @@
 
             .note-dimension-picker {
                 font-size: 18px;
+                margin-left: 14px;
 
                 .note-dimension-picker-mousecatcher {
                     position: absolute !important;
@@ -419,10 +421,10 @@
                 .note-dimension-picker-unhighlighted {
                     position: relative !important;
                     z-index: 1;
-                    width: 26px;
-                    height: 26px;
+                    width: 260px;
+                    height: 130px;
                     background-size: 26px 26px;
-                    background-image: repeating-linear-gradient(0deg, #3b3b3b, #3b3b3b 4px, transparent 4px, transparent 26px), repeating-linear-gradient(-90deg, transparent, transparent 4px, #fff 4px, #fff 26px);
+                    background-image: repeating-linear-gradient(0deg, $toolbar-color, $toolbar-color 4px, transparent 4px, transparent 26px), repeating-linear-gradient(-90deg, transparent, transparent 4px, #fff 4px, #fff 26px);
                 }
                 .note-dimension-picker-highlighted {
                     position: absolute !important;
@@ -430,8 +432,12 @@
                     width: 26px;
                     height: 26px;
                     background-size: 26px 26px;
-                    background-image: repeating-linear-gradient(0deg, #3b3b3b, #3b3b3b 4px, transparent 4px, transparent 26px), repeating-linear-gradient(-90deg, transparent, transparent 4px, #9c27b0 4px, #9c27b0 26px);
+                    background-image: repeating-linear-gradient(0deg, $toolbar-color, $toolbar-color 4px, transparent 4px, transparent 26px), repeating-linear-gradient(-90deg, transparent, transparent 4px, $action-color 4px, $action-color 26px);
                 }
+            }
+
+            .note-dimension-display {
+                margin-left: 14px;
             }
         }
     }

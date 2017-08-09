@@ -40,6 +40,7 @@
   border-left: solid 1px #eeeeee;
   border-right: solid 1px #eeeeee;
   border-bottom: solid 1px #eeeeee;
+  color: #eeeeee;
   /* dropdown-menu right position */
   /* http://forrst.com/posts/Bootstrap_right_positioned_dropdown-2KB */
   /* dropdown-menu for selectbox */
@@ -357,6 +358,7 @@
 }
 .note-popover .popover-content .btn-group .note-table .note-dimension-picker, .panel-heading.note-toolbar .btn-group .note-table .note-dimension-picker {
   font-size: 18px;
+  margin-left: 14px;
 }
 .note-popover .popover-content .btn-group .note-table .note-dimension-picker .note-dimension-picker-mousecatcher, .panel-heading.note-toolbar .btn-group .note-table .note-dimension-picker .note-dimension-picker-mousecatcher {
   position: absolute !important;
@@ -368,10 +370,10 @@
 .note-popover .popover-content .btn-group .note-table .note-dimension-picker .note-dimension-picker-unhighlighted, .panel-heading.note-toolbar .btn-group .note-table .note-dimension-picker .note-dimension-picker-unhighlighted {
   position: relative !important;
   z-index: 1;
-  width: 26px;
-  height: 26px;
+  width: 260px;
+  height: 130px;
   background-size: 26px 26px;
-  background-image: repeating-linear-gradient(0deg, #3b3b3b, #3b3b3b 4px, transparent 4px, transparent 26px), repeating-linear-gradient(-90deg, transparent, transparent 4px, #fff 4px, #fff 26px);
+  background-image: repeating-linear-gradient(0deg, #212121, #212121 4px, transparent 4px, transparent 26px), repeating-linear-gradient(-90deg, transparent, transparent 4px, #fff 4px, #fff 26px);
 }
 .note-popover .popover-content .btn-group .note-table .note-dimension-picker .note-dimension-picker-highlighted, .panel-heading.note-toolbar .btn-group .note-table .note-dimension-picker .note-dimension-picker-highlighted {
   position: absolute !important;
@@ -379,7 +381,10 @@
   width: 26px;
   height: 26px;
   background-size: 26px 26px;
-  background-image: repeating-linear-gradient(0deg, #3b3b3b, #3b3b3b 4px, transparent 4px, transparent 26px), repeating-linear-gradient(-90deg, transparent, transparent 4px, #9c27b0 4px, #9c27b0 26px);
+  background-image: repeating-linear-gradient(0deg, #212121, #212121 4px, transparent 4px, transparent 26px), repeating-linear-gradient(-90deg, transparent, transparent 4px, #3d5afe 4px, #3d5afe 26px);
+}
+.note-popover .popover-content .btn-group .note-table .note-dimension-display, .panel-heading.note-toolbar .btn-group .note-table .note-dimension-display {
+  margin-left: 14px;
 }
 .note-popover .popover-content .btn, .panel-heading.note-toolbar .btn {
   border-radius: 0 !important;

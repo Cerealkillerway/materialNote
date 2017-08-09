@@ -435,12 +435,20 @@ define([
                         id: 'note-table',
                         className: 'note-table',
                         items: [
-                            '<div class="note-dimension-picker">',
-                            '  <div class="note-dimension-picker-mousecatcher" data-event="insertTable" data-value="1x1"/>',
-                            '  <div class="note-dimension-picker-highlighted"/>',
-                            '  <div class="note-dimension-picker-unhighlighted"/>',
+                            '<div class="row">',
+                                '<div class="col s12">',
+                                    '<div class="note-dimension-picker">',
+                                        '<div class="note-dimension-picker-mousecatcher" data-event="insertTable" data-value="1x1"/>',
+                                        '<div class="note-dimension-picker-highlighted"/>',
+                                        '<div class="note-dimension-picker-unhighlighted"/>',
+                                    '</div>',
+                                '</div>',
                             '</div>',
-                            '<div class="note-dimension-display">1 x 1</div>'
+                            '<div class="row">',
+                                '<div class="col s12">',
+                                    '<div class="note-dimension-display">1 x 1</div>',
+                                '</div>',
+                            '</div>'
                         ].join('')
                     })
                 ], {
@@ -767,9 +775,8 @@ define([
         };
 
         this.tableMoveHandler = function (event) {
-            var PX_PER_EM = 18;
             var $picker = $(event.target.parentNode); // target is mousecatcher
-            var $dimensionDisplay = $picker.next();
+            var $dimensionDisplay = $picker.closest('.row').next('.row').find('.note-dimension-display');
             var $catcher = $picker.find('.note-dimension-picker-mousecatcher');
             var $highlighted = $picker.find('.note-dimension-picker-highlighted');
             var $unhighlighted = $picker.find('.note-dimension-picker-unhighlighted');
@@ -790,16 +797,16 @@ define([
             }
 
             var dim = {
-                c: Math.ceil(posOffset.x / PX_PER_EM) || 1,
-                r: Math.ceil(posOffset.y / PX_PER_EM) || 1
+                c: Math.ceil(posOffset.x / 26) || 1,
+                r: Math.ceil(posOffset.y / 26) || 1
             };
 
             $highlighted.css({ width: dim.c * 26 + 'px', height: dim.r * 26 + 'px' });
             $catcher.data('value', dim.c + 'x' + dim.r);
 
-            if (3 < dim.c && dim.c < options.insertTableMaxSize.col) {
+            /*if (9 < dim.c && dim.c < options.insertTableMaxSize.col) {
                 $unhighlighted.css({ width: (dim.c + 1) * 26 + 'px'});
-            }
+            }*/
 
             if (3 < dim.r && dim.r < options.insertTableMaxSize.row) {
                 $unhighlighted.css({ height: (dim.r + 1) * 26 + 'px'});
