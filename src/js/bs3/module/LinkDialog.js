@@ -16,7 +16,7 @@ define([
 
             var body =
             '<div class="row">' +
-                '<div clas="input-field col s12">' +
+                '<div class="input-field col s12">' +
                     '<input id="note-link-text" class="note-link-text" type="text">' +
                     '<label for="note-link-text">' + lang.link.textToDisplay + '</label>' +
                 '</div>' +

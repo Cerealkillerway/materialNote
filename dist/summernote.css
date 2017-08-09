@@ -11,7 +11,7 @@
   color: #eeeeee;
 }
 
-.note-editor .modal .modal-footer .note-image-btn, .note-editor .modal .modal-footer .note-link-btn {
+.note-editor .modal .modal-footer .note-image-btn, .note-editor .modal .modal-footer .note-link-btn, .note-editor .modal .modal-footer .note-video-btn {
   background-color: #2e7d32;
   color: #eeeeee;
 }

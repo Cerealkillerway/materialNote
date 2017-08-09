@@ -135,13 +135,6 @@ function (key) {
                 context.invoke('editor.restoreRange');
             });
         };
-
-        /**
-        * show image dialog
-        *
-        * @param {jQuery} $dialog
-        * @return {Promise}
-        */
     };
 
     return ImageDialog;
