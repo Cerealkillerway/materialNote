@@ -115,7 +115,7 @@ module.exports = function (grunt) {
     // uglify: minify javascript
     uglify: {
       options: {
-        banner: '/*! materialnote v<%=pkg.version%> | (c) 2013- Alan Hong and other contributors | MIT license */\n'
+        banner: '/*! materialnote v<%=pkg.version%> | (c) 2017 - by CK, forked from Alan Hong\' summernote project | MIT license */\n'
       },
       all: {
         files: [

@@ -1015,6 +1015,8 @@ define([
       blank: blankHTML,
       /** @property {String} emptyPara */
       emptyPara: '<p>' + blankHTML + '</p>',
+      emptyTableCell: '(table)',
+      emptyTableHeaderCell: '(header)',
       makePredByNodeName: makePredByNodeName,
       isEditable: isEditable,
       isControlSizing: isControlSizing,
