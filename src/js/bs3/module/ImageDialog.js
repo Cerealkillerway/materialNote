@@ -64,6 +64,7 @@ function (key) {
                         $imageUrl = self.$dialog.find('.note-image-url'),
                         $imageBtn = self.$dialog.find('.note-image-btn');
 
+                    ui.toggleBtn($imageBtn, false);
                     context.triggerEvent('dialog.shown');
 
                     // Cloning imageInput to clear element.

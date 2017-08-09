@@ -38,6 +38,7 @@ define([
                     var $videoUrl = self.$dialog.find('.note-video-url'),
                     $videoBtn = self.$dialog.find('.note-video-btn');
 
+                    ui.toggleBtn($videoBtn, false);
                     context.triggerEvent('dialog.shown');
 
                     $videoUrl.val(text).on('input', function () {
