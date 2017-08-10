@@ -435,6 +435,28 @@ define([
                         id: 'note-table',
                         className: 'note-table',
                         items: [
+                            '<div class="row beforePicker">',
+                                '<div class="col s12 m6">',
+                                    '<input type="checkbox" id="note-table-bordered" class="note-table-option"/>',
+                                    '<label class="note-table-option" for="note-table-bordered">' + lang.table.bordered + '</label>',
+                                '</div>',
+                                '<div class="col s12 m6">',
+                                    '<input type="checkbox" id="note-table-striped" class="note-table-option"/>',
+                                    '<label class="note-table-option" for="note-table-striped">' + lang.table.striped + '</label>',
+                                '</div>',
+                                '<div class="col s12 m6">',
+                                    '<input type="checkbox" id="note-table-highlight" class="note-table-option"/>',
+                                    '<label class="note-table-option" for="note-table-highlight">' + lang.table.highlight + '</label>',
+                                '</div>',
+                                '<div class="col s12 m6">',
+                                    '<input type="checkbox" id="note-table-responsive" class="note-table-option"/>',
+                                    '<label class="note-table-option" for="note-table-responsive">' + lang.table.responsive + '</label>',
+                                '</div>',
+                                '<div class="col s12 m6">',
+                                    '<input type="checkbox" id="note-table-centered" class="note-table-option"/>',
+                                    '<label class="note-table-option" for="note-table-centered">' + lang.table.centered + '</label>',
+                                '</div>',
+                            '</div>',
                             '<div class="row">',
                                 '<div class="col s12">',
                                     '<div class="note-dimension-picker">',
@@ -449,7 +471,15 @@ define([
                                     '<div class="note-dimension-display">1 x 1</div>',
                                 '</div>',
                             '</div>'
-                        ].join('')
+                        ].join(''),
+                        click: function (event) {
+                            var $button = $(event.target);
+
+                            // prevent closing dropdown when clicking table option checkboxes
+                            if ($button.hasClass('note-table-option')) {
+                                event.stopPropagation();
+                            }
+                        }
                     })
                 ], {
                     callback: function ($node) {
@@ -803,10 +833,6 @@ define([
 
             $highlighted.css({ width: dim.c * 26 + 'px', height: dim.r * 26 + 'px' });
             $catcher.data('value', dim.c + 'x' + dim.r);
-
-            /*if (9 < dim.c && dim.c < options.insertTableMaxSize.col) {
-                $unhighlighted.css({ width: (dim.c + 1) * 26 + 'px'});
-            }*/
 
             if (3 < dim.r && dim.r < options.insertTableMaxSize.row) {
                 $unhighlighted.css({ height: (dim.r + 1) * 26 + 'px'});

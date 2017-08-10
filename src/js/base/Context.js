@@ -206,6 +206,20 @@ define([
             return function (event) {
                 event.preventDefault();
                 var $target = $(event.target);
+
+                if (namespace === 'editor.insertTable') {
+                    let optionsContainer = $target.closest('.row').prev();
+
+                    value = {
+                        dim: $target.closest('[data-value]').data('value'),
+                        bordered: optionsContainer.find('#note-table-bordered').prop('checked'),
+                        striped: optionsContainer.find('#note-table-striped').prop('checked'),
+                        highlight: optionsContainer.find('#note-table-highlight').prop('checked'),
+                        responsive: optionsContainer.find('#note-table-responsive').prop('checked'),
+                        centered: optionsContainer.find('#note-table-centered').prop('checked')
+                    };
+                }
+
                 self.invoke(namespace, value || $target.closest('[data-value]').data('value'), $target);
             };
         };

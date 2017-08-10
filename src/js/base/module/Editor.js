@@ -594,7 +594,7 @@ define([
       }
 
       var anchors = [];
-      
+
       if (isTextChanged) {
         rng = rng.deleteContents();
         var anchor = rng.insertNode($('<A>' + linkText + '</A>')[0]);
@@ -677,11 +677,11 @@ define([
      *
      * @param {String} dimension of table (ex : "5x5")
      */
-    this.insertTable = this.wrapCommand(function (dim) {
-      var dimension = dim.split('x');
+    this.insertTable = this.wrapCommand(function (tableOptions) {
+      var dimension = tableOptions.dim.split('x');
 
       var rng = this.createRange().deleteContents();
-      rng.insertNode(table.createTable(dimension[0], dimension[1], options));
+      rng.insertNode(table.createTable(dimension[0], dimension[1], tableOptions));
     });
 
      /**

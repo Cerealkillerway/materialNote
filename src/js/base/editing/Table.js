@@ -542,7 +542,7 @@ define([
                         * @param {Number} colCount
                         * @return {Node}
                         */
-                        this.createTable = function (colCount, rowCount, options) {
+                        this.createTable = function (colCount, rowCount, tableOptions) {
                             var tds = [], tdHTML;
 
                             for (var idxCol = 0; idxCol < colCount; idxCol++) {
@@ -564,8 +564,28 @@ define([
 
                             trHTML = trs.join('');
                             var $table = $('<table><thead><tr>' + thHTML + '</tr></thead><tbody>' + trHTML + '</tbody></table>');
-                            if (options && options.tableClassName) {
-                                $table.addClass(options.tableClassName);
+
+                            // handle table options
+                            if (tableOptions) {
+                                if (tableOptions.bordered) {
+                                    $table.addClass('bordered');
+                                }
+
+                                if (tableOptions.striped) {
+                                    $table.addClass('striped');
+                                }
+
+                                if (tableOptions.highlight) {
+                                    $table.addClass('highlight');
+                                }
+
+                                if (tableOptions.responsive) {
+                                    $table.addClass('responsive-table');
+                                }
+
+                                if (tableOptions.centered) {
+                                    $table.addClass('centered');
+                                }
                             }
 
                             return $table[0];

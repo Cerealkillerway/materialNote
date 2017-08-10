@@ -407,6 +407,11 @@
             padding: 5px;
             overflow: visible;
 
+            .beforePicker {
+                margin-left: 4px;
+                margin-right: 4px;
+            }
+
             .note-dimension-picker {
                 font-size: 18px;
                 margin-left: 14px;
