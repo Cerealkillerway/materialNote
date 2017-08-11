@@ -12,13 +12,15 @@ define([
 
         this.createShortCutList = function () {
             var keyMap = options.keyMap[agent.isMac ? 'mac' : 'pc'];
-            return Object.keys(keyMap).map(function (key) {
+
+            return Object.keys(keyMap).map(function(key) {
                 var command = keyMap[key];
-                var $row = $('<div><div class="help-list-item"/></div>');
-                $row.append($('<label><kbd>' + key + '</kdb></label>').css({
-                    'width': 180,
-                    'margin-right': 10
-                })).append($('<span/>').html(context.memo('help.' + command) || command));
+                var $row = $('<div></div>');
+
+                $row.append($('<div class="col s3"><label><kbd>' + key + '</kdb></label></div>'))
+                    .append($('<div class="col s9"/>')
+                    .html(context.memo('help.' + command) || command));
+
                 return $row.html();
             }).join('');
         };
@@ -28,8 +30,8 @@ define([
 
             var body = [
                 '<p class="text-center">',
-                '<a href="http://web-forge.info/materialnote" target="_blank">materialnote @VERSION</a> · ',
-                '<a href="https://github.com/Cerealkillerway/materialNote" target="_blank">' + lang.help.project + '</a> · ',
+                '<a href="http://web-forge.info/materialnote" target="_blank">materialnote @VERSION</a> - ',
+                '<a href="https://github.com/Cerealkillerway/materialNote" target="_blank">' + lang.help.project + '</a> - ',
                 '<a href="https://github.com/Cerealkillerway/materialNote/issues" target="_blank">' + lang.help.issues + '</a>',
                 '</p>'
             ].join('');
@@ -37,7 +39,7 @@ define([
             this.$dialog = ui.dialog({
                 title: lang.options.help,
                 fade: options.dialogsFade,
-                body: this.createShortCutList(),
+                body: '<div class="row help-content">' + this.createShortCutList() + '</div>',
                 footer: body,
                 id: 'note-help-modal',
                 callback: function ($node) {

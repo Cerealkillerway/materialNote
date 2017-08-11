@@ -42,6 +42,21 @@
     }
 }
 
+%link {
+    &:link {
+        color: $link-color;
+    }
+    &:hover {
+        color: $link-hover-color;
+    }
+    &:visited {
+        color: $link-visited-color;
+    }
+    &:active {
+        color: $link-active-color;
+    }
+}
+
 
 /* Layout
 ------------------------------------------*/
@@ -55,6 +70,20 @@
     // modals
     .modal-content {
         @extend %styled-scrollbars;
+
+        .help-content {
+            kbd {
+                background-color: $action-color;
+                color: $action-text-color;
+                padding: 4px 5px 2px 5px;
+            }
+        }
+    }
+
+    .modal-footer {
+        a {
+            @extend %link;
+        }
     }
 
     // dropdowns

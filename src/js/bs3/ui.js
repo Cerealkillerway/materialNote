@@ -112,8 +112,8 @@ define([
                 '      <h4 class="modal-title">' + options.title + '</h4>' +
                 '</div></div>' : ''
             ),
-            '    <div class="row"><div class="col s12">' + options.body + '</div></div>',
-            '  </div>',
+            options.body,
+            '</div>',
             (options.footer ?
                 '<div class="modal-footer">' +
                 options.footer +

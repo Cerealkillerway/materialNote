@@ -42,6 +42,19 @@
   background-color: #535353;
 }
 
+.note-editor .modal-footer a:link {
+  color: #ffc107;
+}
+.note-editor .modal-footer a:hover {
+  color: #ffab00;
+}
+.note-editor .modal-footer a:visited {
+  color: #ff6d00;
+}
+.note-editor .modal-footer a:active {
+  color: #ffab00;
+}
+
 /* Layout
 ------------------------------------------*/
 .note-editor {
@@ -49,6 +62,11 @@
   /* dropzone */
   /* Modals
   ------------------------------------------*/
+}
+.note-editor .modal-content .help-content kbd {
+  background-color: #3d5afe;
+  color: #eeeeee;
+  padding: 4px 5px 2px 5px;
 }
 .note-editor .dropdown-content {
   min-width: 10px;

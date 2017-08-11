@@ -30,6 +30,12 @@ $action-color2: #ffc107 !default;
 $disabled-color: #777777 !default;
 $disabled-text-color: #bbbbbb !default;
 
+// links
+$link-color: $action-color2 !default;
+$link-visited-color: #ff6d00 !default;
+$link-hover-color: #ffab00 !default;
+$link-active-color: $link-hover-color !default;
+
 // code view
 $codable-color: $toolbar-color !default;
 $codable-overlay-color: $action-color2 !default;
