@@ -31,14 +31,16 @@ require(['jquery', 'materialnote'], function ($) {
 
     var promise = $.Deferred();
 
+    require(['materialize']);
+
     // editor type setting
     switch ($('script[data-editor-type]').data('editor-type')) {
         case 'lite':
         promise = requireByPromise(['materialnote/lite/settings']);
         break;
-        
+
         case 'materialize':
-        promise = requireByPromise(['materialize', 'materialnote/bs3/settings']).then(function () {
+        promise = requireByPromise(['materialnote/bs3/settings']).then(function () {
             return requireByPromise(['lang']);
         });
         break;
@@ -61,5 +63,8 @@ require(['jquery', 'materialnote'], function ($) {
                 ['misc', ['fullscreen', 'codeview', 'undo', 'redo', 'help']]
             ]
         });
+
+        // hack to make waves work on this demo
+        Waves.displayEffect();
     });
 });
