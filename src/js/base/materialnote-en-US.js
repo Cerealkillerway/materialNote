@@ -151,7 +151,9 @@ define([
                 'formatH5': 'Change current block\'s format as H5',
                 'formatH6': 'Change current block\'s format as H6',
                 'insertHorizontalRule': 'Insert horizontal rule',
-                'linkDialog.show': 'Show Link Dialog'
+                'linkDialog.show': 'Show Link Dialog',
+                project: 'Project',
+                issues: 'Issues'
             },
             history: {
                 undo: 'Undo',
