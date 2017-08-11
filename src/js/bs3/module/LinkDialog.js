@@ -46,7 +46,7 @@ define([
                 title: lang.link.insert,
                 body: body,
                 footer: footer,
-                id: 'note-image-modal'
+                id: 'note-link-modal'
             }).render().appendTo($container);
 
             this.$dialog.modal({
