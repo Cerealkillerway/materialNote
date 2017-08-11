@@ -17,8 +17,8 @@ define([
                 var command = keyMap[key];
                 var $row = $('<div></div>');
 
-                $row.append($('<div class="col s3"><label><kbd>' + key + '</kdb></label></div>'))
-                    .append($('<div class="col s9"/>')
+                $row.append($('<div class="col s12 m4 s3"><label><kbd>' + key + '</kdb></label></div>'))
+                    .append($('<div class="col s12 m8 s9"/>')
                     .html(context.memo('help.' + command) || command));
 
                 return $row.html();
