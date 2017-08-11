@@ -23,7 +23,8 @@
                 dragImageHere: 'Trascina qui un\'immagine',
                 selectFromFiles: 'Scegli dai Documenti',
                 url: 'URL dell\'immagine',
-                remove: 'Rimuovi immagine'
+                remove: 'Rimuovi immagine',
+                responsive: 'Responsiva'
             },
             video: {
                 video: 'Video',

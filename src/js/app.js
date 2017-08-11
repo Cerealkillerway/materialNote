@@ -36,6 +36,7 @@ require(['jquery', 'materialnote'], function ($) {
         case 'lite':
         promise = requireByPromise(['materialnote/lite/settings']);
         break;
+        
         case 'materialize':
         promise = requireByPromise(['materialize', 'materialnote/bs3/settings']).then(function () {
             return requireByPromise(['lang']);

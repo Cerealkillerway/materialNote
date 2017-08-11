@@ -43,6 +43,13 @@ function (key) {
                     '<input class="note-image-url" id="image-url" type="text">' +
                     '<label for="image-url">' + lang.image.url + '</label>' +
                 '</div>' +
+            '</div>' +
+
+            '<div class="row">' +
+                '<div class="col s12 m6">' +
+                    '<input type="checkbox" id="note-image-responsive" class="note-image-option" checked="checked" />' +
+                    '<label class="note-table-option" for="note-image-responsive">' + lang.image.responsive + '</label>' +
+                '</div>' +
             '</div>';
 
             var footer = [
@@ -120,17 +127,21 @@ function (key) {
         this.show = function () {
             context.invoke('editor.saveRange');
             ui.showDialog(self.$dialog);
-            data = $.Deferred()
+            data = $.Deferred();
 
             data.then(function (images) {
+                let imageOptions = {
+                    responsive: self.$dialog.find('#note-image-responsive').prop('checked')
+                };
+
                 // [workaround] hide dialog before restore range for IE range focus
                 ui.hideDialog(self.$dialog);
                 context.invoke('editor.restoreRange');
 
                 if (typeof images === 'string') { // image url
-                    context.invoke('editor.insertImage', images);
+                    context.invoke('editor.insertImage', {images: images, imageOptions: imageOptions});
                 } else { // array of files
-                    context.invoke('editor.insertImagesOrCallback', images);
+                    context.invoke('editor.insertImagesOrCallback', {images: images, imageOptions: imageOptions});
                 }
             }).fail(function () {
                 context.invoke('editor.restoreRange');
