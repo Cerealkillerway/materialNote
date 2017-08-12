@@ -225,7 +225,9 @@ define([
                                 // in this tabs initialization the indicator width will not be set since the plugin does not work
                                 // with hidden elements (display: none);
                                 // as a workaround the indicator width is forced to 50% in the css
-                                $tabs.tabs();
+                                $tabs.tabs({
+                                    //swipeable: true
+                                });
                             }
                         }),
                         ui.dropdown({
