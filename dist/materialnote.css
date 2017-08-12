@@ -336,6 +336,11 @@
 .note-popover.popover {
   max-width: none;
   display: none;
+  position: absolute;
+  margin-top: 3px;
+}
+.note-popover.popover .popover-content {
+  background-color: #212121;
 }
 .note-popover.popover .popover-content a {
   display: inline-block;
@@ -348,7 +353,12 @@
   /* for FF */
 }
 .note-popover.popover .arrow {
-  left: 20px !important;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 11px 11px 11px;
+  border-color: transparent transparent #212121 transparent;
+  margin: auto;
 }
 
 /* Popover and Toolbar (Button container)

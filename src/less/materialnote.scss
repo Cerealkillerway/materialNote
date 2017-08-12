@@ -407,8 +407,12 @@
 .note-popover.popover {
     max-width: none;
     display: none;
+    position: absolute;
+    margin-top: 3px;
 
     .popover-content {
+        background-color: $toolbar-color;
+
         a {
             display: inline-block;
             max-width: 200px;
@@ -419,7 +423,12 @@
         }
     }
     .arrow {
-        left: 20px !important;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 11px 11px 11px;
+        border-color: transparent transparent $toolbar-color transparent;
+        margin: auto;
     }
 }
 
