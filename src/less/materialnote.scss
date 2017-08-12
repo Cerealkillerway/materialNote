@@ -567,13 +567,16 @@
     .note-control-selection {
         position: absolute;
         display: none;
-        border: 1px solid black;
-        &>div { position: absolute; }
+        border: 3px solid $toolbar-color;
+
+        & > div {
+            position: absolute;
+        }
 
         .note-control-selection-bg {
             width: 100%;
             height: 100%;
-            background-color: black;
+            background-color: $toolbar-color;
             @include opacity(0.3);
         }
 
@@ -589,34 +592,52 @@
 
         .note-control-sizing {
             @extend .note-control-handle;
-            background-color: white;
         }
 
         .note-control-nw {
             top: -5px;
             left: -5px;
-            border-right: none;
-            border-bottom: none;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: $selection-corner-size $selection-corner-size 0 0;
+            border-color: $toolbar-color transparent transparent transparent
         }
 
         .note-control-ne {
             top: -5px;
             right: -5px;
-            border-bottom: none;
-            border-left: none;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 $selection-corner-size $selection-corner-size 0;
+            border-color: transparent $toolbar-color transparent transparent;
         }
 
         .note-control-sw {
             bottom: -5px;
             left: -5px;
-            border-top: none;
-            border-right: none;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: $selection-corner-size 0 0 $selection-corner-size;
+            border-color: transparent transparent transparent $toolbar-color;
+
         }
 
         .note-control-se {
             right: -5px;
             bottom: -5px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 $selection-corner-size $selection-corner-size;
+            border-color: transparent transparent $toolbar-color transparent;
             cursor: se-resize;
+
+            &:hover {
+                border-color: transparent transparent $action-color2 transparent;
+            }
         }
 
         .note-control-se.note-control-holder {
@@ -630,8 +651,8 @@
             bottom: 0;
             padding: 5px;
             margin: 5px;
-            color: white;
-            background-color: black;
+            color: $toolbar-overlay-color;
+            background-color: $toolbar-color;
             font-size: 12px;
             @include rounded(5px);
             @include opacity(0.7);
