@@ -26,19 +26,19 @@
   color: #bbbbbb !important;
 }
 
-.note-editor .modal-content::-webkit-scrollbar, .note-editor .dropdown-content::-webkit-scrollbar {
+.note-editor .modal-content::-webkit-scrollbar, .note-editor .dropdown-content::-webkit-scrollbar, .note-editor .note-editing-area .note-editable::-webkit-scrollbar {
   width: 17px;
 }
-.note-editor .modal-content::-webkit-scrollbar-button, .note-editor .dropdown-content::-webkit-scrollbar-button {
+.note-editor .modal-content::-webkit-scrollbar-button, .note-editor .dropdown-content::-webkit-scrollbar-button, .note-editor .note-editing-area .note-editable::-webkit-scrollbar-button {
   display: none !important;
 }
-.note-editor .modal-content::-webkit-scrollbar-track, .note-editor .dropdown-content::-webkit-scrollbar-track {
+.note-editor .modal-content::-webkit-scrollbar-track, .note-editor .dropdown-content::-webkit-scrollbar-track, .note-editor .note-editing-area .note-editable::-webkit-scrollbar-track {
   background-color: #212121;
 }
-.note-editor .modal-content::-webkit-scrollbar-thumb, .note-editor .dropdown-content::-webkit-scrollbar-thumb {
+.note-editor .modal-content::-webkit-scrollbar-thumb, .note-editor .dropdown-content::-webkit-scrollbar-thumb, .note-editor .note-editing-area .note-editable::-webkit-scrollbar-thumb {
   background-color: #454545;
 }
-.note-editor .modal-content::-webkit-scrollbar-thumb:hover, .note-editor .dropdown-content::-webkit-scrollbar-thumb:hover {
+.note-editor .modal-content::-webkit-scrollbar-thumb:hover, .note-editor .dropdown-content::-webkit-scrollbar-thumb:hover, .note-editor .note-editing-area .note-editable::-webkit-scrollbar-thumb:hover {
   background-color: #535353;
 }
 

@@ -208,6 +208,7 @@
 
         .note-editable {
             outline: none;
+            @extend %styled-scrollbars;
 
             sup {
                 vertical-align: super;

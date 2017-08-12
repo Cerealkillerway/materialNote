@@ -605,7 +605,7 @@ define([
             // Float Buttons
             context.memo('button.floatLeft', function () {
                 return ui.button({
-                    contents: ui.icon(options.icons.alignLeft),
+                    contents: ui.icon('format_align_left'),
                     tooltip: lang.image.floatLeft,
                     click: context.createInvokeHandler('editor.floatMe', 'left')
                 }).render();
@@ -613,7 +613,7 @@ define([
 
             context.memo('button.floatRight', function () {
                 return ui.button({
-                    contents: ui.icon(options.icons.alignRight),
+                    contents: ui.icon('format_align_right'),
                     tooltip: lang.image.floatRight,
                     click: context.createInvokeHandler('editor.floatMe', 'right')
                 }).render();
@@ -621,7 +621,7 @@ define([
 
             context.memo('button.floatNone', function () {
                 return ui.button({
-                    contents: ui.icon(options.icons.alignJustify),
+                    contents: ui.icon('format_align_justify'),
                     tooltip: lang.image.floatNone,
                     click: context.createInvokeHandler('editor.floatMe', 'none')
                 }).render();
@@ -630,7 +630,7 @@ define([
             // Remove Buttons
             context.memo('button.removeMedia', function () {
                 return ui.button({
-                    contents: ui.icon(options.icons.trash),
+                    contents: ui.icon('delete_forever'),
                     tooltip: lang.image.remove,
                     click: context.createInvokeHandler('editor.removeMedia')
                 }).render();
