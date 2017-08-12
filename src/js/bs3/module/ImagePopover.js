@@ -41,10 +41,18 @@ define([
         this.update = function (target) {
             if (dom.isImg(target)) {
                 var pos = dom.posFromPlaceholder(target);
+                let $editable = context.layoutInfo.editable;
+                let editableBottom = $editable.height() + $editable.offset().top;
+                let topPosition = pos.top;
+
+                if (topPosition > editableBottom) {
+                    topPosition = editableBottom - 15;
+                }
+
                 this.$popover.css({
                     display: 'block',
                     left: pos.left,
-                    top: pos.top
+                    top: topPosition
                 });
             } else {
                 this.hide();
