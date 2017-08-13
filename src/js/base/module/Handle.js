@@ -79,7 +79,7 @@ define([
             if (context.isDisabled()) {
                 return false;
             }
-            
+
             var isImage = dom.isImg(target);
             var $selection = this.$handle.find('.note-control-selection');
 
