@@ -45,7 +45,7 @@ define([
                 let editableBottom = $editable.height() + $editable.offset().top;
                 let topPosition = pos.top;
 
-                if (topPosition > editableBottom) {
+                if (topPosition > (editableBottom - 15)) {
                     topPosition = editableBottom - 15;
                 }
 
