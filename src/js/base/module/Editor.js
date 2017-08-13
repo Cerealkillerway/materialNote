@@ -297,7 +297,7 @@ define([
         /**
         * run given function between beforeCommand and afterCommand
         */
-        this.wrapCommand = function (fn) {
+        this.wrapCommand = function(fn) {
             return function () {
                 beforeCommand();
                 fn.apply(self, arguments);
@@ -785,13 +785,17 @@ define([
         * resize overlay element
         * @param {String} value
         */
-        this.resize = this.wrapCommand(function (value) {
+
+        this.resize = function (value) {
             var $target = $(this.restoreTarget());
+
+            beforeCommand();
             $target.css({
                 width: value * 100 + '%',
                 height: ''
             });
-        });
+            afterCommand(true);
+        };
 
         /**
         * @param {Position} pos
