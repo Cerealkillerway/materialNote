@@ -794,6 +794,7 @@ define([
                 width: value * 100 + '%',
                 height: ''
             });
+            // to fix: avoid image popover hide
             afterCommand(true);
         };
 
