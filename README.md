@@ -18,6 +18,7 @@ Other than the obvious changes to the UI to meet material style, there are some 
 
 - edited image popover to be shown always in the editor area
 - options have been added to image and table dropdowns to handle materialize's styles for those items
+- color palette dropdown has been edited to meet materialize's color palette
 
 
 ## API additions
