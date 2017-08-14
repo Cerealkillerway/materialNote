@@ -16,7 +16,8 @@ Please visit [materialnote.js api guide](http://materialnote.org/deep-dive/) to 
 
 Other than the obvious changes to the UI to meet material style, there are some differences and improvements in materialNote;
 
-- improved image popover to be shown always in the editor area
+- edited image popover to be shown always in the editor area
+- options have been added to image and table dropdowns to handle materialize's styles for those items
 
 
 ## API additions
