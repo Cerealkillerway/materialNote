@@ -12,6 +12,13 @@ MaterialNote is based on materialnote.js, so the API is still the same.
 Please visit [materialnote.js api guide](http://materialnote.org/deep-dive/) to deep dive.
 
 
+## Differences with summernote
+
+Other than the obvious changes to the UI to meet material style, there are some differences and improvements in materialNote;
+
+- improved image popover to be shown always in the editor area
+
+
 ## API additions
 
 
