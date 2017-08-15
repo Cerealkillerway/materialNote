@@ -778,7 +778,14 @@ define([
         */
         this.floatMe = this.wrapCommand(function (value) {
             var $target = $(this.restoreTarget());
+
+            beforeCommand();
             $target.css('float', value);
+
+            afterCommand(true);
+            console.log('float!!!!!!');
+            console.log($target);
+            context.triggerEvent('change', $target[0]);
         });
 
         /**
@@ -788,14 +795,13 @@ define([
 
         this.resize = function (value) {
             var $target = $(this.restoreTarget());
-            console.log($target[0]);
 
             beforeCommand();
             $target.css({
                 width: value * 100 + '%',
                 height: ''
             });
-            // to fix: avoid image popover hide
+
             afterCommand(true);
             context.triggerEvent('change', $target[0]);
         };

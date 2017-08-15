@@ -1,3 +1,5 @@
 // task: avoid image popover disappearing
 it's materialnote.change event triggered by editor.afterCommand function through context.triggerEvent
 that forces handle to update (handle controls also the popover visibility) base/module/Handle.js row 17
+
+- when clicking float button (left or right or none) the event materialnote.change is fired twice; need to track down the second call...
