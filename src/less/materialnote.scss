@@ -646,7 +646,14 @@
             cursor: se-resize;
 
             &:hover {
-                border-color: transparent transparent $action-color2 transparent;
+                right: -5px;
+                bottom: -5px;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 0 0 ($selection-corner-size + 10px) ($selection-corner-size + 10px);
+                border-color: transparent transparent $toolbar-color transparent;
+                border-color: transparent transparent $action-color transparent;
             }
         }
 
