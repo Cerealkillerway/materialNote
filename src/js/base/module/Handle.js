@@ -14,8 +14,11 @@ define([
                     e.preventDefault();
                 }
             },
-            'materialnote.keyup materialnote.scroll materialnote.change materialnote.dialog.shown': function () {
+            'materialnote.keyup materialnote.scroll materialnote.dialog.shown': function () {
                 self.update();
+            },
+            'materialnote.change': function(event, target) {
+                self.update(target);
             },
             'materialnote.disable': function () {
                 self.hide();

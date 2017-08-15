@@ -788,6 +788,7 @@ define([
 
         this.resize = function (value) {
             var $target = $(this.restoreTarget());
+            console.log($target[0]);
 
             beforeCommand();
             $target.css({
@@ -796,6 +797,7 @@ define([
             });
             // to fix: avoid image popover hide
             afterCommand(true);
+            context.triggerEvent('change', $target[0]);
         };
 
         /**
