@@ -542,6 +542,7 @@
   border-width: 0 0 15px 15px;
   border-color: transparent transparent #212121 transparent;
   cursor: se-resize;
+  transition: all 0.5s;
 }
 .note-handle .note-control-selection .note-control-se:hover {
   right: -5px;

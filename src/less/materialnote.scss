@@ -644,6 +644,7 @@
             border-width: 0 0 $selection-corner-size $selection-corner-size;
             border-color: transparent transparent $toolbar-color transparent;
             cursor: se-resize;
+            transition: all 0.5s;
 
             &:hover {
                 right: -5px;
