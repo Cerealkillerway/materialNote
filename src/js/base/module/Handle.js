@@ -79,7 +79,6 @@ define([
         };
 
         this.update = function (target) {
-            console.log(target);
             if (context.isDisabled()) {
                 return false;
             }

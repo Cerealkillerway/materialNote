@@ -244,6 +244,7 @@ define([
         */
         var afterCommand = this.afterCommand = function (isPreventTrigger) {
             history.recordUndo();
+
             if (!isPreventTrigger) {
                 context.triggerEvent('change', $editable.html());
             }
@@ -299,7 +300,6 @@ define([
         */
         this.wrapCommand = function(fn) {
             return function () {
-                console.log('wrap');
                 beforeCommand();
                 fn.apply(self, arguments);
                 afterCommand();
