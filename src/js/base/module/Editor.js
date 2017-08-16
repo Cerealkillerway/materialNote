@@ -299,6 +299,7 @@ define([
         */
         this.wrapCommand = function(fn) {
             return function () {
+                console.log('wrap');
                 beforeCommand();
                 fn.apply(self, arguments);
                 afterCommand();
@@ -776,17 +777,15 @@ define([
         *
         * @param {String} value
         */
-        this.floatMe = this.wrapCommand(function (value) {
+        this.floatMe = function (value) {
             var $target = $(this.restoreTarget());
 
             beforeCommand();
             $target.css('float', value);
 
             afterCommand(true);
-            console.log('float!!!!!!');
-            console.log($target);
             context.triggerEvent('change', $target[0]);
-        });
+        };
 
         /**
         * resize overlay element
