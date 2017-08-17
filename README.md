@@ -24,6 +24,11 @@ Other than the obvious changes to the UI to meet material style, there are some 
 ## API additions
 
 
+## Settings additions
+
+Other to the standard summernote.js settings, materialNote have some extras (take a look at official summernote guide for the [summernote.js initialization options](http://summernote.org/deep-dive/#initialization-options)).
+
+
 ## Edit colors
 
 If you wish to change any of the editor color, you can quickly achieve the desired result by editing file **src/less/variables.scss**, which defines all colours used by the editor as sass variables.
