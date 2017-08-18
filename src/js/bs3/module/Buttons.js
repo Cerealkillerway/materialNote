@@ -640,7 +640,7 @@ define([
         this.addLinkPopoverButtons = function () {
             context.memo('button.linkDialogShow', function () {
                 return ui.button({
-                    contents: ui.icon(options.icons.link),
+                    contents: ui.icon('link'),
                     tooltip: lang.link.edit,
                     click: context.createInvokeHandler('linkDialog.show')
                 }).render();
@@ -648,7 +648,7 @@ define([
 
             context.memo('button.unlink', function () {
                 return ui.button({
-                    contents: ui.icon(options.icons.unlink),
+                    contents: ui.icon('remove_circle'),
                     tooltip: lang.link.unlink,
                     click: context.createInvokeHandler('editor.unlink')
                 }).render();
