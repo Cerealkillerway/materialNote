@@ -648,7 +648,7 @@ define([
 
             context.memo('button.unlink', function () {
                 return ui.button({
-                    contents: ui.icon('remove_circle'),
+                    contents: ui.icon('clear'),
                     tooltip: lang.link.unlink,
                     click: context.createInvokeHandler('editor.unlink')
                 }).render();
@@ -665,7 +665,7 @@ define([
             context.memo('button.addRowUp', function () {
                 return ui.button({
                     className: 'btn-md',
-                    contents: ui.icon(options.icons.rowAbove),
+                    contents: ui.icon('expand_less'),
                     tooltip: lang.table.addRowAbove,
                     click: context.createInvokeHandler('editor.addRow', 'top')
                 }).render();
@@ -673,7 +673,7 @@ define([
             context.memo('button.addRowDown', function () {
                 return ui.button({
                     className: 'btn-md',
-                    contents: ui.icon(options.icons.rowBelow),
+                    contents: ui.icon('expand_more'),
                     tooltip: lang.table.addRowBelow,
                     click: context.createInvokeHandler('editor.addRow', 'bottom')
                 }).render();
@@ -681,7 +681,7 @@ define([
             context.memo('button.addColLeft', function () {
                 return ui.button({
                     className: 'btn-md',
-                    contents: ui.icon(options.icons.colBefore),
+                    contents: ui.icon('chevron_left'),
                     tooltip: lang.table.addColLeft,
                     click: context.createInvokeHandler('editor.addCol', 'left')
                 }).render();
@@ -689,7 +689,7 @@ define([
             context.memo('button.addColRight', function () {
                 return ui.button({
                     className: 'btn-md',
-                    contents: ui.icon(options.icons.colAfter),
+                    contents: ui.icon('chevron_right'),
                     tooltip: lang.table.addColRight,
                     click: context.createInvokeHandler('editor.addCol', 'right')
                 }).render();
@@ -697,7 +697,7 @@ define([
             context.memo('button.deleteRow', function () {
                 return ui.button({
                     className: 'btn-md',
-                    contents: ui.icon(options.icons.rowRemove),
+                    contents: ui.icon('border_horizontal'),
                     tooltip: lang.table.delRow,
                     click: context.createInvokeHandler('editor.deleteRow')
                 }).render();
@@ -705,7 +705,7 @@ define([
             context.memo('button.deleteCol', function () {
                 return ui.button({
                     className: 'btn-md',
-                    contents: ui.icon(options.icons.colRemove),
+                    contents: ui.icon('border_vertical'),
                     tooltip: lang.table.delCol,
                     click: context.createInvokeHandler('editor.deleteCol')
                 }).render();
@@ -713,7 +713,7 @@ define([
             context.memo('button.deleteTable', function () {
                 return ui.button({
                     className: 'btn-md',
-                    contents: ui.icon(options.icons.trash),
+                    contents: ui.icon('clear'),
                     tooltip: lang.table.delTable,
                     click: context.createInvokeHandler('editor.deleteTable')
                 }).render();
