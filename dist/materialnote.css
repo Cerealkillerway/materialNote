@@ -352,6 +352,15 @@
   vertical-align: middle;
   /* for FF */
 }
+.note-popover.popover .popover-link {
+  margin-left: 7px;
+}
+.note-popover.popover .popover-link a:link, .note-popover.popover .popover-link a:visited {
+  color: #3d5afe;
+}
+.note-popover.popover .popover-link a:hover, .note-popover.popover .popover-link a:active {
+  color: #ffc107;
+}
 .note-popover.popover .arrow {
   width: 0;
   height: 0;

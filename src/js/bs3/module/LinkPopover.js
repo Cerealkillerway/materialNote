@@ -27,7 +27,7 @@ define([
                 className: 'note-link-popover',
                 callback: function ($node) {
                     var $content = $node.find('.popover-content');
-                    $content.prepend('<span><a target="_blank"></a>&nbsp;</span>');
+                    $content.prepend('<span class="popover-link"><a target="_blank"></a>&nbsp;</span>');
                 }
             }).render().appendTo('body');
             var $content = this.$popover.find('.popover-content');
