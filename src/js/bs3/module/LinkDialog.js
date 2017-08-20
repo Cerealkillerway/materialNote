@@ -63,6 +63,13 @@ define([
                         linkInfo.url = linkInfo.text;
                     }
 
+                    // handle materialize's label state
+                    if (linkInfo.text !== '') {
+                        $linkText.next('label').addClass('active');
+                    }
+                    else {
+                        $linkText.next('label').removeClass('active');
+                    }
                     $linkText.val(linkInfo.text);
 
                     var handleLinkTextUpdate = function () {
