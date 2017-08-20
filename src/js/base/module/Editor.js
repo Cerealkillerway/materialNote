@@ -671,7 +671,6 @@ define([
             if ($anchor.length) {
                 linkInfo.isNewWindow = $anchor.attr('target') === '_blank';
             }
-            console.log(linkInfo);
 
             return linkInfo;
         };
@@ -679,6 +678,10 @@ define([
         /**
         * returns image info
         *
+        * @param {DOM element} imageDom
+        * @return {Boolean} imageInfo.responsive
+        * @return {Number} (or undefined) imageInfo.size
+        * @return {String} (or undefined) imageInfo.float
         */
         this.getImageInfo = function(imageDom) {
             let $image = $(imageDom);
@@ -833,7 +836,7 @@ define([
         *
         * @param {String} value
         */
-        this.floatMe = function (value) {
+        this.floatMe = function(value) {
             var $target = $(this.restoreTarget());
 
             beforeCommand();
@@ -847,8 +850,7 @@ define([
         * resize overlay element
         * @param {String} value
         */
-
-        this.resize = function (value) {
+        this.resize = function(value) {
             var $target = $(this.restoreTarget());
 
             beforeCommand();
@@ -856,6 +858,19 @@ define([
                 width: value * 100 + '%',
                 height: ''
             });
+
+            afterCommand(true);
+            context.triggerEvent('change', $target[0]);
+        };
+
+        /**
+        * add or remove materialize's responsive class to image
+        */
+        this.responsivize = function() {
+            var $target = $(this.restoreTarget());
+
+            beforeCommand();
+            $target.toggleClass('responsive-img');
 
             afterCommand(true);
             context.triggerEvent('change', $target[0]);

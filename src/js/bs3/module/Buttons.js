@@ -633,6 +633,16 @@ define([
                 }).render();
             });
 
+            // responsive button
+            context.memo('button.responsive', function() {
+                return ui.button({
+                    contents: ui.icon('photo_size_select_large'),
+                    id: 'note-image-responsive',
+                    tooltip: lang.image.responsive,
+                    click: context.createInvokeHandler('editor.responsivize')
+                }).render();
+            });
+
             // Remove Buttons
             context.memo('button.removeMedia', function () {
                 return ui.button({

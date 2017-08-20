@@ -12,11 +12,12 @@ MaterialNote is based on materialnote.js, so the API is still the same.
 Please visit [materialnote.js api guide](http://materialnote.org/deep-dive/) to deep dive.
 
 
-## Differences with summernote
+## Improvements
 
 Other than the obvious changes to the UI to meet material style, there are some differences and improvements in materialNote;
 
 - edited image popover to be shown always in the editor area
+- fided scroll causing linkPopover to be shown outside editor's area
 - options have been added to image and table dropdowns to handle materialize's styles for those items
 - color palette dropdown has been edited to meet materialize's color palette
 
@@ -27,6 +28,8 @@ Other than the obvious changes to the UI to meet material style, there are some 
 ## Settings additions
 
 Other to the standard summernote.js settings, materialNote have some extras (take a look at official summernote guide for the [summernote.js initialization options](http://summernote.org/deep-dive/#initialization-options)).
+
+- `popover.image`: added `['responsivity', ['responsive']]` btn group containing button to handle materialize's image responsivity class.
 
 
 ## Edit colors

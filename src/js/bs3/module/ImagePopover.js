@@ -67,6 +67,12 @@ define([
                     this.$popover.find('#note-image-float-' + float).addClass('active');
                 }
 
+                // responsivity
+                this.$popover.find('.btn-group.note-responsivity').children('.note-btn').removeClass('active');
+                if (imageInfo.responsive) {
+                    this.$popover.find('#note-image-responsive').addClass('active');
+                }
+
                 this.$popover.css({
                     display: 'block',
                     left: pos.left,

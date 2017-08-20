@@ -84,6 +84,7 @@ define([
         image: [
           ['imagesize', ['imageSize100', 'imageSize50', 'imageSize25']],
           ['float', ['floatLeft', 'floatRight', 'floatNone']],
+          ['responsivity', ['responsive']],
           ['remove', ['removeMedia']]
         ],
         link: [
