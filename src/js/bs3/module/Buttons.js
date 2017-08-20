@@ -583,6 +583,7 @@ define([
             context.memo('button.imageSize100', function () {
                 return ui.button({
                     contents: '<span class="note-fontsize-10">100%</span>',
+                    id: 'note-image-size-100',
                     tooltip: lang.image.resizeFull,
                     click: context.createInvokeHandler('editor.resize', '1')
                 }).render();
@@ -590,6 +591,7 @@ define([
             context.memo('button.imageSize50', function () {
                 return  ui.button({
                     contents: '<span class="note-fontsize-10">50%</span>',
+                    id: 'note-image-size-50',
                     tooltip: lang.image.resizeHalf,
                     click: context.createInvokeHandler('editor.resize', '0.5')
                 }).render();
@@ -597,6 +599,7 @@ define([
             context.memo('button.imageSize25', function () {
                 return ui.button({
                     contents: '<span class="note-fontsize-10">25%</span>',
+                    id: 'note-image-size-25',
                     tooltip: lang.image.resizeQuarter,
                     click: context.createInvokeHandler('editor.resize', '0.25')
                 }).render();
@@ -606,6 +609,7 @@ define([
             context.memo('button.floatLeft', function () {
                 return ui.button({
                     contents: ui.icon('format_align_left'),
+                    id: 'note-image-float-left',
                     tooltip: lang.image.floatLeft,
                     click: context.createInvokeHandler('editor.floatMe', 'left')
                 }).render();
@@ -614,6 +618,7 @@ define([
             context.memo('button.floatRight', function () {
                 return ui.button({
                     contents: ui.icon('format_align_right'),
+                    id: 'note-image-float-right',
                     tooltip: lang.image.floatRight,
                     click: context.createInvokeHandler('editor.floatMe', 'right')
                 }).render();
@@ -622,6 +627,7 @@ define([
             context.memo('button.floatNone', function () {
                 return ui.button({
                     contents: ui.icon('format_align_justify'),
+                    id: 'note-image-float-none',
                     tooltip: lang.image.floatNone,
                     click: context.createInvokeHandler('editor.floatMe', 'none')
                 }).render();

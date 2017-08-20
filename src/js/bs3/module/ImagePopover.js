@@ -44,9 +44,27 @@ define([
                 let $editable = context.layoutInfo.editable;
                 let editableBottom = $editable.height() + $editable.offset().top;
                 let topPosition = pos.top;
+                let imageInfo = context.invoke('editor.getImageInfo', target);
 
                 if (topPosition > (editableBottom - 15)) {
                     topPosition = editableBottom - 15;
+                }
+
+                // handle buttons active status
+                // sizes
+                this.$popover.find('.btn-group.note-imagesize').children('.note-btn').removeClass('active');
+                if (imageInfo.size) {
+                    let size = imageInfo.size;
+
+                    this.$popover.find('#note-image-size-' + size).addClass('active');
+                }
+
+                // float
+                this.$popover.find('.btn-group.note-float').children('.note-btn').removeClass('active');
+                if (imageInfo.float) {
+                    let float = imageInfo.float;
+
+                    this.$popover.find('#note-image-float-' + float).addClass('active');
                 }
 
                 this.$popover.css({

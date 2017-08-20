@@ -656,7 +656,7 @@ define([
         * @return {Boolean} [return.isNewWindow=true]
         * @return {String} [return.url=""]
         */
-        this.getLinkInfo = function () {
+        this.getLinkInfo = function() {
             var rng = this.createRange().expand(dom.isAnchor);
 
             // Get the first anchor on range(for edit).
@@ -671,8 +671,64 @@ define([
             if ($anchor.length) {
                 linkInfo.isNewWindow = $anchor.attr('target') === '_blank';
             }
+            console.log(linkInfo);
 
             return linkInfo;
+        };
+
+        /**
+        * returns image info
+        *
+        */
+        this.getImageInfo = function(imageDom) {
+            let $image = $(imageDom);
+            let inlineStyle = $image.attr('style');
+            let styles = {};
+            let imageInfo = {
+                responsive: $image.hasClass('responsive-img') ? true : false
+            };
+
+            // handle inline style attribute of the image
+            if (inlineStyle) {
+                inlineStyle = inlineStyle.split(';');
+
+                for (let i = 0; i < inlineStyle.length; i++) {
+                    if (inlineStyle[i] === '') {
+                        continue;
+                    }
+
+                    let keyValue = inlineStyle[i].split(':');
+                    let key = keyValue[0].trim();
+                    let value = keyValue[1].trim();
+
+                    // handle styles
+                    switch(key) {
+                        case 'width':
+                            switch(value) {
+                                case '100%':
+                                imageInfo.size = 100;
+                                break;
+
+                                case '50%':
+                                imageInfo.size = 50;
+                                break;
+
+                                case '25%':
+                                imageInfo.size = 25;
+                                break;
+                            }
+                        break;
+
+                        default:
+                            imageInfo[key] = value;
+                    }
+                    styles[key] = value;
+                }
+
+                imageInfo.styles = styles;
+            }
+
+            return imageInfo;
         };
 
         /**
