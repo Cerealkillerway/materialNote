@@ -10,10 +10,10 @@ define([
         var options = context.options;
 
         this.events = {
-            'materialnote.keyup materialnote.mouseup materialnote.change materialnote.scroll': function () {
+            'materialnote.keyup materialnote.mouseup materialnote.change': function () {
                 self.update();
             },
-            'materialnote.disable materialnote.dialog.shown': function () {
+            'materialnote.disable materialnote.dialog.shown materialnote.scroll': function () {
                 self.hide();
             }
         };
