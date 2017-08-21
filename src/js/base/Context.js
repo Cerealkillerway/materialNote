@@ -162,6 +162,29 @@ define([
             }
         };
 
+        this.getInlineStyles = function($target) {
+            let inlineStyle = $target.attr('style');
+            let styles = {};
+
+            if (inlineStyle) {
+                inlineStyle = inlineStyle.split(';');
+
+                for (let i = 0; i < inlineStyle.length; i++) {
+                    if (inlineStyle[i] === '') {
+                        continue;
+                    }
+
+                    let keyValue = inlineStyle[i].split(':');
+                    let key = keyValue[0].trim();
+                    let value = keyValue[1].trim();
+
+                    styles[key] = value;
+                }
+            }
+
+            return styles;
+        };
+
         this.removeModule = function (key) {
             var module = this.modules[key];
             if (module.shouldInitialize()) {

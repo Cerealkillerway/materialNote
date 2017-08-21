@@ -685,24 +685,15 @@ define([
         */
         this.getImageInfo = function(imageDom) {
             let $image = $(imageDom);
-            let inlineStyle = $image.attr('style');
-            let styles = {};
+            let styles = context.getInlineStyles($image);
             let imageInfo = {
                 responsive: $image.hasClass('responsive-img') ? true : false
             };
 
             // handle inline style attribute of the image
-            if (inlineStyle) {
-                inlineStyle = inlineStyle.split(';');
-
-                for (let i = 0; i < inlineStyle.length; i++) {
-                    if (inlineStyle[i] === '') {
-                        continue;
-                    }
-
-                    let keyValue = inlineStyle[i].split(':');
-                    let key = keyValue[0].trim();
-                    let value = keyValue[1].trim();
+            for (let key in styles) {
+                if (styles.hasOwnProperty(key)) {
+                    let value = styles[key];
 
                     // handle styles
                     switch(key) {
@@ -725,12 +716,8 @@ define([
                         default:
                             imageInfo[key] = value;
                     }
-                    styles[key] = value;
                 }
-
-                imageInfo.styles = styles;
             }
-
             return imageInfo;
         };
 
@@ -886,14 +873,23 @@ define([
         * resize overlay element
         * @param {String} value
         */
-        this.resize = function(value) {
-            var $target = $(this.restoreTarget());
+        this.resize = function(dim) {
+            let $target = $(this.restoreTarget());
+            let styles = context.getInlineStyles($target);
+            let percentageDim = dim * 100 + '%';
 
             beforeCommand();
-            $target.css({
-                width: value * 100 + '%',
-                height: ''
-            });
+            if (styles.width === percentageDim) {
+                $target.css({
+                    width: 'auto'
+                });
+            }
+            else {
+                $target.css({
+                    width: percentageDim,
+                    height: ''
+                });
+            }
 
             afterCommand(true);
             context.triggerEvent('change', $target[0]);
