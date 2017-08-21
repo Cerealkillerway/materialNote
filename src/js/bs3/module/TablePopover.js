@@ -54,29 +54,28 @@ define([
 
             let isCell = dom.isCell(target);
             let isTable = dom.isTable(target);
-            let tableInfo = context.invoke('editor.getTableInfo', target);
 
-            // handle buttons active status
-            // bordered
-            this.$popover.find('.btn-group.note-materializeOptions').children('.note-btn').removeClass('active');
-            if (tableInfo.bordered) {
-                this.$popover.find('#note-table-bordered').addClass('active');
-            }
-            if (tableInfo.striped) {
-                this.$popover.find('#note-table-striped').addClass('active');
-            }
-            if (tableInfo.highlighted) {
-                this.$popover.find('#note-table-highlighted').addClass('active');
-            }
-            if (tableInfo.responsive) {
-                this.$popover.find('#note-table-responsive').addClass('active');
-            }
-            if (tableInfo.centered) {
-                this.$popover.find('#note-table-centered').addClass('active');
-            }
+            if (isTable || isCell) {
+                let tableInfo = context.invoke('editor.getTableInfo', target);
 
+                // handle buttons active status
+                this.$popover.find('.btn-group.note-materializeOptions').children('.note-btn').removeClass('active');
+                if (tableInfo.bordered) {
+                    this.$popover.find('#note-table-bordered').addClass('active');
+                }
+                if (tableInfo.striped) {
+                    this.$popover.find('#note-table-striped').addClass('active');
+                }
+                if (tableInfo.highlighted) {
+                    this.$popover.find('#note-table-highlighted').addClass('active');
+                }
+                if (tableInfo.responsive) {
+                    this.$popover.find('#note-table-responsive').addClass('active');
+                }
+                if (tableInfo.centered) {
+                    this.$popover.find('#note-table-centered').addClass('active');
+                }
 
-            if (!isTable) {
                 if (isCell) {
                     var pos = dom.posFromPlaceholder(target);
                     this.$popover.css({
@@ -84,9 +83,10 @@ define([
                         left: pos.left,
                         top: pos.top
                     });
-                } else {
-                    this.hide();
                 }
+            }
+            else {
+               this.hide();
             }
 
             return isCell;

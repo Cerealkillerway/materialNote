@@ -132,7 +132,10 @@ define([
         var isHr = makePredByNodeName('HR');
 
         var isCell = function (node) {
-            return node && /^TD|^TH/.test(node.nodeName.toUpperCase());
+            if (node !== undefined && node.nodeName !== undefined) {
+                return node && /^TD|^TH/.test(node.nodeName.toUpperCase());
+            }
+            return false;
         };
 
         var isBlockquote = makePredByNodeName('BLOCKQUOTE');
