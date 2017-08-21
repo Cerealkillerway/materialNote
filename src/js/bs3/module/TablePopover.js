@@ -14,8 +14,11 @@ define([
             'materialnote.mousedown': function (we, e) {
                 self.update(e.target);
             },
-            'materialnote.keyup materialnote.scroll materialnote.change': function () {
+            'materialnote.keyup materialnote.scroll': function () {
                 self.update();
+            },
+            'materialnote.change': function(event, target) {
+                self.update(target);
             },
             'materialnote.disable': function () {
                 self.hide();
@@ -49,7 +52,8 @@ define([
                 return false;
             }
 
-            var isCell = dom.isCell(target);
+            let isCell = dom.isCell(target);
+            let isTable = dom.isTable(target);
             let tableInfo = context.invoke('editor.getTableInfo', target);
 
             // handle buttons active status
@@ -72,15 +76,17 @@ define([
             }
 
 
-            if (isCell) {
-                var pos = dom.posFromPlaceholder(target);
-                this.$popover.css({
-                    display: 'block',
-                    left: pos.left,
-                    top: pos.top
-                });
-            } else {
-                this.hide();
+            if (!isTable) {
+                if (isCell) {
+                    var pos = dom.posFromPlaceholder(target);
+                    this.$popover.css({
+                        display: 'block',
+                        left: pos.left,
+                        top: pos.top
+                    });
+                } else {
+                    this.hide();
+                }
             }
 
             return isCell;
