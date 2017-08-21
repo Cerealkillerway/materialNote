@@ -735,6 +735,27 @@ define([
         };
 
         /**
+        * returns table info
+        *
+        * @param {DOM element} imageDom
+        * @return {Boolean} imageInfo.responsive
+        * @return {Number} (or undefined) imageInfo.size
+        * @return {String} (or undefined) imageInfo.float
+        */
+        this.getTableInfo = function(tableDom) {
+            let $table = $(tableDom).closest('table');
+            let tableInfo = {
+                bordered: $table.hasClass('bordered') ? true : false,
+                striped: $table.hasClass('striped') ? true : false,
+                highlighted: $table.hasClass('highlight') ? true : false,
+                responsive: $table.hasClass('responsive-table') ? true : false,
+                centered: $table.hasClass('centered') ? true : false
+            };
+
+            return tableInfo;
+        };
+
+        /**
         * setting color
         *
         * @param {Object} sObjColor  color code
@@ -760,6 +781,21 @@ define([
             var rng = this.createRange().deleteContents();
             rng.insertNode(table.createTable(dimension[0], dimension[1], tableOptions));
         });
+
+        /**
+        * add or remove materialize's classes to table
+        */
+        this.updateTable = function(option) {
+            let rng = this.createRange($editable);
+            let cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
+            let $table = $(cell).closest('table');
+
+            beforeCommand();
+            $table.toggleClass(option);
+
+            afterCommand(true);
+            context.triggerEvent('change', $table[0]);
+        };
 
         /**
         * @method addRow

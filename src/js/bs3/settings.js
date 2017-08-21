@@ -92,6 +92,7 @@ define([
         ],
         table: [
           ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
+          ['materializeOptions', ['borderedTable', 'stripedTable', 'highlightedTable', 'responsiveTable', 'centeredTable']],
           ['delete', ['deleteRow', 'deleteCol', 'deleteTable']]
         ],
         air: [

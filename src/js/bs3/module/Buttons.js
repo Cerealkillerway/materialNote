@@ -744,6 +744,53 @@ define([
                     click: context.createInvokeHandler('editor.deleteTable')
                 }).render();
             });
+
+            // materialize's table options
+            context.memo('button.borderedTable', function () {
+                return ui.button({
+                    className: 'btn-md',
+                    id: 'note-table-bordered',
+                    contents: ui.icon('border_outer'),
+                    tooltip: lang.table.bordered,
+                    click: context.createInvokeHandler('editor.updateTable', 'bordered')
+                }).render();
+            });
+            context.memo('button.stripedTable', function () {
+                return ui.button({
+                    className: 'btn-md',
+                    id: 'note-table-striped',
+                    contents: ui.icon('view_headline'),
+                    tooltip: lang.table.striped,
+                    click: context.createInvokeHandler('editor.updateTable', 'striped')
+                }).render();
+            });
+            context.memo('button.highlightedTable', function () {
+                return ui.button({
+                    className: 'btn-md',
+                    id: 'note-table-highlighted',
+                    contents: ui.icon('highlight'),
+                    tooltip: lang.table.highlight,
+                    click: context.createInvokeHandler('editor.updateTable', 'highlight')
+                }).render();
+            });
+            context.memo('button.responsiveTable', function () {
+                return ui.button({
+                    className: 'btn-md',
+                    id: 'note-table-responsive',
+                    contents: ui.icon('crop_free'),
+                    tooltip: lang.table.responsive,
+                    click: context.createInvokeHandler('editor.updateTable', 'responsive-table')
+                }).render();
+            });
+            context.memo('button.centeredTable', function () {
+                return ui.button({
+                    className: 'btn-md',
+                    id: 'note-table-centered',
+                    contents: ui.icon('format_align_center'),
+                    tooltip: lang.table.centered,
+                    click: context.createInvokeHandler('editor.updateTable', 'centered')
+                }).render();
+            });
         };
 
         this.build = function ($container, groups) {
