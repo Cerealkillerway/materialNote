@@ -30,6 +30,7 @@ Other than the obvious changes to the UI to meet material style, there are some 
 Other to the standard summernote.js settings, materialNote have some extras (take a look at official summernote guide for the [summernote.js initialization options](http://summernote.org/deep-dive/#initialization-options)).
 
 - `popover.image`: added `['responsivity', ['responsive']]` btn group containing button to handle materialize's image responsivity class.
+- `popover.link`: added `openLinkNewWindow` btn to handle `target` attribute of the link directly from the popover.
 
 
 ## Edit colors
