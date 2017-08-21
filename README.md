@@ -31,9 +31,10 @@ Other to the standard summernote.js settings, materialNote have some extras (tak
 
 - `popover.image`: added `['responsivity', ['responsive']]` btn group containing button to handle materialize's image responsivity class.
 - `popover.link`: added `openLinkNewWindow` btn to handle `target` attribute of the link directly from the popover.
+- `popover.table`: added `['materializeOptions', ['borderedTable', 'stripedTable', 'highlightedTable', 'responsiveTable', 'centeredTable']]` btn group to handle materialize's table options.
 
 
-## Edit colors
+## Editor colors
 
 If you wish to change any of the editor color, you can quickly achieve the desired result by editing file **src/less/variables.scss**, which defines all colours used by the editor as sass variables.
 
