@@ -88,7 +88,7 @@ define([
           ['remove', ['removeMedia']]
         ],
         link: [
-          ['link', ['linkDialogShow', 'unlink']]
+          ['link', ['linkDialogShow', 'openLinkNewWindow', 'unlink']]
         ],
         table: [
           ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],

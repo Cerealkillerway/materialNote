@@ -867,13 +867,30 @@ define([
         * add or remove materialize's responsive class to image
         */
         this.responsivize = function() {
-            var $target = $(this.restoreTarget());
+            let $target = $(this.restoreTarget());
 
             beforeCommand();
             $target.toggleClass('responsive-img');
 
             afterCommand(true);
             context.triggerEvent('change', $target[0]);
+        };
+
+        /**
+        * add or remove target="_blank" to/from a link
+        */
+        this.toggleOpenInNewWindow = function() {
+            let rng = this.createRange().expand(dom.isAnchor);
+
+            // Get the first anchor on range(for edit).
+            let $anchor = $(list.head(rng.nodes(dom.isAnchor)));
+            let linkTarget = $anchor.attr('target');
+
+            beforeCommand();
+            linkTarget === '_blank' ? $anchor.attr('target', '_self') : $anchor.attr('target', '_blank');
+
+            afterCommand(true);
+            context.triggerEvent('change', $anchor[0]);
         };
 
         /**

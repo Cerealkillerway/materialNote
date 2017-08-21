@@ -662,6 +662,16 @@ define([
                 }).render();
             });
 
+            // button open in new window
+            context.memo('button.openLinkNewWindow', function () {
+                return ui.button({
+                    contents: ui.icon('open_in_new'),
+                    id: 'note-link-open-new-window',
+                    tooltip: lang.link.openInNewWindow,
+                    click: context.createInvokeHandler('editor.toggleOpenInNewWindow')
+                }).render();
+            });
+
             context.memo('button.unlink', function () {
                 return ui.button({
                     contents: ui.icon('clear'),

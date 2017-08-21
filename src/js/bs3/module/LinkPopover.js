@@ -53,6 +53,15 @@ define([
                 this.$popover.find('a').attr('href', href).html(href);
 
                 var pos = dom.posFromPlaceholder(anchor);
+                let linkInfo = context.invoke('editor.getLinkInfo');
+
+                // handle buttons active status
+                // open in new window
+                this.$popover.find('.btn-group.note-link').children('.note-btn').removeClass('active');
+                if (linkInfo.isNewWindow) {
+                    this.$popover.find('#note-link-open-new-window').addClass('active');
+                }
+
                 this.$popover.css({
                     display: 'block',
                     left: pos.left,
