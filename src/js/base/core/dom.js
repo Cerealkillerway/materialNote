@@ -978,9 +978,9 @@ define([
         };
 
         var posFromPlaceholder = function (placeholder) {
-            var $placeholder = $(placeholder);
-            var pos = $placeholder.offset();
-            var height = $placeholder.outerHeight(true); // include margin
+            let $placeholder = $(placeholder);
+            let pos = $placeholder.offset();
+            let height = $placeholder.outerHeight(true); // include margin
 
             return {
                 left: pos.left,

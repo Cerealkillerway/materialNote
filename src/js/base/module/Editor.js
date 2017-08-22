@@ -790,11 +790,14 @@ define([
         *
         */
         this.addRow = function (position) {
-            var rng = this.createRange($editable);
+            let rng = this.createRange($editable);
+            let cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
+
             if (rng.isCollapsed() && rng.isOnCell()) {
                 beforeCommand();
                 table.addRow(rng, position);
-                afterCommand();
+                afterCommand(true);
+                context.triggerEvent('change', cell);
             }
         };
 
@@ -804,11 +807,14 @@ define([
         *
         */
         this.addCol = function (position) {
-            var rng = this.createRange($editable);
+            let rng = this.createRange($editable);
+            let cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
+
             if (rng.isCollapsed() && rng.isOnCell()) {
                 beforeCommand();
                 table.addCol(rng, position);
-                afterCommand();
+                afterCommand(true);
+                context.triggerEvent('change', cell);
             }
         };
 
@@ -818,11 +824,37 @@ define([
         *
         */
         this.deleteRow = function () {
-            var rng = this.createRange($editable);
+            let rng = this.createRange($editable);
+            let cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
+            let $cell = $(cell);
+            let currentRow = $cell.parent();
+            let currentTargetIndex = $cell.siblings().andSelf().index(cell);
+            currentTargetIndex++;
+            // set newTarget to prev or next row, same column
+            let newTarget = currentRow.prev('tr').children('td:nth-child(' + currentTargetIndex + ')');
+
+            if (newTarget.length === 0) {
+                newTarget = currentRow.next('tr').children('td:nth-child(' + currentTargetIndex + ')');
+            }
+
             if (rng.isCollapsed() && rng.isOnCell()) {
                 beforeCommand();
                 table.deleteRow(rng);
-                afterCommand();
+                afterCommand(true);
+
+                // move popover to new target (keep it opened)
+                if (newTarget.length !== 0) {
+                    context.triggerEvent('change', newTarget[0]);
+                    let range = document.createRange();
+                    let sel = window.getSelection();
+                    range.setStart(newTarget[0], 1);
+                    range.collapse(true);
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                }
+                else {
+                    context.triggerEvent('change');
+                }
             }
         };
 
@@ -832,11 +864,34 @@ define([
         *
         */
         this.deleteCol = function () {
-            var rng = this.createRange($editable);
+            let rng = this.createRange($editable);
+            let cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
+            let $cell = $(cell);
+            // set newTarget to prev or next column, same row
+            let newTarget = $cell.prev('td');
+
+            if (newTarget.length === 0) {
+                newTarget = $cell.next('td');
+            }
+
             if (rng.isCollapsed() && rng.isOnCell()) {
                 beforeCommand();
                 table.deleteCol(rng);
-                afterCommand();
+                afterCommand(true);
+
+                // move popover to new target (keep it opened)
+                if (newTarget.length !== 0) {
+                    context.triggerEvent('change', newTarget[0]);
+                    let range = document.createRange();
+                    let sel = window.getSelection();
+                    range.setStart(newTarget[0], 1);
+                    range.collapse(true);
+                    sel.removeAllRanges();
+                    sel.addRange(range);
+                }
+                else {
+                    context.triggerEvent('change');
+                }
             }
         };
 

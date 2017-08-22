@@ -324,14 +324,14 @@ define([
                     var tdAttributes = this.recoverAttributes(currentCell.baseCell);
                     switch (currentCell.action) {
                         case TableResultAction.resultAction.AddCell:
-                        html.append('<td' + tdAttributes + '>' + dom.blank + '</td>');
+                        html.append('<td' + tdAttributes + '>' + dom.emptyTableCell + '</td>');
                         break;
                         case TableResultAction.resultAction.SumSpanCount:
                         if (position === 'top') {
                             var baseCellTr = currentCell.baseCell.parent;
                             var isTopFromRowSpan = (!baseCellTr ? 0 : currentCell.baseCell.closest('tr').rowIndex) <= currentTr[0].rowIndex;
                             if (isTopFromRowSpan) {
-                                var newTd = $('<div></div>').append($('<td' + tdAttributes + '>' + dom.blank + '</td>').removeAttr('rowspan')).html();
+                                var newTd = $('<div></div>').append($('<td' + tdAttributes + '>' + dom.emptyTableCell + '</td>').removeAttr('rowspan')).html();
                                 html.append(newTd);
                                 break;
                             }
@@ -377,21 +377,34 @@ define([
                     for (var actionIndex = 0; actionIndex < actions.length; actionIndex++) {
                         var currentCell = actions[actionIndex];
                         var tdAttributes = this.recoverAttributes(currentCell.baseCell);
+
                         switch (currentCell.action) {
                             case TableResultAction.resultAction.AddCell:
-                            if (position === 'right') {
-                                $(currentCell.baseCell).after('<td' + tdAttributes + '>' + dom.blank + '</td>');
-                            } else {
-                                $(currentCell.baseCell).before('<td' + tdAttributes + '>' + dom.blank + '</td>');
+                            if (actionIndex === 0) {
+                                // add table header
+                                if (position === 'right') {
+                                    $(currentCell.baseCell).after('<th' + tdAttributes + '>' + dom.emptyTableHeaderCell + '</th>');
+                                } else {
+                                    $(currentCell.baseCell).before('<th' + tdAttributes + '>' + dom.emptyTableHeaderCell + '</th>');
+                                }
+                            }
+                            else {
+                                // add table cell
+                                if (position === 'right') {
+                                    $(currentCell.baseCell).after('<td' + tdAttributes + '>' + dom.emptyTableCell + '</td>');
+                                } else {
+                                    $(currentCell.baseCell).before('<td' + tdAttributes + '>' + dom.emptyTableCell + '</td>');
+                                }
                             }
                             break;
+
                             case TableResultAction.resultAction.SumSpanCount:
                             if (position === 'right') {
                                 var colspanNumber = parseInt(currentCell.baseCell.colSpan, 10);
                                 colspanNumber++;
                                 currentCell.baseCell.setAttribute('colSpan', colspanNumber);
                             } else {
-                                $(currentCell.baseCell).before('<td' + tdAttributes + '>' + dom.blank + '</td>');
+                                $(currentCell.baseCell).before('<td' + tdAttributes + '>' + dom.emptyTableCell + '</td>');
                             }
                             break;
                         }

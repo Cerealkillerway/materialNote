@@ -77,7 +77,8 @@ define([
                 }
 
                 if (isCell) {
-                    var pos = dom.posFromPlaceholder(target);
+                    let pos = dom.posFromPlaceholder(target);
+
                     this.$popover.css({
                         display: 'block',
                         left: pos.left,
@@ -86,7 +87,7 @@ define([
                 }
             }
             else {
-               this.hide();
+                this.hide();
             }
 
             return isCell;
