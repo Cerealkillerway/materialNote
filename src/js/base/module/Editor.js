@@ -750,8 +750,8 @@ define([
         * @param {String} sObjColor.backColor background color
         */
         this.color = this.wrapCommand(function (colorInfo) {
-            var foreColor = colorInfo.foreColor;
-            var backColor = colorInfo.backColor;
+            let foreColor = colorInfo.foreColor;
+            let backColor = colorInfo.backColor;
 
             if (foreColor) { document.execCommand('foreColor', false, foreColor); }
             if (backColor) { document.execCommand('backColor', false, backColor); }

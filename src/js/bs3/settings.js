@@ -164,6 +164,11 @@ define([
                 ['red accent-4',  'pink accent-4',  'purple accent-4',  'deep-purple accent-4',  'indigo accent-4',  'blue accent-4',  'light-blue accent-4',  'cyan accent-4',  'teal accent-4',  'green accent-4',  'light-green accent-4',  'lime accent-4',  'yellow accent-4',  'amber accent-4',   'orange accent-4',  'deep-orange accent-4',  'white']
             ],
 
+            defaultColors: {
+                text: '#eeeeee',
+                background: '#212121'
+            },
+
             lineHeights: ['1.0', '1.2', '1.4', '1.5', '1.6', '1.8', '2.0', '3.0'],
 
             tableClassName: '',

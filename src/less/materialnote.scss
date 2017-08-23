@@ -449,6 +449,29 @@
 ------------------------------------------*/
 .note-toolbar {
     background-color: $toolbar-color;
+
+    .note-color {
+        .note-current-color-button {
+            width: 36px;
+
+            .note-recent-color {
+                z-index: 2;
+                font-weight: 600;
+                line-height: 2.2;
+                position: absolute;
+                left: 13px;
+            }
+
+            .note-recent-color-back {
+                z-index: 1;
+                height: 20px;
+                width: 19.5px;
+                background-color: $toolbar-overlay-color;
+                position: absolute;
+                bottom: 10px;
+            }
+        }
+    }
 }
 
 .note-popover .popover-content, .panel-heading.note-toolbar {

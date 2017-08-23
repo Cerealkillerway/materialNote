@@ -196,7 +196,8 @@ define([
                     children: [
                         ui.button({
                             className: 'note-current-color-button',
-                            contents: ui.icon('format_color_text'),
+                            //contents: ui.icon('format_color_text'),
+                            contents: '<div class="note-recent-color">A</div><div class="note-recent-color-back"></div>',
                             tooltip: lang.color.recent,
                             click: function (e) {
                                 var $button = $(e.currentTarget);
@@ -206,9 +207,15 @@ define([
                                 });
                             },
                             callback: function ($button) {
-                                var $recentColor = $button.find('.note-recent-color');
-                                $recentColor.css('background-color', '#673ab7');
-                                $button.attr('data-backColor', '#673ab7');
+                                let $recentColor = $button.find('.note-recent-color');
+                                let $recentColorBack = $button.find('.note-recent-color-back');
+                                let defaultColor = options.defaultColors.text;
+                                let defaultBackColor = options.defaultColors.background;
+
+                                $button.attr('data-backColor', defaultBackColor);
+                                $button.attr('data-foreColor', defaultColor);
+                                $recentColorBack.css('background-color', defaultBackColor);
+                                $recentColor.css('color', defaultColor);
                             }
                         }),
                         ui.button({
@@ -288,11 +295,19 @@ define([
                                 }
 
                                 if (eventName && value) {
-                                    var key = eventName === 'backColor' ? 'background-color' : 'color';
-                                    var $color = $button.closest('.note-color').find('.note-recent-color');
-                                    var $currentButton = $button.closest('.note-color').find('.note-current-color-button');
+                                    let key = eventName === 'backColor' ? 'background-color' : 'color';
+                                    let $currentButton = $button.closest('.note-color').find('.note-current-color-button');
 
-                                    $color.css(key, value);
+                                    if (key === 'background-color') {
+                                        let $recentColorBack = $button.closest('.note-color').find('.note-recent-color-back');
+
+                                        $recentColorBack.css('background-color', value);
+                                    }
+                                    else {
+                                        let $recentColor = $button.closest('.note-color').find('.note-recent-color');
+
+                                        $recentColor.css('color', value);
+                                    }
                                     $currentButton.attr('data-' + eventName, value);
                                     context.invoke('editor.' + eventName, value);
                                 }

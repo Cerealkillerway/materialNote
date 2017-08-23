@@ -375,6 +375,24 @@
 .note-toolbar {
   background-color: #212121;
 }
+.note-toolbar .note-color .note-current-color-button {
+  width: 36px;
+}
+.note-toolbar .note-color .note-current-color-button .note-recent-color {
+  z-index: 2;
+  font-weight: 600;
+  line-height: 2.2;
+  position: absolute;
+  left: 13px;
+}
+.note-toolbar .note-color .note-current-color-button .note-recent-color-back {
+  z-index: 1;
+  height: 20px;
+  width: 19.5px;
+  background-color: #eeeeee;
+  position: absolute;
+  bottom: 10px;
+}
 
 .note-popover .popover-content, .panel-heading.note-toolbar {
   margin: 0;
