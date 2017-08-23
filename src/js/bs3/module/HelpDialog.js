@@ -14,12 +14,14 @@ define([
             var keyMap = options.keyMap[agent.isMac ? 'mac' : 'pc'];
 
             return Object.keys(keyMap).map(function(key) {
-                var command = keyMap[key];
-                var $row = $('<div></div>');
+                let command = keyMap[key];
+                let $row = $('<div></div>');
+                let $wrapper = $('<div class="row note-help-row"></div>');
+                let $leftCol = $('<div class="col s12 m4 s3 note-help-row-left"><label><kbd>' + key + '</kdb></label></div>');
+                let $rightCol = $('<div class="col s12 m8 s9 note-help-row-right"/>').html(context.memo('help.' + command) || command);
 
-                $row.append($('<div class="col s12 m4 s3"><label><kbd>' + key + '</kdb></label></div>'))
-                    .append($('<div class="col s12 m8 s9"/>')
-                    .html(context.memo('help.' + command) || command));
+                $wrapper.append($leftCol).append($rightCol);
+                $row.append($wrapper);
 
                 return $row.html();
             }).join('');

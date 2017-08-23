@@ -63,6 +63,14 @@
   /* Modals
   ------------------------------------------*/
 }
+.note-editor .modal-content .help-content .note-help-row {
+  margin-bottom: 3px;
+  height: 36px;
+  padding-top: 6px;
+}
+.note-editor .modal-content .help-content .note-help-row:nth-child(even) {
+  background-color: #3b3b3b;
+}
 .note-editor .modal-content .help-content kbd {
   background-color: #3d5afe;
   color: #eeeeee;

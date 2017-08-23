@@ -72,6 +72,16 @@
         @extend %styled-scrollbars;
 
         .help-content {
+            .note-help-row {
+                margin-bottom: 3px;
+                height: 36px;
+                padding-top: 6px;
+
+                &:nth-child(even) {
+                    background-color: lighten($toolbar-color, 10%);
+                }
+            }
+
             kbd {
                 background-color: $action-color;
                 color: $action-text-color;
