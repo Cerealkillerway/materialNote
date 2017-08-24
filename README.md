@@ -32,8 +32,9 @@ Other to the standard summernote.js settings, materialNote have some extras (tak
 - `popover.image`: added `['responsivity', ['responsive']]` btn group containing button to handle materialize's image responsivity class.
 - `popover.link`: added `openLinkNewWindow` btn to handle `target` attribute of the link directly from the popover.
 - `popover.table`: added `['materializeOptions', ['borderedTable', 'stripedTable', 'highlightedTable', 'responsiveTable', 'centeredTable']]` btn group to handle materialize's table options.
-- `defaultColors.text`: default text color used for recent-color button at startup.
-- `defaultColors.background`: default background color used for recent-color button at startup.
+- `defaultColors.text` [String]: default text color used for recent-color button at startup.
+- `defaultColors.background` [String]: default background color used for recent-color button at startup.
+- `followingToolbar` [Boolean]: enable/disable following toolbar;
 
 
 ## Editor colors
