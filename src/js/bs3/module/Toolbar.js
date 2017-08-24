@@ -1,13 +1,72 @@
 define(function () {
     var Toolbar = function (context) {
         var ui = $.materialnote.ui;
-
+        var $editor = context.layoutInfo.editor;
         var $note = context.layoutInfo.note;
         var $toolbar = context.layoutInfo.toolbar;
         var options = context.options;
 
         this.shouldInitialize = function () {
             return !options.airMode;
+        };
+
+        // following toolbar
+        this.followingToolbar = function() {
+            // $(window).unbind('scroll');
+            // console.log($._data( $(window)[0], "events" ));
+            $(window).scroll(function() {
+                let isFullscreen = $editor.hasClass('fullscreen');
+
+                if (isFullscreen) {
+                  console.log('fullscreen');
+                  return false;
+                }
+
+                let editorHeight = $editor.outerHeight();
+                let toolbarOffset, editorOffsetTop, editorOffsetBottom;
+                let activateOffset, deactivateOffsetTop, deactivateOffsetBottom;
+                let currentOffset;
+                let relativeOffset;
+                let otherBarHeight;
+
+                // check if the web app is currently using another static bar
+                otherBarHeight = $('.' + options.otherStaticBarClass).outerHeight();
+                if (!otherBarHeight) {
+                    otherBarHeight = 0;
+                }
+
+                currentOffset = $(document).scrollTop();
+                toolbarOffset = $toolbar.offset().top;
+                editorOffsetTop = $editor.offset().top;
+                editorOffsetBottom = editorOffsetTop + editorHeight;
+                activateOffset = toolbarOffset - otherBarHeight;
+                deactivateOffsetBottom = editorOffsetBottom - otherBarHeight;
+                deactivateOffsetTop = editorOffsetTop - otherBarHeight;
+
+                console.log('currentOffset ', + currentOffset);
+                console.log('activateOffset ', + activateOffset);
+                console.log('toolbarOffset ', + toolbarOffset);
+                console.log('editorHeight ', + editorHeight);
+                console.log('deactivateOffsetBottom ', + deactivateOffsetBottom);
+
+                if ((currentOffset > activateOffset) && (currentOffset < deactivateOffsetBottom)) {
+                    relativeOffset = currentOffset - $editor.offset().top + otherBarHeight;
+                    $toolbar.css({'top': relativeOffset + 'px', 'z-index': 2000});
+                    console.log(relativeOffset);
+                } else {
+                    console.log('else');
+                    if ((currentOffset < toolbarOffset) && (currentOffset < deactivateOffsetBottom)) {
+                        $toolbar.css({'top': 0, 'z-index': 1052});
+                        console.log('0');
+
+                        if (currentOffset > deactivateOffsetTop) {
+                            relativeOffset = currentOffset - $editor.offset().top + otherBarHeight;
+                            $toolbar.css({'top': relativeOffset + 'px', 'z-index': 2000});
+                            console.log(relativeOffset);
+                        }
+                    }
+                }
+            });
         };
 
         this.initialize = function () {
@@ -28,6 +87,10 @@ define(function () {
             });
 
             context.invoke('buttons.updateCurrentStyle');
+
+            if (options.followingToolbar) {
+                this.followingToolbar();
+            }
         };
 
         this.destroy = function () {
