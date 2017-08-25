@@ -18,7 +18,6 @@ define(function () {
                 let isFullscreen = $editor.hasClass('fullscreen');
 
                 if (isFullscreen) {
-                  console.log('fullscreen');
                   return false;
                 }
 
@@ -43,26 +42,16 @@ define(function () {
                 deactivateOffsetBottom = editorOffsetBottom - otherBarHeight;
                 deactivateOffsetTop = editorOffsetTop - otherBarHeight;
 
-                console.log('currentOffset ', + currentOffset);
-                console.log('activateOffset ', + activateOffset);
-                console.log('toolbarOffset ', + toolbarOffset);
-                console.log('editorHeight ', + editorHeight);
-                console.log('deactivateOffsetBottom ', + deactivateOffsetBottom);
-
                 if ((currentOffset > activateOffset) && (currentOffset < deactivateOffsetBottom)) {
                     relativeOffset = currentOffset - $editor.offset().top + otherBarHeight;
                     $toolbar.css({'top': relativeOffset + 'px', 'z-index': 2000});
-                    console.log(relativeOffset);
                 } else {
-                    console.log('else');
                     if ((currentOffset < toolbarOffset) && (currentOffset < deactivateOffsetBottom)) {
-                        $toolbar.css({'top': 0, 'z-index': 1052});
-                        console.log('0');
+                        $toolbar.css({'top': 0, 'z-index': 500});
 
                         if (currentOffset > deactivateOffsetTop) {
                             relativeOffset = currentOffset - $editor.offset().top + otherBarHeight;
                             $toolbar.css({'top': relativeOffset + 'px', 'z-index': 2000});
-                            console.log(relativeOffset);
                         }
                     }
                 }
