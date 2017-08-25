@@ -459,6 +459,7 @@
 ------------------------------------------*/
 .note-toolbar {
     background-color: $toolbar-color;
+    position: relative;
 
     .note-color {
         .note-current-color-button {

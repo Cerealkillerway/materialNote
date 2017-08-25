@@ -382,6 +382,7 @@
 ------------------------------------------*/
 .note-toolbar {
   background-color: #212121;
+  position: relative;
 }
 .note-toolbar .note-color .note-current-color-button {
   width: 36px;
