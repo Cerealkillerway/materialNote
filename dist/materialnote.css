@@ -381,6 +381,7 @@
 /* Popover and Toolbar (Button container)
 ------------------------------------------*/
 .note-toolbar {
+  z-index: 500;
   background-color: #212121;
   position: relative;
 }
