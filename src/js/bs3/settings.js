@@ -131,6 +131,7 @@ define([
 
             // following toolbar
             followingToolbar: true,
+            otherStaticBarClass: 'topBar',
 
             // pallete colors(n x n)
             colors: [
