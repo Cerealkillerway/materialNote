@@ -22,11 +22,13 @@ define(function () {
                 }
 
                 let editorHeight = $editor.outerHeight();
-                let toolbarOffset, editorOffsetTop, editorOffsetBottom;
+                let toolbarOffset, editorOffsetTop, editorOffsetBottom, toolbarHeight;
                 let activateOffset, deactivateOffsetTop, deactivateOffsetBottom;
                 let currentOffset;
                 let relativeOffset;
                 let otherBarHeight;
+
+                toolbarHeight = $toolbar.height();
 
                 // check if the web app is currently using another static bar
                 otherBarHeight = $('.' + options.otherStaticBarClass).outerHeight();
@@ -39,7 +41,7 @@ define(function () {
                 editorOffsetTop = $editor.offset().top;
                 editorOffsetBottom = editorOffsetTop + editorHeight;
                 activateOffset = toolbarOffset - otherBarHeight;
-                deactivateOffsetBottom = editorOffsetBottom - otherBarHeight;
+                deactivateOffsetBottom = editorOffsetBottom - otherBarHeight - toolbarHeight;
                 deactivateOffsetTop = editorOffsetTop - otherBarHeight;
 
                 if ((currentOffset > activateOffset) && (currentOffset < deactivateOffsetBottom)) {
