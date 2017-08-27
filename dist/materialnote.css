@@ -388,6 +388,10 @@
 .note-toolbar .note-color .note-current-color-button {
   width: 36px;
 }
+.note-toolbar .note-color .note-current-color-button.disabled .note-recent-color, .note-toolbar .note-color .note-current-color-button.disabled .note-recent-color-back {
+  background-color: #555555 !important;
+  color: #bbbbbb !important;
+}
 .note-toolbar .note-color .note-current-color-button .note-recent-color {
   z-index: 2;
   font-weight: 600;

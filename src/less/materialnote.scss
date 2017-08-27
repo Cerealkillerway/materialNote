@@ -466,6 +466,13 @@
         .note-current-color-button {
             width: 36px;
 
+            &.disabled {
+                .note-recent-color, .note-recent-color-back {
+                    background-color: $disabled-color !important;
+                    color: $disabled-text-color !important;
+                }
+            }
+
             .note-recent-color {
                 z-index: 2;
                 font-weight: 600;
