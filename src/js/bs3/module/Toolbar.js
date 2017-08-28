@@ -12,46 +12,42 @@ define(function () {
 
         // following toolbar
         this.followingToolbar = function() {
-            // $(window).unbind('scroll');
-            // console.log($._data( $(window)[0], "events" ));
-            $(window).on('scroll resize', function() {
-                let isFullscreen = $editor.hasClass('fullscreen');
+            let isFullscreen = $editor.hasClass('fullscreen');
 
-                if (isFullscreen) {
-                  return false;
-                }
+            if (isFullscreen) {
+              return false;
+            }
 
-                let $toolbarWrapper = $toolbar.parent('.note-toolbar-wrapper');
-                let editorHeight = $editor.outerHeight();
-                let editorWidth = $editor.width();
-                let toolbarOffset, editorOffsetTop, editorOffsetBottom, toolbarHeight;
-                let activateOffset, deactivateOffsetTop, deactivateOffsetBottom;
-                let currentOffset;
-                let otherBarHeight;
+            let $toolbarWrapper = $toolbar.parent('.note-toolbar-wrapper');
+            let editorHeight = $editor.outerHeight();
+            let editorWidth = $editor.width();
+            let toolbarOffset, editorOffsetTop, editorOffsetBottom, toolbarHeight;
+            let activateOffset, deactivateOffsetTop, deactivateOffsetBottom;
+            let currentOffset;
+            let otherBarHeight;
 
-                toolbarHeight = $toolbar.height();
-                $toolbarWrapper.css({height: toolbarHeight});
+            toolbarHeight = $toolbar.height();
+            $toolbarWrapper.css({height: toolbarHeight});
 
-                // check if the web app is currently using another static bar
-                otherBarHeight = $('.' + options.otherStaticBarClass).outerHeight();
-                if (!otherBarHeight) {
-                    otherBarHeight = 0;
-                }
+            // check if the web app is currently using another static bar
+            otherBarHeight = $('.' + options.otherStaticBarClass).outerHeight();
+            if (!otherBarHeight) {
+                otherBarHeight = 0;
+            }
 
-                currentOffset = $(document).scrollTop();
-                toolbarOffset = $toolbar.offset().top;
-                editorOffsetTop = $editor.offset().top;
-                editorOffsetBottom = editorOffsetTop + editorHeight;
-                activateOffset = editorOffsetTop - otherBarHeight;
-                deactivateOffsetBottom = editorOffsetBottom - otherBarHeight - toolbarHeight;
-                deactivateOffsetTop = editorOffsetTop - otherBarHeight;
+            currentOffset = $(document).scrollTop();
+            toolbarOffset = $toolbar.offset().top;
+            editorOffsetTop = $editor.offset().top;
+            editorOffsetBottom = editorOffsetTop + editorHeight;
+            activateOffset = editorOffsetTop - otherBarHeight;
+            deactivateOffsetBottom = editorOffsetBottom - otherBarHeight - toolbarHeight;
+            deactivateOffsetTop = editorOffsetTop - otherBarHeight;
 
-                if ((currentOffset > activateOffset) && (currentOffset < deactivateOffsetBottom)) {
-                    $toolbar.css({position: 'fixed', top: otherBarHeight, width: editorWidth});
-                } else {
-                    $toolbar.css({position: 'relative', top: 0, width: '100%'});
-                }
-            });
+            if ((currentOffset > activateOffset) && (currentOffset < deactivateOffsetBottom)) {
+                $toolbar.css({position: 'fixed', top: otherBarHeight, width: editorWidth});
+            } else {
+                $toolbar.css({position: 'relative', top: 0, width: '100%'});
+            }
         };
 
         this.initialize = function () {
@@ -74,11 +70,14 @@ define(function () {
             context.invoke('buttons.updateCurrentStyle');
 
             if (options.followingToolbar) {
-                this.followingToolbar();
+                $(window).on('scroll resize', () => {
+                    this.followingToolbar();
+                });
             }
         };
 
         this.destroy = function () {
+            $(window).off('scroll resize', this.followingToolbar);
             $toolbar.children().remove();
         };
 
