@@ -3,7 +3,7 @@ define(function () {
         var ui = $.materialnote.ui;
         var $editor = context.layoutInfo.editor;
         var $note = context.layoutInfo.note;
-        var $toolbar = context.layoutInfo.toolbar;
+        let $toolbar = context.layoutInfo.toolbar;
         var options = context.options;
 
         this.shouldInitialize = function () {
@@ -14,21 +14,23 @@ define(function () {
         this.followingToolbar = function() {
             // $(window).unbind('scroll');
             // console.log($._data( $(window)[0], "events" ));
-            $(window).scroll(function() {
+            $(window).on('scroll resize', function() {
                 let isFullscreen = $editor.hasClass('fullscreen');
 
                 if (isFullscreen) {
                   return false;
                 }
 
+                let $toolbarWrapper = $toolbar.parent('.note-toolbar-wrapper');
                 let editorHeight = $editor.outerHeight();
+                let editorWidth = $editor.width();
                 let toolbarOffset, editorOffsetTop, editorOffsetBottom, toolbarHeight;
                 let activateOffset, deactivateOffsetTop, deactivateOffsetBottom;
                 let currentOffset;
-                let relativeOffset;
                 let otherBarHeight;
 
                 toolbarHeight = $toolbar.height();
+                $toolbarWrapper.css({height: toolbarHeight});
 
                 // check if the web app is currently using another static bar
                 otherBarHeight = $('.' + options.otherStaticBarClass).outerHeight();
@@ -40,22 +42,14 @@ define(function () {
                 toolbarOffset = $toolbar.offset().top;
                 editorOffsetTop = $editor.offset().top;
                 editorOffsetBottom = editorOffsetTop + editorHeight;
-                activateOffset = toolbarOffset - otherBarHeight;
+                activateOffset = editorOffsetTop - otherBarHeight;
                 deactivateOffsetBottom = editorOffsetBottom - otherBarHeight - toolbarHeight;
                 deactivateOffsetTop = editorOffsetTop - otherBarHeight;
 
                 if ((currentOffset > activateOffset) && (currentOffset < deactivateOffsetBottom)) {
-                    relativeOffset = currentOffset - $editor.offset().top + otherBarHeight;
-                    $toolbar.css({'top': relativeOffset + 'px'});
+                    $toolbar.css({position: 'fixed', top: otherBarHeight, width: editorWidth});
                 } else {
-                    if ((currentOffset < toolbarOffset) && (currentOffset < deactivateOffsetBottom)) {
-                        $toolbar.css({'top': 0});
-
-                        if (currentOffset > deactivateOffsetTop) {
-                            relativeOffset = currentOffset - $editor.offset().top + otherBarHeight;
-                            $toolbar.css({'top': relativeOffset + 'px'});
-                        }
-                    }
+                    $toolbar.css({position: 'relative', top: 0, width: '100%'});
                 }
             });
         };
