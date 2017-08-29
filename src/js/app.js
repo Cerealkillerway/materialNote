@@ -60,6 +60,7 @@ require(['jquery', 'materialnote'], function ($) {
                     'paragraphAlignCenter', 'paragraphAlignFull', 'paragraphOutdent', 'paragraphIndent']],
                 ['height', ['height']],
                 ['insert', ['picture', 'link', 'video', 'table', 'hr']],
+                ['materialize', ['materializeCard']],
                 ['misc', ['fullscreen', 'codeview', 'undo', 'redo', 'help']]
             ]
         });

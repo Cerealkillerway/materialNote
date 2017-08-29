@@ -543,6 +543,18 @@ define([
                 }).render();
             });
 
+            // materialize's components
+            // cards
+            context.memo('button.materializeCard', function() {
+                return ui.button({
+                    className: 'btn-md',
+                    id: 'note-materialize-card',
+                    contents: ui.icon('view_agenda'),
+                    tooltip: lang.table.centered,
+                    click: context.createInvokeHandler('editor.insertCard')
+                }).render();
+            });
+
             context.memo('button.fullscreen', function () {
                 return ui.button({
                     className: 'btn-fullscreen',
@@ -804,18 +816,6 @@ define([
                     contents: ui.icon('format_align_center'),
                     tooltip: lang.table.centered,
                     click: context.createInvokeHandler('editor.updateTable', 'centered')
-                }).render();
-            });
-
-            // materialize's components
-            // cards
-            context.memo('button.materializeCard', function() {
-                return ui.button({
-                    className: 'btn-md',
-                    id: 'note-materialize-card',
-                    contents: ui.icon('view_agenda'),
-                    tooltip: lang.table.centered,
-                    click: context.createInvokeHandler('editor.insertCard')
                 }).render();
             });
         };

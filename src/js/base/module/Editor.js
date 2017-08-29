@@ -335,6 +335,17 @@ define([
         context.memo('help.outdent', lang.help.outdent);
 
         /**
+        * insert card
+        *
+        * @param {String} src
+        * @param {String|Function} param
+        * @return {Promise}
+        */
+        this.insertCard = function (src, param) {
+            console.log('insert card');
+        };
+
+        /**
         * insert image
         *
         * @param {String} src
