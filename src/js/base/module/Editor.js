@@ -341,8 +341,8 @@ define([
         * @param {String|Function} param
         * @return {Promise}
         */
-        this.insertCard = function (src, param) {
-            console.log('insert card');
+        this.insertCard = function () {
+            range.create(editable).insertNode($('<div class="card indigo darken-2">I am a card</div>')[0]);
         };
 
         /**
