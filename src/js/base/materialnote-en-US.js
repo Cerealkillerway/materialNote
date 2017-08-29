@@ -72,6 +72,9 @@ define([
                 responsive: 'Responsive',
                 centered: 'Centered'
             },
+            materializeComponents: {
+                card: 'Card'
+            },
             hr: {
                 insert: 'Insert Horizontal Rule'
             },

@@ -57,6 +57,9 @@
                 responsive: 'Responsiva',
                 centered: 'Centrata'
             },
+            materializeComponents: {
+                card: 'Carta'
+            },
             hr: {
                 insert: 'Inserisce una linea di separazione'
             },

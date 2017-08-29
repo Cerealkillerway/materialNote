@@ -550,7 +550,7 @@ define([
                     className: 'btn-md',
                     id: 'note-materialize-card',
                     contents: ui.icon('view_agenda'),
-                    tooltip: lang.table.centered,
+                    tooltip: lang.materializeComponents.card,
                     click: context.createInvokeHandler('editor.insertCard')
                 }).render();
             });
