@@ -1,9 +1,8 @@
 # MaterialNote v2
 
 WYSIWYG editor for the web, based on materialnote.js and materializeCss.
+Version 2 is currently in beta...
 
-MaterialNote v2 is a work-in-progress for better sync with orignal materialnote repo;
-MaterialNote v1.2.1 is currently the latest release.
 
 
 ## Editor Api
@@ -30,3 +29,10 @@ Other to the standard summernote.js settings, materialNote have some extras (tak
 If you wish to change any of the editor color, you can quickly achieve the desired result by editing file **src/less/variables.scss**, which defines all colours used by the editor as sass variables.
 
 After making desired changes, just run `grunt build` to create a new dist in the **dist** folder.
+
+
+## Contribute
+
+Some lang strings have been added in materialNote other than the ones supplied with summernote.js; by default only english and italian lang files are kept up to date in this repo; if you can help by adding missing strings for your language, please submit a pull request (thank you);
+
+Pull requests are welcome anyway...
