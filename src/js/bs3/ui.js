@@ -164,6 +164,25 @@ define([
         icon: icon,
         options: {},
 
+        colors: {
+            backNameToText: function(colorName) {
+                let colorTextName = [];
+
+                colorName.split(' ').forEach(function(element, index) {
+                    if (index === 0) {
+                        element = element + '-text';
+                    }
+                    else {
+                        element = 'text-' + element;
+                    }
+
+                    colorTextName[index] = element;
+                });
+
+                return colorTextName.join(' ');
+            }
+        },
+
         button: function ($node, options) {
             return renderer.create('<div class="note-btn btn waves-effect waves-light" tabindex="-1">', function ($node, options) {
                 if (options && options.tooltip && self.options.tooltip) {

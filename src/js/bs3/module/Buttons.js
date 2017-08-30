@@ -564,8 +564,8 @@ define([
                                 let defaultColor = options.defaultColors.text;
                                 let defaultBackColor = options.defaultColors.background;
 
-                                $button.attr('data-backColor', 'white');
-                                $button.attr('data-foreColor', 'grey-text text-darken-4');
+                                $button.attr('data-backColor', options.defaultColors.cardBackground);
+                                $button.attr('data-foreColor', ui.colors.backNameToText(options.defaultColors.cardText));
                                 $recentColorBack.css('background-color', defaultBackColor);
                                 $recentColor.css('color', defaultColor);
                             }
@@ -604,18 +604,18 @@ define([
                                     '<div id="note-card-background-color" class="col s12">',
                                         '<div class="row noMargins">',
                                             '<div class="col s6">',
-                                                '<span class="color-name"></span>',
+                                                '<div class="color-name"></div>',
                                             '</div>',
                                         '</div>',
-                                        '<div class="note-holder" data-event="backColor"></div>',
+                                        '<div class="note-holder" data-event="cardBackColor"></div>',
                                     '</div>',
                                     '<div id="note-card-foreground-color" class="col s12">',
                                         '<div class="row noMargins">',
                                             '<div class="col s6">',
-                                                '<span class="color-name"></span>',
+                                                '<div class="color-name"></div>',
                                             '</div>',
                                         '</div>',
-                                        '<div class="note-holder" data-event="foreColor"/></div>',
+                                        '<div class="note-holder" data-event="cardForeColor"/></div>',
                                     '</div>',
                                 '</div>'
                             ].join(''),
@@ -631,9 +631,9 @@ define([
                                 });
                             },
                             click: function (event) {
-                                var $button = $(event.target);
-                                var eventName = $button.data('event');
-                                var value = $button.data('value');
+                                let $button = $(event.target);
+                                let eventName = $button.data('event');
+                                let value = $button.data('value');
 
                                 // prevent closing dropdown when clicking other than note-color-btn or note-color-reset
                                 if (!$button.hasClass('note-color-btn') && !$button.hasClass('note-color-reset')) {
@@ -641,11 +641,16 @@ define([
                                 }
 
                                 if (eventName && value) {
-                                    let $colorName = $button.closest('.note-holder').prev().find('.color-name');
+                                    let colorName = $button.data('description');
+                                    let $recentCardColor = $button.closest('#note-card-colors').siblings('.note-card-current');
+                                    console.log($recentCardColor);
 
-                                    console.log($colorName.html());
-
-                                    //context.invoke('editor.' + eventName, value);
+                                    if (eventName === 'cardBackColor') {
+                                        $recentCardColor.attr('data-backcolor', colorName);
+                                    }
+                                    else {
+                                        $recentCardColor.attr('data-forecolor', ui.colors.backNameToText(colorName));
+                                    }
                                 }
                             }
                         })

@@ -170,7 +170,10 @@ define([
 
             defaultColors: {
                 text: '#eeeeee',
-                background: '#212121'
+                background: '#212121',
+
+                cardText: 'grey lighten-5',
+                cardBackground: 'grey darken-4'
             },
 
             lineHeights: ['1.0', '1.2', '1.4', '1.5', '1.6', '1.8', '2.0', '3.0'],

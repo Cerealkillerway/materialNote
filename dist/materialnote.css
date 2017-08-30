@@ -119,6 +119,7 @@
 .note-editor .dropdown-content .color-name {
   color: #ffc107;
   line-height: 36px;
+  height: 36px;
   opacity: 0;
 }
 .note-editor .dropdown-content.right {
