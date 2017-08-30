@@ -556,7 +556,7 @@ define([
                             //contents: '<div class="note-recent-color">A</div><div class="note-recent-color-back"></div>',
                             tooltip: lang.materializeComponents.card,
                             click: function() {
-                                context.invoke('editor.insertCard', $(this).data('backcolor'), $(this).data('forecolor'));
+                                context.invoke('editor.insertCard', $(this).attr('data-backcolor'), $(this).attr('data-forecolor'));
                             },
                             callback: function ($button) {
                                 let $recentColor = $button.find('.note-recent-color');
@@ -643,7 +643,6 @@ define([
                                 if (eventName && value) {
                                     let colorName = $button.data('description');
                                     let $recentCardColor = $button.closest('#note-card-colors').siblings('.note-card-current');
-                                    console.log($recentCardColor);
 
                                     if (eventName === 'cardBackColor') {
                                         $recentCardColor.attr('data-backcolor', colorName);

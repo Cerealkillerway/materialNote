@@ -12,19 +12,6 @@ MaterialNote is based on materialnote.js, so the API is still the same.
 Please visit [materialnote.js api guide](http://materialnote.org/deep-dive/) to deep dive.
 
 
-## Improvements
-
-Other than the obvious changes to the UI to meet material style, there are some differences and improvements in materialNote;
-
-- edited image popover to be shown always in the editor area
-- fided scroll causing linkPopover to be shown outside editor's area
-- options have been added to image and table dropdowns to handle materialize's styles for those items
-- color palette dropdown has been edited to meet materialize's color palette
-
-
-## API additions
-
-
 ## Settings additions
 
 Other to the standard summernote.js settings, materialNote have some extras (take a look at official summernote guide for the [summernote.js initialization options](http://summernote.org/deep-dive/#initialization-options)).
@@ -34,7 +21,8 @@ Other to the standard summernote.js settings, materialNote have some extras (tak
 - `popover.table`: added `['materializeOptions', ['borderedTable', 'stripedTable', 'highlightedTable', 'responsiveTable', 'centeredTable']]` btn group to handle materialize's table options.
 - `defaultColors.text` [String]: default text color used for recent-color button at startup.
 - `defaultColors.background` [String]: default background color used for recent-color button at startup.
-- `followingToolbar` [Boolean]: enable/disable following toolbar;
+- `followingToolbar` [Boolean]: enable/disable following toolbar.
+- `otherStaticBarClass` [String]: if your app already have a fixed positioned topBar, you will need to add here its class to let materialNote able to calculate the right offset for the editor's toolbar.
 
 
 ## Editor colors
