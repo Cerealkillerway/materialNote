@@ -59,8 +59,8 @@ require(['jquery', 'materialnote'], function ($) {
                 ['para', ['ul', 'ol', 'paragraph', 'paragraphAlignLeft', 'paragraphAlignRight',
                     'paragraphAlignCenter', 'paragraphAlignFull', 'paragraphOutdent', 'paragraphIndent']],
                 ['height', ['height']],
-                ['insert', ['picture', 'link', 'video', 'table', 'hr']],
                 ['materialize', ['materializeCard']],
+                ['insert', ['picture', 'link', 'video', 'table', 'hr']],
                 ['misc', ['fullscreen', 'codeview', 'undo', 'redo', 'help']]
             ]
         });

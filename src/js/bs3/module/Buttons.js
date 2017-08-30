@@ -285,7 +285,7 @@ define([
                                 });
                             },
                             click: function (event) {
-                                var $button = $(event.target);
+                                /*var $button = $(event.target);
                                 var eventName = $button.data('event');
                                 var value = $button.data('value');
 
@@ -310,7 +310,7 @@ define([
                                     }
                                     $currentButton.attr('data-' + eventName, value);
                                     context.invoke('editor.' + eventName, value);
-                                }
+                                }*/
                             }
                         })
                     ]
@@ -595,13 +595,13 @@ define([
                                 '<div class="row noMargins">',
                                     '<div class="col s12">',
                                         '<ul class="tabs">',
-                                            '<li class="tab col s6"><a class="active" href="#note-background-color">' + lang.color.background + '</a></li>',
-                                            '<li class="tab col s6"><a href="#note-foreground-color">' + lang.color.foreground + '</a></li>',
+                                            '<li class="tab col s6"><a class="active" href="#note-card-background-color">' + lang.color.background + '</a></li>',
+                                            '<li class="tab col s6"><a href="#note-card-foreground-color">' + lang.color.foreground + '</a></li>',
                                         '</ul>',
                                     '</div>',
                                 '</div>',
                                 '<div class="row noMargins">',
-                                    '<div id="note-background-color" class="col s12">',
+                                    '<div id="note-card-background-color" class="col s12">',
                                         '<div class="row noMargins">',
                                             '<div class="col s6">',
                                                 '<span class="color-name"></span>',
@@ -609,7 +609,7 @@ define([
                                         '</div>',
                                         '<div class="note-holder" data-event="backColor"></div>',
                                     '</div>',
-                                    '<div id="note-foreground-color" class="col s12">',
+                                    '<div id="note-card-foreground-color" class="col s12">',
                                         '<div class="row noMargins">',
                                             '<div class="col s6">',
                                                 '<span class="color-name"></span>',
