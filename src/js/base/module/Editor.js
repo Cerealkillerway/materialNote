@@ -337,12 +337,11 @@ define([
         /**
         * insert card
         *
-        * @param {String} src
-        * @param {String|Function} param
-        * @return {Promise}
+        * @param {String} backColor
+        * @return {DOM}
         */
-        this.insertCard = function () {
-            range.create(editable).insertNode($('<div class="card indigo darken-2">I am a card</div>')[0]);
+        this.insertCard = function (backColor, foreColor) {
+            range.create(editable).insertNode($('<div class="card ' + backColor + '"><div class="card-content ' + foreColor + '">' + lang.materializeComponents.cardContentSample + '</div></div>')[0]);
         };
 
         /**

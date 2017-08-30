@@ -73,7 +73,8 @@ define([
                 centered: 'Centered'
             },
             materializeComponents: {
-                card: 'Card'
+                card: 'Card',
+                cardContentSample: 'Card content'
             },
             hr: {
                 insert: 'Insert Horizontal Rule'

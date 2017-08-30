@@ -543,17 +543,132 @@ define([
                 }).render();
             });
 
+
             // materialize's components
             // cards
-            context.memo('button.materializeCard', function() {
-                return ui.button({
-                    className: 'btn-md',
-                    id: 'note-materialize-card',
-                    contents: ui.icon('view_agenda'),
-                    tooltip: lang.materializeComponents.card,
-                    click: context.createInvokeHandler('editor.insertCard')
+            context.memo('button.materializeCard', function () {
+                return ui.buttonGroup({
+                    className: 'note-color-card',
+                    children: [
+                        ui.button({
+                            className: 'note-current-card',
+                            contents: ui.icon('view_agenda'),
+                            //contents: '<div class="note-recent-color">A</div><div class="note-recent-color-back"></div>',
+                            tooltip: lang.materializeComponents.card,
+                            click: function() {
+                                context.invoke('editor.insertCard', $(this).data('backcolor'), $(this).data('forecolor'));
+                            },
+                            callback: function ($button) {
+                                let $recentColor = $button.find('.note-recent-color');
+                                let $recentColorBack = $button.find('.note-recent-color-back');
+                                let defaultColor = options.defaultColors.text;
+                                let defaultBackColor = options.defaultColors.background;
+
+                                $button.attr('data-backColor', 'white');
+                                $button.attr('data-foreColor', 'grey-text text-darken-4');
+                                $recentColorBack.css('background-color', defaultBackColor);
+                                $recentColor.css('color', defaultColor);
+                            }
+                        }),
+                        ui.button({
+                            className: 'dropdown-button',
+                            contents: ui.icon('arrow_drop_down'),
+                            tooltip: lang.color.more,
+                            data: {
+                                activates: 'note-colors'
+                            },
+                            click: function() {
+                                let $dropdown = $(this).next('.dropdown-content');
+                                let $tabs = $dropdown.find('ul.tabs');
+
+                                // in this tabs initialization the indicator width will not be set since the plugin does not work
+                                // with hidden elements (display: none);
+                                // as a workaround the indicator width is forced to 50% in the css
+                                $tabs.tabs({
+                                    //swipeable: true
+                                });
+                            }
+                        }),
+                        ui.dropdown({
+                            id: 'note-colors',
+                            items: [
+                                '<div class="row noMargins">',
+                                    '<div class="col s12">',
+                                        '<ul class="tabs">',
+                                            '<li class="tab col s6"><a class="active" href="#note-background-color">' + lang.color.background + '</a></li>',
+                                            '<li class="tab col s6"><a href="#note-foreground-color">' + lang.color.foreground + '</a></li>',
+                                        '</ul>',
+                                    '</div>',
+                                '</div>',
+                                '<div class="row noMargins">',
+                                    '<div id="note-background-color" class="col s12">',
+                                        '<div class="row noMargins">',
+                                            '<div class="col s6">',
+                                                '<button type="button" class="note-color-reset btn" data-event="backColor" data-value="inherit">' + lang.color.transparent + '</button>',
+                                            '</div>',
+                                            '<div class="col s6">',
+                                                '<span class="color-name"></span>',
+                                            '</div>',
+                                        '</div>',
+                                        '<div class="note-holder" data-event="backColor"></div>',
+                                    '</div>',
+                                    '<div id="note-foreground-color" class="col s12">',
+                                        '<div class="row noMargins">',
+                                            '<div class="col s6">',
+                                                '<button type="button" class="note-color-reset btn" data-event="removeFormat" data-value="foreColor">' + lang.color.resetToDefault + '</button>',
+                                            '</div>',
+                                            '<div class="col s6">',
+                                                '<span class="color-name"></span>',
+                                            '</div>',
+                                        '</div>',
+                                        '<div class="note-holder" data-event="foreColor"/></div>',
+                                    '</div>',
+                                '</div>'
+                            ].join(''),
+                            callback: function ($dropdown) {
+                                $dropdown.find('.note-holder').each(function () {
+                                    var $holder = $(this);
+
+                                    $holder.append(ui.palette({
+                                        colors: options.colors,
+                                        colorNames: options.colorNames,
+                                        eventName: $holder.data('event'),
+                                    }).render());
+                                });
+                            },
+                            click: function (event) {
+                                var $button = $(event.target);
+                                var eventName = $button.data('event');
+                                var value = $button.data('value');
+
+                                // prevent closing dropdown when clicking other than note-color-btn or note-color-reset
+                                if (!$button.hasClass('note-color-btn') && !$button.hasClass('note-color-reset')) {
+                                    return false;
+                                }
+
+                                if (eventName && value) {
+                                    let key = eventName === 'backColor' ? 'background-color' : 'color';
+                                    let $currentButton = $button.closest('.note-color').find('.note-current-color-button');
+
+                                    if (key === 'background-color') {
+                                        let $recentColorBack = $button.closest('.note-color').find('.note-recent-color-back');
+
+                                        $recentColorBack.css('background-color', value);
+                                    }
+                                    else {
+                                        let $recentColor = $button.closest('.note-color').find('.note-recent-color');
+
+                                        $recentColor.css('color', value);
+                                    }
+                                    $currentButton.attr('data-' + eventName, value);
+                                    context.invoke('editor.' + eventName, value);
+                                }
+                            }
+                        })
+                    ]
                 }).render();
             });
+
 
             context.memo('button.fullscreen', function () {
                 return ui.button({

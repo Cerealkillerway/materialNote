@@ -58,7 +58,8 @@
                 centered: 'Centrata'
             },
             materializeComponents: {
-                card: 'Carta'
+                card: 'Carta',
+                cardContentSample: 'Contenuto della carta'
             },
             hr: {
                 insert: 'Inserisce una linea di separazione'
