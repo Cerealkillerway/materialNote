@@ -548,10 +548,10 @@ define([
             // cards
             context.memo('button.materializeCard', function () {
                 return ui.buttonGroup({
-                    className: 'note-color-card',
+                    className: 'note-card',
                     children: [
                         ui.button({
-                            className: 'note-current-card',
+                            className: 'note-card-current',
                             contents: ui.icon('view_agenda'),
                             //contents: '<div class="note-recent-color">A</div><div class="note-recent-color-back"></div>',
                             tooltip: lang.materializeComponents.card,
@@ -575,7 +575,7 @@ define([
                             contents: ui.icon('arrow_drop_down'),
                             tooltip: lang.color.more,
                             data: {
-                                activates: 'note-colors'
+                                activates: 'note-card-colors'
                             },
                             click: function() {
                                 let $dropdown = $(this).next('.dropdown-content');
@@ -590,7 +590,7 @@ define([
                             }
                         }),
                         ui.dropdown({
-                            id: 'note-colors',
+                            id: 'note-card-colors',
                             items: [
                                 '<div class="row noMargins">',
                                     '<div class="col s12">',
@@ -604,9 +604,6 @@ define([
                                     '<div id="note-background-color" class="col s12">',
                                         '<div class="row noMargins">',
                                             '<div class="col s6">',
-                                                '<button type="button" class="note-color-reset btn" data-event="backColor" data-value="inherit">' + lang.color.transparent + '</button>',
-                                            '</div>',
-                                            '<div class="col s6">',
                                                 '<span class="color-name"></span>',
                                             '</div>',
                                         '</div>',
@@ -614,9 +611,6 @@ define([
                                     '</div>',
                                     '<div id="note-foreground-color" class="col s12">',
                                         '<div class="row noMargins">',
-                                            '<div class="col s6">',
-                                                '<button type="button" class="note-color-reset btn" data-event="removeFormat" data-value="foreColor">' + lang.color.resetToDefault + '</button>',
-                                            '</div>',
                                             '<div class="col s6">',
                                                 '<span class="color-name"></span>',
                                             '</div>',

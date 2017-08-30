@@ -385,21 +385,21 @@
   background-color: #212121;
   position: relative;
 }
-.note-toolbar .note-color .note-current-color-button {
+.note-toolbar .note-color .note-current-color-button, .note-toolbar .note-card .note-current-color-button {
   width: 36px;
 }
-.note-toolbar .note-color .note-current-color-button.disabled .note-recent-color, .note-toolbar .note-color .note-current-color-button.disabled .note-recent-color-back {
+.note-toolbar .note-color .note-current-color-button.disabled .note-recent-color, .note-toolbar .note-color .note-current-color-button.disabled .note-recent-color-back, .note-toolbar .note-card .note-current-color-button.disabled .note-recent-color, .note-toolbar .note-card .note-current-color-button.disabled .note-recent-color-back {
   background-color: #555555 !important;
   color: #bbbbbb !important;
 }
-.note-toolbar .note-color .note-current-color-button .note-recent-color {
+.note-toolbar .note-color .note-current-color-button .note-recent-color, .note-toolbar .note-card .note-current-color-button .note-recent-color {
   z-index: 2;
   font-weight: 600;
   line-height: 2.2;
   position: absolute;
   left: 13px;
 }
-.note-toolbar .note-color .note-current-color-button .note-recent-color-back {
+.note-toolbar .note-color .note-current-color-button .note-recent-color-back, .note-toolbar .note-card .note-current-color-button .note-recent-color-back {
   z-index: 1;
   height: 20px;
   width: 19.5px;
