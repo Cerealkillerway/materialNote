@@ -285,7 +285,7 @@ define([
                                 });
                             },
                             click: function (event) {
-                                /*var $button = $(event.target);
+                                var $button = $(event.target);
                                 var eventName = $button.data('event');
                                 var value = $button.data('value');
 
@@ -310,7 +310,7 @@ define([
                                     }
                                     $currentButton.attr('data-' + eventName, value);
                                     context.invoke('editor.' + eventName, value);
-                                }*/
+                                }
                             }
                         })
                     ]
@@ -641,21 +641,11 @@ define([
                                 }
 
                                 if (eventName && value) {
-                                    let key = eventName === 'backColor' ? 'background-color' : 'color';
-                                    let $currentButton = $button.closest('.note-color').find('.note-current-color-button');
+                                    let $colorName = $button.closest('.note-holder').prev().find('.color-name');
 
-                                    if (key === 'background-color') {
-                                        let $recentColorBack = $button.closest('.note-color').find('.note-recent-color-back');
+                                    console.log($colorName.html());
 
-                                        $recentColorBack.css('background-color', value);
-                                    }
-                                    else {
-                                        let $recentColor = $button.closest('.note-color').find('.note-recent-color');
-
-                                        $recentColor.css('color', value);
-                                    }
-                                    $currentButton.attr('data-' + eventName, value);
-                                    context.invoke('editor.' + eventName, value);
+                                    //context.invoke('editor.' + eventName, value);
                                 }
                             }
                         })
