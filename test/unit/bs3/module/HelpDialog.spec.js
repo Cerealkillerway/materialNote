@@ -6,12 +6,12 @@
 /* jshint unused: false */
 define([
   'chai',
-  'materialnote/bs3/module/HelpDialog'
+  'materialnote/materialize/module/HelpDialog'
 ], function (chai, HelpDialog) {
   'use strict';
 
   var expect = chai.expect;
 
-  describe('bs3:module.HelpDialog', function () {
+  describe('materialize:module.HelpDialog', function () {
   });
 });

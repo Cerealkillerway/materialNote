@@ -6,12 +6,12 @@
 /* jshint unused: false */
 define([
   'chai',
-  'materialnote/bs3/module/LinkPopover'
+  'materialnote/materialize/module/LinkPopover'
 ], function (chai, LinkPopover) {
   'use strict';
 
   var expect = chai.expect;
 
-  describe('bs3:module.LinkPopover', function () {
+  describe('materialize:module.LinkPopover', function () {
   });
 });

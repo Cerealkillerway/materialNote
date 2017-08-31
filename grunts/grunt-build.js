@@ -54,7 +54,7 @@ module.exports = function (grunt) {
         return contents;
       },
       excludeShallow: ['jquery', 'codemirror', 'app'],
-      include: ['materialnote/bs3/settings'],
+      include: ['materialnote/materialize/settings'],
       paths: {
         jquery: 'empty:',
         codemirror: 'empty:'

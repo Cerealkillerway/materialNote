@@ -36,7 +36,7 @@ requirejs.config({
   deps: tests,
 
   callback: function () {
-    require(['jquery', 'bootstrap', 'materialnote/bs3/settings'], function () {
+    require(['jquery', 'bootstrap', 'materialnote/materialize/settings'], function () {
       window.__karma__.start();
     });
   }

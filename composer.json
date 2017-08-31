@@ -1,6 +1,6 @@
 {
     "name": "materialnote/materialnote",
-    "description": "Super Simple WYSIWYG Editor on Bootstrap(3.0 and 2.x).",
+    "description": "Super Simple WYSIWYG Editor on Materialize.",
     "type": "library",
     "keywords": [
         "wysiwyg"
@@ -9,12 +9,12 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Alan",
-            "email": "susukang98@gmail.com",
+            "name": "CK",
+            "email": "cerealkillerway@gmail.com",
             "role": "lead"
         }
     ],
     "support": {
-        "issues": "https://github.com/materialnote/materialnote/issues"
+        "issues": "https://github.com/Cerealkillerway/materialNote/issues"
     }
 }

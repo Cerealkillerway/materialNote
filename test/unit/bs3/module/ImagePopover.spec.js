@@ -6,12 +6,12 @@
 /* jshint unused: false */
 define([
   'chai',
-  'materialnote/bs3/module/ImagePopover'
+  'materialnote/materialize/module/ImagePopover'
 ], function (chai, ImagePopover) {
   'use strict';
 
   var expect = chai.expect;
 
-  describe('bs3:module.ImagePopover', function () {
+  describe('materialize:module.ImagePopover', function () {
   });
 });

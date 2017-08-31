@@ -10,7 +10,7 @@
     <iconUrl>http://materialnote.org/img/icons/icon_ios_120x120.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <summary>
-      Super Simple WYSIWYG Editor on Bootstrap    
+      Super Simple WYSIWYG Editor on Bootstrap
     </summary>
     <description>
       <![CDATA[
@@ -24,8 +24,8 @@
           * Added fonts on meteor package.
       ]]>
     </releaseNotes>
-    <copyright>Copyright 2013</copyright>
-    <tags>materialnote, Bootstrap, jQuery, editor, WYSIWYG</tags>
+    <copyright>Copyright 2017</copyright>
+    <tags>materialnote, Materialize, jQuery, editor, WYSIWYG</tags>
     <dependencies>
       <dependency id="Twitter.Bootstrap" version="3.0.1" />
     </dependencies>

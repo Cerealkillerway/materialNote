@@ -14,16 +14,11 @@ before_deploy:
 - grunt dist
 deploy:
   provider: npm
-  email: susukang98@gmail.com
+  email: cerealkillerway@gmail.com
   api_key:
-    secure: TYJfuTLZKbYvTskuMlmuKnQb5F35GFPN2AqSf0RtZYWGLozIaIkKcpTVbjzo859FWuxPjci53FGiJih3+0iVfIC39CDTrFZutubn8qduOfRAVTL1WzeQvdww8miJNwUY59HmoOa78OtbNCVg/N7zFSZzRXAcgje8IADQFIISwk8=
+    secure: "u7BNp0/a6062Uaip9rkw8dooHbhle7EFSxCYxelPSibrcMG6fzS+DxQ3iIuuke6oBUuy+8rgN961nVMbFJioLEIdoG6ZSvq3E13Up7JqFaWnGJyPHOA36l5+bZREKpbgIwAqdzSESekE6M0W+kMoSsDioXF+jwFp9/Zg6oM3evzA9UecyEhr/sYsFB2CSojNjFjVy/Qy70jGY+6kTcVjaRcwKulKq/WJmfKxSYt0FDWGH3EATaUsBVeub5JILlLglFofMscSRyiDiDix/Og6KFc0e2VCCbYPRd7vC5K+o8XdNLwhqB08+l2p0+jpCoFCeqXomkZvSbvA93K0AMn1/CGBxaEGANU+4DmuKYgGeKhy1qVCdBZKJtp6YO14agcxex6BnPeDda10TGE8dQKVvRvOb3mx1Om8ReCvonbKDdrKxq5kOFGOaKV65Pko2KQHgjLy4+vIF3HUyBXczNkjIKzIYYDioIyWJJpjfPUCr4uksX24N4DEPcGTjZPs5T3BcxXaMPbDBFJ+syIj7tA2oOxCBT8aPNA8sY10QykjY6Zw+dI5e1NTSttQ0339YASGt2fFA0gxrw3VZiELw3YYmJVbU9JboHOokasrSkM6WhkZbnaI07P/qVO4DhYkzDbZqlwcnxB1bxquX5YTmn/ZbOajAaHn4xhuaRda+qVowL0="
   on:
     tags: true
     branch: develop
-addons:
-  sauce_connect:
-    username: 'materialnoteis'
-    access_key:
-      secure: "E9Mq/lKN1xNA+PungEtlDEYqx5Dm52GPuvRMjZPkv5GiuFjof70CuqOIbqSh5YcDvn6/FmPlmlcZVNcXGzKkkSY9qqFpsbmsu2VXmbHlmpjr0Yhm7LQLoZYj+fmrO3WITai6yEyvb8cjGTjHhTjULDORJgC9U4DLfzju5OQFW0Q="
 after_success:
 - grunt coveralls:travis

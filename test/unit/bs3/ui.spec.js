@@ -6,12 +6,12 @@
 /* jshint unused: false */
 define([
   'chai',
-  'materialnote/bs3/ui'
+  'materialnote/materialize/ui'
 ], function (chai, ui) {
   'use strict';
 
   var expect = chai.expect;
 
-  describe('bs3:ui', function () {
+  describe('materialize:ui', function () {
   });
 });

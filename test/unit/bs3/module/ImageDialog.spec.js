@@ -6,12 +6,12 @@
 /* jshint unused: false */
 define([
   'chai',
-  'materialnote/bs3/module/ImageDialog'
+  'materialnote/materialize/module/ImageDialog'
 ], function (chai, ImageDialog) {
   'use strict';
 
   var expect = chai.expect;
 
-  describe('bs3:module.ImageDialog', function () {
+  describe('materialize:module.ImageDialog', function () {
   });
 });

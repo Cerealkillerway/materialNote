@@ -6,12 +6,12 @@
 /* jshint unused: false */
 define([
   'chai',
-  'materialnote/bs3/module/LinkDialog'
+  'materialnote/materialize/module/LinkDialog'
 ], function (chai, LinkDialog) {
   'use strict';
 
   var expect = chai.expect;
 
-  describe('bs3:module.LinkDialog', function () {
+  describe('materialize:module.LinkDialog', function () {
   });
 });

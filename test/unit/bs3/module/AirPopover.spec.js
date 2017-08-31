@@ -6,12 +6,12 @@
 /* jshint unused: false */
 define([
   'chai',
-  'materialnote/bs3/module/AirPopover'
+  'materialnote/materialize/module/AirPopover'
 ], function (chai, AirPopover) {
   'use strict';
 
   var expect = chai.expect;
 
-  describe('bs3:module.AirPopover', function () {
+  describe('materialize:module.AirPopover', function () {
   });
 });

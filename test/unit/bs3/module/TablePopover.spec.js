@@ -6,12 +6,12 @@
 /* jshint unused: false */
 define([
   'chai',
-  'materialnote/bs3/module/TablePopover'
+  'materialnote/materialize/module/TablePopover'
 ], function (chai, TablePopover) {
   'use strict';
 
   var expect = chai.expect;
 
-  describe('bs3:module.TablePopover', function () {
+  describe('materialize:module.TablePopover', function () {
   });
 });

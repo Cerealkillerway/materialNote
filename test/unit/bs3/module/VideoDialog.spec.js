@@ -8,13 +8,13 @@ define([
   'chai',
   'jquery',
   'materialnote/base/Context',
-  'materialnote/bs3/module/VideoDialog'
+  'materialnote/materialize/module/VideoDialog'
 ], function (chai, $, Context, VideoDialog) {
   'use strict';
 
   var expect = chai.expect;
 
-  describe('bs3:module.VideoDialog', function () {
+  describe('materialize:module.VideoDialog', function () {
 
     var context, $video, $toolbar, $editable;
 
