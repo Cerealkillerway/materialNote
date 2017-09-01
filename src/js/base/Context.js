@@ -163,8 +163,8 @@ define([
         };
 
         this.getInlineStyles = function($target) {
-            let inlineStyle = $target.attr('style');
-            let styles = {};
+            var inlineStyle = $target.attr('style');
+            var styles = {};
 
             if (inlineStyle) {
                 inlineStyle = inlineStyle.split(';');

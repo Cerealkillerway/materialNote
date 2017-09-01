@@ -319,7 +319,7 @@ module.exports = function (grunt) {
   grunt.registerTask('lint', ['jshint', 'jscs']);
 
   // test: unit test on test folder
-  grunt.registerTask('test', ['lint', 'karma:all']);
+  grunt.registerTask('test', ['karma:all']);
 
   // test: unit test on travis
   grunt.registerTask('test-travis', ['lint', 'karma:travis']);

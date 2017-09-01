@@ -24,6 +24,7 @@ require(['jquery', 'materialnote'], function ($) {
     var requireByPromise = function (paths) {
         return $.Deferred(function (deferred) {
             require(paths, function () {
+                //console.log(paths);
                 deferred.resolve.apply(this, arguments);
             });
         });
@@ -40,13 +41,13 @@ require(['jquery', 'materialnote'], function ($) {
         break;
 
         case 'materialize':
-        promise = requireByPromise(['materialnote/materialize/settings']).then(function () {
-            return requireByPromise(['lang']);
-        });
+        promise = requireByPromise(['materialnote/materialize/settings']);
         break;
     }
 
     promise.then(function () {
+        return requireByPromise(['lang']);
+    }).then(function () {
         // initialize materialNote
         $('.materialnote').materialnote({
             height: 300,
