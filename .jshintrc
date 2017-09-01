@@ -13,7 +13,6 @@
     "white": true,
     "maxdepth": 5,
     "maxstatements": 300,
-    "maxlen": 140,
     "evil": true,
     "browser": true,
     "devel": true,
