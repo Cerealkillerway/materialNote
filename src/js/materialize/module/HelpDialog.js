@@ -30,7 +30,7 @@ define([
         this.initialize = function () {
             var $container = options.dialogsInBody ? $(document.body) : $editor;
 
-            var body = [
+            var footer = [
                 '<p class="text-center">',
                 '<a href="http://web-forge.info/materialnote" target="_blank">materialnote @VERSION</a> - ',
                 '<a href="https://github.com/Cerealkillerway/materialNote" target="_blank">' + lang.help.project + '</a> - ',
@@ -41,8 +41,8 @@ define([
             this.$dialog = ui.dialog({
                 title: lang.options.help,
                 fade: options.dialogsFade,
-                body: '<div class="row help-content">' + this.createShortCutList() + '</div>',
-                footer: body,
+                body: '<div class="row help-content"><div class="help-container">' + this.createShortCutList() + '</div></div>',
+                footer: footer,
                 id: 'note-help-modal',
                 callback: function ($node) {
                     $node.find('.modal-body').css({
