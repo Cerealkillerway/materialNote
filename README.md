@@ -7,8 +7,8 @@ Version 2 is currently in beta...
 
 ## Editor Api
 
-MaterialNote is based on materialnote.js, so the API is still the same.
-Please visit [materialnote.js api guide](http://summernote.org/deep-dive/) to deep dive.
+MaterialNote is based on summernote.js, so the API is still the same.
+Please visit [summernote.js api guide](http://summernote.org/deep-dive/) to deep dive.
 
 
 ## Settings additions
