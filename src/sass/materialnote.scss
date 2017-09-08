@@ -136,11 +136,13 @@
     // modals
     .modal-content {
         @extend %styled-scrollbars;
+        border-color: $toolbar-color !important;
 
         .help-content {
             .help-container {
                 margin-left: 5%;
                 margin-right: 5%;
+                //border: solid 1px $toolbar-color-lighten;
             }
 
             .note-help-row {

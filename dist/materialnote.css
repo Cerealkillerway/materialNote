@@ -115,6 +115,9 @@
   /* Modals
   ------------------------------------------*/
 }
+.note-editor .modal-content {
+  border-color: #212121 !important;
+}
 .note-editor .modal-content .help-content .help-container {
   margin-left: 5%;
   margin-right: 5%;
