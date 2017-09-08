@@ -144,7 +144,7 @@ module.exports = function (grunt) {
         options: { compile: true, compress: true },
         files: [
           {
-            'dist/materialnote.css': ['src/less/materialnote.scss']
+            'dist/materialnote.css': ['src/sass/materialnote.scss']
           },
           {
             expand: true,
@@ -204,9 +204,9 @@ module.exports = function (grunt) {
         },
         sass: {
             options: {
-                livereload: false
+                livereload: true
             },
-            files: ['src/less/*.scss'],
+            files: ['src/sass/*.scss'],
             tasks: ['sass']
         },
         css: {
@@ -297,7 +297,7 @@ module.exports = function (grunt) {
             style: 'expanded'
           },
           files: {                         // Dictionary of files
-            'dist/materialnote.css': 'src/less/materialnote.scss'       // 'destination': 'source'
+            'dist/materialnote.css': 'src/sass/materialnote.scss'       // 'destination': 'source'
           }
         }
       }

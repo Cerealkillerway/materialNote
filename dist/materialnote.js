@@ -7,7 +7,7 @@
  * based on summernote.js, copyright 2013- Alan Hong. and other contributors
  * materialnote may be freely distributed under the MIT license./
  *
- * Date: 2017-08-31T12:44Z
+ * Date: 2017-09-07T23:44Z
  */
 (function (factory) {
   /* global define */
@@ -1446,9 +1446,9 @@
         };
 
         var posFromPlaceholder = function (placeholder) {
-            let $placeholder = $(placeholder);
-            let pos = $placeholder.offset();
-            let height = $placeholder.outerHeight(true); // include margin
+            var $placeholder = $(placeholder);
+            var pos = $placeholder.offset();
+            var height = $placeholder.outerHeight(true); // include margin
 
             return {
                 left: pos.left,
@@ -1733,8 +1733,8 @@
         };
 
         this.getInlineStyles = function($target) {
-            let inlineStyle = $target.attr('style');
-            let styles = {};
+            var inlineStyle = $target.attr('style');
+            var styles = {};
 
             if (inlineStyle) {
                 inlineStyle = inlineStyle.split(';');
