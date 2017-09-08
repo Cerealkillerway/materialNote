@@ -26,7 +26,7 @@ Other to the standard summernote.js settings, materialNote have some extras (tak
 
 ## Editor colors
 
-If you wish to change any of the editor color, you can quickly achieve the desired result by editing file **src/less/variables.scss**, which defines all colours used by the editor as sass variables.
+If you wish to change any of the editor color, you can quickly achieve the desired result by editing file **src/sass/variables.scss**, which defines all colours used by the editor as sass variables.
 
 After making desired changes, just run `grunt build` to create a new dist in the **dist** folder.
 
