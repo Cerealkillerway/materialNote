@@ -547,6 +547,13 @@ define([
             // materialize's components
             // cards
             context.memo('button.materializeCard', function () {
+                return ui.button({
+                    contents: ui.icon('view_agenda'),
+                    tooltip: lang.materializeComponents.card,
+                    click: context.createInvokeHandler('cardDialog.show')
+                }).render();
+            });
+            /*context.memo('button.materializeCard', function () {
                 return ui.buttonGroup({
                     className: 'note-card',
                     children: [
@@ -655,7 +662,7 @@ define([
                         })
                     ]
                 }).render();
-            });
+            });*/
 
 
             context.memo('button.fullscreen', function () {

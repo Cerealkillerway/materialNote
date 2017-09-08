@@ -57,6 +57,58 @@
 
 /* Layout
 ------------------------------------------*/
+.note-editor .note-color-palette, #note-card-modal .note-color-palette {
+  line-height: 1;
+}
+.note-editor .note-color-palette .note-color-row, #note-card-modal .note-color-palette .note-color-row {
+  line-height: 0;
+}
+.note-editor .note-color-palette div .note-color-btn, #note-card-modal .note-color-palette div .note-color-btn {
+  width: 23px;
+  height: 23px;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+.note-editor .note-color-palette div .note-color-btn:hover::after, #note-card-modal .note-color-palette div .note-color-btn:hover::after {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  content: "";
+  background-color: inherit;
+  margin-top: -17px;
+  margin-left: -17px;
+  border: solid 2px #212121;
+}
+.note-editor .note-color .note-current-color-button, #note-card-modal .note-color .note-current-color-button {
+  width: 36px;
+}
+.note-editor .note-color .note-current-color-button.disabled .note-recent-color, .note-editor .note-color .note-current-color-button.disabled .note-recent-color-back, #note-card-modal .note-color .note-current-color-button.disabled .note-recent-color, #note-card-modal .note-color .note-current-color-button.disabled .note-recent-color-back {
+  background-color: #555555 !important;
+  color: #bbbbbb !important;
+}
+.note-editor .note-color .note-current-color-button .note-recent-color, #note-card-modal .note-color .note-current-color-button .note-recent-color {
+  z-index: 2;
+  font-weight: 600;
+  line-height: 2.2;
+  position: absolute;
+  left: 13px;
+}
+.note-editor .note-color .note-current-color-button .note-recent-color-back, #note-card-modal .note-color .note-current-color-button .note-recent-color-back {
+  z-index: 1;
+  height: 20px;
+  width: 19.5px;
+  background-color: #eeeeee;
+  position: absolute;
+  bottom: 10px;
+}
+
+#note-card-modal {
+  top: 5% !important;
+  height: 90%;
+  max-height: 90%;
+}
+
 .note-editor {
   position: relative;
   /* dropzone */
@@ -87,7 +139,7 @@
   color: #eeeeee;
   padding: 4px 5px 2px 5px;
 }
-.note-editor .dropdown-content {
+.note-editor .dropdown-content, .note-editor .modal-content {
   min-width: 10px;
   background-color: #212121;
   border-left: solid 1px #eeeeee;
@@ -98,68 +150,68 @@
   /* http://forrst.com/posts/Bootstrap_right_positioned_dropdown-2KB */
   /* dropdown-menu for selectbox */
 }
-.note-editor .dropdown-content .tabs {
+.note-editor .dropdown-content .tabs, .note-editor .modal-content .tabs {
   background-color: #212121;
 }
-.note-editor .dropdown-content .tabs .tab.col {
+.note-editor .dropdown-content .tabs .tab.col, .note-editor .modal-content .tabs .tab.col {
   float: none;
 }
-.note-editor .dropdown-content .tabs .tab.col:hover {
+.note-editor .dropdown-content .tabs .tab.col:hover, .note-editor .modal-content .tabs .tab.col:hover {
   background-color: #212121;
 }
-.note-editor .dropdown-content .tabs .tab.col a {
+.note-editor .dropdown-content .tabs .tab.col a, .note-editor .modal-content .tabs .tab.col a {
   line-height: 48px;
   color: #eeeeee;
 }
-.note-editor .dropdown-content .tabs .indicator {
+.note-editor .dropdown-content .tabs .indicator, .note-editor .modal-content .tabs .indicator {
   height: 5px;
   background-color: #3d5afe;
   width: 50%;
 }
-.note-editor .dropdown-content .row.noMargins {
+.note-editor .dropdown-content .row.noMargins, .note-editor .modal-content .row.noMargins {
   margin-left: auto;
   margin-right: auto;
 }
-.note-editor .dropdown-content .note-color-reset.btn {
+.note-editor .dropdown-content .note-color-reset.btn, .note-editor .modal-content .note-color-reset.btn {
   background-color: #323232;
 }
-.note-editor .dropdown-content .note-color-reset.btn:hover {
+.note-editor .dropdown-content .note-color-reset.btn:hover, .note-editor .modal-content .note-color-reset.btn:hover {
   background-color: #3d5afe;
   color: #eeeeee;
 }
-.note-editor .dropdown-content .color-name {
+.note-editor .dropdown-content .color-name, .note-editor .modal-content .color-name {
   color: #ffc107;
   line-height: 36px;
   height: 36px;
   opacity: 0;
 }
-.note-editor .dropdown-content.right {
+.note-editor .dropdown-content.right, .note-editor .modal-content.right {
   right: 0;
   left: auto;
 }
-.note-editor .dropdown-content.right::before {
+.note-editor .dropdown-content.right::before, .note-editor .modal-content.right::before {
   right: 9px;
   left: auto !important;
 }
-.note-editor .dropdown-content.right::after {
+.note-editor .dropdown-content.right::after, .note-editor .modal-content.right::after {
   right: 10px;
   left: auto !important;
 }
-.note-editor .dropdown-content.note-check li {
+.note-editor .dropdown-content.note-check li, .note-editor .modal-content.note-check li {
   list-style: none;
 }
-.note-editor .dropdown-content.note-check li:hover {
+.note-editor .dropdown-content.note-check li:hover, .note-editor .modal-content.note-check li:hover {
   background-color: #3d5afe;
   color: #eeeeee;
 }
-.note-editor .dropdown-content.note-check li a {
+.note-editor .dropdown-content.note-check li a, .note-editor .modal-content.note-check li a {
   color: #eeeeee;
 }
-.note-editor .dropdown-content.note-check li a i {
+.note-editor .dropdown-content.note-check li a i, .note-editor .modal-content.note-check li a i {
   color: #eeeeee !important;
   visibility: hidden;
 }
-.note-editor .dropdown-content.note-check li a.checked i {
+.note-editor .dropdown-content.note-check li a.checked i, .note-editor .modal-content.note-check li a.checked i {
   visibility: visible;
 }
 .note-editor .note-dropzone {
@@ -397,33 +449,10 @@
   background-color: #212121;
   position: relative;
 }
-.note-toolbar .note-color .note-current-color-button, .note-toolbar .note-card .note-current-color-button {
-  width: 36px;
-}
-.note-toolbar .note-color .note-current-color-button.disabled .note-recent-color, .note-toolbar .note-color .note-current-color-button.disabled .note-recent-color-back, .note-toolbar .note-card .note-current-color-button.disabled .note-recent-color, .note-toolbar .note-card .note-current-color-button.disabled .note-recent-color-back {
-  background-color: #555555 !important;
-  color: #bbbbbb !important;
-}
-.note-toolbar .note-color .note-current-color-button .note-recent-color, .note-toolbar .note-card .note-current-color-button .note-recent-color {
-  z-index: 2;
-  font-weight: 600;
-  line-height: 2.2;
-  position: absolute;
-  left: 13px;
-}
-.note-toolbar .note-color .note-current-color-button .note-recent-color-back, .note-toolbar .note-card .note-current-color-button .note-recent-color-back {
-  z-index: 1;
-  height: 20px;
-  width: 19.5px;
-  background-color: #eeeeee;
-  position: absolute;
-  bottom: 10px;
-}
 
 .note-popover .popover-content, .panel-heading.note-toolbar {
   margin: 0;
   padding: 0;
-  /* color palette for toolbar and popover */
 }
 .note-popover .popover-content > .btn-group, .panel-heading.note-toolbar > .btn-group {
   margin-top: 0;
@@ -497,29 +526,6 @@
 }
 .note-popover .popover-content .note-fontsize-10, .panel-heading.note-toolbar .note-fontsize-10 {
   font-size: 10px;
-}
-.note-popover .popover-content .note-color-palette, .panel-heading.note-toolbar .note-color-palette {
-  line-height: 1;
-}
-.note-popover .popover-content .note-color-palette .note-color-row, .panel-heading.note-toolbar .note-color-palette .note-color-row {
-  line-height: 0;
-}
-.note-popover .popover-content .note-color-palette div .note-color-btn, .panel-heading.note-toolbar .note-color-palette div .note-color-btn {
-  width: 23px;
-  height: 23px;
-  padding: 0;
-  margin: 0;
-  border: none;
-}
-.note-popover .popover-content .note-color-palette div .note-color-btn:hover::after, .panel-heading.note-toolbar .note-color-palette div .note-color-btn:hover::after {
-  position: absolute;
-  width: 34px;
-  height: 34px;
-  content: "";
-  background-color: inherit;
-  margin-top: -17px;
-  margin-left: -17px;
-  border: solid 2px #212121;
 }
 
 /* Placeholder

@@ -60,6 +60,72 @@
 
 /* Layout
 ------------------------------------------*/
+.note-editor, #note-card-modal {
+    // color-palette
+    .note-color-palette {
+        line-height: 1;
+
+        .note-color-row {
+            line-height: 0;
+        }
+
+        div {
+            .note-color-btn {
+                width: 23px;
+                height: 23px;
+                padding: 0;
+                margin: 0;
+                border: none;
+            }
+            .note-color-btn:hover::after {
+                position: absolute;
+                width: 34px;
+                height: 34px;
+                content: "";
+                background-color: inherit;
+                margin-top: -17px;
+                margin-left: -17px;
+                border: solid 2px $toolbar-color;
+            }
+        }
+    }
+    .note-color {
+        .note-current-color-button {
+            width: 36px;
+
+            &.disabled {
+                .note-recent-color, .note-recent-color-back {
+                    background-color: $disabled-color !important;
+                    color: $disabled-text-color !important;
+                }
+            }
+
+            .note-recent-color {
+                z-index: 2;
+                font-weight: 600;
+                line-height: 2.2;
+                position: absolute;
+                left: 13px;
+            }
+
+            .note-recent-color-back {
+                z-index: 1;
+                height: 20px;
+                width: 19.5px;
+                background-color: $toolbar-overlay-color;
+                position: absolute;
+                bottom: 10px;
+            }
+        }
+    }
+}
+
+#note-card-modal {
+    top: 5% !important;
+    height: 90%;
+    max-height: 90%;
+}
+
 .note-editor {
     position: relative;
 
@@ -111,7 +177,7 @@
     }
 
     // dropdowns
-    .dropdown-content {
+    .dropdown-content, .modal-content {
         min-width: 10px;
         background-color: $dropdown-color;
         border-left: solid 1px $toolbar-overlay-color;
@@ -476,36 +542,6 @@
     z-index: 500;
     background-color: $toolbar-color;
     position: relative;
-
-    .note-color, .note-card {
-        .note-current-color-button {
-            width: 36px;
-
-            &.disabled {
-                .note-recent-color, .note-recent-color-back {
-                    background-color: $disabled-color !important;
-                    color: $disabled-text-color !important;
-                }
-            }
-
-            .note-recent-color {
-                z-index: 2;
-                font-weight: 600;
-                line-height: 2.2;
-                position: absolute;
-                left: 13px;
-            }
-
-            .note-recent-color-back {
-                z-index: 1;
-                height: 20px;
-                width: 19.5px;
-                background-color: $toolbar-overlay-color;
-                position: absolute;
-                bottom: 10px;
-            }
-        }
-    }
 }
 
 .note-popover .popover-content, .panel-heading.note-toolbar {
@@ -600,35 +636,6 @@
 
     .note-fontsize-10 {
         font-size: 10px;
-    }
-
-    /* color palette for toolbar and popover */
-    .note-color-palette {
-        line-height: 1;
-
-        .note-color-row {
-            line-height: 0;
-        }
-
-        div {
-            .note-color-btn {
-                width: 23px;
-                height: 23px;
-                padding: 0;
-                margin: 0;
-                border: none;
-            }
-            .note-color-btn:hover::after {
-                position: absolute;
-                width: 34px;
-                height: 34px;
-                content: "";
-                background-color: inherit;
-                margin-top: -17px;
-                margin-left: -17px;
-                border: solid 2px $toolbar-color;
-            }
-        }
     }
 }
 

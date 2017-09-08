@@ -22,11 +22,13 @@ define([
     'materialnote/materialize/module/VideoDialog',
     'materialnote/materialize/module/HelpDialog',
     'materialnote/materialize/module/AirPopover',
-    'materialnote/materialize/module/HintPopover'
+    'materialnote/materialize/module/HintPopover',
+    'materialnote/materialize/module/CardDialog'
 ], function (
     ui, dom, lang,
     Editor, Clipboard, Dropzone, Codeview, Statusbar, Fullscreen, Handle, AutoLink, AutoSync, Placeholder,
-    Buttons, Toolbar, LinkDialog, LinkPopover, ImageDialog, ImagePopover, TablePopover, VideoDialog, HelpDialog, AirPopover, HintPopover
+    Buttons, Toolbar, LinkDialog, LinkPopover, ImageDialog, ImagePopover, TablePopover, VideoDialog, HelpDialog, AirPopover, HintPopover,
+    CardDialog
 ) {
 
     $.materialnote = $.extend($.materialnote, {
@@ -60,7 +62,8 @@ define([
                 'tablePopover': TablePopover,
                 'videoDialog': VideoDialog,
                 'helpDialog': HelpDialog,
-                'airPopover': AirPopover
+                'airPopover': AirPopover,
+                'cardDialog': CardDialog
             },
 
             buttons: {},
