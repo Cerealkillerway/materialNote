@@ -15,7 +15,7 @@ define([
             var $container = options.dialogsInBody ? $(document.body) : $editor;
 
             var body =
-            '<div clas="row">' +
+            '<div class="row">' +
                 '<div class="input-field col s12">' +
                     '<input class="note-video-url form-control" type="text" />' +
                     '<label>' + lang.video.url + lang.video.providers + '</label>' +

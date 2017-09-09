@@ -133,10 +133,42 @@
         @extend %disabled-color;
     }
 
+    .modal {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        outline-width: 0;
+    }
+
     // modals
     .modal-content {
         @extend %styled-scrollbars;
         border-color: $toolbar-color !important;
+
+        .card-color-wrapper {
+            max-width: 420px;
+            margin: auto;
+
+            .tab {
+                background-color: $toolbar-color-lighten;
+
+                &:hover {
+                    background-color: $action-color !important;
+                    color: $action-text-color !important;
+                }
+            }
+        }
+
+        .selected-color {
+            background-color: $toolbar-color-lighten;
+            height: 40px;
+            width: 40px;
+            margin: auto;
+            border: solid 2px lighten($toolbar-color-lighten, 10%);
+        }
 
         .help-content {
             .help-container {

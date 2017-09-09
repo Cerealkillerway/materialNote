@@ -76,7 +76,9 @@ define([
                 card: {
                     card: 'Card',
                     insert: 'Insert card',
-                    cardContentSample: 'Card content'
+                    cardContentSample: 'Card content',
+                    selectedColors: 'Selected colors:',
+                    cardTitle: 'Card title'
                 }
             },
             hr: {

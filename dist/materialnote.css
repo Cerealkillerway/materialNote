@@ -115,8 +115,35 @@
   /* Modals
   ------------------------------------------*/
 }
+.note-editor .modal {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline-width: 0;
+}
 .note-editor .modal-content {
   border-color: #212121 !important;
+}
+.note-editor .modal-content .card-color-wrapper {
+  max-width: 420px;
+  margin: auto;
+}
+.note-editor .modal-content .card-color-wrapper .tab {
+  background-color: #323232;
+}
+.note-editor .modal-content .card-color-wrapper .tab:hover {
+  background-color: #3d5afe !important;
+  color: #eeeeee !important;
+}
+.note-editor .modal-content .selected-color {
+  background-color: #323232;
+  height: 40px;
+  width: 40px;
+  margin: auto;
+  border: solid 2px #4c4c4c;
 }
 .note-editor .modal-content .help-content .help-container {
   margin-left: 5%;

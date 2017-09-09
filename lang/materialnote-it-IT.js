@@ -61,7 +61,9 @@
                 card: {
                     card: 'Carta',
                     insert: 'Inserisci carta',
-                    cardContentSample: 'Contenuto della carta'
+                    cardContentSample: 'Contenuto della carta',
+                    selectedColors: 'Colori selezionati:',
+                    cardTitle: 'Titolo'
                 }
             },
             hr: {
