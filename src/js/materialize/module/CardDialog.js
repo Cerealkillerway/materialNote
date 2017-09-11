@@ -69,26 +69,26 @@ define([
                 id: 'note-card-modal'
             }).render().appendTo($container);
 
+            self.$dialog.find('.note-holder').each(function () {
+                let $holder = $(this);
+                let $tabs = self.$dialog.find('ul.tabs');
+
+                $holder.append(ui.palette({
+                    colors: options.colors,
+                    colorNames: options.colorNames,
+                    eventName: $holder.data('event'),
+                }).render());
+
+                // in this tabs initialization the indicator width will not be set since the plugin does not work
+                // with hidden elements (display: none);
+                // as a workaround the indicator width is forced to 50% in the css
+                $tabs.tabs({
+                    //swipeable: true
+                });
+            });
+
             this.$dialog.modal({
                 ready: function() {
-                    self.$dialog.find('.note-holder').each(function () {
-                        let $holder = $(this);
-                        let $tabs = self.$dialog.find('ul.tabs');
-
-                        $holder.append(ui.palette({
-                            colors: options.colors,
-                            colorNames: options.colorNames,
-                            eventName: $holder.data('event'),
-                        }).render());
-
-                        // in this tabs initialization the indicator width will not be set since the plugin does not work
-                        // with hidden elements (display: none);
-                        // as a workaround the indicator width is forced to 50% in the css
-                        $tabs.tabs({
-                            //swipeable: true
-                        });
-                    });
-
                     self.$dialog.find('.note-color-btn').click(function() {
                         self.selectColor($(this).data('event'), $(this).data('value'));
                     });
