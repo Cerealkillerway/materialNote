@@ -58,7 +58,7 @@ define([
 
             var footer = [
                 '<a href="#!" class="modal-action modal-close waves-effect waves-light btn ">' + lang.shortcut.close + '</a>',
-                '<button href="#" class="btn note-video-btn disabled" disabled>' + lang.materializeComponents.card.insert + '</button>'
+                '<button href="#" class="btn note-materialize-card-btn">' + lang.materializeComponents.card.insert + '</button>'
             ].join('');
 
             this.$dialog = ui.dialog({
@@ -69,6 +69,7 @@ define([
                 id: 'note-card-modal'
             }).render().appendTo($container);
 
+            // create color palettes
             self.$dialog.find('.note-holder').each(function () {
                 let $holder = $(this);
                 let $tabs = self.$dialog.find('ul.tabs');
@@ -87,10 +88,60 @@ define([
                 });
             });
 
+            // set default colors
+            let $backColor = self.$dialog.find('#selected-back-color');
+            let $foreColor = self.$dialog.find('#selected-fore-color');
+            let defaultBackColor = options.materializeComponents.card.defaultBackColor;
+            let defaultForeColor = options.materializeComponents.card.defaultForeColor;
+            let defaultBackColorName, defaultBackColorValue, defaultForeColorName, defaultForeColorValue;
+            let colorXY;
+
+            // handle default colors type
+            // backColor
+            if (defaultBackColor.indexOf('#') === 0) {
+                defaultBackColorValue = defaultBackColor;
+                colorXY = ui.colors.lookupInMatrix(options.colors, defaultBackColor);
+                defaultBackColorName = options.colorNames[colorXY.row][colorXY.column];
+            }
+            else {
+                defaultBackColorName = defaultBackColor;
+                colorXY = ui.colors.lookupInMatrix(options.colorNames, defaultBackColor);
+                defaultBackColorValue = options.colors[colorXY.row][colorXY.column];
+            }
+            // foreColor
+            if (defaultForeColor.indexOf('#') === 0) {
+                defaultForeColorValue = defaultForeColor;
+                colorXY = ui.colors.lookupInMatrix(options.colors, defaultForeColor);
+                defaultForeColorName = options.colorNames[colorXY.row][colorXY.column];
+            }
+            else {
+                defaultForeColorName = defaultForeColor;
+                colorXY = ui.colors.lookupInMatrix(options.colorNames, defaultForeColor);
+                defaultForeColorValue = options.colors[colorXY.row][colorXY.column];
+            }
+
+            $backColor.css({'background-color': defaultBackColorValue});
+            $backColor.attr('data-color', defaultBackColorName);
+            $foreColor.css({'background-color': defaultForeColorValue});
+            $foreColor.attr('data-color', defaultForeColorName);
+
             this.$dialog.modal({
                 ready: function() {
+                    let $cardBtn = self.$dialog.find('.note-materialize-card-btn');
+                    let $cardTitle = self.$dialog.find('.card-title');
+
                     self.$dialog.find('.note-color-btn').click(function() {
                         self.selectColor($(this).data('event'), $(this).data('value'));
+                    });
+
+                    $cardBtn.click(function (event) {
+                        event.preventDefault();
+
+                        data.resolve({
+                            backColor: $backColor.attr('data-color'),
+                            foreColor: ui.colors.backNameToText($foreColor.attr('data-color')),
+                            title: $cardTitle.val()
+                        });
                     });
 
                     //self.bindEnterKey($videoUrl, $videoBtn);
@@ -135,7 +186,11 @@ define([
                 break;
             }
 
+            let colorXY = ui.colors.lookupInMatrix(options.colors, color);
+            let colorName = options.colorNames[colorXY.row][colorXY.column];
+
             $selectedColor.css({'background-color': color});
+            $selectedColor.attr('data-color', colorName);
         };
 
         this.show = function () {
@@ -145,18 +200,13 @@ define([
             ui.showDialog(self.$dialog);
             data = $.Deferred();
 
-            data.then(function (url) {
+            data.then(function (card) {
                 // [workaround] hide dialog before restore range for IE range focus
                 ui.hideDialog(self.$dialog);
                 context.invoke('editor.restoreRange');
 
                 // build node
-                var $node = self.createVideoNode(url);
-
-                if ($node) {
-                    // insert video node
-                    context.invoke('editor.insertNode', $node);
-                }
+                context.invoke('editor.insertCard', card);
             }).fail(function () {
                 context.invoke('editor.restoreRange');
             });

@@ -136,6 +136,14 @@ define([
             followingToolbar: true,
             otherStaticBarClass: 'topBar',
 
+            // materialize components
+            materializeComponents: {
+                card: {
+                    defaultBackColor: '#212121',
+                    defaultForeColor: '#eeeeee'
+                }
+            },
+
             // pallete colors(n x n)
             colors: [
                 ['#FFEBEE', '#fce4ec', '#f3e5f5', '#ede7f6', '#e8eaf6', '#E3F2FD', '#e1f5fe', '#e0f7fa', '#e0f2f1', '#E8F5E9', '#f1f8e9', '#f9fbe7', '#fffde7', '#fff8e1', '#fff3e0', '#fbe9e7', '#fafafa'],

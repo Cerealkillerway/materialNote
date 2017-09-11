@@ -180,6 +180,29 @@ define([
                 });
 
                 return colorTextName.join(' ');
+            },
+
+            lookupInMatrix: function(matrix, color) {
+                let i, j, found;
+
+                for (i = 0; i < matrix.length; i++) {
+                    found = false;
+
+                    for (j = 0; j < matrix[i].length; j++) {
+                        if (matrix[i][j] === color) {
+                            found = true;
+                            break;
+                        }
+                    }
+
+                    if (found) {
+                        break;
+                    }
+                }
+                if (found) {
+                    return {row: i, column: j};
+                }
+                return null;
             }
         },
 

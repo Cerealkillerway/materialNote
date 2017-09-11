@@ -340,9 +340,9 @@ define([
         * @param {String} backColor
         * @return {DOM}
         */
-        this.insertCard = function (backColor, foreColor) {
-            range.create(editable).insertNode($('<div class="card ' + backColor + '"><div class="card-content ' + foreColor + '">' +
-            lang.materializeComponents.cardContentSample + '</div></div>')[0]);
+        this.insertCard = function (card) {
+            range.create(editable).insertNode($('<div class="card ' + card.backColor + ' ' + card.foreColor + '"><div class="card-content">' +
+            card.title + '</div></div>')[0]);
         };
 
         /**
