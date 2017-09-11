@@ -10,8 +10,12 @@ require.config({
         lang: '../../lang/materialnote-it-IT'
     },
     shim: {
-        bootstrap: ['jquery'],
-        lang: ['jquery']
+        materialize: {
+            deps: ['jquery']
+        },
+        lang: {
+            deps: ['jquery']
+        }
     },
     packages: [{
         name: 'materialnote',
@@ -20,7 +24,7 @@ require.config({
     }]
 });
 
-require(['jquery', 'materialnote'], function ($) {
+require(['jquery'], function ($) {
     var requireByPromise = function (paths) {
         return $.Deferred(function (deferred) {
             require(paths, function () {
@@ -30,9 +34,10 @@ require(['jquery', 'materialnote'], function ($) {
         });
     };
 
-    var promise = $.Deferred();
-
     require(['materialize']);
+    require(['materialnote']);
+
+    var promise = $.Deferred();
 
     // editor type setting
     switch ($('script[data-editor-type]').data('editor-type')) {
