@@ -7,7 +7,7 @@
  * based on summernote.js, copyright 2013- Alan Hong. and other contributors
  * materialnote may be freely distributed under the MIT license./
  *
- * Date: 2017-09-08T09:51Z
+ * Date: 2017-11-13T15:27Z
  */
 (function (factory) {
   /* global define */
@@ -2138,6 +2138,29 @@
                 });
 
                 return colorTextName.join(' ');
+            },
+
+            lookupInMatrix: function(matrix, color) {
+                let i, j, found;
+
+                for (i = 0; i < matrix.length; i++) {
+                    found = false;
+
+                    for (j = 0; j < matrix[i].length; j++) {
+                        if (matrix[i][j] === color) {
+                            found = true;
+                            break;
+                        }
+                    }
+
+                    if (found) {
+                        break;
+                    }
+                }
+                if (found) {
+                    return {row: i, column: j};
+                }
+                return null;
             }
         },
 
@@ -2289,7 +2312,9 @@
                 card: {
                     card: 'Card',
                     insert: 'Insert card',
-                    cardContentSample: 'Card content'
+                    cardContentSample: 'Card content',
+                    selectedColors: 'Selected colors:',
+                    cardTitle: 'Card title'
                 }
             },
             hr: {
@@ -4829,9 +4854,9 @@
         * @param {String} backColor
         * @return {DOM}
         */
-        this.insertCard = function (backColor, foreColor) {
-            range.create(editable).insertNode($('<div class="card ' + backColor + '"><div class="card-content ' + foreColor + '">' +
-            lang.materializeComponents.cardContentSample + '</div></div>')[0]);
+        this.insertCard = function (card) {
+            range.create(editable).insertNode($('<div class="card ' + card.backColor + ' ' + card.foreColor + '"><div class="card-content">' +
+            card.title + '</div></div>')[0]);
         };
 
         /**
@@ -6736,120 +6761,10 @@
             context.memo('button.materializeCard', function () {
                 return ui.button({
                     contents: ui.icon('view_agenda'),
-                    tooltip: lang.materializeComponents.card,
+                    tooltip: lang.materializeComponents.card.card,
                     click: context.createInvokeHandler('cardDialog.show')
                 }).render();
             });
-            /*context.memo('button.materializeCard', function () {
-                return ui.buttonGroup({
-                    className: 'note-card',
-                    children: [
-                        ui.button({
-                            className: 'note-card-current',
-                            contents: ui.icon('view_agenda'),
-                            //contents: '<div class="note-recent-color">A</div><div class="note-recent-color-back"></div>',
-                            tooltip: lang.materializeComponents.card,
-                            click: function() {
-                                context.invoke('editor.insertCard', $(this).attr('data-backcolor'), $(this).attr('data-forecolor'));
-                            },
-                            callback: function ($button) {
-                                let $recentColor = $button.find('.note-recent-color');
-                                let $recentColorBack = $button.find('.note-recent-color-back');
-                                let defaultColor = options.defaultColors.text;
-                                let defaultBackColor = options.defaultColors.background;
-
-                                $button.attr('data-backColor', options.defaultColors.cardBackground);
-                                $button.attr('data-foreColor', ui.colors.backNameToText(options.defaultColors.cardText));
-                                $recentColorBack.css('background-color', defaultBackColor);
-                                $recentColor.css('color', defaultColor);
-                            }
-                        }),
-                        ui.button({
-                            className: 'dropdown-button',
-                            contents: ui.icon('arrow_drop_down'),
-                            tooltip: lang.color.more,
-                            data: {
-                                activates: 'note-card-colors'
-                            },
-                            click: function() {
-                                let $dropdown = $(this).next('.dropdown-content');
-                                let $tabs = $dropdown.find('ul.tabs');
-
-                                // in this tabs initialization the indicator width will not be set since the plugin does not work
-                                // with hidden elements (display: none);
-                                // as a workaround the indicator width is forced to 50% in the css
-                                $tabs.tabs({
-                                    //swipeable: true
-                                });
-                            }
-                        }),
-                        ui.dropdown({
-                            id: 'note-card-colors',
-                            items: [
-                                '<div class="row noMargins">',
-                                    '<div class="col s12">',
-                                        '<ul class="tabs">',
-                                            '<li class="tab col s6"><a class="active" href="#note-card-background-color">' + lang.color.background + '</a></li>',
-                                            '<li class="tab col s6"><a href="#note-card-foreground-color">' + lang.color.foreground + '</a></li>',
-                                        '</ul>',
-                                    '</div>',
-                                '</div>',
-                                '<div class="row noMargins">',
-                                    '<div id="note-card-background-color" class="col s12">',
-                                        '<div class="row noMargins">',
-                                            '<div class="col s6">',
-                                                '<div class="color-name"></div>',
-                                            '</div>',
-                                        '</div>',
-                                        '<div class="note-holder" data-event="cardBackColor"></div>',
-                                    '</div>',
-                                    '<div id="note-card-foreground-color" class="col s12">',
-                                        '<div class="row noMargins">',
-                                            '<div class="col s6">',
-                                                '<div class="color-name"></div>',
-                                            '</div>',
-                                        '</div>',
-                                        '<div class="note-holder" data-event="cardForeColor"/></div>',
-                                    '</div>',
-                                '</div>'
-                            ].join(''),
-                            callback: function ($dropdown) {
-                                $dropdown.find('.note-holder').each(function () {
-                                    var $holder = $(this);
-
-                                    $holder.append(ui.palette({
-                                        colors: options.colors,
-                                        colorNames: options.colorNames,
-                                        eventName: $holder.data('event'),
-                                    }).render());
-                                });
-                            },
-                            click: function (event) {
-                                let $button = $(event.target);
-                                let eventName = $button.data('event');
-                                let value = $button.data('value');
-
-                                // prevent closing dropdown when clicking other than note-color-btn or note-color-reset
-                                if (!$button.hasClass('note-color-btn') && !$button.hasClass('note-color-reset')) {
-                                    return false;
-                                }
-
-                                if (eventName && value) {
-                                    let colorName = $button.data('description');
-                                    let $recentCardColor = $button.closest('#note-card-colors').siblings('.note-card-current');
-
-                                    if (eventName === 'cardBackColor') {
-                                        $recentCardColor.attr('data-backcolor', colorName);
-                                    }
-                                    else {
-                                        $recentCardColor.attr('data-forecolor', ui.colors.backNameToText(colorName));
-                                    }
-                                }
-                            }
-                        })
-                    ]
-                }).render();
-            });*/
 
 
             context.memo('button.fullscreen', function () {
@@ -7945,7 +7860,7 @@
             var $container = options.dialogsInBody ? $(document.body) : $editor;
 
             var body =
-            '<div clas="row">' +
+            '<div class="row">' +
                 '<div class="input-field col s12">' +
                     '<input class="note-video-url form-control" type="text" />' +
                     '<label>' + lang.video.url + lang.video.providers + '</label>' +
@@ -8524,37 +8439,50 @@
             var $container = options.dialogsInBody ? $(document.body) : $editor;
 
             var body = [
-                '<div class="row noMargins">',
-                    '<div class="col s12">',
-                        '<ul class="tabs">',
-                            '<li class="tab col s6"><a class="active" href="#note-card-background-color">' + lang.color.background + '</a></li>',
-                            '<li class="tab col s6"><a href="#note-card-foreground-color">' + lang.color.foreground + '</a></li>',
-                        '</ul>',
-                    '</div>',
+                '<div class="row">',
+                    '<div class="col s12 center-align">' + lang.materializeComponents.card.selectedColors + '</div>',
+                    '<div class="col s6"><div id="selected-back-color" class="selected-color"></div></div>',
+                    '<div class="col s6"><div id="selected-fore-color" class="selected-color"></div></div>',
                 '</div>',
-                '<div class="row noMargins">',
-                    '<div id="note-card-background-color" class="col s12">',
-                        '<div class="row noMargins">',
-                            '<div class="col s6">',
-                                '<div class="color-name"></div>',
-                            '</div>',
+                '<div class="card-color-wrapper">',
+                    '<div class="row noMargins">',
+                        '<div class="col s12">',
+                            '<ul class="tabs">',
+                                '<li class="tab col s6"><a class="active" href="#note-card-background-color">' + lang.color.background + '</a></li>',
+                                '<li class="tab col s6"><a href="#note-card-foreground-color">' + lang.color.foreground + '</a></li>',
+                            '</ul>',
                         '</div>',
-                        '<div class="note-holder" data-event="cardBackColor"></div>',
                     '</div>',
-                    '<div id="note-card-foreground-color" class="col s12">',
-                        '<div class="row noMargins">',
-                            '<div class="col s6">',
-                                '<div class="color-name"></div>',
+                    '<div class="row noMargins">',
+                        '<div id="note-card-background-color" class="col s12">',
+                            '<div class="row noMargins">',
+                                '<div class="col s6">',
+                                    '<div class="color-name"></div>',
+                                '</div>',
                             '</div>',
+                            '<div class="note-holder" data-event="cardBackColor"></div>',
                         '</div>',
-                        '<div class="note-holder" data-event="cardForeColor"/></div>',
+                        '<div id="note-card-foreground-color" class="col s12">',
+                            '<div class="row noMargins">',
+                                '<div class="col s6">',
+                                    '<div class="color-name"></div>',
+                                '</div>',
+                            '</div>',
+                            '<div class="note-holder" data-event="cardForeColor"/></div>',
+                        '</div>',
+                    '</div>',
+
+                '<div class="row">',
+                    '<div class="input-field col s12">',
+                        '<input class="card-title" type="text" />',
+                        '<label>' + lang.materializeComponents.card.cardTitle + '</label>',
                     '</div>',
                 '</div>'
             ].join('');
 
             var footer = [
                 '<a href="#!" class="modal-action modal-close waves-effect waves-light btn ">' + lang.shortcut.close + '</a>',
-                '<button href="#" class="btn note-video-btn disabled" disabled>' + lang.materializeComponents.card.insert + '</button>'
+                '<button href="#" class="btn note-materialize-card-btn">' + lang.materializeComponents.card.insert + '</button>'
             ].join('');
 
             this.$dialog = ui.dialog({
@@ -8565,23 +8493,78 @@
                 id: 'note-card-modal'
             }).render().appendTo($container);
 
+            // create color palettes
+            self.$dialog.find('.note-holder').each(function () {
+                let $holder = $(this);
+                let $tabs = self.$dialog.find('ul.tabs');
+
+                $holder.append(ui.palette({
+                    colors: options.colors,
+                    colorNames: options.colorNames,
+                    eventName: $holder.data('event'),
+                }).render());
+
+                // in this tabs initialization the indicator width will not be set since the plugin does not work
+                // with hidden elements (display: none);
+                // as a workaround the indicator width is forced to 50% in the css
+                $tabs.tabs({
+                    //swipeable: true
+                });
+            });
+
+            // set default colors
+            let $backColor = self.$dialog.find('#selected-back-color');
+            let $foreColor = self.$dialog.find('#selected-fore-color');
+            let defaultBackColor = options.materializeComponents.card.defaultBackColor;
+            let defaultForeColor = options.materializeComponents.card.defaultForeColor;
+            let defaultBackColorName, defaultBackColorValue, defaultForeColorName, defaultForeColorValue;
+            let colorXY;
+
+            // handle default colors type
+            // backColor
+            if (defaultBackColor.indexOf('#') === 0) {
+                defaultBackColorValue = defaultBackColor;
+                colorXY = ui.colors.lookupInMatrix(options.colors, defaultBackColor);
+                defaultBackColorName = options.colorNames[colorXY.row][colorXY.column];
+            }
+            else {
+                defaultBackColorName = defaultBackColor;
+                colorXY = ui.colors.lookupInMatrix(options.colorNames, defaultBackColor);
+                defaultBackColorValue = options.colors[colorXY.row][colorXY.column];
+            }
+            // foreColor
+            if (defaultForeColor.indexOf('#') === 0) {
+                defaultForeColorValue = defaultForeColor;
+                colorXY = ui.colors.lookupInMatrix(options.colors, defaultForeColor);
+                defaultForeColorName = options.colorNames[colorXY.row][colorXY.column];
+            }
+            else {
+                defaultForeColorName = defaultForeColor;
+                colorXY = ui.colors.lookupInMatrix(options.colorNames, defaultForeColor);
+                defaultForeColorValue = options.colors[colorXY.row][colorXY.column];
+            }
+
+            $backColor.css({'background-color': defaultBackColorValue});
+            $backColor.attr('data-color', defaultBackColorName);
+            $foreColor.css({'background-color': defaultForeColorValue});
+            $foreColor.attr('data-color', defaultForeColorName);
+
             this.$dialog.modal({
                 ready: function() {
-                    self.$dialog.find('.note-holder').each(function () {
-                        let $holder = $(this);
-                        let $tabs = self.$dialog.find('ul.tabs');
+                    let $cardBtn = self.$dialog.find('.note-materialize-card-btn');
+                    let $cardTitle = self.$dialog.find('.card-title');
 
-                        $holder.append(ui.palette({
-                            colors: options.colors,
-                            colorNames: options.colorNames,
-                            eventName: $holder.data('event'),
-                        }).render());
+                    self.$dialog.find('.note-color-btn').click(function() {
+                        self.selectColor($(this).data('event'), $(this).data('value'));
+                    });
 
-                        // in this tabs initialization the indicator width will not be set since the plugin does not work
-                        // with hidden elements (display: none);
-                        // as a workaround the indicator width is forced to 50% in the css
-                        $tabs.tabs({
-                            //swipeable: true
+                    $cardBtn.click(function (event) {
+                        event.preventDefault();
+
+                        data.resolve({
+                            backColor: $backColor.attr('data-color'),
+                            foreColor: ui.colors.backNameToText($foreColor.attr('data-color')),
+                            title: $cardTitle.val()
                         });
                     });
 
@@ -8614,99 +8597,24 @@
             });
         };
 
-        this.createVideoNode = function (url) {
-            // video url patterns(youtube, instagram, vimeo, dailymotion, youku, mp4, ogg, webm)
-            var ytRegExp = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
-            var ytMatch = url.match(ytRegExp);
+        this.selectColor = function(type, color) {
+            let $selectedColor;
 
-            var igRegExp = /(?:www\.|\/\/)instagram\.com\/p\/(.[a-zA-Z0-9_-]*)/;
-            var igMatch = url.match(igRegExp);
+            switch (type) {
+                case 'cardBackColor':
+                $selectedColor = self.$dialog.find('#selected-back-color');
+                break;
 
-            var vRegExp = /\/\/vine\.co\/v\/([a-zA-Z0-9]+)/;
-            var vMatch = url.match(vRegExp);
-
-            var vimRegExp = /\/\/(player\.)?vimeo\.com\/([a-z]*\/)*(\d+)[?]?.*/;
-            var vimMatch = url.match(vimRegExp);
-
-            var dmRegExp = /.+dailymotion.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/;
-            var dmMatch = url.match(dmRegExp);
-
-            var youkuRegExp = /\/\/v\.youku\.com\/v_show\/id_(\w+)=*\.html/;
-            var youkuMatch = url.match(youkuRegExp);
-
-            var qqRegExp = /\/\/v\.qq\.com.*?vid=(.+)/;
-            var qqMatch = url.match(qqRegExp);
-
-            var qqRegExp2 = /\/\/v\.qq\.com\/x?\/?(page|cover).*?\/([^\/]+)\.html\??.*/;
-            var qqMatch2 = url.match(qqRegExp2);
-
-            var mp4RegExp = /^.+.(mp4|m4v)$/;
-            var mp4Match = url.match(mp4RegExp);
-
-            var oggRegExp = /^.+.(ogg|ogv)$/;
-            var oggMatch = url.match(oggRegExp);
-
-            var webmRegExp = /^.+.(webm)$/;
-            var webmMatch = url.match(webmRegExp);
-
-            var $video;
-            if (ytMatch && ytMatch[1].length === 11) {
-                var youtubeId = ytMatch[1];
-                $video = $('<iframe>')
-                .attr('frameborder', 0)
-                .attr('src', '//www.youtube.com/embed/' + youtubeId)
-                .attr('width', '640').attr('height', '360');
-            } else if (igMatch && igMatch[0].length) {
-                $video = $('<iframe>')
-                .attr('frameborder', 0)
-                .attr('src', 'https://instagram.com/p/' + igMatch[1] + '/embed/')
-                .attr('width', '612').attr('height', '710')
-                .attr('scrolling', 'no')
-                .attr('allowtransparency', 'true');
-            } else if (vMatch && vMatch[0].length) {
-                $video = $('<iframe>')
-                .attr('frameborder', 0)
-                .attr('src', vMatch[0] + '/embed/simple')
-                .attr('width', '600').attr('height', '600')
-                .attr('class', 'vine-embed');
-            } else if (vimMatch && vimMatch[3].length) {
-                $video = $('<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen>')
-                .attr('frameborder', 0)
-                .attr('src', '//player.vimeo.com/video/' + vimMatch[3])
-                .attr('width', '640').attr('height', '360');
-            } else if (dmMatch && dmMatch[2].length) {
-                $video = $('<iframe>')
-                .attr('frameborder', 0)
-                .attr('src', '//www.dailymotion.com/embed/video/' + dmMatch[2])
-                .attr('width', '640').attr('height', '360');
-            } else if (youkuMatch && youkuMatch[1].length) {
-                $video = $('<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen>')
-                .attr('frameborder', 0)
-                .attr('height', '498')
-                .attr('width', '510')
-                .attr('src', '//player.youku.com/embed/' + youkuMatch[1]);
-            } else if ((qqMatch && qqMatch[1].length) || (qqMatch2 && qqMatch2[2].length)) {
-                var vid = ((qqMatch && qqMatch[1].length) ? qqMatch[1]:qqMatch2[2]);
-                $video = $('<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen>')
-                .attr('frameborder', 0)
-                .attr('height', '310')
-                .attr('width', '500')
-                .attr('src', 'http://v.qq.com/iframe/player.html?vid=' + vid + '&amp;auto=0');
-            } else if (mp4Match || oggMatch || webmMatch) {
-                $video = $('<video controls>')
-                .attr('src', url)
-                .attr('width', '640').attr('height', '360');
-            } else {
-                // this is not a known video link. Now what, Cat? Now what?
-                return false;
+                case 'cardForeColor':
+                $selectedColor = self.$dialog.find('#selected-fore-color');
+                break;
             }
 
-            $video[0].setAttribute('frameborder', 0);
-            $video[0].setAttribute('allowfullscreen', '');
+            let colorXY = ui.colors.lookupInMatrix(options.colors, color);
+            let colorName = options.colorNames[colorXY.row][colorXY.column];
 
-            var $node = $('<div>').addClass('video-container').append($video)[0];
-
-            return $node;
+            $selectedColor.css({'background-color': color});
+            $selectedColor.attr('data-color', colorName);
         };
 
         this.show = function () {
@@ -8716,18 +8624,13 @@
             ui.showDialog(self.$dialog);
             data = $.Deferred();
 
-            data.then(function (url) {
+            data.then(function (card) {
                 // [workaround] hide dialog before restore range for IE range focus
                 ui.hideDialog(self.$dialog);
                 context.invoke('editor.restoreRange');
 
                 // build node
-                var $node = self.createVideoNode(url);
-
-                if ($node) {
-                    // insert video node
-                    context.invoke('editor.insertNode', $node);
-                }
+                context.invoke('editor.insertCard', card);
             }).fail(function () {
                 context.invoke('editor.restoreRange');
             });
@@ -8839,6 +8742,14 @@
             // following toolbar
             followingToolbar: true,
             otherStaticBarClass: 'topBar',
+
+            // materialize components
+            materializeComponents: {
+                card: {
+                    defaultBackColor: '#212121',
+                    defaultForeColor: '#eeeeee'
+                }
+            },
 
             // pallete colors(n x n)
             colors: [
