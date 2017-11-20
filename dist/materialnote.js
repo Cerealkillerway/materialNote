@@ -7,7 +7,7 @@
  * based on summernote.js, copyright 2013- Alan Hong. and other contributors
  * materialnote may be freely distributed under the MIT license./
  *
- * Date: 2017-11-13T15:27Z
+ * Date: 2017-11-20T11:13Z
  */
 (function (factory) {
   /* global define */
