@@ -31,6 +31,20 @@ If you wish to change any of the editor color, you can quickly achieve the desir
 After making desired changes, just run `grunt build` to create a new dist in the **dist** folder.
 
 
+## Multi instances
+
+If you put more than one editor in the same page, some parts such as dropdowns will not work properly (since they use ids) unless you pass a unique `posIndex` parameter to each instance:
+
+```
+$.each($('.materialnote'), function(index, node) {
+    $(node).materialnote({
+        height: 300,
+        posIndex: index
+    });
+});
+```
+
+
 ## Contribute
 
 Some lang strings have been added in materialNote other than the ones supplied with summernote.js; by default only english and italian lang files are kept up to date in this repo; if you can help by adding missing strings for your language, please submit a pull request (thank you);

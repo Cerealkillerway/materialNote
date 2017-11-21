@@ -7,7 +7,7 @@
  * based on summernote.js, copyright 2013- Alan Hong. and other contributors
  * materialnote may be freely distributed under the MIT license./
  *
- * Date: 2017-11-21T01:59Z
+ * Date: 2017-11-21T02:27Z
  */
 (function (factory) {
   /* global define */
@@ -6455,13 +6455,13 @@
                                 '<div class="row noMargins">',
                                     '<div class="col s12">',
                                         '<ul class="tabs">',
-                                            '<li class="tab col s6"><a class="active" href="#note-background-color">' + lang.color.background + '</a></li>',
-                                            '<li class="tab col s6"><a href="#note-foreground-color">' + lang.color.foreground + '</a></li>',
+                                            '<li class="tab col s6"><a class="active" href="#note-background-color-' + options.posIndex + '">' + lang.color.background + '</a></li>',
+                                            '<li class="tab col s6"><a href="#note-foreground-color-' + options.posIndex + '">' + lang.color.foreground + '</a></li>',
                                         '</ul>',
                                     '</div>',
                                 '</div>',
                                 '<div class="row noMargins">',
-                                    '<div id="note-background-color" class="col s12">',
+                                    '<div id="note-background-color-' + options.posIndex + '" class="col s12">',
                                         '<div class="row noMargins">',
                                             '<div class="col s6">',
                                                 '<button type="button" class="note-color-reset btn" data-event="backColor" data-value="inherit">' + lang.color.transparent + '</button>',
@@ -6472,7 +6472,7 @@
                                         '</div>',
                                         '<div class="note-holder" data-event="backColor"></div>',
                                     '</div>',
-                                    '<div id="note-foreground-color" class="col s12">',
+                                    '<div id="note-foreground-color-' + options.posIndex + '" class="col s12">',
                                         '<div class="row noMargins">',
                                             '<div class="col s6">',
                                                 '<button type="button" class="note-color-reset btn" data-event="removeFormat" data-value="foreColor">' + lang.color.resetToDefault + '</button>',
