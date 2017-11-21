@@ -1,7 +1,7 @@
 {
   "name": "materialnote",
   "description": "WYSIWYG editor for the web based on materialnote.js and materializeCss",
-  "version": "2.0.0",
+  "version": "2.0.3",
   "license": "MIT",
   "keywords": [
     "editor",

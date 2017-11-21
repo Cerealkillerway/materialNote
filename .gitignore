@@ -38,3 +38,5 @@ build/
 # Ignoring sass-cache
 .sass-cache
 /.gtm/
+
+.versionFilesList.json
