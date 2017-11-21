@@ -7,7 +7,7 @@
  * based on summernote.js, copyright 2013- Alan Hong. and other contributors
  * materialnote may be freely distributed under the MIT license./
  *
- * Date: 2017-11-20T11:13Z
+ * Date: 2017-11-21T01:59Z
  */
 (function (factory) {
   /* global define */
@@ -6273,11 +6273,11 @@
                         contents: ui.icon('arrow_drop_down', 'left') + ui.icon('border_color'),
                         tooltip: lang.style.style,
                         data: {
-                            activates: 'note-styles'
+                            activates: 'note-styles-' + options.posIndex
                         }
                     }),
                     ui.dropdown({
-                        id: 'note-styles',
+                        id: 'note-styles-' + options.posIndex,
                         items: context.options.styleTags,
                         template: function (item) {
 
@@ -6366,11 +6366,11 @@
                         contents: ui.icon('arrow_drop_down', 'left') + '<span class="note-current-fontname"/>',
                         tooltip: lang.font.name,
                         data: {
-                            activates: 'note-fonts'
+                            activates: 'note-fonts-' + options.posIndex
                         }
                     }),
                     ui.dropdownCheck({
-                        id: 'note-fonts',
+                        id: 'note-fonts-' + options.posIndex,
                         className: 'dropdown-fontname',
                         checkClassName: 'done',
                         items: options.fontNames.filter(self.isFontInstalled),
@@ -6389,11 +6389,11 @@
                         contents: ui.icon('arrow_drop_down', 'left') + '<span class="note-current-fontsize"/>',
                         tooltip: lang.font.size,
                         data: {
-                            activates: 'note-sizes'
+                            activates: 'note-sizes-' + options.posIndex
                         }
                     }),
                     ui.dropdownCheck({
-                        id: 'note-sizes',
+                        id: 'note-sizes-' + options.posIndex,
                         className: 'dropdown-fontsize',
                         checkClassName: 'done',
                         items: options.fontSizes,
@@ -6435,7 +6435,7 @@
                             contents: ui.icon('arrow_drop_down'),
                             tooltip: lang.color.more,
                             data: {
-                                activates: 'note-colors'
+                                activates: 'note-colors-' + options.posIndex
                             },
                             click: function() {
                                 let $dropdown = $(this).next('.dropdown-content');
@@ -6450,7 +6450,7 @@
                             }
                         }),
                         ui.dropdown({
-                            id: 'note-colors',
+                            id: 'note-colors-' + options.posIndex,
                             items: [
                                 '<div class="row noMargins">',
                                     '<div class="col s12">',
@@ -6614,7 +6614,7 @@
                         contents: ui.icon('arrow_drop_down', 'left') + ui.icon('format_textdirection_l_to_r'),
                         tooltip: lang.paragraph.paragraph,
                         data: {
-                            activates: 'note-paragraph'
+                            activates: 'note-paragraph-' + options.posIndex
                         }
                     }),
                     ui.dropdown([
@@ -6626,7 +6626,7 @@
                             className: 'note-list',
                             children: [outdent, indent]
                         })
-                    ], {id: 'note-paragraph'})
+                    ], {id: 'note-paragraph-' + options.posIndex})
                 ]).render();
             });
 
@@ -6637,11 +6637,11 @@
                         contents: ui.icon('arrow_drop_down', 'left') + ' ' + ui.icon('format_size'),
                         tooltip: lang.font.height,
                         data: {
-                            activates: 'note-height'
+                            activates: 'note-height-' + options.posIndex
                         }
                     }),
                     ui.dropdownCheck({
-                        id: 'note-height',
+                        id: 'note-height-' + options.posIndex,
                         items: options.lineHeights,
                         checkClassName: 'done',
                         className: 'dropdown-line-height',
@@ -6657,11 +6657,11 @@
                         contents: ui.icon('arrow_drop_down', 'left') + ' ' + ui.icon('border_all'),
                         tooltip: lang.table.table,
                         data: {
-                            activates: 'note-table'
+                            activates: 'note-table-' + options.posIndex
                         }
                     }),
                     ui.dropdown({
-                        id: 'note-table',
+                        id: 'note-table-' + options.posIndex,
                         className: 'note-table',
                         items: [
                             '<div class="row beforePicker">',

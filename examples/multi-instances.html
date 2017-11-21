@@ -26,53 +26,19 @@
     </head>
 
     <body>
-        <h2>Materialnote default demo</h2>
+        <h2>Materialnote multi instances demo</h2>
 
-        <div id="materialnote">MaterialNote v.2</div>
+        <div class="materialnote">MaterialNote v.2</div>
 
         <p>
             some text<br />
             some text<br />
             some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
-            some text<br />
+        </p>
+
+        <div class="materialnote">MaterialNote v.2</div>
+
+        <p>
             some text<br />
             some text<br />
             some text<br />
@@ -107,8 +73,14 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
-                $('#materialnote').materialnote({
-                    height: 350
+
+                // initialize each instance with posIndex param
+                $.each($('.materialnote'), function(index, node) {
+                    $(node).materialnote({
+                        height: 300,
+                        lang: 'it-IT',
+                        posIndex: index
+                    });
                 });
             });
         </script>

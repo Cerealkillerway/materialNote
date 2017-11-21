@@ -54,21 +54,24 @@ require(['jquery'], function ($) {
         return requireByPromise(['lang']);
     }).then(function () {
         // initialize materialNote
-        $('.materialnote').materialnote({
-            height: 300,
-            lang: 'it-IT',
-            toolbar: [
-                // [groupName, [list of button]]
-                ['style', ['bold', 'italic', 'underline', 'clear']],
-                ['font', ['fontname', 'color', 'strikethrough', 'superscript', 'subscript']],
-                ['fontsize', ['fontsize']],
-                ['para', ['ul', 'ol', 'paragraph', 'paragraphAlignLeft', 'paragraphAlignRight',
-                    'paragraphAlignCenter', 'paragraphAlignFull', 'paragraphOutdent', 'paragraphIndent']],
-                ['height', ['height']],
-                ['materialize', ['materializeCard']],
-                ['insert', ['picture', 'link', 'video', 'table', 'hr']],
-                ['misc', ['fullscreen', 'codeview', 'undo', 'redo', 'help']]
-            ]
+        $.each($('.materialnote'), function(index, node) {
+            $(node).materialnote({
+                height: 300,
+                lang: 'it-IT',
+                posIndex: index,
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['fontname', 'color', 'strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['para', ['ul', 'ol', 'paragraph', 'paragraphAlignLeft', 'paragraphAlignRight',
+                        'paragraphAlignCenter', 'paragraphAlignFull', 'paragraphOutdent', 'paragraphIndent']],
+                    ['height', ['height']],
+                    ['materialize', ['materializeCard']],
+                    ['insert', ['picture', 'link', 'video', 'table', 'hr']],
+                    ['misc', ['fullscreen', 'codeview', 'undo', 'redo', 'help']]
+                ]
+            });
         });
 
         // hack to make waves work on this demo

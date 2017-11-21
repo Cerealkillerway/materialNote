@@ -196,10 +196,15 @@
                 }
             }
 
-            kbd {
-                background-color: $action-color;
-                color: $action-text-color;
-                padding: 4px 5px 2px 5px;
+            label {
+                position: relative;
+                top: 0;
+
+                kbd {
+                    background-color: $action-color;
+                    color: $action-text-color;
+                    padding: 4px 5px 2px 5px;
+                }
             }
         }
     }

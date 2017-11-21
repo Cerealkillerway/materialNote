@@ -186,7 +186,7 @@ module.exports = function (grunt) {
     connect: {
       all: {
         options: {
-          port: 3001
+          port: 3003
         }
       }
     },
@@ -200,7 +200,8 @@ module.exports = function (grunt) {
             files: ['index.html', 'examples/*.html']
         },
         js: {
-            files: ['src/js/**/*.js']
+            files: ['src/js/**/*.js'],
+            tasks: ['build']
         },
         sass: {
             options: {
@@ -327,10 +328,20 @@ module.exports = function (grunt) {
   // test: saucelabs test
   grunt.registerTask('saucelabs-test', ['karma:saucelabs']);
 
+  // dist: whatch and dist files
+  grunt.registerTask('server-dist', [
+      'connect',
+      'watch',
+      'clean:dist',
+      'build',
+      'copy:dist',
+      'sass'
+  ]);
+
   // dist: make dist files
   grunt.registerTask('dist', [
     'clean:dist',
-    'build', 'lint', /*'karma:dist',*/
+    'build',
     'copy:dist',
     'sass'
   ]);

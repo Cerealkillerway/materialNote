@@ -164,7 +164,11 @@
   background-color: #ffc107;
   color: #212121;
 }
-.note-editor .modal-content .help-content kbd {
+.note-editor .modal-content .help-content label {
+  position: relative;
+  top: 0;
+}
+.note-editor .modal-content .help-content label kbd {
   background-color: #3d5afe;
   color: #eeeeee;
   padding: 4px 5px 2px 5px;
