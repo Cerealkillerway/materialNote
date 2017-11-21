@@ -9,7 +9,7 @@ var packageJson = JSON.parse(Npm.require("fs").readFileSync('package.json'));
 Package.describe({
   name: packageName,
   summary: 'materialnote (official): jQuery+Materialize WYSIWYG editor with embedded images support',
-  version: '2.0.4',
+  version: '2.0.5',
   git: 'https://github.com/Cerealkillerway/materialNote',
   documentation: 'README.md'
 });
