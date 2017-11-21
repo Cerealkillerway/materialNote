@@ -1,4 +1,4 @@
-# MaterialNote v2.0.3
+# MaterialNote v2.0.4
 
 WYSIWYG editor for the web, based on materialnote.js and materializeCss.
 Version 2 is currently in beta...

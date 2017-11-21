@@ -244,6 +244,7 @@
 
             .indicator {
                 height: 5px;
+                min-height: 0;
                 background-color: $action-color;
                 width: 50%;
             }

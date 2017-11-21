@@ -199,6 +199,7 @@
 }
 .note-editor .dropdown-content .tabs .indicator, .note-editor .modal-content .tabs .indicator {
   height: 5px;
+  min-height: 0;
   background-color: #3d5afe;
   width: 50%;
 }
