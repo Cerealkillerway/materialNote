@@ -582,6 +582,7 @@
     z-index: 500;
     background-color: $toolbar-color;
     position: relative;
+    display:table-row;
 }
 
 .note-popover .popover-content, .panel-heading.note-toolbar {

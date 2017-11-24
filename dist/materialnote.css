@@ -483,6 +483,7 @@
   z-index: 500;
   background-color: #212121;
   position: relative;
+  display: table-row;
 }
 
 .note-popover .popover-content, .panel-heading.note-toolbar {
