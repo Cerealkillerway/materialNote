@@ -22,7 +22,8 @@ Package.onUse(function (api) {
   // no exports - materialnote adds itself to jQuery
   api.addFiles([
     'dist/materialnote.js',
-    'dist/materialnote.css'
+    'dist/materialnote.css',
+    'dist/lang/materialnote-it-IT.js'
   ], where);
 });
 
